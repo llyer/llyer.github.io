@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: blog-Yuri
 subtitle:
-description:
-author: John Doe
-language:
+description: Yuri的个人博客
+author: Yuri
+language: zh-Hans
 timezone:
 
 # URL
@@ -79,5 +79,5 @@ theme: next
 
 deploy:
   type: git
-  repo: git@github.com:llyer/llyer.git
+  repo: git@github.com:llyer/llyer.github.io.git
   branch: master
