@@ -44,7 +44,7 @@ docker rmi liluyang/kubernetes-dashboard-amd64:latest
 ## 安装 Dashboard
 
 
-将文件 [kubernetes-dashboard.yaml](1kubernetes-dashboard/kubernetes-dashboard.yaml) 下载到本地，执行以下命令安装 Dashboard
+将文件 [kubernetes-dashboard.yaml](kubernetes-dashboard/kubernetes-dashboard.yaml.txt) 下载到本地，执行以下命令安装 Dashboard
 
 ``` bash
 # kubectl create -f kubernetes-dashboard.yaml
@@ -86,7 +86,7 @@ Kubectl将处理apiserver的身份验证，并使Dashboard在[http://localhost:8
 
 ### 直接访问 Master Server
 
-暴露服务的方式可以将 NodePort 映射到物理机的端口号，用于客户端浏览器的访问。在上面的 [kubernetes-dashboard.yaml](1kubernetes-dashboard/kubernetes-dashboard.yaml) 文件中，我们已经将 Dashboard 的服务暴露了出来，具体的配置如下：
+暴露服务的方式可以将 NodePort 映射到物理机的端口号，用于客户端浏览器的访问。在上面的 [kubernetes-dashboard.yaml](kubernetes-dashboard/kubernetes-dashboard.yaml.txt) 文件中，我们已经将 Dashboard 的服务暴露了出来，具体的配置如下：
 
 ``` yaml
 # ------------------- Dashboard Service ------------------- #
