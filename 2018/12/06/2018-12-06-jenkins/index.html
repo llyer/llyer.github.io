@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="下载 jenkins下载地址：https://jenkins.io/zh/download/  推荐使用 apt-get 安装（CentOS 下可以使用 yum，由于我自己的系统是 Ubuntu16.04，所以Linux下系统安装源安装的方式我们以 apt 来举例）和 war 包两种方式安装 apt 安装方式第一种 Ubuntu16.04 所以我们打开 https://pkg.jenkins.io">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/09/17/hello-world/index.html">
+<meta property="og:title" content="Jenkins 学习笔记一：安装，配置和基础命令简介">
+<meta property="og:url" content="http://yoursite.com/2018/12/06/2018-12-06-jenkins/index.html">
 <meta property="og:site_name" content="静水流深">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="下载 jenkins下载地址：https://jenkins.io/zh/download/  推荐使用 apt-get 安装（CentOS 下可以使用 yum，由于我自己的系统是 Ubuntu16.04，所以Linux下系统安装源安装的方式我们以 apt 来举例）和 war 包两种方式安装 apt 安装方式第一种 Ubuntu16.04 所以我们打开 https://pkg.jenkins.io">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-03T08:13:00.814Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/06/2018-12-06-jenkins/jenkins-01.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/06/2018-12-06-jenkins/jenkins-02.png">
+<meta property="og:updated_time" content="2018-12-07T09:30:26.647Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Jenkins 学习笔记一：安装，配置和基础命令简介">
+<meta name="twitter:description" content="下载 jenkins下载地址：https://jenkins.io/zh/download/  推荐使用 apt-get 安装（CentOS 下可以使用 yum，由于我自己的系统是 Ubuntu16.04，所以Linux下系统安装源安装的方式我们以 apt 来举例）和 war 包两种方式安装 apt 安装方式第一种 Ubuntu16.04 所以我们打开 https://pkg.jenkins.io">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/06/2018-12-06-jenkins/jenkins-01.png">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/17/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/06/2018-12-06-jenkins/">
 
 
 
 
 
-  <title>Hello World | 静水流深</title>
+  <title>Jenkins 学习笔记一：安装，配置和基础命令简介 | 静水流深</title>
   
 
 
@@ -232,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/2018-12-06-jenkins/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李鲁杨">
@@ -249,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Jenkins 学习笔记一：安装，配置和基础命令简介</h1>
         
 
         <div class="post-meta">
@@ -261,8 +264,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T20:00:00+08:00">
-                2017-09-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-06T14:26:30+08:00">
+                2018-12-06
               </time>
             
 
@@ -299,15 +302,38 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="下载-jenkins"><a href="#下载-jenkins" class="headerlink" title="下载 jenkins"></a>下载 jenkins</h2><p>下载地址：<a href="https://jenkins.io/zh/download/" target="_blank" rel="noopener">https://jenkins.io/zh/download/</a></p>
+<p><img src="/2018/12/06/2018-12-06-jenkins/jenkins-01.png" alt=""></p>
+<p>推荐使用 <code>apt-get</code> 安装（CentOS 下可以使用 <code>yum</code>，由于我自己的系统是 Ubuntu16.04，所以Linux下系统安装源安装的方式我们以 <code>apt</code> 来举例）和 <code>war</code> 包两种方式安装</p>
+<h3 id="apt-安装方式"><a href="#apt-安装方式" class="headerlink" title="apt 安装方式"></a><code>apt</code> 安装方式</h3><p>第一种 Ubuntu16.04 所以我们打开 <a href="https://pkg.jenkins.io/debian-stable/" target="_blank" rel="noopener">https://pkg.jenkins.io/debian-stable/</a> </p>
+<ol>
+<li><p>获取Key</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改软件包 deb 下载地址</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改 apt sources 文件</span></span><br><span class="line">vim /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 添加下面记录</span></span><br><span class="line">deb https://pkg.jenkins.io/debian-stable binary/</span><br><span class="line"><span class="comment"># 保存并且推出</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新 apt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载 jenkins</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
+</li>
+</ol>
+<h3 id="War-包的方式"><a href="#War-包的方式" class="headerlink" title="War 包的方式"></a><code>War</code> 包的方式</h3><p>下载 JDK8.0，将 War 包拷贝到服务器，执行 java -jar 命令运行，jenkins 默认启动端口为 8080。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动 jenkins</span></span><br><span class="line">java -jar jenkins.war</span><br><span class="line"><span class="comment"># 启动并且指定端口</span></span><br><span class="line">java -jar jenkins.war --httpPort=9090</span><br></pre></td></tr></table></figure>
+<p>访问 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
+<h3 id="Docker-方式"><a href="#Docker-方式" class="headerlink" title="Docker 方式"></a>Docker 方式</h3><p>按照官方教程参考地址： <a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="noopener">https://jenkins.io/doc/book/installing/</a></p>
+<blockquote>
+<p>最新版的 jenkins 安装启动后默认已经支持汉语，Jenkins 部署成功后额配置按照提示设置用户，安装默认插件即可</p>
+</blockquote>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="一些快捷操作Url"><a href="#一些快捷操作Url" class="headerlink" title="一些快捷操作Url"></a>一些快捷操作Url</h3><p>以基础地址为：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 举例</p>
+<p>关闭：<a href="http://localhost:8080/exit" target="_blank" rel="noopener">http://localhost:8080/exit</a></p>
+<p>重启：<a href="http://localhost:8080/restart" target="_blank" rel="noopener">http://localhost:8080/restart</a> </p>
+<p>重新加载配置：<a href="http://localhost:8080/reload" target="_blank" rel="noopener">http://localhost:8080/reload</a></p>
+<p>界面如下图所示：<img src="/2018/12/06/2018-12-06-jenkins/jenkins-02.png" alt=""></p>
 
       
     </div>
@@ -332,8 +358,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/17/如何搭建一个个人博客/" rel="next" title="如何搭建一个个人博客">
-                <i class="fa fa-chevron-left"></i> 如何搭建一个个人博客
+              <a href="/2018/12/03/Jenkins 持续集成学习笔记/" rel="next" title="Jenkins 持续集成学习笔记">
+                <i class="fa fa-chevron-left"></i> Jenkins 持续集成学习笔记
               </a>
             
           </div>
@@ -341,10 +367,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/08/如何实现QQ第三方登录/" rel="prev" title="如何实现QQ第三方登录">
-                如何实现QQ第三方登录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -458,7 +480,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载-jenkins"><span class="nav-number">1.</span> <span class="nav-text">下载 jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#apt-安装方式"><span class="nav-number">1.1.</span> <span class="nav-text">apt 安装方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#War-包的方式"><span class="nav-number">1.2.</span> <span class="nav-text">War 包的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-方式"><span class="nav-number">1.3.</span> <span class="nav-text">Docker 方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些快捷操作Url"><span class="nav-number">2.1.</span> <span class="nav-text">一些快捷操作Url</span></a></li></ol></li></ol></div>
             
 
           </div>
