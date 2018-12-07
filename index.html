@@ -306,12 +306,12 @@
             <h2 id="下载-jenkins"><a href="#下载-jenkins" class="headerlink" title="下载 jenkins"></a>下载 jenkins</h2><p>官方下载地址：<a href="https://jenkins.io/zh/download/" target="_blank" rel="noopener">https://jenkins.io/zh/download/</a></p>
 <p><img src="/2018/12/06/2018-12-06-jenkins/jenkins-01.png" alt=""></p>
 <p>上图中我们可以看到 <code>jenkins</code> 的版本信息（推荐 <code>LTS</code> 版本）和各种平台下的安装方法。下面我们举例在 <code>Ubuntu</code> 系统中用 <code>apt</code> 安装（<code>CentOS</code> 下使用 <code>yum</code>）和 <code>war</code> 包两种方式。</p>
-<h3 id="apt-安装方式"><a href="#apt-安装方式" class="headerlink" title="apt 安装方式"></a><code>apt</code> 安装方式</h3><p>第一种 Ubuntu16.04 所以我们打开 <a href="https://pkg.jenkins.io/debian-stable/" target="_blank" rel="noopener">https://pkg.jenkins.io/debian-stable/</a> </p>
+<h3 id="apt-安装"><a href="#apt-安装" class="headerlink" title="apt 安装"></a>apt 安装</h3><p>第一种 Ubuntu16.04 所以我们打开 <a href="https://pkg.jenkins.io/debian-stable/" target="_blank" rel="noopener">https://pkg.jenkins.io/debian-stable/</a> </p>
 <ol>
-<li><p>获取 Key</p>
+<li><p>获取 <code>Key</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>修改软件包 deb 下载地址</p>
+<li><p>修改软件包 <code>deb</code> 下载地址</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改 apt sources 文件</span></span><br><span class="line">vim /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 添加下面记录</span></span><br><span class="line">deb https://pkg.jenkins.io/debian-stable binary/</span><br><span class="line"><span class="comment"># 保存并且推出</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更新 <code>apt</code></p>
@@ -323,13 +323,13 @@
 <li><p><code>jenkins</code> 默认启动端口为 <code>8080</code>，打开浏览器访问 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
 </li>
 </ol>
-<h3 id="War-包的方式"><a href="#War-包的方式" class="headerlink" title="War 包的方式"></a><code>War</code> 包的方式</h3><p>下载 <code>JDK8.0</code>，将 War 包拷贝到服务器，执行 <code>java -jar</code> 命令运行</p>
+<h3 id="War-包安装"><a href="#War-包安装" class="headerlink" title="War 包安装"></a>War 包安装</h3><p>下载 <code>JDK8.0</code>，将 War 包拷贝到服务器，执行 <code>java -jar</code> 命令运行</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动 jenkins</span></span><br><span class="line">java -jar jenkins.war</span><br><span class="line"><span class="comment"># 启动并且指定端口</span></span><br><span class="line">java -jar jenkins.war --httpPort=9090</span><br></pre></td></tr></table></figure>
-<h3 id="Docker-方式"><a href="#Docker-方式" class="headerlink" title="Docker 方式"></a><code>Docker</code> 方式</h3><p>按照官方教程参考地址： <a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="noopener">https://jenkins.io/doc/book/installing/</a></p>
+<h3 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h3><p>按照官方教程参考地址： <a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="noopener">https://jenkins.io/doc/book/installing/</a></p>
 <blockquote>
 <p>注意：最新版的 jenkins 安装启动后默认已经支持汉语，Jenkins 部署成功后额配置按照提示设置用户和密码，安装默认插件即可</p>
 </blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="一些快捷操作-Url"><a href="#一些快捷操作-Url" class="headerlink" title="一些快捷操作 Url"></a>一些快捷操作 <code>Url</code></h3><p>以基础地址为：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 举例</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="一些快捷操作-Url"><a href="#一些快捷操作-Url" class="headerlink" title="一些快捷操作 Url"></a>一些快捷操作 Url</h3><p>以基础地址为：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 举例</p>
 <p>关闭：<a href="http://localhost:8080/exit" target="_blank" rel="noopener">http://localhost:8080/exit</a></p>
 <p>重启：<a href="http://localhost:8080/restart" target="_blank" rel="noopener">http://localhost:8080/restart</a> </p>
 <p>重新加载配置：<a href="http://localhost:8080/reload" target="_blank" rel="noopener">http://localhost:8080/reload</a></p>
@@ -1480,6 +1480,127 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/如何搭建一个个人博客/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李鲁杨">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="静水流深">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/17/如何搭建一个个人博客/" itemprop="url">如何搭建一个个人博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T20:00:00+08:00">
+                2017-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>2017年9月20日20:48:32，进行文档的更新</p>
+<p>2017年9月20日21:00:11，进行文档的更新</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/hello-world/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1560,127 +1681,6 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/17/如何搭建一个个人博客/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李鲁杨">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="静水流深">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/17/如何搭建一个个人博客/" itemprop="url">如何搭建一个个人博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-17T20:00:00+08:00">
-                2017-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>2017年9月20日20:48:32，进行文档的更新</p>
-<p>2017年9月20日21:00:11，进行文档的更新</p>
 
           
         
