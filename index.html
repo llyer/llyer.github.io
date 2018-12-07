@@ -303,34 +303,33 @@
       
         
           
-            <h2 id="下载-jenkins"><a href="#下载-jenkins" class="headerlink" title="下载 jenkins"></a>下载 jenkins</h2><p>下载地址：<a href="https://jenkins.io/zh/download/" target="_blank" rel="noopener">https://jenkins.io/zh/download/</a></p>
+            <h2 id="下载-jenkins"><a href="#下载-jenkins" class="headerlink" title="下载 jenkins"></a>下载 jenkins</h2><p>官方下载地址：<a href="https://jenkins.io/zh/download/" target="_blank" rel="noopener">https://jenkins.io/zh/download/</a></p>
 <p><img src="/2018/12/06/2018-12-06-jenkins/jenkins-01.png" alt=""></p>
-<p>推荐使用 <code>apt-get</code> 安装（CentOS 下可以使用 <code>yum</code>，由于我自己的系统是 Ubuntu16.04，所以Linux下系统安装源安装的方式我们以 <code>apt</code> 来举例）和 <code>war</code> 包两种方式安装</p>
+<p>上图中我们可以看到 <code>jenkins</code> 的版本信息（推荐 <code>LTS</code> 版本）和各种平台下的安装方法。下面我们举例在 <code>Ubuntu</code> 系统中用 <code>apt</code> 安装（<code>CentOS</code> 下使用 <code>yum</code>）和 <code>war</code> 包两种方式。</p>
 <h3 id="apt-安装方式"><a href="#apt-安装方式" class="headerlink" title="apt 安装方式"></a><code>apt</code> 安装方式</h3><p>第一种 Ubuntu16.04 所以我们打开 <a href="https://pkg.jenkins.io/debian-stable/" target="_blank" rel="noopener">https://pkg.jenkins.io/debian-stable/</a> </p>
 <ol>
-<li><p>获取Key</p>
+<li><p>获取 Key</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改软件包 deb 下载地址</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改 apt sources 文件</span></span><br><span class="line">vim /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 添加下面记录</span></span><br><span class="line">deb https://pkg.jenkins.io/debian-stable binary/</span><br><span class="line"><span class="comment"># 保存并且推出</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>更新 apt</p>
+<li><p>更新 <code>apt</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>下载 jenkins</p>
+<li><p>下载 <code>jenkins</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>访问 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
+<li><p><code>jenkins</code> 默认启动端口为 <code>8080</code>，打开浏览器访问 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
 </li>
 </ol>
-<h3 id="War-包的方式"><a href="#War-包的方式" class="headerlink" title="War 包的方式"></a><code>War</code> 包的方式</h3><p>下载 JDK8.0，将 War 包拷贝到服务器，执行 java -jar 命令运行，jenkins 默认启动端口为 8080。</p>
+<h3 id="War-包的方式"><a href="#War-包的方式" class="headerlink" title="War 包的方式"></a><code>War</code> 包的方式</h3><p>下载 <code>JDK8.0</code>，将 War 包拷贝到服务器，执行 <code>java -jar</code> 命令运行</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动 jenkins</span></span><br><span class="line">java -jar jenkins.war</span><br><span class="line"><span class="comment"># 启动并且指定端口</span></span><br><span class="line">java -jar jenkins.war --httpPort=9090</span><br></pre></td></tr></table></figure>
-<p>访问 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
-<h3 id="Docker-方式"><a href="#Docker-方式" class="headerlink" title="Docker 方式"></a>Docker 方式</h3><p>按照官方教程参考地址： <a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="noopener">https://jenkins.io/doc/book/installing/</a></p>
+<h3 id="Docker-方式"><a href="#Docker-方式" class="headerlink" title="Docker 方式"></a><code>Docker</code> 方式</h3><p>按照官方教程参考地址： <a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="noopener">https://jenkins.io/doc/book/installing/</a></p>
 <blockquote>
-<p>最新版的 jenkins 安装启动后默认已经支持汉语，Jenkins 部署成功后额配置按照提示设置用户，安装默认插件即可</p>
+<p>注意：最新版的 jenkins 安装启动后默认已经支持汉语，Jenkins 部署成功后额配置按照提示设置用户和密码，安装默认插件即可</p>
 </blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="一些快捷操作Url"><a href="#一些快捷操作Url" class="headerlink" title="一些快捷操作Url"></a>一些快捷操作Url</h3><p>以基础地址为：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 举例</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="一些快捷操作-Url"><a href="#一些快捷操作-Url" class="headerlink" title="一些快捷操作 Url"></a>一些快捷操作 <code>Url</code></h3><p>以基础地址为：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 举例</p>
 <p>关闭：<a href="http://localhost:8080/exit" target="_blank" rel="noopener">http://localhost:8080/exit</a></p>
 <p>重启：<a href="http://localhost:8080/restart" target="_blank" rel="noopener">http://localhost:8080/restart</a> </p>
 <p>重新加载配置：<a href="http://localhost:8080/reload" target="_blank" rel="noopener">http://localhost:8080/reload</a></p>
