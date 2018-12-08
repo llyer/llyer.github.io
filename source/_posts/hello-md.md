@@ -1,7 +1,31 @@
 ---
-title: hello.md
-date: 2018-12-03 12:38:05
+title: Hexo 样式测试
+date: 2017-09-18 12:38:05
 tags:
 ---
 本地图片测试
-![](hello-md/logo.png)
+![](hello-md/logo.jpg)
+
+# 一级标题
+
+some content
+
+## 二级标题
+
+some content
+
+### 三级标题
+
+some content
+
+#### 四级标题
+
+some content
+
+##### 五级标题
+
+some content
+
+###### 六级标题
+
+some content

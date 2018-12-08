@@ -1,0 +1,75 @@
+---
+title: Jenkins 学习笔记一：安装和配置
+date: 2018-12-06 14:26:30
+tags:
+---
+
+## 下载 jenkins
+
+官方下载地址：https://jenkins.io/zh/download/
+
+![](2018-12-jenkins/jenkins-01.png)
+
+上图中我们可以看到 `jenkins` 的版本信息（推荐 `LTS` 版本）和各种平台下的安装方法。下面我们举例在 `Ubuntu` 系统中用 `apt` 安装（`CentOS` 下使用 `yum`）和 `war` 包两种方式。
+
+### apt 安装
+
+第一种 Ubuntu16.04 所以我们打开 https://pkg.jenkins.io/debian-stable/ 
+
+1. 获取 `Key`
+```sh
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+```
+
+2. 修改软件包 `deb` 下载地址
+```sh
+# 修改 apt sources 文件
+vim /etc/apt/sources.list
+# 添加下面记录
+deb https://pkg.jenkins.io/debian-stable binary/
+# 保存并且推出
+```
+
+3. 更新 `apt`
+```
+sudo apt-get update
+```
+
+4. 下载 `jenkins`
+```
+sudo apt-get install jenkins
+```
+
+5. `jenkins` 默认启动端口为 `8080`，打开浏览器访问 http://localhost:8080
+
+### War 包安装
+
+下载 `JDK8.0`，将 War 包拷贝到服务器，执行 `java -jar` 命令运行
+
+```sh
+# 启动 jenkins
+java -jar jenkins.war
+# 启动并且指定端口
+java -jar jenkins.war --httpPort=9090
+```
+
+### Docker 安装
+
+按照官方教程参考地址： https://jenkins.io/doc/book/installing/
+
+> 注意：最新版的 jenkins 安装启动后默认已经支持汉语，Jenkins 部署成功后额配置按照提示设置用户和密码，安装默认插件即可
+
+## 配置
+
+### 一些快捷操作 Url
+
+以基础地址为：http://localhost:8080/ 举例
+
+关闭：http://localhost:8080/exit
+
+重启：http://localhost:8080/restart 
+
+重新加载配置：http://localhost:8080/reload
+
+界面如下图所示：![](2018-12-jenkins/jenkins-02.png)
+
