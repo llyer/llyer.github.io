@@ -1,5 +1,5 @@
 ---
-title: kubernetes-kubeadm
+title: 使用 kubeadm 安装 kubernetes 的教程
 date: 2018-06-26 09:44:28
 tags:
 ---

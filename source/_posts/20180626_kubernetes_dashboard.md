@@ -1,5 +1,5 @@
 ---
-title: kubernetes-dashboard
+title: Kubernetes 的 Web 客户端 kubernetes-dashboard 安装教程
 date: 2018-06-26 09:58:01
 tags:
 ---
@@ -44,7 +44,7 @@ docker rmi liluyang/kubernetes-dashboard-amd64:latest
 ## 安装 Dashboard
 
 
-将文件 [kubernetes-dashboard.yaml](kubernetes-dashboard/kubernetes-dashboard.yaml.txt) 下载到本地，执行以下命令安装 Dashboard
+将文件 [kubernetes-dashboard.yaml](20180626_kubernetes_dashboard/kubernetes-dashboard.yaml.txt) 下载到本地，执行以下命令安装 Dashboard
 
 ``` bash
 # kubectl create -f kubernetes-dashboard.yaml
@@ -80,13 +80,13 @@ kubectl proxy
 ```
 Kubectl将处理apiserver的身份验证，并使Dashboard在[http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/) 链接中可以访问，如下图所示：
 
-![](kubernetes-dashboard/dashboard-01.png)
+![](https://blog-1251468774.cos.ap-shanghai.myqcloud.com/dashboard-01.png)
 
 注意：Dashboard UI 只能从执行该命令的机器访问。执行`kubectl proxy --help`可以查看详细的使用方法。
 
 ### 直接访问 Master Server
 
-暴露服务的方式可以将 NodePort 映射到物理机的端口号，用于客户端浏览器的访问。在上面的 [kubernetes-dashboard.yaml](kubernetes-dashboard/kubernetes-dashboard.yaml.txt) 文件中，我们已经将 Dashboard 的服务暴露了出来，具体的配置如下：
+暴露服务的方式可以将 NodePort 映射到物理机的端口号，用于客户端浏览器的访问。在上面的 [kubernetes-dashboard.yaml](20180626_kubernetes_dashboard/kubernetes-dashboard.yaml.txt) 文件中，我们已经将 Dashboard 的服务暴露了出来，具体的配置如下：
 
 ``` yaml
 # ------------------- Dashboard Service ------------------- #
@@ -111,7 +111,7 @@ spec:
 ```
 接下来我们使用[火狐浏览器](http://www.firefox.com.cn/)直接访问就可以了，输入 Master 节点的 IP 地址和对应的 NodePort 端口，例如 [https://192.168.85.134:30000](https://192.168.85.134:30000)，就可以访问我们的 Dashboard 界面了。如下图所示：
 
-![](kubernetes-dashboard/dashboard-login.png)
+![](https://blog-1251468774.cos.ap-shanghai.myqcloud.com/dashboard-login.png)
 
 注意浏览器地址和 `kube proxy` 方式访问时的地址是不同的。使用暴露服务的访问可以在任何主机上访问 Dashboard，只要满足网络可达的条件即可
 
@@ -164,7 +164,7 @@ admin-token-lvlzs                                kubernetes.io/service-account-t
 
 然后在Dashboard登录页面上直接使用上面得到的 Token 字符串即可登录，这样就可以使用可视化界面操作整个kubernetes集群，如下图所示：
 
-![](kubernetes-dashboard/dashboard-login-success.png)
+![](https://blog-1251468774.cos.ap-shanghai.myqcloud.com/dashboard-login-success.png)
 
 到此为止，我们的 Dashboard 插件已经安装成功，可以正常使用。
 
@@ -172,7 +172,7 @@ admin-token-lvlzs                                kubernetes.io/service-account-t
 
 如果在浏览器访问 Dashboard 的过程中出现以下问题
 
-![](kubernetes-dashboard/dashboard-https-problem.png)
+![](https://blog-1251468774.cos.ap-shanghai.myqcloud.com/dashboard-https-problem.png)
 
 这是因为我们刚刚部署的集群并没有合适的证书所造成的问题，点击下面的 添加例外，信任即可。
 
