@@ -81,14 +81,14 @@
 
 <meta name="description" content="使用kubeadm快速构建Kubernetes集群本文将介绍如何在 Ubuntu server 16.04 版本上安装 kubeadm，并利用 kubeadm 快速的在 Ubuntu Server 16.04 上构建一个 Kubernetes 的基础集群，用来做学习和测试用途等，当前（2018-06-26）最新的版本是 1.10.4。参考文档包括 Kubernetes 官方网站的 kubeadm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kubernetes-kubeadm">
-<meta property="og:url" content="http://yoursite.com/2018/06/26/kubernetes-kubeadm/index.html">
-<meta property="og:site_name" content="静水流深">
+<meta property="og:title" content="使用 kubeadm 安装 kubernetes 的教程">
+<meta property="og:url" content="http://yoursite.com/2018/06/26/20180626_kubernetes_kubeadm/index.html">
+<meta property="og:site_name" content="李鲁杨的个人博客">
 <meta property="og:description" content="使用kubeadm快速构建Kubernetes集群本文将介绍如何在 Ubuntu server 16.04 版本上安装 kubeadm，并利用 kubeadm 快速的在 Ubuntu Server 16.04 上构建一个 Kubernetes 的基础集群，用来做学习和测试用途等，当前（2018-06-26）最新的版本是 1.10.4。参考文档包括 Kubernetes 官方网站的 kubeadm">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-03T08:13:00.831Z">
+<meta property="og:updated_time" content="2019-03-29T10:47:45.500Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kubernetes-kubeadm">
+<meta name="twitter:title" content="使用 kubeadm 安装 kubernetes 的教程">
 <meta name="twitter:description" content="使用kubeadm快速构建Kubernetes集群本文将介绍如何在 Ubuntu server 16.04 版本上安装 kubeadm，并利用 kubeadm 快速的在 Ubuntu Server 16.04 上构建一个 Kubernetes 的基础集群，用来做学习和测试用途等，当前（2018-06-26）最新的版本是 1.10.4。参考文档包括 Kubernetes 官方网站的 kubeadm">
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/26/kubernetes-kubeadm/">
+  <link rel="canonical" href="http://yoursite.com/2018/06/26/20180626_kubernetes_kubeadm/">
 
 
 
 
 
-  <title>kubernetes-kubeadm | 静水流深</title>
+  <title>使用 kubeadm 安装 kubernetes 的教程 | 李鲁杨的个人博客</title>
   
 
 
@@ -155,7 +155,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">静水流深</span>
+        <span class="site-title">李鲁杨的个人博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -232,16 +232,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/kubernetes-kubeadm/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/20180626_kubernetes_kubeadm/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李鲁杨">
+      <meta itemprop="name" content="面条先生">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="静水流深">
+      <meta itemprop="name" content="李鲁杨的个人博客">
     </span>
 
     
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">kubernetes-kubeadm</h1>
+          <h1 class="post-title" itemprop="name headline">使用 kubeadm 安装 kubernetes 的教程</h1>
         
 
         <div class="post-meta">
@@ -465,6 +465,14 @@
     
 
     
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/zhi.png" alt="面条先生 wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎关注我的 “知乎日报” 小程序</div>
+</div>
+
+      </div>
+    
 
     
 
@@ -481,7 +489,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/24/learn-spring-boot/" rel="next" title="Spring boot学习笔记">
+              <a href="/2017/10/24/20171024_learn-spring-boot/" rel="next" title="Spring boot学习笔记">
                 <i class="fa fa-chevron-left"></i> Spring boot学习笔记
               </a>
             
@@ -491,8 +499,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/26/kubernetes-dashboard/" rel="prev" title="kubernetes-dashboard">
-                kubernetes-dashboard <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/26/20180626_kubernetes_dashboard/" rel="prev" title="Kubernetes 的 Web 客户端 kubernetes-dashboard 安装教程">
+                Kubernetes 的 Web 客户端 kubernetes-dashboard 安装教程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -559,8 +567,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">李鲁杨</p>
-              <p class="site-description motion-element" itemprop="description">记录有价值的文字</p>
+              <p class="site-author-name" itemprop="name">面条先生</p>
+              <p class="site-description motion-element" itemprop="description">文章基本靠抄，更新基本看心情</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -584,6 +592,34 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llyer" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/18298722" target="_blank" title="哔哩哔哩">
+                      
+                        <i class="fa fa-fw fa-globe"></i>哔哩哔哩</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/li-lu-yang-86" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://douban.com/people/51775171" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -627,11 +663,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">李鲁杨</span>
+  <span class="author" itemprop="copyrightHolder">面条先生</span>
 
   
 </div>
@@ -694,6 +730,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -730,6 +769,16 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
   
 
 
