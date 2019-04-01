@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="文章基本靠抄，视频基本靠翻译，更新基本看心情O(∩_∩)O哈哈~~~">
+<meta name="description" content="文章基本靠抄，视频基本靠翻译，更新基本看心情O(∩_∩)O~~~">
 <meta property="og:type" content="website">
 <meta property="og:title" content="李鲁杨的个人博客">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="李鲁杨的个人博客">
-<meta property="og:description" content="文章基本靠抄，视频基本靠翻译，更新基本看心情O(∩_∩)O哈哈~~~">
+<meta property="og:description" content="文章基本靠抄，视频基本靠翻译，更新基本看心情O(∩_∩)O~~~">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="李鲁杨的个人博客">
-<meta name="twitter:description" content="文章基本靠抄，视频基本靠翻译，更新基本看心情O(∩_∩)O哈哈~~~">
+<meta name="twitter:description" content="文章基本靠抄，视频基本靠翻译，更新基本看心情O(∩_∩)O~~~">
 
 
 
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -587,8 +587,7 @@
       
         
           
-            <p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/2019331_nginx00.png" alt=""></p>
-<p>Windows下安装Nginx推荐使用绿色安装的方式，在Nginx官网下载安装包，直接解压压缩文件就可以了。<br>安装成功后，进入 Nginx 文件夹的安装目录，Ctrl + 鼠标右键打开 CMD或者Powershell 窗口即可。打开的窗口一般如下图所示：</p>
+            <p>Windows下安装Nginx推荐使用绿色安装的方式，在Nginx官网下载安装包，直接解压压缩文件就可以了。<br>安装成功后，进入 Nginx 文件夹的安装目录，Ctrl + 鼠标右键打开 CMD或者Powershell 窗口即可。打开的窗口一般如下图所示：</p>
 <p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/2019331_nginx01.png" alt=""></p>
 <h1 id="1-启动-Nginx"><a href="#1-启动-Nginx" class="headerlink" title="1. 启动 Nginx"></a>1. 启动 Nginx</h1><p>执行以下命令，启动成功后打开浏览器输入 127.0.0.1 or localhost 访问</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种方法，nginx在前台运行，关闭当前命令行窗口时 nginx 自动关闭</span></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后台运行 nginx</span></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; start nginx</span><br></pre></td></tr></table></figure>
@@ -1033,6 +1032,132 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190323_leetcode197/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/22/20190323_leetcode197/" itemprop="url">leetcode197. 上升的温度</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
+                2019-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>问题连接：<a href="https://leetcode-cn.com/problems/rising-temperature/" target="_blank" rel="noopener">197. 上升的温度</a></p>
+<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+---------+------------------+------------------+</span><br><span class="line">| Id(INT) | RecordDate(DATE) | Temperature(INT) |</span><br><span class="line">+---------+------------------+------------------+</span><br><span class="line">|       1 |       2015-01-01 |               10 |</span><br><span class="line">|       2 |       2015-01-02 |               25 |</span><br><span class="line">|       3 |       2015-01-03 |               20 |</span><br><span class="line">|       4 |       2015-01-04 |               30 |</span><br><span class="line">+---------+------------------+------------------+</span><br></pre></td></tr></table></figure></p>
+<p>例如，根据上述给定的 Weather 表格，返回如下 Id:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+</span><br><span class="line">| Id |</span><br><span class="line">+----+</span><br><span class="line">|  2 |</span><br><span class="line">|  4 |</span><br><span class="line">+----+</span><br></pre></td></tr></table></figure>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 此处使用 outer join 会报错，回头应该检查一下</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> w1.id </span><br><span class="line">    <span class="keyword">from</span> weather w1 </span><br><span class="line">    <span class="keyword">inner</span> <span class="keyword">join</span> weather w2 </span><br><span class="line">    <span class="keyword">where</span> <span class="keyword">DATEDIFF</span>(w1.RecordDate, w2.RecordDate) = <span class="number">1</span> <span class="keyword">and</span> w1.temperature &gt; w2.temperature</span><br></pre></td></tr></table></figure>
+<p>~~~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190322_leetcode627/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1112,132 +1237,6 @@
 <p>运行你所编写的更新语句之后，将会得到以下表:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | f   | 2500   |</span><br><span class="line">| 2  | B    | m   | 1500   |</span><br><span class="line">| 3  | C    | f   | 5500   |</span><br><span class="line">| 4  | D    | m   | 500    |</span><br></pre></td></tr></table></figure>
 <h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- mysql case when 条件流程控制语句，case when 可以在查询修改等条件语句中用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> salary</span><br><span class="line"><span class="keyword">set</span> sex = </span><br><span class="line"><span class="keyword">case</span> sex</span><br><span class="line">    <span class="keyword">when</span> <span class="string">'m'</span> <span class="keyword">then</span> <span class="string">'f'</span></span><br><span class="line">    <span class="keyword">else</span> <span class="string">'m'</span></span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190323_leetcode197/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/22/20190323_leetcode197/" itemprop="url">leetcode197. 上升的温度</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/rising-temperature/" target="_blank" rel="noopener">197. 上升的温度</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+---------+------------------+------------------+</span><br><span class="line">| Id(INT) | RecordDate(DATE) | Temperature(INT) |</span><br><span class="line">+---------+------------------+------------------+</span><br><span class="line">|       1 |       2015-01-01 |               10 |</span><br><span class="line">|       2 |       2015-01-02 |               25 |</span><br><span class="line">|       3 |       2015-01-03 |               20 |</span><br><span class="line">|       4 |       2015-01-04 |               30 |</span><br><span class="line">+---------+------------------+------------------+</span><br></pre></td></tr></table></figure></p>
-<p>例如，根据上述给定的 Weather 表格，返回如下 Id:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+</span><br><span class="line">| Id |</span><br><span class="line">+----+</span><br><span class="line">|  2 |</span><br><span class="line">|  4 |</span><br><span class="line">+----+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 此处使用 outer join 会报错，回头应该检查一下</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> w1.id </span><br><span class="line">    <span class="keyword">from</span> weather w1 </span><br><span class="line">    <span class="keyword">inner</span> <span class="keyword">join</span> weather w2 </span><br><span class="line">    <span class="keyword">where</span> <span class="keyword">DATEDIFF</span>(w1.RecordDate, w2.RecordDate) = <span class="number">1</span> <span class="keyword">and</span> w1.temperature &gt; w2.temperature</span><br></pre></td></tr></table></figure>
 <p>~~~</p>
 <hr>
 
@@ -1572,7 +1571,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">面条先生</p>
-              <p class="site-description motion-element" itemprop="description">文章基本靠抄，视频基本靠翻译，更新基本看心情O(∩_∩)O哈哈~~~</p>
+              <p class="site-description motion-element" itemprop="description">文章基本靠抄，视频基本靠翻译，更新基本看心情O(∩_∩)O~~~</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -1693,7 +1692,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
