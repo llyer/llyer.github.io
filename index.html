@@ -1162,7 +1162,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190322_leetcode182/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190323_leetcode197/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -1181,7 +1181,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/22/20190322_leetcode182/" itemprop="url">leetcode182. 查找重复的电子邮箱</a></h1>
+                <a class="post-title-link" href="/2019/03/22/20190323_leetcode197/" itemprop="url">leetcode197. 上升的温度</a></h1>
         
 
         <div class="post-meta">
@@ -1233,13 +1233,11 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/duplicate-emails/" target="_blank" rel="noopener">182. 查找重复的电子邮箱</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br></pre></td></tr></table></figure>
-<p>根据以上输入，你的查询应返回以下结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> email <span class="keyword">from</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> email, <span class="keyword">count</span>(email) <span class="keyword">num</span> <span class="keyword">from</span> person <span class="keyword">GROUP</span> <span class="keyword">BY</span> email) <span class="keyword">as</span> temp_table</span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">num</span> &gt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
+            <p>问题连接：<a href="https://leetcode-cn.com/problems/rising-temperature/" target="_blank" rel="noopener">197. 上升的温度</a></p>
+<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+---------+------------------+------------------+</span><br><span class="line">| Id(INT) | RecordDate(DATE) | Temperature(INT) |</span><br><span class="line">+---------+------------------+------------------+</span><br><span class="line">|       1 |       2015-01-01 |               10 |</span><br><span class="line">|       2 |       2015-01-02 |               25 |</span><br><span class="line">|       3 |       2015-01-03 |               20 |</span><br><span class="line">|       4 |       2015-01-04 |               30 |</span><br><span class="line">+---------+------------------+------------------+</span><br></pre></td></tr></table></figure></p>
+<p>例如，根据上述给定的 Weather 表格，返回如下 Id:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+</span><br><span class="line">| Id |</span><br><span class="line">+----+</span><br><span class="line">|  2 |</span><br><span class="line">|  4 |</span><br><span class="line">+----+</span><br></pre></td></tr></table></figure>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 此处使用 outer join 会报错，回头应该检查一下</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> w1.id </span><br><span class="line">    <span class="keyword">from</span> weather w1 </span><br><span class="line">    <span class="keyword">inner</span> <span class="keyword">join</span> weather w2 </span><br><span class="line">    <span class="keyword">where</span> <span class="keyword">DATEDIFF</span>(w1.RecordDate, w2.RecordDate) = <span class="number">1</span> <span class="keyword">and</span> w1.temperature &gt; w2.temperature</span><br></pre></td></tr></table></figure>
 <p>~~~</p>
 <hr>
 
@@ -1419,7 +1417,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190323_leetcode197/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190322_leetcode182/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -1438,7 +1436,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/22/20190323_leetcode197/" itemprop="url">leetcode197. 上升的温度</a></h1>
+                <a class="post-title-link" href="/2019/03/22/20190322_leetcode182/" itemprop="url">leetcode182. 查找重复的电子邮箱</a></h1>
         
 
         <div class="post-meta">
@@ -1490,11 +1488,13 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/rising-temperature/" target="_blank" rel="noopener">197. 上升的温度</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+---------+------------------+------------------+</span><br><span class="line">| Id(INT) | RecordDate(DATE) | Temperature(INT) |</span><br><span class="line">+---------+------------------+------------------+</span><br><span class="line">|       1 |       2015-01-01 |               10 |</span><br><span class="line">|       2 |       2015-01-02 |               25 |</span><br><span class="line">|       3 |       2015-01-03 |               20 |</span><br><span class="line">|       4 |       2015-01-04 |               30 |</span><br><span class="line">+---------+------------------+------------------+</span><br></pre></td></tr></table></figure></p>
-<p>例如，根据上述给定的 Weather 表格，返回如下 Id:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+</span><br><span class="line">| Id |</span><br><span class="line">+----+</span><br><span class="line">|  2 |</span><br><span class="line">|  4 |</span><br><span class="line">+----+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 此处使用 outer join 会报错，回头应该检查一下</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> w1.id </span><br><span class="line">    <span class="keyword">from</span> weather w1 </span><br><span class="line">    <span class="keyword">inner</span> <span class="keyword">join</span> weather w2 </span><br><span class="line">    <span class="keyword">where</span> <span class="keyword">DATEDIFF</span>(w1.RecordDate, w2.RecordDate) = <span class="number">1</span> <span class="keyword">and</span> w1.temperature &gt; w2.temperature</span><br></pre></td></tr></table></figure>
+            <p>问题连接：<a href="https://leetcode-cn.com/problems/duplicate-emails/" target="_blank" rel="noopener">182. 查找重复的电子邮箱</a></p>
+<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br></pre></td></tr></table></figure>
+<p>根据以上输入，你的查询应返回以下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> email <span class="keyword">from</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> email, <span class="keyword">count</span>(email) <span class="keyword">num</span> <span class="keyword">from</span> person <span class="keyword">GROUP</span> <span class="keyword">BY</span> email) <span class="keyword">as</span> temp_table</span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">num</span> &gt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>~~~</p>
 <hr>
 
