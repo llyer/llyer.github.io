@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/20190331_假如“流浪地球”计划失败，地球被木星捕获后会怎样？/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_假如地球突然失去氧气五秒钟会怎样？/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -291,7 +291,411 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/31/20190331_假如“流浪地球”计划失败，地球被木星捕获后会怎样？/" itemprop="url">假如“流浪地球”计划失败，地球被木星捕获后会怎样？</a></h1>
+                <a class="post-title-link" href="/2019/04/02/20190402_假如地球突然失去氧气五秒钟会怎样？/" itemprop="url">假如地球突然失去氧气五秒钟会怎样？</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T15:36:09+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>想象一下，假如地球的所有氧气都突然消失了，仅仅消失五秒，会怎样？</p>
+<p>我们要屏住呼吸吗？</p>
+<p>大气会怎样？</p>
+<p>环境会怎样？</p>
+<iframe id="bilibili" src="//player.bilibili.com/player.html?aid=48035776&cid=84145725&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<!-- 
+    设置 bilibili 播放器的高度，设置高度之前，检测一下客户端是横屏还是竖屏
+    TODO 理论上还应该监听一下屏幕的旋转变化事件
+    理论上来说应该获取 iframe 的宽度，然后进行 16 ：9 的计算比较好
+ -->
+<script>
+    document.getElementById('bilibili').setAttribute("style","width:100%");
+    document.getElementById('bilibili').style.minHeight='200px';
+    if (window.screen.height >window.screen.width) {
+        document.getElementById('bilibili').style.height=window.screen.height / 4 + 'px';
+    } else {
+        document.getElementById('bilibili').style.height=window.screen.height / 2 + 'px';
+    }
+</script>
+
+<p><code>Tips</code>：点击视频右上角的<code>去Bilibili观看</code>，可以查看高清 <code>1080P</code> 源视频</p>
+<p>~~~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_Windows和Linux下执行命令行命令时如何换行/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/20190402_Windows和Linux下执行命令行命令时如何换行/" itemprop="url">Windows和Linux下执行命令行命令时如何换行</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>注意，如果命令需要换行，请添加换行字符 windows 为  “<code>^</code>”和 “`”，linux 为 “<code>\</code>”</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不换行</span></span><br><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># linux 环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 \</span><br><span class="line">        -vcodec copy \</span><br><span class="line">        -acodec copy \</span><br><span class="line">        -ss 00:00:10 -to 00:00:15 \</span><br><span class="line">        ./cutout1.mp4 \</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># windows CMD环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy ^</span><br><span class="line">        -acodec copy ^</span><br><span class="line">        -ss 00:00:10 ^</span><br><span class="line">        -to 00:00:15 ^</span><br><span class="line">        ./cutout1.mp4 ^</span><br><span class="line">        -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows Powershell环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy `</span><br><span class="line">        -acodec copy `</span><br><span class="line">        -ss 00:00:10 `</span><br><span class="line">        -to 00:00:15 `</span><br><span class="line">        ./cutout1.mp4 `</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
+<p>~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_FFmpeg常用命令/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/20190402_FFmpeg常用命令/" itemprop="url">【工具】FFmpeg常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://zh.wikipedia.org/wiki/FFmpeg" target="_blank" rel="noopener">FFmpeg</a> 是一个自由软件，可以运行音频和视频多种格式的录影、转换、流功能，包含了libavcodec——这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。</p>
+<p>“FFmpeg”这个单词中的“FF”指的是“Fast Forward（快速前进）”。有些新手写信给“FFmpeg”的项目负责人，询问FF是不是代表“Fast Free”或者“Fast Fourier”等意思，“FFmpeg”的项目负责人回信说：“Just for the record, the original meaning of “FF” in FFmpeg is “Fast Forward”…”</p>
+<h4 id="动图转图片序列"><a href="#动图转图片序列" class="headerlink" title="动图转图片序列"></a>动图转图片序列</h4><p>逐帧输出，将视频的所有帧输出到制定文件夹，例如一秒 <code>24</code> 帧，视频一共 <code>10</code> 秒，输出后就是 <code>24*10=240</code> 帧<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.gif /images/image_%04d.png</span><br></pre></td></tr></table></figure></p>
+<h4 id="动图转视频"><a href="#动图转视频" class="headerlink" title="动图转视频"></a>动图转视频</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.gif -vf scale=420:-2,format=yuv420p out.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="视频，GIF添加水印"><a href="#视频，GIF添加水印" class="headerlink" title="视频，GIF添加水印"></a>视频，GIF添加水印</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg  -i input.gif -vf <span class="string">"drawtext=fontfile=simhei.ttf: text='你的水印':x=600:y=330:fontsize=18:fontcolor=yellow:shadowy=2"</span> manu.gif</span><br></pre></td></tr></table></figure>
+<h4 id="视频转图片序列"><a href="#视频转图片序列" class="headerlink" title="视频转图片序列"></a>视频转图片序列</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i <span class="string">"cut01.mp4"</span> ./cut01/image_%04d.png</span><br></pre></td></tr></table></figure>
+<h4 id="合并音频和视频"><a href="#合并音频和视频" class="headerlink" title="合并音频和视频"></a>合并音频和视频</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.m4a -acodec copy -vcodec copy output.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="截取视频中的一段"><a href="#截取视频中的一段" class="headerlink" title="截取视频中的一段"></a>截取视频中的一段</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
+<p>参考链接：<a href="https://www.cnblogs.com/wainiwann/p/6972954.html" target="_blank" rel="noopener">https://www.cnblogs.com/wainiwann/p/6972954.html</a></p>
+<h4 id="裁剪视频"><a href="#裁剪视频" class="headerlink" title="裁剪视频"></a>裁剪视频</h4><p>裁剪视频的大小，一定要指定码率</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i cutout1.mp4 -strict -2 -vf crop=400:720:400:0 -b 10M out2.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="图片序列转视频"><a href="#图片序列转视频" class="headerlink" title="图片序列转视频"></a>图片序列转视频</h4><p>第一个 -r 指的是帧数，-b 指的是码率  -s 是分辨率</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FFMPEG -r 10 -i ./image_%04d.jpg -s 640x640 -b 10M -vcodec mpeg4 ./video.mp4</span><br><span class="line"></span><br><span class="line">FFMPEG -r 10 </span><br><span class="line">        -i ./image_%04d.jpg </span><br><span class="line">        -s 640x640 </span><br><span class="line">        -b 10M </span><br><span class="line">        -vcodec mpeg4 ./video.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="制作模糊背景"><a href="#制作模糊背景" class="headerlink" title="制作模糊背景"></a>制作模糊背景</h4><p>适合横屏视频和竖屏视频之间的转换</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i ~/<span class="built_in">test</span>/objectC/bbs.chinaffmpeg.com孙悟空.mp4 -filter_complex <span class="string">"[0:v]avgblur=sizeX=64:sizeY=0[out1];[0:v]scale=480x320[out2];[out1][out2]overlay=x=320:y=240[outo]"</span> -map <span class="string">'[outo]'</span> -y  /root/bbs.chinaffmpeg.com孙悟空.mp4</span><br></pre></td></tr></table></figure>
+<p>~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/20190331_假如流浪地球计划失败，地球被木星捕获后会怎样？/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/31/20190331_假如流浪地球计划失败，地球被木星捕获后会怎样？/" itemprop="url">假如流浪地球计划失败，地球被木星捕获后会怎样？</a></h1>
         
 
         <div class="post-meta">
@@ -343,11 +747,27 @@
       
         
           
-            <p>假如“流浪地球”计划失败，地球被木星捕获后会怎样？</p>
+            <p>假如流浪地球计划失败，地球被木星捕获后会怎样？</p>
 <p>木星已经有79个的卫星，会对地球产生什么影响？</p>
 <p>我们的天空会是什么样子？</p>
 <p>地球在木星轨道能坚持多久？木星的超强引力会如何影响我们的生活？</p>
-<iframe src="//player.bilibili.com/player.html?aid=47872251&cid=83908311&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:540px;"></iframe>
+<iframe id="bilibili" src="//player.bilibili.com/player.html?aid=47872251&cid=83908311&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"><br></iframe>
+
+<!-- 
+    设置 bilibili 播放器的高度，设置高度之前，检测一下客户端是横屏还是竖屏
+    TODO 理论上还应该监听一下屏幕的旋转变化事件
+    理论上来说应该获取 iframe 的宽度，然后进行 16 ：9 的计算比较好
+ -->
+<script>
+    document.getElementById('bilibili').setAttribute("style","width:100%");
+    document.getElementById('bilibili').style.minHeight='200px';
+    if (window.screen.height >window.screen.width) {
+        document.getElementById('bilibili').style.height=window.screen.height / 4 + 'px';
+    } else {
+        document.getElementById('bilibili').style.height=window.screen.height / 2 + 'px';
+    }
+</script>
+
 
 <p><code>Tips</code>：点击视频右上角的<code>去Bilibili观看</code>，可以查看高清 <code>1080P</code> 源视频</p>
 <p>~~~</p>
@@ -1155,392 +1575,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190322_leetcode627/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/22/20190322_leetcode627/" itemprop="url">leetcode627. 交换工资</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/swap-salary/" target="_blank" rel="noopener">627. 交换工资</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>给定一个 salary 表，如下所示，有 m=男性 和 f=女性 的值 。交换所有的 f 和 m 值（例如，将所有 f 值更改为 m，反之亦然）。要求使用一个更新（Update）语句，并且没有中间临时表。</p>
-<p>请注意，你必须编写一个 Update 语句，不要编写任何 Select 语句。</p>
-<p>例如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | m   | 2500   |</span><br><span class="line">| 2  | B    | f   | 1500   |</span><br><span class="line">| 3  | C    | m   | 5500   |</span><br><span class="line">| 4  | D    | f   | 500    |</span><br></pre></td></tr></table></figure>
-<p>运行你所编写的更新语句之后，将会得到以下表:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | f   | 2500   |</span><br><span class="line">| 2  | B    | m   | 1500   |</span><br><span class="line">| 3  | C    | f   | 5500   |</span><br><span class="line">| 4  | D    | m   | 500    |</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- mysql case when 条件流程控制语句，case when 可以在查询修改等条件语句中用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> salary</span><br><span class="line"><span class="keyword">set</span> sex = </span><br><span class="line"><span class="keyword">case</span> sex</span><br><span class="line">    <span class="keyword">when</span> <span class="string">'m'</span> <span class="keyword">then</span> <span class="string">'f'</span></span><br><span class="line">    <span class="keyword">else</span> <span class="string">'m'</span></span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190322_leetcode183/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/22/20190322_leetcode183/" itemprop="url">leetcode183. 从不订购的客户</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/customers-who-never-order/" target="_blank" rel="noopener">183. 从不订购的客户</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。</p>
-<p>Customers 表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+</span><br><span class="line">| Id | Name  |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | Joe   |</span><br><span class="line">| 2  | Henry |</span><br><span class="line">| 3  | Sam   |</span><br><span class="line">| 4  | Max   |</span><br><span class="line">+----+-------+</span><br></pre></td></tr></table></figure></p>
-<p>Orders 表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+------------+</span><br><span class="line">| Id | CustomerId |</span><br><span class="line">+----+------------+</span><br><span class="line">| 1  | 3          |</span><br><span class="line">| 2  | 1          |</span><br><span class="line">+----+------------+</span><br></pre></td></tr></table></figure>
-<p>例如给定上述表格，你的查询应返回：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+-----------+</span><br><span class="line">| Customers |</span><br><span class="line">+-----------+</span><br><span class="line">| Henry     |</span><br><span class="line">| Max       |</span><br><span class="line">+-----------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用not in查询</span></span><br><span class="line"><span class="comment">-- 查询客户表，并且用户 id 从没有在 order 中产生关联关系作为查询条件即可获得返回结果 </span></span><br><span class="line"><span class="comment">-- select name as customers from customers where customers.id not in (select customerId from orders)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 使用not exist查询</span></span><br><span class="line"><span class="comment">-- not exist的查询过程如下</span></span><br><span class="line"><span class="comment">-- setp00 select customers（先执行外查询）</span></span><br><span class="line"><span class="comment">-- step01 select orders（执行子查询，检测子查询是否可以返回行，则返回true or false的标记位）</span></span><br><span class="line"><span class="comment">-- step02 根据 id 比较 两张表，将子查询的每一行设置 true or false 的标记位</span></span><br><span class="line"><span class="comment">-- | 1  | Joe   | true</span></span><br><span class="line"><span class="comment">-- | 2  | Henry | false</span></span><br><span class="line"><span class="comment">-- | 3  | Sam   | true</span></span><br><span class="line"><span class="comment">-- | 4  | Max   | false</span></span><br><span class="line"><span class="comment">-- step03 true为exist，false为not exist，则根据not exist的规则返回外查询中的查询条件返回henry, max</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">as</span> customers <span class="keyword">from</span> customers</span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> customerId <span class="keyword">from</span> orders <span class="keyword">where</span> customers.id = orders.customerId)</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/20190322_leetcode182/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/22/20190322_leetcode182/" itemprop="url">leetcode182. 查找重复的电子邮箱</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/duplicate-emails/" target="_blank" rel="noopener">182. 查找重复的电子邮箱</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br></pre></td></tr></table></figure>
-<p>根据以上输入，你的查询应返回以下结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> email <span class="keyword">from</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> email, <span class="keyword">count</span>(email) <span class="keyword">num</span> <span class="keyword">from</span> person <span class="keyword">GROUP</span> <span class="keyword">BY</span> email) <span class="keyword">as</span> temp_table</span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">num</span> &gt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1591,7 +1625,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1613,7 +1647,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
