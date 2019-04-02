@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="bilibili">hello</div>
+    <script>
+        
+        document.getElementById('bilibili').setAttribute("style","width:100%");
+
+        var height = document.getElementById('bilibili').style.width;
+
+        console.log(height);
+
+        // document.getElementById('bilibili').style.minHeight='300px';
+        document.getElementById('bilibili').style.height=window.screen.height / 3 + 'px';
+        console.log(document.body.clientHeight);
+        console.log(document.body.scrollHeight);
+        console.log(window.screen.height);
+        
+        console.log(document.body.clientWidth / 3);
+        
+    </script>
+</body>
+</html>
