@@ -2,6 +2,9 @@
 title: 使用 kubeadm 安装 kubernetes 的教程
 date: 2018-06-26 09:44:28
 tags:
+    - Kubernetes
+    - Docker
+    - Linux
 ---
 <!-- ‎
     修改时间：2018‎年‎6‎月‎27‎日，‏‎14:12:15

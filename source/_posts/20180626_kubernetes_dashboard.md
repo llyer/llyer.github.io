@@ -2,6 +2,9 @@
 title: Kubernetes 的 Web 客户端 kubernetes-dashboard 安装教程
 date: 2018-06-26 09:58:01
 tags:
+  - Kubernetes
+  - Docker
+  - Linux
 ---
 <!-- ‎
     修改时间：2018‎年‎6‎月‎27‎日，‏‎16:07:21

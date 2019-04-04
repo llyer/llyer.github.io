@@ -2,11 +2,11 @@
 title: Windows和Linux下执行命令行命令时如何换行
 date: 2019-04-02 14:24:47
 tags:
-- Windows
-- Linux
+    - Windows
+    - Linux
 ---
 
-注意，如果命令需要换行，请添加换行字符 windows 为  “`^`”和 “\`”，linux 为 “`\`”
+注意，如果命令需要换行，请添加换行字符 `windows` 为  “`^`”和 “\`”，`linux` 为 “`\`”
 
 ```sh
 # 不换行

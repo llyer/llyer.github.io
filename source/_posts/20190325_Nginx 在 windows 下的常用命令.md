@@ -2,16 +2,18 @@
 title: Nginx 在 windows 下的常用命令
 date: 2019-03-25 21:25:36
 tags:
+    - Windows
+    - Nginx
 ---
 
-Windows下安装Nginx推荐使用绿色安装的方式，在Nginx官网下载安装包，直接解压压缩文件就可以了。
-安装成功后，进入 Nginx 文件夹的安装目录，Ctrl + 鼠标右键打开 CMD或者Powershell 窗口即可。打开的窗口一般如下图所示：
+`Windows` 下安装 `Nginx` 推荐使用绿色安装的方式，在 `Nginx` 官网下载安装包，直接解压压缩文件就可以了。
+安装成功后，进入 `Nginx` 文件夹的安装目录，`Ctrl + 鼠标右键` 打开 `CMD` 或者 `Powershell` 窗口即可。打开的窗口一般如下图所示：
 
 ![](https://blog-1251468774.cos.ap-shanghai.myqcloud.com/2019331_nginx01.png)
 
 # 1. 启动 Nginx
 
-执行以下命令，启动成功后打开浏览器输入 127.0.0.1 or localhost 访问
+执行以下命令，启动成功后打开浏览器输入 `127.0.0.1` or `localhost` 访问
 
 ``` bash
 # 第一种方法，nginx在前台运行，关闭当前命令行窗口时 nginx 自动关闭
