@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/20190403_HTTPS配置教程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/20190403_HTTPS 配置教程/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -291,7 +291,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/03/20190403_HTTPS配置教程/" itemprop="url">HTTPS配置教程</a></h1>
+                <a class="post-title-link" href="/2019/04/03/20190403_HTTPS 配置教程/" itemprop="url">HTTPS 配置教程</a></h1>
         
 
         <div class="post-meta">
@@ -372,7 +372,7 @@
 <p>以上信息中包含了生成后的证书的位置，过期时间等信息，根据提示信息我们打开 <code>/etc/letsencrypt/live/</code> 文件夹，检查这个文件夹中是否有你生成的对应网站的证书文件，如果成功，应该如下图所示：</p>
 <p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_03.png" alt=""></p>
 <p>这个命令在大多数情况下都可以满足需求，如果失败了，请看下一种模式。</p>
-<h3 id="第二种模式Standalone"><a href="#第二种模式Standalone" class="headerlink" title="第二种模式Standalone"></a>第二种模式Standalone</h3><p>如果你已经通过第一种模式生成证书成功，请跳过这里，直接看下一章</p>
+<h3 id="第二种模式-Standalone"><a href="#第二种模式-Standalone" class="headerlink" title="第二种模式 Standalone"></a>第二种模式 Standalone</h3><p>如果你已经通过第一种模式生成证书成功，请跳过这里，直接看下一章</p>
 <p>但是有些时候我们的一些服务并没有根目录，例如一些微服务，这时候使用 <code>--webroot</code> 就走不通了。<code>certbot</code> 还有另外一种模式 <code>--standalone</code>， 这种模式不需要指定网站根目录，他会自动启用服务器的 <code>443</code> 端口，来验证域名的归属。我们有其他服务（例如nginx）占用了 <code>443</code> 端口，就必须先停止这些服务，在证书生成完毕后，再启用。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot certonly --standalone -d example.com -d www.example.com</span><br></pre></td></tr></table></figure>
 <p>证书生成完毕后，我们可以在 <code>/etc/letsencrypt/live/</code> 目录下看到对应域名的文件夹，里面存放了指向证书的一些快捷方式。</p>
@@ -408,9 +408,11 @@
 </li>
 <li><p><a href="https://bitmingw.com/2017/02/02/letsencrypt-tutorial/" target="_blank" rel="noopener">《Let’s Encrypt 入门教程》</a></p>
 </li>
-<li><p><a href="https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html" target="_blank" rel="noopener">《数字证书及 CA 的扫盲介绍和工作原理》</a></p>
+<li><p><a href="http://diamondfsd.com/lets-encrytp-hand-https/" target="_blank" rel="noopener">《Let’s Encrypt 使用教程，免费的SSL证书，让你的网站拥抱 HTTPS》</a></p>
 </li>
 <li><p><a href="https://linuxstory.org/deploy-lets-encrypt-ssl-certificate-with-certbot/" target="_blank" rel="noopener">《HTTPS 简介及使用官方工具 Certbot 配置 Let’s Encrypt SSL 安全证书详细教程》</a></p>
+</li>
+<li><p><a href="https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html" target="_blank" rel="noopener">《数字证书及 CA 的扫盲介绍和工作原理》</a></p>
 </li>
 </ul>
 <p>~</p>
@@ -606,7 +608,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_Windows和Linux下执行命令行命令时如何换行/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_FFmpeg 常用命令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -625,132 +627,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/02/20190402_Windows和Linux下执行命令行命令时如何换行/" itemprop="url">Windows和Linux下执行命令行命令时如何换行</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
-                2019-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>注意，如果命令需要换行，请添加换行字符 <code>windows</code> 为  “<code>^</code>”和 “`”，<code>linux</code> 为 “<code>\</code>”</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不换行</span></span><br><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># linux 环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 \</span><br><span class="line">        -vcodec copy \</span><br><span class="line">        -acodec copy \</span><br><span class="line">        -ss 00:00:10 -to 00:00:15 \</span><br><span class="line">        ./cutout1.mp4 \</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># windows CMD环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy ^</span><br><span class="line">        -acodec copy ^</span><br><span class="line">        -ss 00:00:10 ^</span><br><span class="line">        -to 00:00:15 ^</span><br><span class="line">        ./cutout1.mp4 ^</span><br><span class="line">        -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows Powershell环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy `</span><br><span class="line">        -acodec copy `</span><br><span class="line">        -ss 00:00:10 `</span><br><span class="line">        -to 00:00:15 `</span><br><span class="line">        ./cutout1.mp4 `</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
-<p>~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_FFmpeg常用命令/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/02/20190402_FFmpeg常用命令/" itemprop="url">【工具】FFmpeg常用命令</a></h1>
+                <a class="post-title-link" href="/2019/04/02/20190402_FFmpeg 常用命令/" itemprop="url">FFmpeg 常用命令</a></h1>
         
 
         <div class="post-meta">
@@ -817,6 +694,131 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FFMPEG -r 10 -i ./image_%04d.jpg -s 640x640 -b 10M -vcodec mpeg4 ./video.mp4</span><br><span class="line"></span><br><span class="line">FFMPEG -r 10 </span><br><span class="line">        -i ./image_%04d.jpg </span><br><span class="line">        -s 640x640 </span><br><span class="line">        -b 10M </span><br><span class="line">        -vcodec mpeg4 ./video.mp4</span><br></pre></td></tr></table></figure>
 <h4 id="制作模糊背景"><a href="#制作模糊背景" class="headerlink" title="制作模糊背景"></a>制作模糊背景</h4><p>适合横屏视频和竖屏视频之间的转换</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i ~/<span class="built_in">test</span>/objectC/bbs.chinaffmpeg.com孙悟空.mp4 -filter_complex <span class="string">"[0:v]avgblur=sizeX=64:sizeY=0[out1];[0:v]scale=480x320[out2];[out1][out2]overlay=x=320:y=240[outo]"</span> -map <span class="string">'[outo]'</span> -y  /root/bbs.chinaffmpeg.com孙悟空.mp4</span><br></pre></td></tr></table></figure>
+<p>~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/" itemprop="url">Windows 和 Linux 下执行命令行命令时如何换行</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>注意，如果命令需要换行，请添加换行字符 <code>windows</code> 为  “<code>^</code>”和 “`”，<code>linux</code> 为 “<code>\</code>”</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不换行</span></span><br><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># linux 环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 \</span><br><span class="line">        -vcodec copy \</span><br><span class="line">        -acodec copy \</span><br><span class="line">        -ss 00:00:10 -to 00:00:15 \</span><br><span class="line">        ./cutout1.mp4 \</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># windows CMD环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy ^</span><br><span class="line">        -acodec copy ^</span><br><span class="line">        -ss 00:00:10 ^</span><br><span class="line">        -to 00:00:15 ^</span><br><span class="line">        ./cutout1.mp4 ^</span><br><span class="line">        -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows Powershell环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy `</span><br><span class="line">        -acodec copy `</span><br><span class="line">        -ss 00:00:10 `</span><br><span class="line">        -to 00:00:15 `</span><br><span class="line">        ./cutout1.mp4 `</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
 <p>~</p>
 <hr>
 
@@ -1696,15 +1698,6 @@
               </div>
             
 
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
             
 
             

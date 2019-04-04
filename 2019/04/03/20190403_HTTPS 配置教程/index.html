@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="HTTPS,Nginx,Docker,Hexo,博客,">
+  <meta name="keywords" content="Hexo,Nginx,Docker,HTTPS,博客,">
 
 
 
@@ -80,10 +80,10 @@
 
 
 <meta name="description" content="本文将以本站 http://liluyang.me 升级到 https://liluyang.me 的过程来分享一下 https 的原理，http 和 https 的区别，以及如何将网站从 http 升级到 https。 引言为什么要用 https？https 更安全。甚至为了安全，一个专业可靠的网站， https 是必须的。 Firefox 和 Chrome 都计划将没有配置 SSL 加密的 h">
-<meta name="keywords" content="HTTPS,Nginx,Docker,Hexo,博客">
+<meta name="keywords" content="Hexo,Nginx,Docker,HTTPS,博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTPS配置教程">
-<meta property="og:url" content="http://yoursite.com/2019/04/03/20190403_HTTPS配置教程/index.html">
+<meta property="og:title" content="HTTPS 配置教程">
+<meta property="og:url" content="http://yoursite.com/2019/04/03/20190403_HTTPS 配置教程/index.html">
 <meta property="og:site_name" content="李鲁杨的个人博客">
 <meta property="og:description" content="本文将以本站 http://liluyang.me 升级到 https://liluyang.me 的过程来分享一下 https 的原理，http 和 https 的区别，以及如何将网站从 http 升级到 https。 引言为什么要用 https？https 更安全。甚至为了安全，一个专业可靠的网站， https 是必须的。 Firefox 和 Chrome 都计划将没有配置 SSL 加密的 h">
 <meta property="og:locale" content="zh-Hans">
@@ -93,9 +93,9 @@
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_04.png">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_05.png">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_06.png">
-<meta property="og:updated_time" content="2019-04-04T04:11:46.336Z">
+<meta property="og:updated_time" content="2019-04-04T05:55:45.517Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTPS配置教程">
+<meta name="twitter:title" content="HTTPS 配置教程">
 <meta name="twitter:description" content="本文将以本站 http://liluyang.me 升级到 https://liluyang.me 的过程来分享一下 https 的原理，http 和 https 的区别，以及如何将网站从 http 升级到 https。 引言为什么要用 https？https 更安全。甚至为了安全，一个专业可靠的网站， https 是必须的。 Firefox 和 Chrome 都计划将没有配置 SSL 加密的 h">
 <meta name="twitter:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_01.gif">
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/03/20190403_HTTPS配置教程/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/03/20190403_HTTPS 配置教程/">
 
 
 
 
 
-  <title>HTTPS配置教程 | 李鲁杨的个人博客</title>
+  <title>HTTPS 配置教程 | 李鲁杨的个人博客</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/20190403_HTTPS配置教程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/20190403_HTTPS 配置教程/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HTTPS配置教程</h1>
+          <h1 class="post-title" itemprop="name headline">HTTPS 配置教程</h1>
         
 
         <div class="post-meta">
@@ -376,7 +376,7 @@
 <p>以上信息中包含了生成后的证书的位置，过期时间等信息，根据提示信息我们打开 <code>/etc/letsencrypt/live/</code> 文件夹，检查这个文件夹中是否有你生成的对应网站的证书文件，如果成功，应该如下图所示：</p>
 <p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_03.png" alt=""></p>
 <p>这个命令在大多数情况下都可以满足需求，如果失败了，请看下一种模式。</p>
-<h3 id="第二种模式Standalone"><a href="#第二种模式Standalone" class="headerlink" title="第二种模式Standalone"></a>第二种模式Standalone</h3><p>如果你已经通过第一种模式生成证书成功，请跳过这里，直接看下一章</p>
+<h3 id="第二种模式-Standalone"><a href="#第二种模式-Standalone" class="headerlink" title="第二种模式 Standalone"></a>第二种模式 Standalone</h3><p>如果你已经通过第一种模式生成证书成功，请跳过这里，直接看下一章</p>
 <p>但是有些时候我们的一些服务并没有根目录，例如一些微服务，这时候使用 <code>--webroot</code> 就走不通了。<code>certbot</code> 还有另外一种模式 <code>--standalone</code>， 这种模式不需要指定网站根目录，他会自动启用服务器的 <code>443</code> 端口，来验证域名的归属。我们有其他服务（例如nginx）占用了 <code>443</code> 端口，就必须先停止这些服务，在证书生成完毕后，再启用。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot certonly --standalone -d example.com -d www.example.com</span><br></pre></td></tr></table></figure>
 <p>证书生成完毕后，我们可以在 <code>/etc/letsencrypt/live/</code> 目录下看到对应域名的文件夹，里面存放了指向证书的一些快捷方式。</p>
@@ -412,9 +412,11 @@
 </li>
 <li><p><a href="https://bitmingw.com/2017/02/02/letsencrypt-tutorial/" target="_blank" rel="noopener">《Let’s Encrypt 入门教程》</a></p>
 </li>
-<li><p><a href="https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html" target="_blank" rel="noopener">《数字证书及 CA 的扫盲介绍和工作原理》</a></p>
+<li><p><a href="http://diamondfsd.com/lets-encrytp-hand-https/" target="_blank" rel="noopener">《Let’s Encrypt 使用教程，免费的SSL证书，让你的网站拥抱 HTTPS》</a></p>
 </li>
 <li><p><a href="https://linuxstory.org/deploy-lets-encrypt-ssl-certificate-with-certbot/" target="_blank" rel="noopener">《HTTPS 简介及使用官方工具 Certbot 配置 Let’s Encrypt SSL 安全证书详细教程》</a></p>
+</li>
+<li><p><a href="https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html" target="_blank" rel="noopener">《数字证书及 CA 的扫盲介绍和工作原理》</a></p>
 </li>
 </ul>
 <p>~</p>
@@ -444,13 +446,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           
             <a href="/tags/Nginx/" rel="tag"># Nginx</a>
           
             <a href="/tags/Docker/" rel="tag"># Docker</a>
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
           
             <a href="/tags/博客/" rel="tag"># 博客</a>
           
@@ -557,15 +559,6 @@
             
 
             
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
 
             
               
@@ -639,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要用-https？"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要用 https？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#要需要掌握哪些知识？"><span class="nav-number">1.2.</span> <span class="nav-text">要需要掌握哪些知识？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要有什么资源？"><span class="nav-number">1.3.</span> <span class="nav-text">需要有什么资源？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词"><span class="nav-number">1.4.</span> <span class="nav-text">关键词</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http-和-https"><span class="nav-number">1.4.1.</span> <span class="nav-text">http 和 https</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL-TLS"><span class="nav-number">1.4.2.</span> <span class="nav-text">SSL/TLS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CA"><span class="nav-number">1.4.3.</span> <span class="nav-text">CA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Let’s-Encrypt"><span class="nav-number">1.4.4.</span> <span class="nav-text">Let’s Encrypt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Certbot"><span class="nav-number">1.4.5.</span> <span class="nav-text">Certbot</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取证书"><span class="nav-number">2.</span> <span class="nav-text">获取证书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Certbot"><span class="nav-number">2.1.</span> <span class="nav-text">安装Certbot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成证书"><span class="nav-number">2.2.</span> <span class="nav-text">生成证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种模式-Webroot"><span class="nav-number">2.2.1.</span> <span class="nav-text">第一种模式 Webroot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种模式Standalone"><span class="nav-number">2.2.2.</span> <span class="nav-text">第二种模式Standalone</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装证书"><span class="nav-number">3.</span> <span class="nav-text">安装证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">4.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可选配置"><span class="nav-number">5.</span> <span class="nav-text">可选配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#强制使用-https-访问网站"><span class="nav-number">5.1.</span> <span class="nav-text">强制使用 https 访问网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动续订"><span class="nav-number">5.2.</span> <span class="nav-text">自动续订</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试自动续订"><span class="nav-number">5.2.1.</span> <span class="nav-text">测试自动续订</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动执行自动续订"><span class="nav-number">5.2.2.</span> <span class="nav-text">手动执行自动续订</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开启自动续订"><span class="nav-number">5.2.3.</span> <span class="nav-text">开启自动续订</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">6.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要用-https？"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要用 https？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#要需要掌握哪些知识？"><span class="nav-number">1.2.</span> <span class="nav-text">要需要掌握哪些知识？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要有什么资源？"><span class="nav-number">1.3.</span> <span class="nav-text">需要有什么资源？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词"><span class="nav-number">1.4.</span> <span class="nav-text">关键词</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http-和-https"><span class="nav-number">1.4.1.</span> <span class="nav-text">http 和 https</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL-TLS"><span class="nav-number">1.4.2.</span> <span class="nav-text">SSL/TLS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CA"><span class="nav-number">1.4.3.</span> <span class="nav-text">CA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Let’s-Encrypt"><span class="nav-number">1.4.4.</span> <span class="nav-text">Let’s Encrypt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Certbot"><span class="nav-number">1.4.5.</span> <span class="nav-text">Certbot</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取证书"><span class="nav-number">2.</span> <span class="nav-text">获取证书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Certbot"><span class="nav-number">2.1.</span> <span class="nav-text">安装Certbot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成证书"><span class="nav-number">2.2.</span> <span class="nav-text">生成证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种模式-Webroot"><span class="nav-number">2.2.1.</span> <span class="nav-text">第一种模式 Webroot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种模式-Standalone"><span class="nav-number">2.2.2.</span> <span class="nav-text">第二种模式 Standalone</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装证书"><span class="nav-number">3.</span> <span class="nav-text">安装证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">4.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可选配置"><span class="nav-number">5.</span> <span class="nav-text">可选配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#强制使用-https-访问网站"><span class="nav-number">5.1.</span> <span class="nav-text">强制使用 https 访问网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动续订"><span class="nav-number">5.2.</span> <span class="nav-text">自动续订</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试自动续订"><span class="nav-number">5.2.1.</span> <span class="nav-text">测试自动续订</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动执行自动续订"><span class="nav-number">5.2.2.</span> <span class="nav-text">手动执行自动续订</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开启自动续订"><span class="nav-number">5.2.3.</span> <span class="nav-text">开启自动续订</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">6.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
