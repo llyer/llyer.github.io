@@ -1,5 +1,5 @@
 ---
-title: Jenkins 学习笔记二：Nginx简单项目持续集成Demo
+title: Jenkins 学习笔记二：Nginx 简单项目持续集成 Demo
 date: 2018-12-07 17:53:54
 tags:
     - Jenkins
