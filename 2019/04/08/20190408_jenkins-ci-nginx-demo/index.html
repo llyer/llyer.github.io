@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Jenkins,">
+  <meta name="keywords" content="Docker,Jenkins,Nginx,">
 
 
 
@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="Jenkins 如果忘记了密码可以按照以下教程来重置密码： https://www.jianshu.com/p/e8bc90a1aad8">
-<meta name="keywords" content="Jenkins">
+<meta name="description" content="本篇文章以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volume &quot;/ro">
+<meta name="keywords" content="Docker,Jenkins,Nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jenkins 忘记密码怎么办？">
-<meta property="og:url" content="http://yoursite.com/2019/04/08/20190408_Jenkins 忘记密码怎么办？/index.html">
+<meta property="og:title" content="Jenkins 学习笔记二：Docker + Jenkins + Nginx">
+<meta property="og:url" content="http://yoursite.com/2019/04/08/20190408_jenkins-ci-nginx-demo/index.html">
 <meta property="og:site_name" content="李鲁杨的个人博客">
-<meta property="og:description" content="Jenkins 如果忘记了密码可以按照以下教程来重置密码： https://www.jianshu.com/p/e8bc90a1aad8">
+<meta property="og:description" content="本篇文章以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volume &quot;/ro">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-08T07:17:20.481Z">
+<meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_01.png">
+<meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_02.png">
+<meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_03.png">
+<meta property="og:updated_time" content="2019-04-08T08:12:25.017Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jenkins 忘记密码怎么办？">
-<meta name="twitter:description" content="Jenkins 如果忘记了密码可以按照以下教程来重置密码： https://www.jianshu.com/p/e8bc90a1aad8">
+<meta name="twitter:title" content="Jenkins 学习笔记二：Docker + Jenkins + Nginx">
+<meta name="twitter:description" content="本篇文章以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volume &quot;/ro">
+<meta name="twitter:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_01.png">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/08/20190408_Jenkins 忘记密码怎么办？/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/08/20190408_jenkins-ci-nginx-demo/">
 
 
 
 
 
-  <title>Jenkins 忘记密码怎么办？ | 李鲁杨的个人博客</title>
+  <title>Jenkins 学习笔记二：Docker + Jenkins + Nginx | 李鲁杨的个人博客</title>
   
 
 
@@ -273,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/20190408_Jenkins 忘记密码怎么办？/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/20190408_jenkins-ci-nginx-demo/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -290,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Jenkins 忘记密码怎么办？</h1>
+          <h1 class="post-title" itemprop="name headline">Jenkins 学习笔记二：Docker + Jenkins + Nginx</h1>
         
 
         <div class="post-meta">
@@ -302,7 +306,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T13:32:56+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T15:53:54+08:00">
                 2019-04-08
               </time>
             
@@ -340,8 +344,36 @@
       
 
       
-        <p>Jenkins 如果忘记了密码可以按照以下教程来重置密码：</p>
-<p><a href="https://www.jianshu.com/p/e8bc90a1aad8" target="_blank" rel="noopener">https://www.jianshu.com/p/e8bc90a1aad8</a></p>
+        <p>本篇文章以 <a href="https://liluyang.me" target="_blank" rel="noopener">https://liluyang.me</a> 为案例来讲解如何实现<code>持续集成</code>。主要涉及的技术有 <code>Docker</code>，<code>Jenkins</code>，<code>Nginx</code></p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
+<li>正确的安装 <code>Docker</code></li>
+<li>正确的使用 <code>Docker</code> 安装了 <code>Jenkins</code>，<code>Nginx</code></li>
+</ul>
+<h1 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h1><h2 id="启动-Nginx，映射宿主机目录"><a href="#启动-Nginx，映射宿主机目录" class="headerlink" title="启动 Nginx，映射宿主机目录"></a>启动 Nginx，映射宿主机目录</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 html 目录和 conf 目录映射到宿主机</span></span><br><span class="line">docker run \</span><br><span class="line">--volume <span class="string">"/root/docker_nginx/html"</span>:/usr/share/nginx/html \</span><br><span class="line">--volume <span class="string">"/root/docker_nginx/conf"</span>:/etc/nginx \</span><br><span class="line">-p 80:80 \</span><br><span class="line">-p 443:443 \</span><br><span class="line">-d \</span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
+<h2 id="启动-Jenkins，映射宿主机目录"><a href="#启动-Jenkins，映射宿主机目录" class="headerlink" title="启动 Jenkins，映射宿主机目录"></a>启动 Jenkins，映射宿主机目录</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 jenkins 中定义一个 nginx 的  html 工作目录。将这个目录也映射到宿主机的 html 目录中，这样 jenkins 将 git 中的项目文件拉取到jenkins 的工作目录。然后再拷贝到 nginx 的工作目录就完成了持续集成的过程</span></span><br><span class="line">docker run \</span><br><span class="line">  -u root \</span><br><span class="line">  -d \</span><br><span class="line">  -p 8080:8080 \</span><br><span class="line">  -p 50000:50000 \</span><br><span class="line">  -v jenkins-data:/var/jenkins_home \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  --volume <span class="string">"/root/docker_nginx/html"</span>:/usr/share/jenkins/html \</span><br><span class="line">  jenkinsci/blueocean</span><br></pre></td></tr></table></figure>
+<h2 id="配置-Jenkins，持续集成拉取-Git-项目"><a href="#配置-Jenkins，持续集成拉取-Git-项目" class="headerlink" title="配置 Jenkins，持续集成拉取 Git 项目"></a>配置 Jenkins，持续集成拉取 Git 项目</h2><p>安装配置好 <code>jenkins</code> 之后，新建项目：<br><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_01.png" alt=""></p>
+<p>配置设置如下：<br><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_02.png" alt=""></p>
+<p>其中将 <code>git</code> 地址修改为你自己项目的地址，分支也设置为对应的分支。</p>
+<p>最后一步，在构建中选择 <code>执行Shell</code>，执行以下脚本命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当前 docker 容器映射的宿主机的地址</span></span><br><span class="line">www_path=/usr/share/jenkins/html</span><br><span class="line"></span><br><span class="line"><span class="comment"># jenkins将项目从Git拷贝过来的位置</span></span><br><span class="line">work_path=/var/jenkins_home/workspace/hexo</span><br><span class="line"></span><br><span class="line">rm -rf /usr/share/jenkins/html/*</span><br><span class="line"></span><br><span class="line"><span class="comment">#将生成的文件拷贝到当前的工作目录，由于当前目录和宿主机中的 nginx 目录对应，所以就自动更新了 nginx 的内容</span></span><br><span class="line">cp -rf /var/jenkins_home/workspace/hexo/* /usr/share/jenkins/html</span><br></pre></td></tr></table></figure>
+<p>以上全部执行完成后，返回 <code>jenkins</code> 的任务界面，选择立即构建。如下图：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_03.png" alt=""></p>
+<p>构建完成后可以点击构建历史中刚刚构建的项目中选择控制台输出查看日志是否构建成功。</p>
+<p>接下来可以修改下文件然后检查确认以下流程是否成功了。</p>
+<ol>
+<li><p>执行修改文件</p>
+</li>
+<li><p>提交到<code>Git</code> </p>
+</li>
+<li><p><code>Jenkins</code> 触发提交事件的锚点而执行自动构建。</p>
+</li>
+<li><p>访问 <code>Nginx</code> 查看项目的变化</p>
+</li>
+</ol>
+<p>到此为止，如果不出意外，你的 <code>Jenkins</code> 持续集成已经完成了。</p>
+<p>快去尝试一下吧~</p>
+<p>~</p>
+<hr>
 
       
     </div>
@@ -367,7 +399,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
             <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
+          
+            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
           
         </div>
       
@@ -380,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/03/20190403_HTTPS 配置教程/" rel="next" title="HTTPS 配置教程">
-                <i class="fa fa-chevron-left"></i> HTTPS 配置教程
+              <a href="/2019/04/08/20190408_Jenkins 忘记密码怎么办？/" rel="next" title="Jenkins 忘记密码怎么办？">
+                <i class="fa fa-chevron-left"></i> Jenkins 忘记密码怎么办？
               </a>
             
           </div>
@@ -389,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/08/20190408_jenkins-ci-nginx-demo/" rel="prev" title="Jenkins 学习笔记二：Docker + Jenkins + Nginx">
-                Jenkins 学习笔记二：Docker + Jenkins + Nginx <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -444,8 +476,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -530,6 +571,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置过程"><span class="nav-number">2.</span> <span class="nav-text">配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-Nginx，映射宿主机目录"><span class="nav-number">2.1.</span> <span class="nav-text">启动 Nginx，映射宿主机目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-Jenkins，映射宿主机目录"><span class="nav-number">2.2.</span> <span class="nav-text">启动 Jenkins，映射宿主机目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-Jenkins，持续集成拉取-Git-项目"><span class="nav-number">2.3.</span> <span class="nav-text">配置 Jenkins，持续集成拉取 Git 项目</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
