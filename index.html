@@ -272,6 +272,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/09/20190409_一张图看懂数Mysql的连接查询/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/09/20190409_一张图看懂数Mysql的连接查询/" itemprop="url">一张图看懂数Mysql的连接查询</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T16:59:01+08:00">
+                2019-04-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-09T17:00:17+08:00">
+                2019-04-09
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>分享自廖雪峰的官方网站：<a href="https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000</a></p>
+<p>对于这么多种JOIN查询，到底什么使用应该用哪种呢？其实我们用图来表示结果集就一目了然了。</p>
+<p>假设查询语句是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ... <span class="keyword">FROM</span> tableA ??? <span class="keyword">JOIN</span> tableB <span class="keyword">ON</span> tableA.column1 = tableB.column2;</span><br></pre></td></tr></table></figure>
+<p>我们把tableA看作左表，把tableB看成右表，那么INNER JOIN是选出两张表都存在的记录：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_01.png" alt=""></p>
+<p>LEFT OUTER JOIN是选出左表存在的记录：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_02.png" alt=""></p>
+<p>RIGHT OUTER JOIN是选出右表存在的记录：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_03.png" alt=""></p>
+<p>FULL OUTER JOIN则是选出左右表都存在的记录：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_04.png" alt=""></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>JOIN查询需要先确定主表，然后把另一个表的数据“附加”到结果集上；</p>
+<p>INNER JOIN是最常用的一种JOIN查询，它的语法是SELECT … FROM &lt;表1&gt; INNER JOIN &lt;表2&gt; ON &lt;条件…&gt;；</p>
+<p>JOIN查询仍然可以使用WHERE条件和ORDER BY排序。</p>
+<p>~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/20190408_Jenkins 学习笔记二：Docker + Jenkins + Nginx/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -934,143 +1082,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/" itemprop="url">Windows 和 Linux 下执行命令行命令时如何换行</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
-                2019-04-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T12:19:52+08:00">
-                2019-04-04
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>注意，如果命令需要换行，请添加换行字符 <code>windows</code> 为  “<code>^</code>”和 “`”，<code>linux</code> 为 “<code>\</code>”</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不换行</span></span><br><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># linux 环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 \</span><br><span class="line">        -vcodec copy \</span><br><span class="line">        -acodec copy \</span><br><span class="line">        -ss 00:00:10 -to 00:00:15 \</span><br><span class="line">        ./cutout1.mp4 \</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># windows CMD环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy ^</span><br><span class="line">        -acodec copy ^</span><br><span class="line">        -ss 00:00:10 ^</span><br><span class="line">        -to 00:00:15 ^</span><br><span class="line">        ./cutout1.mp4 ^</span><br><span class="line">        -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows Powershell环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy `</span><br><span class="line">        -acodec copy `</span><br><span class="line">        -ss 00:00:10 `</span><br><span class="line">        -to 00:00:15 `</span><br><span class="line">        ./cutout1.mp4 `</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
-<p>~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_FFmpeg 常用命令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1169,6 +1180,143 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FFMPEG -r 10 -i ./image_%04d.jpg -s 640x640 -b 10M -vcodec mpeg4 ./video.mp4</span><br><span class="line"></span><br><span class="line">FFMPEG -r 10 </span><br><span class="line">        -i ./image_%04d.jpg </span><br><span class="line">        -s 640x640 </span><br><span class="line">        -b 10M </span><br><span class="line">        -vcodec mpeg4 ./video.mp4</span><br></pre></td></tr></table></figure>
 <h4 id="制作模糊背景"><a href="#制作模糊背景" class="headerlink" title="制作模糊背景"></a>制作模糊背景</h4><p>适合横屏视频和竖屏视频之间的转换</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i ~/<span class="built_in">test</span>/objectC/bbs.chinaffmpeg.com孙悟空.mp4 -filter_complex <span class="string">"[0:v]avgblur=sizeX=64:sizeY=0[out1];[0:v]scale=480x320[out2];[out1][out2]overlay=x=320:y=240[outo]"</span> -map <span class="string">'[outo]'</span> -y  /root/bbs.chinaffmpeg.com孙悟空.mp4</span><br></pre></td></tr></table></figure>
+<p>~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/" itemprop="url">Windows 和 Linux 下执行命令行命令时如何换行</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T12:19:52+08:00">
+                2019-04-04
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>注意，如果命令需要换行，请添加换行字符 <code>windows</code> 为  “<code>^</code>”和 “`”，<code>linux</code> 为 “<code>\</code>”</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不换行</span></span><br><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># linux 环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 \</span><br><span class="line">        -vcodec copy \</span><br><span class="line">        -acodec copy \</span><br><span class="line">        -ss 00:00:10 -to 00:00:15 \</span><br><span class="line">        ./cutout1.mp4 \</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># windows CMD环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy ^</span><br><span class="line">        -acodec copy ^</span><br><span class="line">        -ss 00:00:10 ^</span><br><span class="line">        -to 00:00:15 ^</span><br><span class="line">        ./cutout1.mp4 ^</span><br><span class="line">        -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows Powershell环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy `</span><br><span class="line">        -acodec copy `</span><br><span class="line">        -ss 00:00:10 `</span><br><span class="line">        -to 00:00:15 `</span><br><span class="line">        ./cutout1.mp4 `</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
 <p>~</p>
 <hr>
 
@@ -1643,146 +1791,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/20190325_leetcode176/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/25/20190325_leetcode176/" itemprop="url">leetcode176. 第二高的薪水</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T13:11:43+08:00">
-                2019-03-25
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T12:20:23+08:00">
-                2019-04-04
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/delete-duplicate-emails/" target="_blank" rel="noopener">196. 删除重复的电子邮箱</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，来删除 Person 表中所有重复的电子邮箱，重复的邮箱里只保留 Id 最小的那个。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+------------------+</span><br><span class="line">| Id | Email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">| 3  | john@example.com |</span><br><span class="line">+----+------------------+</span><br></pre></td></tr></table></figure>
-<p>Id 是这个表的主键。</p>
-<p>例如，在运行你的查询语句之后，上面的 Person 表应返回以下几行:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+------------------+</span><br><span class="line">| Id | Email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">+----+------------------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1. 查询第二高的薪水，说明查询结果要按照薪水降序排列 order by salary desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. 因为只是查询第二高说明是要分页查询，查询排序中的一个，所以要用到  limit 1 offset 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3. 表中如果只有一条记录，则查询结果为空，但是题目要求的结果是返回 null，所有加上一个ifnull判断，如果返回为空，那么返回null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ifnull</span>((</span><br><span class="line">		<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> salary <span class="keyword">AS</span> SecondHighestSalary</span><br><span class="line">		<span class="keyword">FROM</span> employee</span><br><span class="line">		<span class="keyword">ORDER</span> <span class="keyword">BY</span> salary <span class="keyword">DESC</span></span><br><span class="line">		<span class="keyword">LIMIT</span> <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">	), <span class="literal">NULL</span>) <span class="keyword">AS</span> SecondHighestSalary</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1833,7 +1841,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
