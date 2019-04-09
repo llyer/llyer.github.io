@@ -358,6 +358,8 @@
 <p>以上全部执行完成后，返回 <code>jenkins</code> 的任务界面，选择立即构建。如下图：</p>
 <p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_03.png" alt=""></p>
 <p>构建完成后可以点击构建历史中刚刚构建的项目中选择控制台输出查看日志是否构建成功。</p>
+<h2 id="配置-Github，将-Webhooks-的通知发送到-Jenkins"><a href="#配置-Github，将-Webhooks-的通知发送到-Jenkins" class="headerlink" title="配置 Github，将 Webhooks 的通知发送到 Jenkins"></a>配置 Github，将 Webhooks 的通知发送到 Jenkins</h2><p>打开你的 Github 项目，设置 hook 的通知地址</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_04.png" alt=""></p>
 <p>接下来可以修改下文件然后检查确认以下流程是否成功了。</p>
 <ol>
 <li><p>执行修改文件</p>
@@ -369,6 +371,9 @@
 <li><p>访问 <code>Nginx</code> 查看项目的变化</p>
 </li>
 </ol>
+<p>我们可以通过检查 Webhook 日志的方式来判断我们是否正确的接收到了 Github 的通知，如下图所示：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_05.png" alt=""></p>
+<p>如果发现日志正常，那么打开你的网站检查一下，更新应该已经成功了。</p>
 <p>到此为止，如果不出意外，你的 <code>Jenkins</code> 持续集成已经完成了。</p>
 <p>快去尝试一下吧~</p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
