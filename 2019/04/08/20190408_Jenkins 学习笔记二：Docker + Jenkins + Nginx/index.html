@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Docker,Jenkins,Nginx,">
+  <meta name="keywords" content="Jenkins,Nginx,Docker,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="本篇文章以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volume &quot;/ro">
-<meta name="keywords" content="Docker,Jenkins,Nginx">
+<meta name="keywords" content="Jenkins,Nginx,Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jenkins 学习笔记二：Docker + Jenkins + Nginx">
 <meta property="og:url" content="http://yoursite.com/2019/04/08/20190408_Jenkins 学习笔记二：Docker + Jenkins + Nginx/index.html">
@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_01.png">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_02.png">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_03.png">
-<meta property="og:updated_time" content="2019-04-08T08:14:38.070Z">
+<meta property="og:updated_time" content="2019-04-09T02:53:46.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins 学习笔记二：Docker + Jenkins + Nginx">
 <meta name="twitter:description" content="本篇文章以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volume &quot;/ro">
@@ -372,6 +372,9 @@
 </ol>
 <p>到此为止，如果不出意外，你的 <code>Jenkins</code> 持续集成已经完成了。</p>
 <p>快去尝试一下吧~</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://github.com/muyinchen/woker/blob/master/%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAJenkins%2BGithub%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83.md" target="_blank" rel="noopener">《手把手教你搭建Jenkins+Github持续集成环境》 BY muyinchen</a></li>
+</ul>
 <p>~</p>
 <hr>
 
@@ -399,11 +402,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Docker/" rel="tag"># Docker</a>
-          
             <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
           
             <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
           
         </div>
       
@@ -585,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置过程"><span class="nav-number">2.</span> <span class="nav-text">配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-Nginx，映射宿主机目录"><span class="nav-number">2.1.</span> <span class="nav-text">启动 Nginx，映射宿主机目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-Jenkins，映射宿主机目录"><span class="nav-number">2.2.</span> <span class="nav-text">启动 Jenkins，映射宿主机目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-Jenkins，持续集成拉取-Git-项目"><span class="nav-number">2.3.</span> <span class="nav-text">配置 Jenkins，持续集成拉取 Git 项目</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置过程"><span class="nav-number">2.</span> <span class="nav-text">配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-Nginx，映射宿主机目录"><span class="nav-number">2.1.</span> <span class="nav-text">启动 Nginx，映射宿主机目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-Jenkins，映射宿主机目录"><span class="nav-number">2.2.</span> <span class="nav-text">启动 Jenkins，映射宿主机目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-Jenkins，持续集成拉取-Git-项目"><span class="nav-number">2.3.</span> <span class="nav-text">配置 Jenkins，持续集成拉取 Git 项目</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
