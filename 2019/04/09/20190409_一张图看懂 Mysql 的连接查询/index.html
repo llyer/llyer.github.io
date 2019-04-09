@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="分享自廖雪峰的官方网站：https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000 对于这么多种JOIN查询，到底什么使用应该用哪种呢？其实我们用图来表示结果集就一目了然了。 假设查询语句是">
+<meta name="description" content="分享自廖雪峰的官方网站：连接查询 对于这么多种JOIN查询，到底什么使用应该用哪种呢？其实我们用图来表示结果集就一目了然了。 假设查询语句是： 1SELECT ... FROM tableA ??? JOIN tableB ON tableA.column1 = tableB.column2; 我们把tableA看作左表，把tableB看成右表，那么INNER JOIN是选出两张表都存在的记录：">
 <meta name="keywords" content="数据库,Mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一张图看懂 Mysql 的连接查询">
 <meta property="og:url" content="http://yoursite.com/2019/04/09/20190409_一张图看懂 Mysql 的连接查询/index.html">
 <meta property="og:site_name" content="李鲁杨的个人博客">
-<meta property="og:description" content="分享自廖雪峰的官方网站：https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000 对于这么多种JOIN查询，到底什么使用应该用哪种呢？其实我们用图来表示结果集就一目了然了。 假设查询语句是">
+<meta property="og:description" content="分享自廖雪峰的官方网站：连接查询 对于这么多种JOIN查询，到底什么使用应该用哪种呢？其实我们用图来表示结果集就一目了然了。 假设查询语句是： 1SELECT ... FROM tableA ??? JOIN tableB ON tableA.column1 = tableB.column2; 我们把tableA看作左表，把tableB看成右表，那么INNER JOIN是选出两张表都存在的记录：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_01.png">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_02.png">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_03.png">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_04.png">
-<meta property="og:updated_time" content="2019-04-09T09:27:04.720Z">
+<meta property="og:updated_time" content="2019-04-09T09:28:52.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一张图看懂 Mysql 的连接查询">
-<meta name="twitter:description" content="分享自廖雪峰的官方网站：https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000 对于这么多种JOIN查询，到底什么使用应该用哪种呢？其实我们用图来表示结果集就一目了然了。 假设查询语句是">
+<meta name="twitter:description" content="分享自廖雪峰的官方网站：连接查询 对于这么多种JOIN查询，到底什么使用应该用哪种呢？其实我们用图来表示结果集就一目了然了。 假设查询语句是： 1SELECT ... FROM tableA ??? JOIN tableB ON tableA.column1 = tableB.column2; 我们把tableA看作左表，把tableB看成右表，那么INNER JOIN是选出两张表都存在的记录：">
 <meta name="twitter:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_01.png">
 
 
@@ -323,7 +323,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-09T17:27:04+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-09T17:28:52+08:00">
                 2019-04-09
               </time>
             
@@ -357,7 +357,7 @@
       
 
       
-        <p>分享自廖雪峰的官方网站：<a href="https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000</a></p>
+        <p>分享自廖雪峰的官方网站：<a href="https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000" target="_blank" rel="noopener">连接查询</a></p>
 <p>对于这么多种JOIN查询，到底什么使用应该用哪种呢？其实我们用图来表示结果集就一目了然了。</p>
 <p>假设查询语句是：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ... <span class="keyword">FROM</span> tableA ??? <span class="keyword">JOIN</span> tableB <span class="keyword">ON</span> tableA.column1 = tableB.column2;</span><br></pre></td></tr></table></figure>
