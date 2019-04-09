@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Docker,Jenkins,Nginx,持续集成,">
+  <meta name="keywords" content="Docker,Hexo,Jenkins,Nginx,持续集成,">
 
 
 
@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="本篇文章以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volume &quot;/ro">
-<meta name="keywords" content="Docker,Jenkins,Nginx,持续集成">
+<meta name="description" content="本篇文章继续以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx，Hexo 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volu">
+<meta name="keywords" content="Docker,Hexo,Jenkins,Nginx,持续集成">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jenkins 学习笔记二：Docker + Jenkins + Nginx">
 <meta property="og:url" content="http://yoursite.com/2019/04/08/20190408_Jenkins 学习笔记二：Docker + Jenkins + Nginx/index.html">
 <meta property="og:site_name" content="李鲁杨的个人博客">
-<meta property="og:description" content="本篇文章以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volume &quot;/ro">
+<meta property="og:description" content="本篇文章继续以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx，Hexo 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volu">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_01.png">
 <meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_02.png">
@@ -95,7 +95,7 @@
 <meta property="og:updated_time" content="2019-04-09T03:16:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins 学习笔记二：Docker + Jenkins + Nginx">
-<meta name="twitter:description" content="本篇文章以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volume &quot;/ro">
+<meta name="twitter:description" content="本篇文章继续以 https://liluyang.me 为案例来讲解如何实现持续集成。主要涉及的技术有 Docker，Jenkins，Nginx，Hexo 准备工作 正确的安装 Docker 正确的使用 Docker 安装了 Jenkins，Nginx  配置过程启动 Nginx，映射宿主机目录12345678# 将 html 目录和 conf 目录映射到宿主机docker run \--volu">
 <meta name="twitter:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_01.png">
 
 
@@ -104,7 +104,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -358,7 +358,7 @@
       
 
       
-        <p>本篇文章以 <a href="https://liluyang.me" target="_blank" rel="noopener">https://liluyang.me</a> 为案例来讲解如何实现<code>持续集成</code>。主要涉及的技术有 <code>Docker</code>，<code>Jenkins</code>，<code>Nginx</code></p>
+        <p>本篇文章继续以 <a href="https://liluyang.me" target="_blank" rel="noopener">https://liluyang.me</a> 为案例来讲解如何实现<code>持续集成</code>。主要涉及的技术有 <code>Docker</code>，<code>Jenkins</code>，<code>Nginx</code>，<code>Hexo</code></p>
 <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
 <li>正确的安装 <code>Docker</code></li>
 <li>正确的使用 <code>Docker</code> 安装了 <code>Jenkins</code>，<code>Nginx</code></li>
@@ -422,6 +422,8 @@
         <div class="post-tags">
           
             <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           
             <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
           
@@ -643,7 +645,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
