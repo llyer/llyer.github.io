@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-09T17:28:52+08:00">
-                2019-04-09
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-10T18:25:14+08:00">
+                2019-04-10
               </time>
             
           </span>
@@ -356,7 +356,7 @@
         
           
             <p>分享自廖雪峰的官方网站：<a href="https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000" target="_blank" rel="noopener">连接查询</a></p>
-<p>对于这么多种JOIN查询，到底什么使用应该用哪种呢？其实我们用图来表示结果集就一目了然了。</p>
+<h1 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h1><p>SQL 的连接 JOIN 查询有多种，到底应该用哪种呢？其实我们用图来表示结果集就一目了然了。</p>
 <p>假设查询语句是：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ... <span class="keyword">FROM</span> tableA ??? <span class="keyword">JOIN</span> tableB <span class="keyword">ON</span> tableA.column1 = tableB.column2;</span><br></pre></td></tr></table></figure>
 <p>我们把tableA看作左表，把tableB看成右表，那么INNER JOIN是选出两张表都存在的记录：</p>
@@ -367,7 +367,7 @@
 <p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_03.png" alt=""></p>
 <p>FULL OUTER JOIN则是选出左右表都存在的记录：</p>
 <p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_04.png" alt=""></p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>JOIN查询需要先确定主表，然后把另一个表的数据“附加”到结果集上；</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>JOIN查询需要先确定主表，然后把另一个表的数据“附加”到结果集上；</p>
 <p>INNER JOIN是最常用的一种JOIN查询，它的语法是SELECT … FROM &lt;表1&gt; INNER JOIN &lt;表2&gt; ON &lt;条件…&gt;；</p>
 <p>JOIN查询仍然可以使用WHERE条件和ORDER BY排序。</p>
 <p>~</p>
