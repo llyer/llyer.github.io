@@ -1,13 +1,16 @@
 ---
 title: Jenkins 学习笔记二：Docker + Jenkins + Nginx
 date: 2019-04-08 15:53:54
+updated: 2019-4-9 11:16:03
 tags:
     - Jenkins 
     - Docker
     - Nginx
+    - Hexo
+    - 持续集成
 ---
 
-本篇文章以 https://liluyang.me 为案例来讲解如何实现`持续集成`。主要涉及的技术有 `Docker`，`Jenkins`，`Nginx`
+本篇文章继续以 https://liluyang.me 为案例来讲解如何实现`持续集成`。主要涉及的技术有 `Docker`，`Jenkins`，`Nginx`，`Hexo`
 
 # 准备工作
 
@@ -44,6 +47,8 @@ docker run \
   jenkinsci/blueocean
 ```
 
+
+
 ## 配置 Jenkins，持续集成拉取 Git 项目
 
 安装配置好 `jenkins` 之后，新建项目：
@@ -77,6 +82,13 @@ cp -rf /var/jenkins_home/workspace/hexo/* /usr/share/jenkins/html
 
 构建完成后可以点击构建历史中刚刚构建的项目中选择控制台输出查看日志是否构建成功。
 
+## 配置 Github，将 Webhooks 的通知发送到 Jenkins
+
+打开你的 Github 项目，设置 hook 的通知地址
+
+![](https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_04.png)
+
+
 接下来可以修改下文件然后检查确认以下流程是否成功了。
 
 1. 执行修改文件
@@ -87,9 +99,20 @@ cp -rf /var/jenkins_home/workspace/hexo/* /usr/share/jenkins/html
 
 4. 访问 `Nginx` 查看项目的变化
 
+
+我们可以通过检查 Webhook 日志的方式来判断我们是否正确的接收到了 Github 的通知，如下图所示：
+
+![](https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_05.png)
+
+如果发现日志正常，那么打开你的网站检查一下，更新应该已经成功了。
+
 到此为止，如果不出意外，你的 `Jenkins` 持续集成已经完成了。
 
 快去尝试一下吧~
+
+# 参考链接
+
+- [《手把手教你搭建Jenkins+Github持续集成环境》 BY muyinchen](https://github.com/muyinchen/woker/blob/master/%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAJenkins%2BGithub%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83.md)
 
 ~
 
