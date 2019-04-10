@@ -1129,8 +1129,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T12:19:42+08:00">
-                2019-04-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-10T11:18:50+08:00">
+                2019-04-10
               </time>
             
           </span>
@@ -1168,7 +1168,7 @@
             <p><a href="https://zh.wikipedia.org/wiki/FFmpeg" target="_blank" rel="noopener">FFmpeg</a> 是一个自由软件，可以运行音频和视频多种格式的录影、转换、流功能，包含了libavcodec——这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。</p>
 <p>“FFmpeg”这个单词中的“FF”指的是“Fast Forward（快速前进）”。有些新手写信给“FFmpeg”的项目负责人，询问FF是不是代表“Fast Free”或者“Fast Fourier”等意思，“FFmpeg”的项目负责人回信说：“Just for the record, the original meaning of “FF” in FFmpeg is “Fast Forward”…”</p>
 <h4 id="动图转图片序列"><a href="#动图转图片序列" class="headerlink" title="动图转图片序列"></a>动图转图片序列</h4><p>逐帧输出，将视频的所有帧输出到制定文件夹，例如一秒 <code>24</code> 帧，视频一共 <code>10</code> 秒，输出后就是 <code>24*10=240</code> 帧<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.gif /images/image_%04d.png</span><br></pre></td></tr></table></figure></p>
-<h4 id="动图转视频"><a href="#动图转视频" class="headerlink" title="动图转视频"></a>动图转视频</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.gif -vf scale=420:-2,format=yuv420p out.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="动图转视频"><a href="#动图转视频" class="headerlink" title="动图转视频"></a>动图转视频</h4><p>参考教程地址：<a href="https://unix.stackexchange.com/questions/40638/how-to-do-i-convert-an-animated-gif-to-an-mp4-or-mv4-on-the-command-line" target="_blank" rel="noopener">点我</a><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf <span class="string">"scale=trunc(iw/2)*2:trunc(ih/2)*2"</span> video.mp4</span><br></pre></td></tr></table></figure></p>
 <h4 id="视频，GIF添加水印"><a href="#视频，GIF添加水印" class="headerlink" title="视频，GIF添加水印"></a>视频，GIF添加水印</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg  -i input.gif -vf <span class="string">"drawtext=fontfile=simhei.ttf: text='你的水印':x=600:y=330:fontsize=18:fontcolor=yellow:shadowy=2"</span> manu.gif</span><br></pre></td></tr></table></figure>
 <h4 id="视频转图片序列"><a href="#视频转图片序列" class="headerlink" title="视频转图片序列"></a>视频转图片序列</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i <span class="string">"cut01.mp4"</span> ./cut01/image_%04d.png</span><br></pre></td></tr></table></figure>
 <h4 id="合并音频和视频"><a href="#合并音频和视频" class="headerlink" title="合并音频和视频"></a>合并音频和视频</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.m4a -acodec copy -vcodec copy output.mp4</span><br></pre></td></tr></table></figure>
@@ -1178,8 +1178,22 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i cutout1.mp4 -strict -2 -vf crop=400:720:400:0 -b 10M out2.mp4</span><br></pre></td></tr></table></figure>
 <h4 id="图片序列转视频"><a href="#图片序列转视频" class="headerlink" title="图片序列转视频"></a>图片序列转视频</h4><p>第一个 -r 指的是帧数，-b 指的是码率  -s 是分辨率</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FFMPEG -r 10 -i ./image_%04d.jpg -s 640x640 -b 10M -vcodec mpeg4 ./video.mp4</span><br><span class="line"></span><br><span class="line">FFMPEG -r 10 </span><br><span class="line">        -i ./image_%04d.jpg </span><br><span class="line">        -s 640x640 </span><br><span class="line">        -b 10M </span><br><span class="line">        -vcodec mpeg4 ./video.mp4</span><br></pre></td></tr></table></figure>
-<h4 id="制作模糊背景"><a href="#制作模糊背景" class="headerlink" title="制作模糊背景"></a>制作模糊背景</h4><p>适合横屏视频和竖屏视频之间的转换</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i ~/<span class="built_in">test</span>/objectC/bbs.chinaffmpeg.com孙悟空.mp4 -filter_complex <span class="string">"[0:v]avgblur=sizeX=64:sizeY=0[out1];[0:v]scale=480x320[out2];[out1][out2]overlay=x=320:y=240[outo]"</span> -map <span class="string">'[outo]'</span> -y  /root/bbs.chinaffmpeg.com孙悟空.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="制作模糊背景"><a href="#制作模糊背景" class="headerlink" title="制作模糊背景"></a>制作模糊背景</h4><p>算法的机制应该是高斯模糊，但是作者还没有详细的检查对应的原理，能用就行。</p>
+<p>此代码适合在横屏视频和竖屏视频之间的转换，并且填充一部分模糊的背景，不至于让视频有黑边而显的突兀<br>参数说明，根据源视频生成两个视频，再将两个视频叠加，生成的高斯模糊的视频在原视频的下方同步播放，这样就实现了模糊式的视频视频</p>
+<!-- ffmpeg -i input.mp4 -vf "split[a][b];[a]scale=664:664,boxblur=10:5[1];[b]scale=(iw*374)/ih:374[2];[1][2]overlay=(W-w)/2:y=(H-h)/2" 2.mp4
+ -->
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -i 视频输出  -vf 参数转换  output.mp4 输出视频</span></span><br><span class="line"><span class="comment"># -vf 内部参数说明：生成 1,2 两个视频。第一个视频是模糊背景， scale调整尺寸大小，第二个原视频不要动，overlay 合成并且调整坐标</span></span><br><span class="line">ffmpeg -i input.mp4 -vf <span class="string">"split[a][b];[a]scale=1920:1920,boxblur=10:5[1];[b]scale=(iw*1080)/ih:1080[2];[1][2]overlay=(W-w)/2:y=(H-h)/2"</span> output.mp4</span><br></pre></td></tr></table></figure>
+<p><strong>效果如下：</strong></p>
+<p>原视频截图：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190410_ffmpeg_00.png" alt=""></p>
+<p>生成模糊背景之后的视频截图：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190410_ffmpeg_01.png" alt=""></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><p><a href="https://ffmpeg.org/ffmpeg.html" target="_blank" rel="noopener">ffmpeg 官方教程</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/c5bfd55a312d" target="_blank" rel="noopener">偶遇FFmpeg(二)——常用命令</a></p>
+</li>
+</ul>
 <p>~</p>
 <hr>
 
