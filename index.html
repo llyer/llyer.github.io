@@ -319,7 +319,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-12T13:00:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-12T13:00:39+08:00">
                 2019-04-12
               </time>
             
@@ -355,7 +355,7 @@
       
         
           
-            <p>分享自程序员DD的个人网站：<a href="https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000" target="_blank" rel="noopener">你可能会忽略的 Git 提交规范</a></p>
+            <p>分享自程序员DD的个人网站：<a href="http://blog.didispace.com/git-commit-specification/" target="_blank" rel="noopener">你可能会忽略的 Git 提交规范</a></p>
 
           
         
@@ -1538,143 +1538,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/" itemprop="url">Windows 和 Linux 下执行命令行命令时如何换行</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
-                2019-04-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T12:19:52+08:00">
-                2019-04-04
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>注意，如果命令需要换行，请添加换行字符 <code>windows</code> 为  “<code>^</code>”和 “`”，<code>linux</code> 为 “<code>\</code>”</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不换行</span></span><br><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># linux 环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 \</span><br><span class="line">        -vcodec copy \</span><br><span class="line">        -acodec copy \</span><br><span class="line">        -ss 00:00:10 -to 00:00:15 \</span><br><span class="line">        ./cutout1.mp4 \</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># windows CMD环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy ^</span><br><span class="line">        -acodec copy ^</span><br><span class="line">        -ss 00:00:10 ^</span><br><span class="line">        -to 00:00:15 ^</span><br><span class="line">        ./cutout1.mp4 ^</span><br><span class="line">        -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows Powershell环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy `</span><br><span class="line">        -acodec copy `</span><br><span class="line">        -ss 00:00:10 `</span><br><span class="line">        -to 00:00:15 `</span><br><span class="line">        ./cutout1.mp4 `</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
-<p>~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_FFmpeg 常用命令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1787,6 +1650,143 @@
 <li><p><a href="https://www.jianshu.com/p/c5bfd55a312d" target="_blank" rel="noopener">偶遇FFmpeg(二)——常用命令</a></p>
 </li>
 </ul>
+<p>~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/" itemprop="url">Windows 和 Linux 下执行命令行命令时如何换行</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T12:19:52+08:00">
+                2019-04-04
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>注意，如果命令需要换行，请添加换行字符 <code>windows</code> 为  “<code>^</code>”和 “`”，<code>linux</code> 为 “<code>\</code>”</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不换行</span></span><br><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># linux 环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 \</span><br><span class="line">        -vcodec copy \</span><br><span class="line">        -acodec copy \</span><br><span class="line">        -ss 00:00:10 -to 00:00:15 \</span><br><span class="line">        ./cutout1.mp4 \</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># windows CMD环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy ^</span><br><span class="line">        -acodec copy ^</span><br><span class="line">        -ss 00:00:10 ^</span><br><span class="line">        -to 00:00:15 ^</span><br><span class="line">        ./cutout1.mp4 ^</span><br><span class="line">        -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows Powershell环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy `</span><br><span class="line">        -acodec copy `</span><br><span class="line">        -ss 00:00:10 `</span><br><span class="line">        -to 00:00:15 `</span><br><span class="line">        ./cutout1.mp4 `</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
 <p>~</p>
 <hr>
 
