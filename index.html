@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/12/20190412_你可能会忽略的 Git 提交规范git/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/12/redis/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -291,7 +291,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/12/20190412_你可能会忽略的 Git 提交规范git/" itemprop="url">你可能会忽略的 Git 提交规范</a></h1>
+                <a class="post-title-link" href="/2019/04/12/redis/" itemprop="url">Spring Boot Redis + Spring Cache 使用教程</a></h1>
         
 
         <div class="post-meta">
@@ -303,7 +303,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-12T12:58:57+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-12T14:44:45+08:00">
                 2019-04-12
               </time>
             
@@ -319,7 +319,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-12T13:00:39+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-12T14:47:11+08:00">
                 2019-04-12
               </time>
             
@@ -355,7 +355,148 @@
       
         
           
-            <p>分享自程序员DD的个人网站：<a href="http://blog.didispace.com/git-commit-specification/" target="_blank" rel="noopener">你可能会忽略的 Git 提交规范</a></p>
+            <p>Redis 和 cache 整合的基本案例</p>
+<p>缓存的条件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CachePut</span>(value = <span class="string">"user"</span>, key = <span class="string">"#user.id"</span>, condition = <span class="string">"#user.id &lt; 10"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> User <span class="title">save</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"进入 service save 方法"</span>);</span><br><span class="line">    <span class="keyword">return</span> userRepository.save(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTest3</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    User u1 = <span class="keyword">new</span> User();</span><br><span class="line">    u1.setId(<span class="number">11</span>);</span><br><span class="line">    u1.setName(<span class="string">"张三丰"</span>);</span><br><span class="line">    u1.setAge(<span class="number">108</span>);</span><br><span class="line">    userService.save(u1);</span><br><span class="line">    User u3 = userService.get(<span class="number">11</span>);</span><br><span class="line">    System.out.println(<span class="string">"第一次查询："</span> + u3.getAge());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTest3</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    User u1 = <span class="keyword">new</span> User();</span><br><span class="line">    u1.setId(<span class="number">9</span>);</span><br><span class="line">    u1.setName(<span class="string">"灭绝师太"</span>);</span><br><span class="line">    u1.setAge(<span class="number">50</span>);</span><br><span class="line">    userService.save(u1);</span><br><span class="line">    User u3 = userService.get(<span class="number">11</span>);</span><br><span class="line">    System.out.println(<span class="string">"第一次查询："</span> + u3.getAge());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/12/20190412_Git 提交规范git/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/12/20190412_Git 提交规范git/" itemprop="url">Git 提交规范</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-12T12:58:57+08:00">
+                2019-04-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-12T15:35:32+08:00">
+                2019-04-12
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>分享自：</strong></p>
+<ul>
+<li><p>阮一峰的网络日志：<a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="noopener">Commit message 和 Change log 编写指南</a></p>
+</li>
+<li><p>程序员DD的个人网站：<a href="http://blog.didispace.com/git-commit-specification/" target="_blank" rel="noopener">你可能会忽略的 Git 提交规范</a></p>
+</li>
+</ul>
 
           
         
@@ -1538,168 +1679,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_FFmpeg 常用命令/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/02/20190402_FFmpeg 常用命令/" itemprop="url">FFmpeg 常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
-                2019-04-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-10T11:18:50+08:00">
-                2019-04-10
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://zh.wikipedia.org/wiki/FFmpeg" target="_blank" rel="noopener">FFmpeg</a> 是一个自由软件，可以运行音频和视频多种格式的录影、转换、流功能，包含了libavcodec——这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。</p>
-<p>“FFmpeg”这个单词中的“FF”指的是“Fast Forward（快速前进）”。有些新手写信给“FFmpeg”的项目负责人，询问FF是不是代表“Fast Free”或者“Fast Fourier”等意思，“FFmpeg”的项目负责人回信说：“Just for the record, the original meaning of “FF” in FFmpeg is “Fast Forward”…”</p>
-<h4 id="动图转图片序列"><a href="#动图转图片序列" class="headerlink" title="动图转图片序列"></a>动图转图片序列</h4><p>逐帧输出，将视频的所有帧输出到制定文件夹，例如一秒 <code>24</code> 帧，视频一共 <code>10</code> 秒，输出后就是 <code>24*10=240</code> 帧<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.gif /images/image_%04d.png</span><br></pre></td></tr></table></figure></p>
-<h4 id="动图转视频"><a href="#动图转视频" class="headerlink" title="动图转视频"></a>动图转视频</h4><p>参考教程地址：<a href="https://unix.stackexchange.com/questions/40638/how-to-do-i-convert-an-animated-gif-to-an-mp4-or-mv4-on-the-command-line" target="_blank" rel="noopener">点我</a><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf <span class="string">"scale=trunc(iw/2)*2:trunc(ih/2)*2"</span> video.mp4</span><br></pre></td></tr></table></figure></p>
-<h4 id="视频，GIF添加水印"><a href="#视频，GIF添加水印" class="headerlink" title="视频，GIF添加水印"></a>视频，GIF添加水印</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg  -i input.gif -vf <span class="string">"drawtext=fontfile=simhei.ttf: text='你的水印':x=600:y=330:fontsize=18:fontcolor=yellow:shadowy=2"</span> manu.gif</span><br></pre></td></tr></table></figure>
-<h4 id="视频转图片序列"><a href="#视频转图片序列" class="headerlink" title="视频转图片序列"></a>视频转图片序列</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i <span class="string">"cut01.mp4"</span> ./cut01/image_%04d.png</span><br></pre></td></tr></table></figure>
-<h4 id="合并音频和视频"><a href="#合并音频和视频" class="headerlink" title="合并音频和视频"></a>合并音频和视频</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.m4a -acodec copy -vcodec copy output.mp4</span><br></pre></td></tr></table></figure>
-<h4 id="截取视频中的一段"><a href="#截取视频中的一段" class="headerlink" title="截取视频中的一段"></a>截取视频中的一段</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
-<p>参考链接：<a href="https://www.cnblogs.com/wainiwann/p/6972954.html" target="_blank" rel="noopener">https://www.cnblogs.com/wainiwann/p/6972954.html</a></p>
-<h4 id="裁剪视频"><a href="#裁剪视频" class="headerlink" title="裁剪视频"></a>裁剪视频</h4><p>裁剪视频的大小，一定要指定码率</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i cutout1.mp4 -strict -2 -vf crop=400:720:400:0 -b 10M out2.mp4</span><br></pre></td></tr></table></figure>
-<h4 id="图片序列转视频"><a href="#图片序列转视频" class="headerlink" title="图片序列转视频"></a>图片序列转视频</h4><p>第一个 -r 指的是帧数，-b 指的是码率  -s 是分辨率</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FFMPEG -r 10 -i ./image_%04d.jpg -s 640x640 -b 10M -vcodec mpeg4 ./video.mp4</span><br><span class="line"></span><br><span class="line">FFMPEG -r 10 </span><br><span class="line">        -i ./image_%04d.jpg </span><br><span class="line">        -s 640x640 </span><br><span class="line">        -b 10M </span><br><span class="line">        -vcodec mpeg4 ./video.mp4</span><br></pre></td></tr></table></figure>
-<h4 id="制作模糊背景"><a href="#制作模糊背景" class="headerlink" title="制作模糊背景"></a>制作模糊背景</h4><p>算法的机制应该是高斯模糊，但是作者还没有详细的检查对应的原理，能用就行。</p>
-<p>此代码适合在横屏视频和竖屏视频之间的转换，并且填充一部分模糊的背景，不至于让视频有黑边而显的突兀<br>参数说明，根据源视频生成两个视频，再将两个视频叠加，生成的高斯模糊的视频在原视频的下方同步播放，这样就实现了模糊式的视频视频</p>
-<!-- ffmpeg -i input.mp4 -vf "split[a][b];[a]scale=664:664,boxblur=10:5[1];[b]scale=(iw*374)/ih:374[2];[1][2]overlay=(W-w)/2:y=(H-h)/2" 2.mp4
- -->
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -i 视频输出  -vf 参数转换  output.mp4 输出视频</span></span><br><span class="line"><span class="comment"># -vf 内部参数说明：生成 1,2 两个视频。第一个视频是模糊背景， scale调整尺寸大小，第二个原视频不要动，overlay 合成并且调整坐标</span></span><br><span class="line">ffmpeg -i input.mp4 -vf <span class="string">"split[a][b];[a]scale=1920:1920,boxblur=10:5[1];[b]scale=(iw*1080)/ih:1080[2];[1][2]overlay=(W-w)/2:y=(H-h)/2"</span> output.mp4</span><br></pre></td></tr></table></figure>
-<p><strong>效果如下：</strong></p>
-<p>原视频截图：</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190410_ffmpeg_00.png" alt=""></p>
-<p>生成模糊背景之后的视频截图：</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190410_ffmpeg_01.png" alt=""></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><p><a href="https://ffmpeg.org/ffmpeg.html" target="_blank" rel="noopener">ffmpeg 官方教程</a></p>
-</li>
-<li><p><a href="https://www.jianshu.com/p/c5bfd55a312d" target="_blank" rel="noopener">偶遇FFmpeg(二)——常用命令</a></p>
-</li>
-</ul>
-<p>~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/20190402_Windows 和 Linux 下执行命令行命令时如何换行/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1874,7 +1853,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
