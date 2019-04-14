@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mysql,Redis,缓存,Spring Boot,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文配套代码地址： Spring Boot Redis + Spring Boot Cache 使用教程，强烈建议下载代码配套阅读！ Redis 是开发者们使用最多的内存数据库，内存数据库的很大的一个特性就是用来做缓存，本片文章我们通过 Spring Boot Cache 来整合 Redis，将 Redis 作为我们关系型数据库的缓存。 项目配置在 pom.xml 文件中导入依赖： 1234567">
+<meta name="keywords" content="Mysql,Redis,缓存,Spring Boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot Redis + Spring Boot Cache 使用教程">
+<meta property="og:url" content="http://yoursite.com/2019/04/12/20190412_Spring Boot Redis + Spring Boot Cache 使用教程/index.html">
+<meta property="og:site_name" content="李鲁杨的个人博客">
+<meta property="og:description" content="本文配套代码地址： Spring Boot Redis + Spring Boot Cache 使用教程，强烈建议下载代码配套阅读！ Redis 是开发者们使用最多的内存数据库，内存数据库的很大的一个特性就是用来做缓存，本片文章我们通过 Spring Boot Cache 来整合 Redis，将 Redis 作为我们关系型数据库的缓存。 项目配置在 pom.xml 文件中导入依赖： 1234567">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190412_redis_01.png">
+<meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190412_redis_03.png">
+<meta property="og:updated_time" content="2019-04-12T10:33:38.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring Boot Redis + Spring Boot Cache 使用教程">
+<meta name="twitter:description" content="本文配套代码地址： Spring Boot Redis + Spring Boot Cache 使用教程，强烈建议下载代码配套阅读！ Redis 是开发者们使用最多的内存数据库，内存数据库的很大的一个特性就是用来做缓存，本片文章我们通过 Spring Boot Cache 来整合 Redis，将 Redis 作为我们关系型数据库的缓存。 项目配置在 pom.xml 文件中导入依赖： 1234567">
+<meta name="twitter:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190412_redis_01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/12/20190412_Spring Boot Redis + Spring Boot Cache 使用教程/">
+
+
+
+
+
+  <title>Spring Boot Redis + Spring Boot Cache 使用教程 | 李鲁杨的个人博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?34fe812a2e3277900b531347085a6f23";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李鲁杨的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/12/20190412_Spring Boot Redis + Spring Boot Cache 使用教程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring Boot Redis + Spring Boot Cache 使用教程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-12T14:44:45+08:00">
+                2019-04-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-12T18:33:38+08:00">
+                2019-04-12
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>本文配套代码地址：</strong></p>
+<p><a href="https://github.com/llyer/learn-spring/tree/master/spring-boot-mybatis" target="_blank" rel="noopener">Spring Boot Redis + Spring Boot Cache 使用教程</a>，<strong>强烈建议下载代码配套阅读！</strong></p>
+<p><code>Redis</code> 是开发者们使用最多的内存数据库，内存数据库的很大的一个特性就是用来做缓存，本片文章我们通过 <code>Spring Boot Cache</code> 来整合 <code>Redis</code>，将 <code>Redis</code> 作为我们关系型数据库的缓存。</p>
+<h1 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h1><p>在 <code>pom.xml</code> 文件中导入依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- cache --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-cache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- jpa --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其他的更多依赖以及可选项请查看源代码</p>
+</blockquote>
+<p><strong>配置文件如下图所示:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># port</span><br><span class="line">server.port=8080</span><br><span class="line"></span><br><span class="line"># actuator 健康监控</span><br><span class="line">info.name=service-redis</span><br><span class="line">info.server.port=$&#123;server.port&#125;</span><br><span class="line"></span><br><span class="line"># redis</span><br><span class="line">spring.redis.database=0</span><br><span class="line">spring.redis.host=127.0.0.1</span><br><span class="line">spring.redis.port=6379</span><br><span class="line">spring.redis.password=your password</span><br><span class="line"></span><br><span class="line"># spring cache type 指明使用的缓存类型是Redis</span><br><span class="line">#spring.cache.type=redis</span><br><span class="line"></span><br><span class="line"># database settings</span><br><span class="line">spring.jpa.database=mysql</span><br><span class="line">spring.jpa.show-sql=false</span><br><span class="line">spring.jpa.hibernate.ddl-auto=update</span><br><span class="line">spring.jpa.hibernate.naming-strategy=org.hibernate.cfg.ImprovedNamingStrategy</span><br><span class="line">spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect</span><br><span class="line"></span><br><span class="line"># data source</span><br><span class="line">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/learn_redis?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=password</span><br><span class="line">spring.datasource.driverClassName=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure>
+<p>当我们在 <code>Spring boot</code> 中配置好 <code>Redis</code> 并且在 <code>Service</code> 层代码中设置对应 <code>Cache</code>，<code>Spring</code> 会自动帮我们检测缓存数据源，如果发现当前项目中有可用的 <code>Redis</code>，那么就会设置缓存数据源为 <code>Redis</code></p>
+<p><strong><code>Service</code> 层的示例代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">list</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"进入 list users service 方法"</span>);</span><br><span class="line">        <span class="keyword">return</span> userRepository.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查询用户，并且值缓存用户ID小于10的用户</span></span><br><span class="line">    <span class="meta">@Cacheable</span>(value = <span class="string">"user"</span>, key = <span class="string">"#id"</span>, condition = <span class="string">"#id &lt; 10"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">get</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"进入 service get 方法"</span>);</span><br><span class="line">        <span class="keyword">return</span> userRepository.findById(id).orElse(<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@CachePut</span>(value = <span class="string">"user"</span>, key = <span class="string">"#user.id"</span>, condition = <span class="string">"#user.id &lt; 10"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">save</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"进入 service save 方法"</span>);</span><br><span class="line">        <span class="keyword">return</span> userRepository.save(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@CachePut</span>(value = <span class="string">"user"</span>, key = <span class="string">"#user.id"</span>, condition = <span class="string">"#user.id &lt; 10"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">update</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"进入 service update 方法"</span>);</span><br><span class="line">        <span class="keyword">return</span> userRepository.save(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Evict 清除缓存，一般用在删除方法之上，在删除时，也将缓存数据清空</span></span><br><span class="line">    <span class="meta">@CacheEvict</span>(value = <span class="string">"user"</span>, key = <span class="string">"#id"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"进入 service delete 方法"</span>);</span><br><span class="line">        userRepository.deleteById(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上图中有一些是属于 <code>org.springframework.cache.annotation.*</code> 包下面的注解。这些注解定义我们要缓存的数据，规则等信息。</p>
+<ul>
+<li><p><code>Cacheable</code> 对应 <code>get</code> 方法。查询数据中进行缓存，<code>value</code> 对应的是仓库，缓存的数据为方法 <code>return</code> 的数据</p>
+</li>
+<li><p><code>CachePut</code> 对应 <code>post</code>，<code>put</code> 方法。用在插入或者更新时，将变动的信息更新到缓存。</p>
+</li>
+<li><p><code>CacheEvict</code> 对应 <code>delete</code> 方法。用在需要将缓存中的数据移除的时候。</p>
+</li>
+</ul>
+<p>更多详细的文档请访问：<a href="https://docs.spring.io/spring/docs/4.3.15.RELEASE/spring-framework-reference/html/cache.html" target="_blank" rel="noopener">https://docs.spring.io/spring/docs/4.3.15.RELEASE/spring-framework-reference/html/cache.html</a></p>
+<h1 id="如何验证缓存已经正常运行？"><a href="#如何验证缓存已经正常运行？" class="headerlink" title="如何验证缓存已经正常运行？"></a>如何验证缓存已经正常运行？</h1><p>在项目中执行以下测试用例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTest3</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    User u1 = <span class="keyword">new</span> User();</span><br><span class="line">    u1.setId(<span class="number">1</span>);</span><br><span class="line">    u1.setName(<span class="string">"曾阿牛"</span>);</span><br><span class="line">    u1.setAge(<span class="number">18</span>);</span><br><span class="line">    userService.save(u1);</span><br><span class="line">    User u3 = userService.get(<span class="number">1</span>);</span><br><span class="line">    System.out.println(<span class="string">"第一次查询："</span> + u3.getAge());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>发现 <code>Mysql</code> 和 <code>Redis</code> 缓存中同时多了以下数据：</p>
+<p><code>redis:</code><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) <span class="string">"user::1"</span></span><br><span class="line">2) <span class="string">"runtime"</span></span><br><span class="line">3) <span class="string">"caches"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>mysql:</code><br><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190412_redis_01.png" alt=""></p>
+<blockquote>
+<p>以上两张图片证明了，我们不仅将数据保存到了 <code>Mysql</code> 数据库中，还将数据同时添加到了缓存当中。此时，如果我们再单独的执行 <code>userService.get(1)</code> 方法，那么查询会直接将 <code>Redis</code> 缓存中的数据返回，这样相对于从数据库查询数据速度要快很多</p>
+</blockquote>
+<h1 id="如何保证-Mysql-和-Redis-数据的一致性？"><a href="#如何保证-Mysql-和-Redis-数据的一致性？" class="headerlink" title="如何保证 Mysql 和 Redis 数据的一致性？"></a>如何保证 Mysql 和 Redis 数据的一致性？</h1><p><strong>Question:</strong> 这个时候可能有人会问？那我数据的增删改查怎么办？我的数据要更新，更新后数据库里面的数据和缓存不一致怎么办？那岂不是缓存里面的数据就变成脏数据了？缓存的设置怎么设置条件，比如：我们只想缓存 <code>id</code> 小于 <code>10</code> 的用户的数据，应该怎么做？</p>
+<p><strong>Answer:</strong> 其实解决办法也不是很复杂，我们只需要在所有可能操作要这个对应数据的地方加上对应的缓存注解就可以，例如：更新数据库时也更新缓存就可以了。具体的代码在上面的代码上已经有了。大家可以下载代码自行检验。添加以下条件进行过滤就可以了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CachePut</span>(value = <span class="string">"user"</span>, key = <span class="string">"#user.id"</span>, condition = <span class="string">"#user.id &lt; 10"</span>)</span><br></pre></td></tr></table></figure>
+<p>接下来我们来验证一下过滤条件是否生效，分别运行一下两个测试用例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTest3</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    User u1 = <span class="keyword">new</span> User();</span><br><span class="line">    u1.setId(<span class="number">9</span>);</span><br><span class="line">    u1.setName(<span class="string">"灭绝师太"</span>);</span><br><span class="line">    u1.setAge(<span class="number">50</span>);</span><br><span class="line">    userService.save(u1);</span><br><span class="line">    User u3 = userService.get(<span class="number">9</span>);</span><br><span class="line">    System.out.println(<span class="string">"第一次查询："</span> + u3.getAge());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTest3</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    User u1 = <span class="keyword">new</span> User();</span><br><span class="line">    u1.setId(<span class="number">11</span>);</span><br><span class="line">    u1.setName(<span class="string">"张三丰"</span>);</span><br><span class="line">    u1.setAge(<span class="number">108</span>);</span><br><span class="line">    userService.save(u1);</span><br><span class="line">    User u3 = userService.get(<span class="number">11</span>);</span><br><span class="line">    System.out.println(<span class="string">"第一次查询："</span> + u3.getAge());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时在 <code>Mysql</code> 和 <code>Redis</code> 中的数据状态如下：</p>
+<p><code>redis:</code><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) <span class="string">"user::1"</span></span><br><span class="line">2) <span class="string">"runtime"</span></span><br><span class="line">3) <span class="string">"caches"</span></span><br><span class="line">4) <span class="string">"user::9"</span></span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>mysql:</code><br><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190412_redis_03.png" alt=""></p>
+<blockquote>
+<p>可以发现系统并没有将 <code>id</code> 为 <code>11</code> 的数据保存在缓存当中。</p>
+</blockquote>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><p><a href="https://github.com/llyer/learn-spring/tree/master/spring-boot-mybatis" target="_blank" rel="noopener">配套代码</a></p>
+</li>
+<li><p><a href="https://docs.spring.io/spring/docs/4.3.15.RELEASE/spring-framework-reference/html/cache.html" target="_blank" rel="noopener">Spring Cache 官方文档</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/kevinws/p/6281395.html" target="_blank" rel="noopener">Redis 常用命令整理</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/0ed7e88325dd" target="_blank" rel="noopener">设置 Redis 服务可以被远程访问</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/zhi.png" alt="面条先生 wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎关注我的 “知乎日报” 小程序</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+          
+            <a href="/tags/Redis/" rel="tag"># Redis</a>
+          
+            <a href="/tags/缓存/" rel="tag"># 缓存</a>
+          
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/12/20190412_Git 提交规范git/" rel="next" title="Git 提交规范">
+                <i class="fa fa-chevron-left"></i> Git 提交规范
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">面条先生</p>
+              <p class="site-description motion-element" itemprop="description">文章基本靠抄，视频基本靠翻译，更新基本看心情O(∩_∩)O~~~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/llyer" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/18298722" target="_blank" title="哔哩哔哩">
+                      
+                        <i class="fa fa-fw fa-globe"></i>哔哩哔哩</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/li-lu-yang-86" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://douban.com/people/51775171" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://man.linuxde.net/" target="_blank" title="Linux命令大全">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Linux命令大全</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目配置"><span class="nav-number">1.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何验证缓存已经正常运行？"><span class="nav-number">2.</span> <span class="nav-text">如何验证缓存已经正常运行？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何保证-Mysql-和-Redis-数据的一致性？"><span class="nav-number">3.</span> <span class="nav-text">如何保证 Mysql 和 Redis 数据的一致性？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">面条先生</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
