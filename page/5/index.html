@@ -272,6 +272,248 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/20180626_Kubernetes 的 Web 客户端 kubernetes-dashboard 安装教程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/26/20180626_Kubernetes 的 Web 客户端 kubernetes-dashboard 安装教程/" itemprop="url">Kubernetes 的 Web 客户端 kubernetes-dashboard 安装教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-26T09:58:01+08:00">
+                2018-06-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-10T11:19:03+08:00">
+                2019-04-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!-- ‎
+    修改时间：2018‎年‎6‎月‎27‎日，‏‎16:07:21
+    Author: liluyang
+-->
+<h1 id="在kubernetes集群中安装dashboard插件"><a href="#在kubernetes集群中安装dashboard插件" class="headerlink" title="在kubernetes集群中安装dashboard插件"></a>在kubernetes集群中安装dashboard插件</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>在之前我们已经成功部署了一个简单的Kubernete测试集群，接下来我们要来安装<a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/" target="_blank" rel="noopener">Dashboard</a>插件，<a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/" target="_blank" rel="noopener">Dashboard</a>是一个基于Web的Kubernetes用户界面。在安装之前呢我们首先要检查一下 Kubernetes 和 Dashboard 的兼容性</p>
+<table>
+<thead>
+<tr>
+<th>Dashboard \ Kubernetes</th>
+<th>1.4</th>
+<th>1.5</th>
+<th>1.6</th>
+<th>1.7</th>
+<th>1.8</th>
+<th>1.9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.4</td>
+<td>✓</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>✕</td>
+<td>✓</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+</tr>
+<tr>
+<td>1.6</td>
+<td>✕</td>
+<td>✕</td>
+<td>✓</td>
+<td>?</td>
+<td>✕</td>
+<td>✕</td>
+</tr>
+<tr>
+<td>1.7</td>
+<td>✕</td>
+<td>✕</td>
+<td>?</td>
+<td>✓</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>1.8</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+<td>✕</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>✓</code> 支持的版本</li>
+<li><code>?</code> 由于突破了Kubernetes API版本之间的变化，某些功能可能无法在 Dashboard（日志，搜索等）中使用。</li>
+<li><code>✕</code> 不支持的版本</li>
+</ul>
+<p>官网wiki地址：<a href="https://github.com/kubernetes/dashboard/wiki/Compatibility-matrix" target="_blank" rel="noopener">Dashboard 和 Kubernetes 的兼容性矩阵</a></p>
+<h2 id="下载镜像，修改镜像名称"><a href="#下载镜像，修改镜像名称" class="headerlink" title="下载镜像，修改镜像名称"></a>下载镜像，修改镜像名称</h2><p>根据上个表格的兼容性可知，我们之前部署的 Kubernetes 版本为1.9.1，所有我们可是使用的 Dashboard 版本为 1.8 以上。执行以下命令下载镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull liluyang/kubernetes-dashboard-amd64:latest</span><br><span class="line">docker tag liluyang/kubernetes-dashboard-amd64:latest k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.3</span><br><span class="line">docker rmi liluyang/kubernetes-dashboard-amd64:latest</span><br></pre></td></tr></table></figure>
+<h2 id="安装-Dashboard"><a href="#安装-Dashboard" class="headerlink" title="安装 Dashboard"></a>安装 Dashboard</h2><p>将文件 <a href="20180626_kubernetes_dashboard/kubernetes-dashboard.yaml.txt">kubernetes-dashboard.yaml</a> 下载到本地，执行以下命令安装 Dashboard</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl create -f kubernetes-dashboard.yaml</span></span><br><span class="line">secret <span class="string">"kubernetes-dashboard-certs"</span> created</span><br><span class="line">serviceaccount <span class="string">"kubernetes-dashboard"</span> created</span><br><span class="line">role.rbac.authorization.k8s.io <span class="string">"kubernetes-dashboard-minimal"</span> created</span><br><span class="line">rolebinding.rbac.authorization.k8s.io <span class="string">"kubernetes-dashboard-minimal"</span> created</span><br><span class="line">deployment.apps <span class="string">"kubernetes-dashboard"</span> created</span><br><span class="line">service <span class="string">"kubernetes-dashboard"</span> created</span><br><span class="line"><span class="comment"># kubectl get pod -n kube-system -o wide</span></span><br><span class="line">NAME                                    READY     STATUS    RESTARTS   AGE       IP               NODE</span><br><span class="line">canal-4n2tw                             3/3       Running   0          2h        192.168.85.134   ubuntu</span><br><span class="line">etcd-ubuntu                             1/1       Running   0          2h        192.168.85.134   ubuntu</span><br><span class="line">kube-apiserver-ubuntu                   1/1       Running   0          2h        192.168.85.134   ubuntu</span><br><span class="line">kube-controller-manager-ubuntu          1/1       Running   0          2h        192.168.85.134   ubuntu</span><br><span class="line">kube-dns-6f4fd4bdf-gpvh4                3/3       Running   0          2h        10.244.0.5       ubuntu</span><br><span class="line">kube-proxy-kbdvk                        1/1       Running   0          2h        192.168.85.134   ubuntu</span><br><span class="line">kube-scheduler-ubuntu                   1/1       Running   0          2h        192.168.85.134   ubuntu</span><br><span class="line">kubernetes-dashboard-5bd6f767c7-cmvb4   1/1       Running   0          8s        10.244.0.6       ubuntu</span><br></pre></td></tr></table></figure>
+<p>执行成功后可以发现 dashboard 理论上已经安装成功了，接下来我们就需要验证一下</p>
+<h2 id="访问-dashboard-界面"><a href="#访问-dashboard-界面" class="headerlink" title="访问 dashboard 界面"></a>访问 dashboard 界面</h2><p>有多种方式可以访问仪表板 Dashboard UI; 可以使用kubectl命令行代理访问，也可以使用Web浏览器访问Kubernetes主apiserver。</p>
+<h3 id="命令行代理"><a href="#命令行代理" class="headerlink" title="命令行代理"></a>命令行代理</h3><p>您可以通过运行以下命令使用kubectl命令行工具开启代理用来访问仪表板：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl proxy</span><br></pre></td></tr></table></figure>
+<p>Kubectl将处理apiserver的身份验证，并使Dashboard在<a href="http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/" target="_blank" rel="noopener">http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/</a> 链接中可以访问，如下图所示：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/dashboard-01.png" alt=""></p>
+<p>注意：Dashboard UI 只能从执行该命令的机器访问。执行<code>kubectl proxy --help</code>可以查看详细的使用方法。</p>
+<h3 id="直接访问-Master-Server"><a href="#直接访问-Master-Server" class="headerlink" title="直接访问 Master Server"></a>直接访问 Master Server</h3><p>暴露服务的方式可以将 NodePort 映射到物理机的端口号，用于客户端浏览器的访问。在上面的 <a href="20180626_kubernetes_dashboard/kubernetes-dashboard.yaml.txt">kubernetes-dashboard.yaml</a> 文件中，我们已经将 Dashboard 的服务暴露了出来，具体的配置如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------- Dashboard Service ------------------- #</span></span><br><span class="line"><span class="comment"># 暴露服务到物理机端口号，使得服务可以从外部访问</span></span><br><span class="line"></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    k8s-app:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">kube-system</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">NodePort</span></span><br><span class="line"><span class="attr">  ports:</span></span><br><span class="line"><span class="attr">    - port:</span> <span class="number">443</span></span><br><span class="line"><span class="attr">      targetPort:</span> <span class="number">8443</span></span><br><span class="line"><span class="attr">      nodePort:</span> <span class="number">30000</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    k8s-app:</span> <span class="string">kubernetes-dashboard</span></span><br></pre></td></tr></table></figure>
+<p>接下来我们使用<a href="http://www.firefox.com.cn/" target="_blank" rel="noopener">火狐浏览器</a>直接访问就可以了，输入 Master 节点的 IP 地址和对应的 NodePort 端口，例如 <a href="https://192.168.85.134:30000" target="_blank" rel="noopener">https://192.168.85.134:30000</a>，就可以访问我们的 Dashboard 界面了。如下图所示：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/dashboard-login.png" alt=""></p>
+<p>注意浏览器地址和 <code>kube proxy</code> 方式访问时的地址是不同的。使用暴露服务的访问可以在任何主机上访问 Dashboard，只要满足网络可达的条件即可</p>
+<h2 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h2><p>登录dashboard 的时候支持Kubeconfig 和token 两种认证方式，Kubeconfig 中也依赖 token 字段，所以生成 token 这一步是必不可少的。</p>
+<h3 id="生成-Token"><a href="#生成-Token" class="headerlink" title="生成 Token"></a>生成 Token</h3><p>我们创建一个admin用户并授予admin 角色绑定，使用下面的yaml文件创建admin用户并赋予他管理员权限，然后就可以通过token 登陆dashbaord，这种认证方式本质实际上是通过Service Account 的身份认证加上Bearer token请求 API server 的方式实现，参考 Kubernetes 中的认证。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">kind: ClusterRoleBinding</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1beta1</span><br><span class="line">metadata:</span><br><span class="line">  name: admin</span><br><span class="line">  annotations:</span><br><span class="line">    rbac.authorization.kubernetes.io/autoupdate: <span class="string">"true"</span></span><br><span class="line">roleRef:</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: cluster-admin</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">subjects:</span><br><span class="line">- kind: ServiceAccount</span><br><span class="line">  name: admin</span><br><span class="line">  namespace: kube-system</span><br><span class="line">---</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: admin</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    kubernetes.io/cluster-service: <span class="string">"true"</span></span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br></pre></td></tr></table></figure>
+<p>创建用户admin用户，关联cluster-admin角色，拥有极高的权限。查询该用户对应的token，具体的返回信息如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubectl apply -f ./admin.yaml </span></span><br><span class="line">clusterrolebinding.rbac.authorization.k8s.io <span class="string">"admin"</span> created</span><br><span class="line">serviceaccount <span class="string">"admin"</span> created</span><br><span class="line"><span class="comment"># kubectl get secret -n kube-system|grep admin-token</span></span><br><span class="line">admin-token-lvlzs                                kubernetes.io/service-account-token   3         37s</span><br><span class="line"><span class="comment"># kubectl get secret admin-token-d5jsg -o jsonpath=&#123;.data.token&#125; -n kube-system |base64 -d</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 会生成一串很长的base64后的字符串，复制这个 token 到浏览器进行登陆</span></span><br></pre></td></tr></table></figure>
+<p>然后在Dashboard登录页面上直接使用上面得到的 Token 字符串即可登录，这样就可以使用可视化界面操作整个kubernetes集群，如下图所示：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/dashboard-login-success.png" alt=""></p>
+<p>到此为止，我们的 Dashboard 插件已经安装成功，可以正常使用。</p>
+<h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><p>如果在浏览器访问 Dashboard 的过程中出现以下问题</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/dashboard-https-problem.png" alt=""></p>
+<p>这是因为我们刚刚部署的集群并没有合适的证书所造成的问题，点击下面的 添加例外，信任即可。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/" target="_blank" rel="noopener">官方：Web UI (Dashboard) 简介</a></li>
+<li><a href="https://github.com/kubernetes/dashboard/wiki/Compatibility-matrix" target="_blank" rel="noopener">官方：Dashboard 和 Kubernetes 的兼容性矩阵</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/20180626_使用 kubeadm 安装 kubernetes 的教程/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1525,7 +1767,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1538,7 +1780,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
