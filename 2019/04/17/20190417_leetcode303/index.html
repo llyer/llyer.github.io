@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Leetcode,算法,水题,数学,">
+  <meta name="keywords" content="Leetcode,算法,动态规划,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="问题连接：7. 整数反转 123456789101112131415class Solution &amp;#123;    public static int reverse(int x) &amp;#123;        int result = 0;        // 当 x = 0 时，证明最后一位被处理完成，处理结束        while (x != 0) &amp;#123;            i">
-<meta name="keywords" content="Leetcode,算法,水题,数学">
+<meta name="description" content="问题连接：303. 区域和检索 - 数组不可变 Problem:给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。 示例：12345给定 nums = [-2, 0, 3, -5, 2, -1]，求和函数为 sumRange()sumRange(0, 2) -&amp;gt; 1sumRange(2, 5) -&amp;gt; -1sumRang">
+<meta name="keywords" content="Leetcode,算法,动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode7. 整数反转">
-<meta property="og:url" content="http://yoursite.com/2019/01/04/20190104_leetcode7/index.html">
+<meta property="og:title" content="leetcode303. 区域和检索 - 数组不可变">
+<meta property="og:url" content="http://yoursite.com/2019/04/17/20190417_leetcode303/index.html">
 <meta property="og:site_name" content="李鲁杨的个人博客">
-<meta property="og:description" content="问题连接：7. 整数反转 123456789101112131415class Solution &amp;#123;    public static int reverse(int x) &amp;#123;        int result = 0;        // 当 x = 0 时，证明最后一位被处理完成，处理结束        while (x != 0) &amp;#123;            i">
+<meta property="og:description" content="问题连接：303. 区域和检索 - 数组不可变 Problem:给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。 示例：12345给定 nums = [-2, 0, 3, -5, 2, -1]，求和函数为 sumRange()sumRange(0, 2) -&amp;gt; 1sumRange(2, 5) -&amp;gt; -1sumRang">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-04T09:14:57.904Z">
+<meta property="og:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190417_leetcode_01.png">
+<meta property="og:updated_time" content="2019-04-17T14:25:41.661Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode7. 整数反转">
-<meta name="twitter:description" content="问题连接：7. 整数反转 123456789101112131415class Solution &amp;#123;    public static int reverse(int x) &amp;#123;        int result = 0;        // 当 x = 0 时，证明最后一位被处理完成，处理结束        while (x != 0) &amp;#123;            i">
+<meta name="twitter:title" content="leetcode303. 区域和检索 - 数组不可变">
+<meta name="twitter:description" content="问题连接：303. 区域和检索 - 数组不可变 Problem:给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。 示例：12345给定 nums = [-2, 0, 3, -5, 2, -1]，求和函数为 sumRange()sumRange(0, 2) -&amp;gt; 1sumRange(2, 5) -&amp;gt; -1sumRang">
+<meta name="twitter:image" content="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190417_leetcode_01.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/04/20190104_leetcode7/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/17/20190417_leetcode303/">
 
 
 
 
 
-  <title>leetcode7. 整数反转 | 李鲁杨的个人博客</title>
+  <title>leetcode303. 区域和检索 - 数组不可变 | 李鲁杨的个人博客</title>
   
 
 
@@ -273,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/04/20190104_leetcode7/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/20190417_leetcode303/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -290,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode7. 整数反转</h1>
+          <h1 class="post-title" itemprop="name headline">leetcode303. 区域和检索 - 数组不可变</h1>
         
 
         <div class="post-meta">
@@ -302,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
-                2019-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T22:18:26+08:00">
+                2019-04-17
               </time>
             
 
@@ -318,8 +320,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T17:14:57+08:00">
-                2019-04-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-17T22:25:41+08:00">
+                2019-04-17
               </time>
             
           </span>
@@ -352,8 +354,17 @@
       
 
       
-        <p>问题连接：<a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">7. 整数反转</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 当 x = 0 时，证明最后一位被处理完成，处理结束</span></span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> pop = x % <span class="number">10</span>;</span><br><span class="line">            x = x / <span class="number">10</span>;</span><br><span class="line">            <span class="comment">// 要在可能会发生溢出的操作前，对溢出进行判断</span></span><br><span class="line">            <span class="keyword">if</span> (result &gt; Integer.MAX_VALUE / <span class="number">10</span> || (result == Integer.MAX_VALUE &amp;&amp; pop &gt; <span class="number">7</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (result &lt; Integer.MIN_VALUE / <span class="number">10</span> || (result == Integer.MIN_VALUE &amp;&amp; pop &lt; -<span class="number">8</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            result = result * <span class="number">10</span> + pop;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>问题连接：<a href="https://leetcode-cn.com/problems/range-sum-query-immutable/comments/" target="_blank" rel="noopener">303. 区域和检索 - 数组不可变</a></p>
+<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h1><p>给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。</p>
+<p><strong>示例：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [-2, 0, 3, -5, 2, -1]，求和函数为 sumRange()</span><br><span class="line"></span><br><span class="line">sumRange(0, 2) -&gt; 1</span><br><span class="line">sumRange(2, 5) -&gt; -1</span><br><span class="line">sumRange(0, 5) -&gt; -3</span><br></pre></td></tr></table></figure></p>
+<p><strong>说明:</strong></p>
+<p>你可以假设数组不可变。<br>会多次调用 sumRange 方法。</p>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> me.liluyang.leetcode;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sums[];</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 303. 区域和检索 - 数组不可变</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * url: https://leetcode-cn.com/problems/range-sum-query-immutable/comments/</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 解题思路：最简单的动态规划</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 题目要求的数据是第 i 天到第 j 天的数据和，如果每次求解时都进行循环，效率就比较低调用 n 次 时间复杂度就是 O（n*n）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 这时我们通过生成一个 sums 数组数据和，sum是从第零个节点到第 i 个节点的数据和</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 这样我们计算第 i 个元素到第 j 个元素的数据和，就不用了再从 nums 数组求值，变成了从 sums 数据求值：</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * return i == 0 ? sums[j] : sums[j] - sums[i - 1];</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 时间复杂度约为 O(nums.length) + O(n)，时间复杂度会降低很多</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NumArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        sums = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        sums[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            sums[i] = sums[i - <span class="number">1</span>] + nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> i == <span class="number">0</span> ? sums[j] : sums[j] - sums[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果截图:</strong></p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190417_leetcode_01.png" alt=""></p>
+<p>~~~</p>
+<hr>
+
       
     </div>
     
@@ -382,9 +393,7 @@
           
             <a href="/tags/算法/" rel="tag"># 算法</a>
           
-            <a href="/tags/水题/" rel="tag"># 水题</a>
-          
-            <a href="/tags/数学/" rel="tag"># 数学</a>
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
           
         </div>
       
@@ -397,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/04/20190103_leetcode1/" rel="next" title="leetcode1. 两数之和">
-                <i class="fa fa-chevron-left"></i> leetcode1. 两数之和
+              <a href="/2019/04/16/20190416_观察者模式学习笔记/" rel="next" title="观察者模式学习笔记">
+                <i class="fa fa-chevron-left"></i> 观察者模式学习笔记
               </a>
             
           </div>
@@ -406,10 +415,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/04/20190106_leetcode13/" rel="prev" title="leetcode13. 罗马数字转整数">
-                leetcode13. 罗马数字转整数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -461,8 +466,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -547,6 +561,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Answer"><span class="nav-number">2.</span> <span class="nav-text">Answer:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
