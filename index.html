@@ -272,6 +272,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/20190416_观察者模式学习笔记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/20190416_观察者模式学习笔记/" itemprop="url">观察者模式学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T23:00:00+08:00">
+                2019-04-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-17T16:32:24+08:00">
+                2019-04-17
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>观察者模式，类结构图如下所示：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190416_observer_01.png" alt=""></p>
+<p>对象接口（被观察者）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.design_pattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 被观察者</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 有 添加，删除观察者的方法和更新观察者状态的方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">register</span><span class="params">(Observer observer)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(Observer observer)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">(String message)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对象的实现类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.design_pattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Timer;</span><br><span class="line"><span class="keyword">import</span> java.util.TimerTask;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 被观察者</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 被观察者一般是内容提供者</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 有一个容器，来盛放所有的观察者</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 有 添加，删除观察者的方法和更新观察者状态的方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewsPaper</span> <span class="keyword">implements</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    List&lt;Observer&gt; users;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NewsPaper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        users = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        generateNews();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 模拟产生新闻，每个2s发送一次</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">generateNews</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Timer timer = <span class="keyword">new</span> Timer();</span><br><span class="line">        timer.schedule(<span class="keyword">new</span> TimerTask() &#123;</span><br><span class="line">            <span class="keyword">int</span> titleCount = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> contentCount = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                send(<span class="string">"title:"</span> + titleCount++ + <span class="string">"content:"</span> + contentCount++);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">1000</span>, <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注册用户（消费者）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> observer</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Observer observer)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!users.contains(observer)) &#123;</span><br><span class="line">            users.add(observer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 移除用户（观察者）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> observer</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(Observer observer)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (users.contains(observer)) &#123;</span><br><span class="line">            users.remove(observer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 报社推送文章</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer observer: users) &#123;</span><br><span class="line">            observer.receive(message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>核心方法：添加订阅者，删除订阅者，更新消息接口</p>
+<p>观察者接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.design_pattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 观察者</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">receive</span><span class="params">(String message)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>观察者的实现类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.design_pattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 被观察者</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 有一个容器，来盛放所有的观察者</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 有 添加，删除观察者的方法和更新观察者状态的方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Observer</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据输出，每个用户都会受到报社每间隔一秒发送过来的信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receive</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(id + <span class="string">"收到的报社发送的消息是："</span> +  message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>测试类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.design_pattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试主函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        NewsPaper newsPaper = <span class="keyword">new</span> NewsPaper();</span><br><span class="line">        User user;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            user = <span class="keyword">new</span> User(<span class="string">"user:"</span>+i);</span><br><span class="line">            newsPaper.register(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>核心方法：订阅接口、这个接口是每次被订阅者更新消息时：需要被被订阅者调用的接口，在这个接口里面订阅者实现具体的业务内容。</p>
+<h1 id="应用场景类似于："><a href="#应用场景类似于：" class="headerlink" title="应用场景类似于："></a>应用场景类似于：</h1><ol>
+<li><p>报社的用户订阅报纸</p>
+<p> 报社是对象，所有的用户是观察者，用户订阅报社的报纸期刊，然后报社发布期刊之后，用户收到报纸</p>
+</li>
+<li><p>MVC 模式</p>
+<p> model 是对象，是被订阅者。view 是观察者，观察者监听model，如果 model 的内容发生了变化，那么view 监听到内容变化，更新视图的内容</p>
+</li>
+<li><p>互联网产品中的订阅模式</p>
+<p> 微博里面的关注，只有关注了之后，被关注者发送了内容之后关注着才可以收到推送</p>
+</li>
+<li><p>前端的一些 MVVM 框架也有用到订阅-发布模式，类似于 Vue.js</p>
+</li>
+</ol>
+<h1 id="观察者模式和-MVC-的关系详解"><a href="#观察者模式和-MVC-的关系详解" class="headerlink" title="观察者模式和 MVC 的关系详解"></a>观察者模式和 MVC 的关系详解</h1><p>MVC模式是一种架构模式，它包含三个角色：模型(Model)，视图(View)和控制器(Controller)。观察者模式可以用来实现MVC模式，观察者模式中的观察目标就是MVC模式中的模型(Model)，而观察者就是MVC中的视图(View)，控制器(Controller)充当两者之间的中介者(Mediator)。当模型层的数据发生改变时，视图层将自动改变其显示内容。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><p><a href="https://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/observer.html" target="_blank" rel="noopener">观察者模式</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/33373207" target="_blank" rel="noopener">从Vue源码看观察者模式</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/swengineer/article/details/6268244" target="_blank" rel="noopener">观察者模式应用场景实例 哈票网</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/15/20190415_leetcode121/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1652,213 +1814,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/20190403_HTTPS 配置教程/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/03/20190403_HTTPS 配置教程/" itemprop="url">HTTPS 配置教程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-03T13:33:01+08:00">
-                2019-04-03
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-14T14:34:52+08:00">
-                2019-04-14
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本文将以本站 <a href="http://liluyang.me" target="_blank" rel="noopener">http://liluyang.me</a> 升级到 <a href="https://liluyang.me" target="_blank" rel="noopener">https://liluyang.me</a> 的过程来分享一下 <code>https</code> 的原理，<code>http</code> 和 <code>https</code> 的区别，以及如何将网站从 <code>http</code> 升级到 <code>https</code>。</p>
-<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="为什么要用-https？"><a href="#为什么要用-https？" class="headerlink" title="为什么要用 https？"></a>为什么要用 <code>https</code>？</h2><p><code>https</code> 更安全。甚至为了安全，一个专业可靠的网站， <code>https</code> 是必须的。 <code>Firefox</code> 和 <code>Chrome</code> 都计划将没有配置 <code>SSL</code> 加密的 <code>https</code> 网站标记为不安全（貌似 <code>Firefox50</code> 已经这么干了），目前它们也正在联合其他相关的基金会与公司推动整个互联网 <code>https</code> 化，现在大家访问的一些主要的网站。如 <code>Google</code> 多年前就已经全部启用 <code>https</code> ，国内的淘宝、搜狗、知乎、百度等等也全面 <code>https</code> 了。甚至 <code>Google</code> 的搜索结果也正在给予 <code>https</code> 的网站更高的排名和优先收录权。</p>
-<h2 id="要需要掌握哪些知识？"><a href="#要需要掌握哪些知识？" class="headerlink" title="要需要掌握哪些知识？"></a>要需要掌握哪些知识？</h2><p>拥有基础的 <code>Linux</code> 系统知识，常用的 <code>Shell</code> 命令。</p>
-<h2 id="需要有什么资源？"><a href="#需要有什么资源？" class="headerlink" title="需要有什么资源？"></a>需要有什么资源？</h2><p>如果你只是要测试 <code>https</code>，请查看<a href="http://www.ruanyifeng.com/blog/2018/02/nginx-docker.html" target="_blank" rel="noopener">Nginx 容器教程</a></p>
-<p>如果你要在生产环境使用 <code>https</code>，请接着往下看：</p>
-<p>一个服务器，一个域名，并且已经正确的将域名指向了你的服务器，并且拥有服务器的 <code>SSH</code> 权限</p>
-<p><code>Tips:</code> 需要注意的是如果是在国内阿里云或者腾讯云购买的域名请备案，否则即使你正确的配置了你的域名，可能也依然无法访问你的服务器，因为在国内备案是必须的。</p>
-<h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><h3 id="http-和-https"><a href="#http-和-https" class="headerlink" title="http 和 https"></a>http 和 https</h3><p>简单来说，<code>http</code> 是一个传输网页内容的协议，比如你看到的 <code>http</code> 开头的网站 <a href="http://www.163.com，其网页上的文字、图片、" target="_blank" rel="noopener">http://www.163.com，其网页上的文字、图片、</a> <code>CSS</code>、<code>JS</code> 等文件都是通过 <code>http</code> 协议传输到我们的浏览器，然后被我们看到。</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_01.gif" alt=""></p>
-<p>而 <code>https</code> 可以理解为 <code>HTTP over SSL/TLS</code> ，好端端的 <code>http</code> 为什么需要 <code>over SSL/TLS</code> 呢，因为 <code>http</code> 是明文传输的，通过 <code>http</code> 协议传输的内容很容易被偷看和篡改，为了安全（你肯定不想被人偷看或者篡改网页内容吧，比如网站银行密码什么的。）就为 <code>http</code> 协议再加上了一层 <code>SSL/TLS</code> 安全协议，所以就有了 <code>https</code>。</p>
-<h3 id="SSL-TLS"><a href="#SSL-TLS" class="headerlink" title="SSL/TLS"></a>SSL/TLS</h3><p><code>HTTP over SSL/TLS</code> 字面意思就是带 <code>安全套接层</code> 的 <code>http</code> 协议，内心纯洁的同学也可以理解为 <code>带安全套的 http</code>，因为带了安全套，所以当然会比较安全（/(ㄒoㄒ)/~~）。其中 <code>SSL</code> 是 <code>Secure Sockets Layer</code> 的缩写，是 “安全套接层” 的意思。<code>TLS</code> 是 <code>Transport Layer Security</code> 的缩写，是 <code>传输层安全协议</code> 的意思。<code>SSL</code> 和 <code>TLS</code> 是同一个东西的不同阶段，理解为同一个东西也行，都是安全协议就对了。</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_02.png" alt=""></p>
-<h3 id="CA"><a href="#CA" class="headerlink" title="CA"></a>CA</h3><p>证书颁发机构（CA, Certificate Authority）即颁发数字证书的机构。是负责发放和管理数字证书的权威机构，并作为电子商务交易中受信任的第三方，承担公钥体系中公钥的合法性检验的责任。</p>
-<h3 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h3><p><code>Let&#39;s Encrypt</code> 成立于 <code>2015</code> 年的数字证书认证机构，成立的目的就是为了推行 <code>https</code> 协议在全世界的普及。主要赞助商包括电子前哨基金会、Mozilla基金会、Akamai以及思科。<code>Let&#39;s Encrypt</code> 旨在以自动化流程消除手动创建和安装证书的复杂流程，并推广使万维网服务器的加密连接无所不在，为安全网站提供免费的 <code>SSL/TLS</code> 证书。</p>
-<p>说人话就是 <code>Let’s Encrypt</code> 就是一个可以给我们颁发授信证书的 <code>CA</code> 组织。</p>
-<h3 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h3><p><code>Let’s Encrypt</code> 官方推出的授信证书生成客户端。可以在 <code>Debian</code>，<code>CentOS</code> 等主流系统上运行</p>
-<p>官方链接如下：<a href="https://certbot.eff.org/" target="_blank" rel="noopener">https://certbot.eff.org/</a></p>
-<h1 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h1><p>要升级到 <code>https</code> 首先要获得 <code>CA</code> 签发的安全证书文件，我们选择的证书签发机构是 <code>Let’s Encrypt</code>，目前 <code>Let’s Encrypt</code> 推荐的方法是安装 <code>Certbot</code> 工具通过校验服务器和域名的归属权方式来获取证书</p>
-<h2 id="安装Certbot"><a href="#安装Certbot" class="headerlink" title="安装Certbot"></a>安装Certbot</h2><p>如果你的英文能力比较好，那么请访问 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot官网</a> 根据官方教程来下载，官方教程更加细致，出了问题也方便查看官方的第一手资料。当然你也可以根据以下命令来安装 <code>Certbot</code> 工具，这里我们以 <code>debian9</code> 系统为例来安装</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载 certbot，如果是 centOS 等内核，可以使用 yum 命令</span></span><br><span class="line">apt install certbot</span><br></pre></td></tr></table></figure>
-<h2 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h2><p><code>certbot</code> 安装成功后，我们有两种模式来获取证书</p>
-<h3 id="第一种模式-Webroot"><a href="#第一种模式-Webroot" class="headerlink" title="第一种模式 Webroot"></a>第一种模式 Webroot</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot certonly --webroot -w /root/docker_nginx/html -d liluyang.me -d www.liluyang.me</span><br></pre></td></tr></table></figure>
-<p>这个命令会为 <code>liluyang.com</code> 和 <code>www.liluyang.com</code> 这两个域名生成一个证书</p>
-<p><code>--webroot</code> 模式会在 <code>/root/docker_nginx/html</code> 中创建 <code>.well-known</code>文件夹，这个文件夹里面包含了一些验证文件，<code>certbot</code> 会通过访问 <code>example.com/.well-known/acme-challenge</code> 来验证你的域名是否绑定的这个服务器。这个文件夹就是你 <code>Nginx</code> 下 <code>index.html</code> 所在的目录，请自行根据自己服务器 <code>Nginx</code> 的配置情况修改这个参数。</p>
-<p>如果执行成功，命令行会大致输出以下参数表示成功：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/liluyang.me/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/liluyang.me/privkey.pem</span><br><span class="line">   Your cert will expire on 2019-07-01. To obtain a new or tweaked</span><br><span class="line">   version of this certificate <span class="keyword">in</span> the future, simply run certbot</span><br><span class="line">   again. To non-interactively renew *all* of your certificates, run</span><br><span class="line">   <span class="string">"certbot renew"</span></span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let<span class="string">'s Encrypt:   https://letsencrypt.org/donate</span></span><br><span class="line"><span class="string">   Donating to EFF:                    https://eff.org/donate-le</span></span><br></pre></td></tr></table></figure>
-<p>以上信息中包含了生成后的证书的位置，过期时间等信息，根据提示信息我们打开 <code>/etc/letsencrypt/live/</code> 文件夹，检查这个文件夹中是否有你生成的对应网站的证书文件，如果成功，应该如下图所示：</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_03.png" alt=""></p>
-<p>这个命令在大多数情况下都可以满足需求，如果失败了，请看下一种模式。</p>
-<h3 id="第二种模式-Standalone"><a href="#第二种模式-Standalone" class="headerlink" title="第二种模式 Standalone"></a>第二种模式 Standalone</h3><p>如果你已经通过第一种模式生成证书成功，请跳过这里，直接看下一章</p>
-<p>但是有些时候我们的一些服务并没有根目录，例如一些微服务，这时候使用 <code>--webroot</code> 就走不通了。<code>certbot</code> 还有另外一种模式 <code>--standalone</code>， 这种模式不需要指定网站根目录，他会自动启用服务器的 <code>443</code> 端口，来验证域名的归属。我们有其他服务（例如nginx）占用了 <code>443</code> 端口，就必须先停止这些服务，在证书生成完毕后，再启用。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot certonly --standalone -d example.com -d www.example.com</span><br></pre></td></tr></table></figure>
-<p>证书生成完毕后，我们可以在 <code>/etc/letsencrypt/live/</code> 目录下看到对应域名的文件夹，里面存放了指向证书的一些快捷方式。</p>
-<p>这时候我们的第一生成证书已经完成了，接下来就是配置我们的 <code>web</code> 服务器，启用 <code>HTTPS</code>。</p>
-<p><strong>如果生成失败，并且你自己搜索之后又没有能力解决，请在评论留言</strong></p>
-<p><strong>如果生成失败，并且你自己搜索之后又没有能力解决，请在评论留言</strong></p>
-<p><strong>如果生成失败，并且你自己搜索之后又没有能力解决，请在评论留言</strong></p>
-<h1 id="安装证书"><a href="#安装证书" class="headerlink" title="安装证书"></a>安装证书</h1><p>证书生成生成后，我们还要做最后的一步就是把证书的配置信息添加到 <code>nginx</code> 的 <code>conf</code> 目录的 <code>certs</code> 文件夹中。我个人的 <code>Nginx</code> 是通过 <code>docker</code> 镜像的方式运行的，并且我将本地的 <code>/root/docker_nginx/conf</code> 文件夹设置为了 <code>Nginx</code> 的配置文件夹，所以现在我们将证书 <code>cert.pem</code> 和 <code>privkey.pem</code> 拷贝到这个目录。配置目录如下</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_04.png" alt=""></p>
-<p>在 <code>Nginx</code> 的配置文件 <code>nginx.conf</code> 末尾添加以下配置，注意修改对应的配置参数，下面的配置模板仅供参考。</p>
-<p>如果存在 <code>conf.d/default.conf</code> 文件请优先修改此文件，具体原因请百度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 443 https 配置</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl http2;</span><br><span class="line">    server_name  liluyang.me www.liluyang.me;</span><br><span class="line"></span><br><span class="line">    ssl                      on;</span><br><span class="line">    ssl_certificate          /etc/nginx/certs/cert.pem;</span><br><span class="line">    ssl_certificate_key      /etc/nginx/certs/privkey.pem;</span><br><span class="line"></span><br><span class="line">    ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">    ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_prefer_server_ciphers   on;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>重启 Nginx</strong></p>
-<p>到此为止，我们就已经成功的完成了 <code>https</code> 的配置。 现在打开我的博客 <a href="https://liluyang.com" target="_blank" rel="noopener">https://liluyang.com</a> 就可以在浏览器端看到标有 <code>安全</code> 的网站标识字样了，如下图：</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_05.png" alt=""></p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_06.png" alt=""></p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>如果是 <code>docker</code> 部署的 <code>nginx</code>，最后重启启动 <code>docker</code> 时要将 <code>443（https）</code> 端口映射出来，否则无法访问服务器的 <code>443（https）</code> 端口的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">  --volume &quot;$PWD/html&quot;:/usr/share/nginx/html \</span><br><span class="line">  --volume &quot;$PWD/conf&quot;:/etc/nginx \</span><br><span class="line">  -p 80:80 \</span><br><span class="line">  -p 443:443 \</span><br><span class="line">  -d \</span><br><span class="line">  nginx</span><br></pre></td></tr></table></figure></p>
-<h1 id="可选配置"><a href="#可选配置" class="headerlink" title="可选配置"></a>可选配置</h1><h2 id="强制使用-https-访问网站"><a href="#强制使用-https-访问网站" class="headerlink" title="强制使用 https 访问网站"></a>强制使用 https 访问网站</h2><p>将 <code>http</code> 请求转发到 <code>https</code></p>
-<p>请在配置文件夹中添加以下配置，然后重启 <code>Nginx</code> 即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name liluyang.me www.liluyang.me;</span><br><span class="line">    return 301 https://liluyang.me;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="自动续订"><a href="#自动续订" class="headerlink" title="自动续订"></a>自动续订</h2><p>细心的同学可能会发现， <code>https</code> 证书的有效时间是非常短的，只有三个月，那么每隔三个月我们都要操作一次吗？其实不是的，我们可以用过自动续订的方式来刷新我们的证书有效时间。</p>
-<h3 id="测试自动续订"><a href="#测试自动续订" class="headerlink" title="测试自动续订"></a>测试自动续订</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew --dry-run</span><br></pre></td></tr></table></figure>
-<p>如果测试成功，会生成如下提示：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Saving debug <span class="built_in">log</span> to /var/<span class="built_in">log</span>/letsencrypt/letsencrypt.log</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Processing /etc/letsencrypt/renewal/liluyang.me.conf</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Cert not due <span class="keyword">for</span> renewal, but simulating renewal <span class="keyword">for</span> dry run</span><br><span class="line">Plugins selected: Authenticator webroot, Installer None</span><br><span class="line">Renewing an existing certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">http-01 challenge <span class="keyword">for</span> liluyang.me</span><br><span class="line">http-01 challenge <span class="keyword">for</span> www.liluyang.me</span><br><span class="line">Waiting <span class="keyword">for</span> verification...</span><br><span class="line">Cleaning up challenges</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">new certificate deployed without reload, fullchain is</span><br><span class="line">/etc/letsencrypt/live/liluyang.me/fullchain.pem</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">** DRY RUN: simulating <span class="string">'certbot renew'</span> close to cert expiry</span><br><span class="line">**          (The <span class="built_in">test</span> certificates below have not been saved.)</span><br><span class="line"></span><br><span class="line">Congratulations, all renewals succeeded. The following certs have been renewed:</span><br><span class="line">  /etc/letsencrypt/live/liluyang.me/fullchain.pem (success)</span><br><span class="line">** DRY RUN: simulating <span class="string">'certbot renew'</span> close to cert expiry</span><br><span class="line">**          (The <span class="built_in">test</span> certificates above have not been saved.)</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line"></span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Your account credentials have been saved <span class="keyword">in</span> your Certbot</span><br><span class="line">   configuration directory at /etc/letsencrypt. You should make a</span><br><span class="line">   secure backup of this folder now. This configuration directory will</span><br><span class="line">   also contain certificates and private keys obtained by Certbot so</span><br><span class="line">   making regular backups of this folder is ideal.</span><br></pre></td></tr></table></figure></p>
-<h3 id="手动执行自动续订"><a href="#手动执行自动续订" class="headerlink" title="手动执行自动续订"></a>手动执行自动续订</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew -v</span><br></pre></td></tr></table></figure>
-<h3 id="开启自动续订"><a href="#开启自动续订" class="headerlink" title="开启自动续订"></a>开启自动续订</h3><p>自动续订也可以用 <code>certbot</code> 来实现，自动续订之后会更新 <code>pem</code> 文件到 <code>/etc/letsencrypt/live/example.com/</code> 。如果你的 <code>nginx</code> 配置没有直接指向 <code>/etc/letsencrypt/live/example.com/</code> 文件夹，请记得将 <code>pem</code> 文件夹拷贝到你的配置文件夹中</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew --quiet --no-self-upgrade</span><br></pre></td></tr></table></figure>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><p><a href="http://www.ruanyifeng.com/blog/2018/02/nginx-docker.html" target="_blank" rel="noopener">《Nginx 容器教程》 BY 阮一峰</a></p>
-</li>
-<li><p><a href="http://www.ruanyifeng.com/blog/2016/08/migrate-from-http-to-https.html" target="_blank" rel="noopener">《https 教程参考链接》 BY 阮一峰</a></p>
-</li>
-<li><p><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/network/HTTPS%E4%B8%AD%E7%9A%84TLS.md" target="_blank" rel="noopener">《HTTPS中的TLS》</a></p>
-</li>
-<li><p><a href="https://certbot.eff.org/lets-encrypt/debianstretch-nginx" target="_blank" rel="noopener">《Let’s Encrypt 证书生成工具Certbot》 BY Let’s Encrypt官方</a></p>
-</li>
-<li><p><a href="https://bitmingw.com/2017/02/02/letsencrypt-tutorial/" target="_blank" rel="noopener">《Let’s Encrypt 入门教程》</a></p>
-</li>
-<li><p><a href="http://diamondfsd.com/lets-encrytp-hand-https/" target="_blank" rel="noopener">《Let’s Encrypt 使用教程，免费的SSL证书，让你的网站拥抱 HTTPS》</a></p>
-</li>
-<li><p><a href="https://linuxstory.org/deploy-lets-encrypt-ssl-certificate-with-certbot/" target="_blank" rel="noopener">《HTTPS 简介及使用官方工具 Certbot 配置 Let’s Encrypt SSL 安全证书详细教程》</a></p>
-</li>
-<li><p><a href="https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html" target="_blank" rel="noopener">《数字证书及 CA 的扫盲介绍和工作原理》</a></p>
-</li>
-</ul>
-<p>~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1909,7 +1864,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
