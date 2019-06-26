@@ -217,15 +217,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode197. 上升的温度]]></title>
-    <url>%2F2019%2F03%2F22%2F20190323_leetcode197%2F</url>
-    <content type="text"><![CDATA[问题连接：197. 上升的温度 Question:给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ Answer:12345678-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集-- 此处使用 outer join 会报错，回头应该检查一下select w1.id from weather w1 inner join weather w2 where DATEDIFF(w1.RecordDate, w2.RecordDate) = 1 and w1.temperature &gt; w2.temperature ~~~]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[leetcode183. 从不订购的客户]]></title>
     <url>%2F2019%2F03%2F22%2F20190322_leetcode183%2F</url>
     <content type="text"><![CDATA[问题连接：183. 从不订购的客户 Question:某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。 Customers 表：12345678+----+-------+| Id | Name |+----+-------+| 1 | Joe || 2 | Henry || 3 | Sam || 4 | Max |+----+-------+ Orders 表： 123456+----+------------+| Id | CustomerId |+----+------------+| 1 | 3 || 2 | 1 |+----+------------+ 例如给定上述表格，你的查询应返回： 123456+-----------+| Customers |+-----------+| Henry || Max |+-----------+ Answer:1234567891011121314151617181920-- 使用not in查询-- 查询客户表，并且用户 id 从没有在 order 中产生关联关系作为查询条件即可获得返回结果 -- select name as customers from customers where customers.id not in (select customerId from orders)-- 使用not exist查询-- not exist的查询过程如下-- setp00 select customers（先执行外查询）-- step01 select orders（执行子查询，检测子查询是否可以返回行，则返回true or false的标记位）-- step02 根据 id 比较 两张表，将子查询的每一行设置 true or false 的标记位-- | 1 | Joe | true-- | 2 | Henry | false-- | 3 | Sam | true-- | 4 | Max | false-- step03 true为exist，false为not exist，则根据not exist的规则返回外查询中的查询条件返回henry, maxselect name as customers from customerswhere not exists(select customerId from orders where customers.id = orders.customerId) ~~~]]></content>
@@ -247,6 +238,15 @@
     <title><![CDATA[leetcode182. 查找重复的电子邮箱]]></title>
     <url>%2F2019%2F03%2F22%2F20190322_leetcode182%2F</url>
     <content type="text"><![CDATA[问题连接：182. 查找重复的电子邮箱 Question:编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ Answer:1234567-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息select email from(select email, count(email) num from person GROUP BY email) as temp_tablewhere num &gt; 1 ~~~]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode197. 上升的温度]]></title>
+    <url>%2F2019%2F03%2F22%2F20190323_leetcode197%2F</url>
+    <content type="text"><![CDATA[问题连接：197. 上升的温度 Question:给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ Answer:12345678-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集-- 此处使用 outer join 会报错，回头应该检查一下select w1.id from weather w1 inner join weather w2 where DATEDIFF(w1.RecordDate, w2.RecordDate) = 1 and w1.temperature &gt; w2.temperature ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
@@ -306,20 +306,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode9. 回文数]]></title>
-    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
-    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>算法</tag>
-        <tag>水题</tag>
-        <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[leetcode27. 移除元素]]></title>
-    <url>%2F2019%2F01%2F04%2F20190111_leetcode27%2F</url>
-    <content type="text"><![CDATA[问题连接：27. 移除元素 123456789101112public class Solution &#123; public int removeElement(int[] nums, int val) &#123; //思路，将原来数组a所有不等于val的元素放到b中，返回新数组的长度 int j=0; for(int i=0;i&lt;nums.length;++i)&#123; if(nums[i]!=val)&#123; nums[j++]=nums[i]; &#125; &#125; return j; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode26. 删除排序数组中的重复项]]></title>
+    <url>%2F2019%2F01%2F04%2F20190110_leetcode26%2F</url>
+    <content type="text"><![CDATA[问题连接：26. 删除排序数组中的重复项 12345678910111213class Solution &#123; public static int removeDuplicates(int[] nums) &#123; int i = 0; for (int j = 1; j &lt; nums.length; j++) &#123; if (nums[j] != nums[i]) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
@@ -353,6 +342,29 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[leetcode27. 移除元素]]></title>
+    <url>%2F2019%2F01%2F04%2F20190111_leetcode27%2F</url>
+    <content type="text"><![CDATA[问题连接：27. 移除元素 123456789101112public class Solution &#123; public int removeElement(int[] nums, int val) &#123; //思路，将原来数组a所有不等于val的元素放到b中，返回新数组的长度 int j=0; for(int i=0;i&lt;nums.length;++i)&#123; if(nums[i]!=val)&#123; nums[j++]=nums[i]; &#125; &#125; return j; &#125;&#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>算法</tag>
+        <tag>水题</tag>
+        <tag>数组</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode9. 回文数]]></title>
+    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
+    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>算法</tag>
+        <tag>水题</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode13. 罗马数字转整数]]></title>
     <url>%2F2019%2F01%2F04%2F20190106_leetcode13%2F</url>
     <content type="text"><![CDATA[问题连接：13. 罗马数字转整数 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253class Solution &#123; public static int romanToInt(String s) &#123; int result = 0; char[] chars = s.toCharArray(); for (int i = 0; i &lt; chars.length; i++) &#123; if (chars[i] == 'I') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'V') &#123; result += 4; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'X') &#123; result += 9; i++; continue; &#125; result += 1; &#125; if (chars[i] == 'X') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'L') &#123; result += 40; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'C') &#123; result += 90; i++; continue; &#125; result += 10; &#125; if (chars[i] == 'C') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'D') &#123; result += 400; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'M') &#123; result += 900; i++; continue; &#125; result += 100; &#125; if (chars[i] == 'V') result += 5; if (chars[i] == 'L') result += 50; if (chars[i] == 'D') result += 500; if (chars[i] == 'M') result += 1000; &#125; return result; &#125;&#125;]]></content>
@@ -373,18 +385,6 @@
         <tag>算法</tag>
         <tag>水题</tag>
         <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[leetcode26. 删除排序数组中的重复项]]></title>
-    <url>%2F2019%2F01%2F04%2F20190110_leetcode26%2F</url>
-    <content type="text"><![CDATA[问题连接：26. 删除排序数组中的重复项 12345678910111213class Solution &#123; public static int removeDuplicates(int[] nums) &#123; int i = 0; for (int j = 1; j &lt; nums.length; j++) &#123; if (nums[j] != nums[i]) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1; &#125;&#125;]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>算法</tag>
-        <tag>水题</tag>
-        <tag>数组</tag>
-        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
