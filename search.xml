@@ -217,18 +217,18 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode183. 从不订购的客户]]></title>
-    <url>%2F2019%2F03%2F22%2F20190322_leetcode183%2F</url>
-    <content type="text"><![CDATA[问题连接：183. 从不订购的客户 Question:某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。 Customers 表：12345678+----+-------+| Id | Name |+----+-------+| 1 | Joe || 2 | Henry || 3 | Sam || 4 | Max |+----+-------+ Orders 表： 123456+----+------------+| Id | CustomerId |+----+------------+| 1 | 3 || 2 | 1 |+----+------------+ 例如给定上述表格，你的查询应返回： 123456+-----------+| Customers |+-----------+| Henry || Max |+-----------+ Answer:1234567891011121314151617181920-- 使用not in查询-- 查询客户表，并且用户 id 从没有在 order 中产生关联关系作为查询条件即可获得返回结果 -- select name as customers from customers where customers.id not in (select customerId from orders)-- 使用not exist查询-- not exist的查询过程如下-- setp00 select customers（先执行外查询）-- step01 select orders（执行子查询，检测子查询是否可以返回行，则返回true or false的标记位）-- step02 根据 id 比较 两张表，将子查询的每一行设置 true or false 的标记位-- | 1 | Joe | true-- | 2 | Henry | false-- | 3 | Sam | true-- | 4 | Max | false-- step03 true为exist，false为not exist，则根据not exist的规则返回外查询中的查询条件返回henry, maxselect name as customers from customerswhere not exists(select customerId from orders where customers.id = orders.customerId) ~~~]]></content>
+    <title><![CDATA[leetcode627. 交换工资]]></title>
+    <url>%2F2019%2F03%2F22%2F20190322_leetcode627%2F</url>
+    <content type="text"><![CDATA[问题连接：627. 交换工资 Question:给定一个 salary 表，如下所示，有 m=男性 和 f=女性 的值 。交换所有的 f 和 m 值（例如，将所有 f 值更改为 m，反之亦然）。要求使用一个更新（Update）语句，并且没有中间临时表。 请注意，你必须编写一个 Update 语句，不要编写任何 Select 语句。 例如: 123456| id | name | sex | salary ||----|------|-----|--------|| 1 | A | m | 2500 || 2 | B | f | 1500 || 3 | C | m | 5500 || 4 | D | f | 500 | 运行你所编写的更新语句之后，将会得到以下表: 123456| id | name | sex | salary ||----|------|-----|--------|| 1 | A | f | 2500 || 2 | B | m | 1500 || 3 | C | f | 5500 || 4 | D | m | 500 | Answer:12345678-- mysql case when 条件流程控制语句，case when 可以在查询修改等条件语句中用update salaryset sex = case sex when 'm' then 'f' else 'm'end; ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode627. 交换工资]]></title>
-    <url>%2F2019%2F03%2F22%2F20190322_leetcode627%2F</url>
-    <content type="text"><![CDATA[问题连接：627. 交换工资 Question:给定一个 salary 表，如下所示，有 m=男性 和 f=女性 的值 。交换所有的 f 和 m 值（例如，将所有 f 值更改为 m，反之亦然）。要求使用一个更新（Update）语句，并且没有中间临时表。 请注意，你必须编写一个 Update 语句，不要编写任何 Select 语句。 例如: 123456| id | name | sex | salary ||----|------|-----|--------|| 1 | A | m | 2500 || 2 | B | f | 1500 || 3 | C | m | 5500 || 4 | D | f | 500 | 运行你所编写的更新语句之后，将会得到以下表: 123456| id | name | sex | salary ||----|------|-----|--------|| 1 | A | f | 2500 || 2 | B | m | 1500 || 3 | C | f | 5500 || 4 | D | m | 500 | Answer:12345678-- mysql case when 条件流程控制语句，case when 可以在查询修改等条件语句中用update salaryset sex = case sex when 'm' then 'f' else 'm'end; ~~~]]></content>
+    <title><![CDATA[leetcode183. 从不订购的客户]]></title>
+    <url>%2F2019%2F03%2F22%2F20190322_leetcode183%2F</url>
+    <content type="text"><![CDATA[问题连接：183. 从不订购的客户 Question:某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。 Customers 表：12345678+----+-------+| Id | Name |+----+-------+| 1 | Joe || 2 | Henry || 3 | Sam || 4 | Max |+----+-------+ Orders 表： 123456+----+------------+| Id | CustomerId |+----+------------+| 1 | 3 || 2 | 1 |+----+------------+ 例如给定上述表格，你的查询应返回： 123456+-----------+| Customers |+-----------+| Henry || Max |+-----------+ Answer:1234567891011121314151617181920-- 使用not in查询-- 查询客户表，并且用户 id 从没有在 order 中产生关联关系作为查询条件即可获得返回结果 -- select name as customers from customers where customers.id not in (select customerId from orders)-- 使用not exist查询-- not exist的查询过程如下-- setp00 select customers（先执行外查询）-- step01 select orders（执行子查询，检测子查询是否可以返回行，则返回true or false的标记位）-- step02 根据 id 比较 两张表，将子查询的每一行设置 true or false 的标记位-- | 1 | Joe | true-- | 2 | Henry | false-- | 3 | Sam | true-- | 4 | Max | false-- step03 true为exist，false为not exist，则根据not exist的规则返回外查询中的查询条件返回henry, maxselect name as customers from customerswhere not exists(select customerId from orders where customers.id = orders.customerId) ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
@@ -330,14 +330,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode14. 最长公共前缀]]></title>
-    <url>%2F2019%2F01%2F04%2F20190107_leetcode14%2F</url>
-    <content type="text"><![CDATA[问题连接：14. 最长公共前缀 12345678910111213141516class Solution &#123; public static String longestCommonPrefix(String[] strs) &#123; if (strs.length == 0) return ""; // 遍历字符串，按顺序获取每个字符 for (int i = 0; i &lt; strs[0].length(); i++) &#123; // 根据当前字符遍历剩余的所有字符串 for (int j = 1; j &lt; strs.length; j++) &#123; if (strs[j].length() == i || strs[0].charAt(i) != strs[j].charAt(i)) &#123; return strs[0].substring(0, i); &#125; &#125; &#125; return strs[0]; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode20. 有效的括号]]></title>
+    <url>%2F2019%2F01%2F04%2F20190108_leetcode20%2F</url>
+    <content type="text"><![CDATA[问题连接：20. 有效的括号 12345678910111213141516171819202122232425262728293031class Solution &#123; /** * * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决 * * @param s * @return */ public static boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack(); char[] chars = s.toCharArray(); for (char c: chars) &#123; if (stack.size() &gt; 0) &#123; if (c == '&#125;' &amp;&amp; stack.peek() == '&#123;') &#123; stack.pop(); continue; &#125; if (c == ']' &amp;&amp; stack.peek() == '[') &#123; stack.pop(); continue; &#125; if (c == ')' &amp;&amp; stack.peek() == '(') &#123; stack.pop(); continue; &#125; &#125; stack.push(c); &#125; return stack.size() == 0 ? true : false; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
         <tag>水题</tag>
         <tag>字符串</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -397,15 +398,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode20. 有效的括号]]></title>
-    <url>%2F2019%2F01%2F04%2F20190108_leetcode20%2F</url>
-    <content type="text"><![CDATA[问题连接：20. 有效的括号 12345678910111213141516171819202122232425262728293031class Solution &#123; /** * * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决 * * @param s * @return */ public static boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack(); char[] chars = s.toCharArray(); for (char c: chars) &#123; if (stack.size() &gt; 0) &#123; if (c == '&#125;' &amp;&amp; stack.peek() == '&#123;') &#123; stack.pop(); continue; &#125; if (c == ']' &amp;&amp; stack.peek() == '[') &#123; stack.pop(); continue; &#125; if (c == ')' &amp;&amp; stack.peek() == '(') &#123; stack.pop(); continue; &#125; &#125; stack.push(c); &#125; return stack.size() == 0 ? true : false; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode14. 最长公共前缀]]></title>
+    <url>%2F2019%2F01%2F04%2F20190107_leetcode14%2F</url>
+    <content type="text"><![CDATA[问题连接：14. 最长公共前缀 12345678910111213141516class Solution &#123; public static String longestCommonPrefix(String[] strs) &#123; if (strs.length == 0) return ""; // 遍历字符串，按顺序获取每个字符 for (int i = 0; i &lt; strs[0].length(); i++) &#123; // 根据当前字符遍历剩余的所有字符串 for (int j = 1; j &lt; strs.length; j++) &#123; if (strs[j].length() == i || strs[0].charAt(i) != strs[j].charAt(i)) &#123; return strs[0].substring(0, i); &#125; &#125; &#125; return strs[0]; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
         <tag>水题</tag>
         <tag>字符串</tag>
-        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
