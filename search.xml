@@ -144,15 +144,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Windows 和 Linux 下执行命令行命令时如何换行]]></title>
-    <url>%2F2019%2F04%2F02%2F20190402_Windows%20%E5%92%8C%20Linux%20%E4%B8%8B%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%97%B6%E5%A6%82%E4%BD%95%E6%8D%A2%E8%A1%8C%2F</url>
-    <content type="text"><![CDATA[注意，如果命令需要换行，请添加换行字符 windows 为 “^”和 “`”，linux 为 “\” 12# 不换行ffmpeg -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y 12345678# linux 环境ffmpeg -i ./output.mp4 \ -vcodec copy \ -acodec copy \ -ss 00:00:10 -to 00:00:15 \ ./cutout1.mp4 \ -y 123456789101112131415# windows CMD环境ffmpeg -i ./output.mp4 -vcodec copy ^ -acodec copy ^ -ss 00:00:10 ^ -to 00:00:15 ^ ./cutout1.mp4 ^ -y# windows Powershell环境ffmpeg -i ./output.mp4 -vcodec copy ` -acodec copy ` -ss 00:00:10 ` -to 00:00:15 ` ./cutout1.mp4 ` -y ~]]></content>
-      <tags>
-        <tag>Windows</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[FFmpeg 常用命令]]></title>
     <url>%2F2019%2F04%2F02%2F20190402_FFmpeg%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[FFmpeg 是一个自由软件，可以运行音频和视频多种格式的录影、转换、流功能，包含了libavcodec——这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。 “FFmpeg”这个单词中的“FF”指的是“Fast Forward（快速前进）”。有些新手写信给“FFmpeg”的项目负责人，询问FF是不是代表“Fast Free”或者“Fast Fourier”等意思，“FFmpeg”的项目负责人回信说：“Just for the record, the original meaning of “FF” in FFmpeg is “Fast Forward”…” 动图转视频1ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" video.mp4 动图转图片序列逐帧输出，将视频的所有帧输出到制定文件夹，例如一秒 24 帧，视频一共 10 秒，输出后就是 24*10=240 帧1ffmpeg -i input.gif /images/image_%04d.png 动图转视频参考教程地址：点我12ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" video.mp4 视频，GIF添加水印1ffmpeg -i input.gif -vf "drawtext=fontfile=simhei.ttf: text='你的水印':x=600:y=330:fontsize=18:fontcolor=yellow:shadowy=2" manu.gif 视频转图片序列1ffmpeg -i "cut01.mp4" ./cut01/image_%04d.png 合并音频和视频1ffmpeg -i video.mp4 -i audio.m4a -acodec copy -vcodec copy output.mp4 截取视频中的一段1ffmpeg -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y 参考链接：https://www.cnblogs.com/wainiwann/p/6972954.html 裁剪视频裁剪视频的大小，一定要指定码率 1ffmpeg -i cutout1.mp4 -strict -2 -vf crop=400:720:400:0 -b 10M out2.mp4 图片序列转视频第一个 -r 指的是帧数，-b 指的是码率 -s 是分辨率 1234567FFMPEG -r 10 -i ./image_%04d.jpg -s 640x640 -b 10M -vcodec mpeg4 ./video.mp4FFMPEG -r 10 -i ./image_%04d.jpg -s 640x640 -b 10M -vcodec mpeg4 ./video.mp4 制作模糊背景算法的机制应该是高斯模糊，但是作者还没有详细的检查对应的原理，能用就行。 此代码适合在横屏视频和竖屏视频之间的转换，并且填充一部分模糊的背景，不至于让视频有黑边而显的突兀参数说明，根据源视频生成两个视频，再将两个视频叠加，生成的高斯模糊的视频在原视频的下方同步播放，这样就实现了模糊式的视频视频 1234# -i 视频输出 -vf 参数转换 output.mp4 输出视频# -vf 内部参数说明：生成 1,2 两个视频。第一个视频是模糊背景，一般要放大一点， 使用 scale 来调整尺寸大小，第二个原视频不要动，overlay 合成并且调整源视频在高斯模糊背景中的视频的坐标ffmpeg -i input.mp4 -vf "split[a][b];[a]scale=1920:1920,boxblur=10:5[1];[b]scale=iw/ih[2];[1][2]overlay=(W-w)/2:y=(H-h)/2" output.mp4 效果如下： 原视频截图： 生成模糊背景之后的视频截图： 参考链接 ffmpeg 官方教程 偶遇FFmpeg(二)——常用命令 ~]]></content>
@@ -160,6 +151,15 @@
         <tag>视频</tag>
         <tag>FFmpeg</tag>
         <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Windows 和 Linux 下执行命令行命令时如何换行]]></title>
+    <url>%2F2019%2F04%2F02%2F20190402_Windows%20%E5%92%8C%20Linux%20%E4%B8%8B%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%97%B6%E5%A6%82%E4%BD%95%E6%8D%A2%E8%A1%8C%2F</url>
+    <content type="text"><![CDATA[注意，如果命令需要换行，请添加换行字符 windows 为 “^”和 “`”，linux 为 “\” 12# 不换行ffmpeg -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y 12345678# linux 环境ffmpeg -i ./output.mp4 \ -vcodec copy \ -acodec copy \ -ss 00:00:10 -to 00:00:15 \ ./cutout1.mp4 \ -y 123456789101112131415# windows CMD环境ffmpeg -i ./output.mp4 -vcodec copy ^ -acodec copy ^ -ss 00:00:10 ^ -to 00:00:15 ^ ./cutout1.mp4 ^ -y# windows Powershell环境ffmpeg -i ./output.mp4 -vcodec copy ` -acodec copy ` -ss 00:00:10 ` -to 00:00:15 ` ./cutout1.mp4 ` -y ~]]></content>
+      <tags>
+        <tag>Windows</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -235,18 +235,18 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode182. 查找重复的电子邮箱]]></title>
-    <url>%2F2019%2F03%2F22%2F20190322_leetcode182%2F</url>
-    <content type="text"><![CDATA[问题连接：182. 查找重复的电子邮箱 Question:编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ Answer:1234567-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息select email from(select email, count(email) num from person GROUP BY email) as temp_tablewhere num &gt; 1 ~~~]]></content>
+    <title><![CDATA[leetcode197. 上升的温度]]></title>
+    <url>%2F2019%2F03%2F22%2F20190323_leetcode197%2F</url>
+    <content type="text"><![CDATA[问题连接：197. 上升的温度 Question:给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ Answer:12345678-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集-- 此处使用 outer join 会报错，回头应该检查一下select w1.id from weather w1 inner join weather w2 where DATEDIFF(w1.RecordDate, w2.RecordDate) = 1 and w1.temperature &gt; w2.temperature ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode197. 上升的温度]]></title>
-    <url>%2F2019%2F03%2F22%2F20190323_leetcode197%2F</url>
-    <content type="text"><![CDATA[问题连接：197. 上升的温度 Question:给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ Answer:12345678-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集-- 此处使用 outer join 会报错，回头应该检查一下select w1.id from weather w1 inner join weather w2 where DATEDIFF(w1.RecordDate, w2.RecordDate) = 1 and w1.temperature &gt; w2.temperature ~~~]]></content>
+    <title><![CDATA[leetcode182. 查找重复的电子邮箱]]></title>
+    <url>%2F2019%2F03%2F22%2F20190322_leetcode182%2F</url>
+    <content type="text"><![CDATA[问题连接：182. 查找重复的电子邮箱 Question:编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ Answer:1234567-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息select email from(select email, count(email) num from person GROUP BY email) as temp_tablewhere num &gt; 1 ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
@@ -306,9 +306,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode26. 删除排序数组中的重复项]]></title>
-    <url>%2F2019%2F01%2F04%2F20190110_leetcode26%2F</url>
-    <content type="text"><![CDATA[问题连接：26. 删除排序数组中的重复项 12345678910111213class Solution &#123; public static int removeDuplicates(int[] nums) &#123; int i = 0; for (int j = 1; j &lt; nums.length; j++) &#123; if (nums[j] != nums[i]) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode27. 移除元素]]></title>
+    <url>%2F2019%2F01%2F04%2F20190111_leetcode27%2F</url>
+    <content type="text"><![CDATA[问题连接：27. 移除元素 123456789101112public class Solution &#123; public int removeElement(int[] nums, int val) &#123; //思路，将原来数组a所有不等于val的元素放到b中，返回新数组的长度 int j=0; for(int i=0;i&lt;nums.length;++i)&#123; if(nums[i]!=val)&#123; nums[j++]=nums[i]; &#125; &#125; return j; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
@@ -342,9 +342,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode27. 移除元素]]></title>
-    <url>%2F2019%2F01%2F04%2F20190111_leetcode27%2F</url>
-    <content type="text"><![CDATA[问题连接：27. 移除元素 123456789101112public class Solution &#123; public int removeElement(int[] nums, int val) &#123; //思路，将原来数组a所有不等于val的元素放到b中，返回新数组的长度 int j=0; for(int i=0;i&lt;nums.length;++i)&#123; if(nums[i]!=val)&#123; nums[j++]=nums[i]; &#125; &#125; return j; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode26. 删除排序数组中的重复项]]></title>
+    <url>%2F2019%2F01%2F04%2F20190110_leetcode26%2F</url>
+    <content type="text"><![CDATA[问题连接：26. 删除排序数组中的重复项 12345678910111213class Solution &#123; public static int removeDuplicates(int[] nums) &#123; int i = 0; for (int j = 1; j &lt; nums.length; j++) &#123; if (nums[j] != nums[i]) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
@@ -354,14 +354,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode9. 回文数]]></title>
-    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
-    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode1. 两数之和]]></title>
+    <url>%2F2019%2F01%2F04%2F20190103_leetcode1%2F</url>
+    <content type="text"><![CDATA[问题连接：1. 两数之和 1234567891011121314151617181920212223class Solution &#123; /** * nums 是一个数组，target 是结果，数组里面必定存在两个数字加起来等于 target * * @param nums * @param target * @return */ public static int[] twoSum(int[] nums, int target) &#123; int[] result = new int[2]; // 遍历数字的所有加法组合 for (int i = 0; i &lt; nums.length; i++) &#123; for (int j = i + 1; j &lt; nums.length; j++) &#123; if (nums[i] + nums[j] == target) &#123; result[0] = i; result[1] = j; return result; &#125; &#125; &#125; return null; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
         <tag>水题</tag>
-        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -377,9 +376,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode7. 整数反转]]></title>
-    <url>%2F2019%2F01%2F04%2F20190104_leetcode7%2F</url>
-    <content type="text"><![CDATA[问题连接：7. 整数反转 123456789101112131415class Solution &#123; public static int reverse(int x) &#123; int result = 0; // 当 x = 0 时，证明最后一位被处理完成，处理结束 while (x != 0) &#123; int pop = x % 10; x = x / 10; // 要在可能会发生溢出的操作前，对溢出进行判断 if (result &gt; Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE &amp;&amp; pop &gt; 7)) return 0; if (result &lt; Integer.MIN_VALUE / 10 || (result == Integer.MIN_VALUE &amp;&amp; pop &lt; -8)) return 0; result = result * 10 + pop; &#125; return result; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode9. 回文数]]></title>
+    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
+    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
@@ -388,13 +387,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode1. 两数之和]]></title>
-    <url>%2F2019%2F01%2F04%2F20190103_leetcode1%2F</url>
-    <content type="text"><![CDATA[问题连接：1. 两数之和 1234567891011121314151617181920212223class Solution &#123; /** * nums 是一个数组，target 是结果，数组里面必定存在两个数字加起来等于 target * * @param nums * @param target * @return */ public static int[] twoSum(int[] nums, int target) &#123; int[] result = new int[2]; // 遍历数字的所有加法组合 for (int i = 0; i &lt; nums.length; i++) &#123; for (int j = i + 1; j &lt; nums.length; j++) &#123; if (nums[i] + nums[j] == target) &#123; result[0] = i; result[1] = j; return result; &#125; &#125; &#125; return null; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode7. 整数反转]]></title>
+    <url>%2F2019%2F01%2F04%2F20190104_leetcode7%2F</url>
+    <content type="text"><![CDATA[问题连接：7. 整数反转 123456789101112131415class Solution &#123; public static int reverse(int x) &#123; int result = 0; // 当 x = 0 时，证明最后一位被处理完成，处理结束 while (x != 0) &#123; int pop = x % 10; x = x / 10; // 要在可能会发生溢出的操作前，对溢出进行判断 if (result &gt; Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE &amp;&amp; pop &gt; 7)) return 0; if (result &lt; Integer.MIN_VALUE / 10 || (result == Integer.MIN_VALUE &amp;&amp; pop &lt; -8)) return 0; result = result * 10 + pop; &#125; return result; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
         <tag>水题</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
