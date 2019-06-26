@@ -217,6 +217,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[leetcode197. 上升的温度]]></title>
+    <url>%2F2019%2F03%2F22%2F20190323_leetcode197%2F</url>
+    <content type="text"><![CDATA[问题连接：197. 上升的温度 Question:给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ Answer:12345678-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集-- 此处使用 outer join 会报错，回头应该检查一下select w1.id from weather w1 inner join weather w2 where DATEDIFF(w1.RecordDate, w2.RecordDate) = 1 and w1.temperature &gt; w2.temperature ~~~]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode183. 从不订购的客户]]></title>
     <url>%2F2019%2F03%2F22%2F20190322_leetcode183%2F</url>
     <content type="text"><![CDATA[问题连接：183. 从不订购的客户 Question:某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。 Customers 表：12345678+----+-------+| Id | Name |+----+-------+| 1 | Joe || 2 | Henry || 3 | Sam || 4 | Max |+----+-------+ Orders 表： 123456+----+------------+| Id | CustomerId |+----+------------+| 1 | 3 || 2 | 1 |+----+------------+ 例如给定上述表格，你的查询应返回： 123456+-----------+| Customers |+-----------+| Henry || Max |+-----------+ Answer:1234567891011121314151617181920-- 使用not in查询-- 查询客户表，并且用户 id 从没有在 order 中产生关联关系作为查询条件即可获得返回结果 -- select name as customers from customers where customers.id not in (select customerId from orders)-- 使用not exist查询-- not exist的查询过程如下-- setp00 select customers（先执行外查询）-- step01 select orders（执行子查询，检测子查询是否可以返回行，则返回true or false的标记位）-- step02 根据 id 比较 两张表，将子查询的每一行设置 true or false 的标记位-- | 1 | Joe | true-- | 2 | Henry | false-- | 3 | Sam | true-- | 4 | Max | false-- step03 true为exist，false为not exist，则根据not exist的规则返回外查询中的查询条件返回henry, maxselect name as customers from customerswhere not exists(select customerId from orders where customers.id = orders.customerId) ~~~]]></content>
@@ -238,15 +247,6 @@
     <title><![CDATA[leetcode182. 查找重复的电子邮箱]]></title>
     <url>%2F2019%2F03%2F22%2F20190322_leetcode182%2F</url>
     <content type="text"><![CDATA[问题连接：182. 查找重复的电子邮箱 Question:编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ Answer:1234567-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息select email from(select email, count(email) num from person GROUP BY email) as temp_tablewhere num &gt; 1 ~~~]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[leetcode197. 上升的温度]]></title>
-    <url>%2F2019%2F03%2F22%2F20190323_leetcode197%2F</url>
-    <content type="text"><![CDATA[问题连接：197. 上升的温度 Question:给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ Answer:12345678-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集-- 此处使用 outer join 会报错，回头应该检查一下select w1.id from weather w1 inner join weather w2 where DATEDIFF(w1.RecordDate, w2.RecordDate) = 1 and w1.temperature &gt; w2.temperature ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
@@ -306,15 +306,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode21. 合并两个有序链表]]></title>
-    <url>%2F2019%2F01%2F04%2F20190109_leetcode21%2F</url>
-    <content type="text"><![CDATA[问题连接：21. 合并两个有序链表 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public static ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123; if (l1 == null &amp;&amp; l2 == null) return null; ListNode result; if (l1 == null) &#123; result = l2; l2 = l2.next; &#125; else if (l2 == null) &#123; result = l1; l1 = l1.next; &#125; else if (l1.val &gt;= l2.val) &#123; result = l2; l2 = l2.next; &#125; else &#123; result = l1; l1 = l1.next; &#125; ListNode head = result; while (!(l1 == null &amp;&amp; l2 == null)) &#123; System.out.println("aaa"); if (l1 == null) &#123; head.next = l2; l2 = null; &#125; else if (l2 == null) &#123; head.next = l1; l1 = null; &#125; else if (l1.val &gt;= l2.val) &#123; head.next = l2; head = head.next; l2 = l2.next; &#125; else &#123; head.next = l1; head = head.next; l1 = l1.next; &#125; &#125; return result; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode9. 回文数]]></title>
+    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
+    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
         <tag>水题</tag>
-        <tag>字符串</tag>
-        <tag>栈</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -330,9 +329,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode20. 有效的括号]]></title>
-    <url>%2F2019%2F01%2F04%2F20190108_leetcode20%2F</url>
-    <content type="text"><![CDATA[问题连接：20. 有效的括号 12345678910111213141516171819202122232425262728293031class Solution &#123; /** * * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决 * * @param s * @return */ public static boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack(); char[] chars = s.toCharArray(); for (char c: chars) &#123; if (stack.size() &gt; 0) &#123; if (c == '&#125;' &amp;&amp; stack.peek() == '&#123;') &#123; stack.pop(); continue; &#125; if (c == ']' &amp;&amp; stack.peek() == '[') &#123; stack.pop(); continue; &#125; if (c == ')' &amp;&amp; stack.peek() == '(') &#123; stack.pop(); continue; &#125; &#125; stack.push(c); &#125; return stack.size() == 0 ? true : false; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode21. 合并两个有序链表]]></title>
+    <url>%2F2019%2F01%2F04%2F20190109_leetcode21%2F</url>
+    <content type="text"><![CDATA[问题连接：21. 合并两个有序链表 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public static ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123; if (l1 == null &amp;&amp; l2 == null) return null; ListNode result; if (l1 == null) &#123; result = l2; l2 = l2.next; &#125; else if (l2 == null) &#123; result = l1; l1 = l1.next; &#125; else if (l1.val &gt;= l2.val) &#123; result = l2; l2 = l2.next; &#125; else &#123; result = l1; l1 = l1.next; &#125; ListNode head = result; while (!(l1 == null &amp;&amp; l2 == null)) &#123; System.out.println("aaa"); if (l1 == null) &#123; head.next = l2; l2 = null; &#125; else if (l2 == null) &#123; head.next = l1; l1 = null; &#125; else if (l1.val &gt;= l2.val) &#123; head.next = l2; head = head.next; l2 = l2.next; &#125; else &#123; head.next = l1; head = head.next; l1 = l1.next; &#125; &#125; return result; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
@@ -342,15 +341,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode26. 删除排序数组中的重复项]]></title>
-    <url>%2F2019%2F01%2F04%2F20190110_leetcode26%2F</url>
-    <content type="text"><![CDATA[问题连接：26. 删除排序数组中的重复项 12345678910111213class Solution &#123; public static int removeDuplicates(int[] nums) &#123; int i = 0; for (int j = 1; j &lt; nums.length; j++) &#123; if (nums[j] != nums[i]) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode20. 有效的括号]]></title>
+    <url>%2F2019%2F01%2F04%2F20190108_leetcode20%2F</url>
+    <content type="text"><![CDATA[问题连接：20. 有效的括号 12345678910111213141516171819202122232425262728293031class Solution &#123; /** * * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决 * * @param s * @return */ public static boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack(); char[] chars = s.toCharArray(); for (char c: chars) &#123; if (stack.size() &gt; 0) &#123; if (c == '&#125;' &amp;&amp; stack.peek() == '&#123;') &#123; stack.pop(); continue; &#125; if (c == ']' &amp;&amp; stack.peek() == '[') &#123; stack.pop(); continue; &#125; if (c == ')' &amp;&amp; stack.peek() == '(') &#123; stack.pop(); continue; &#125; &#125; stack.push(c); &#125; return stack.size() == 0 ? true : false; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
         <tag>水题</tag>
-        <tag>数组</tag>
-        <tag>双指针</tag>
+        <tag>字符串</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -366,17 +365,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode9. 回文数]]></title>
-    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
-    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>算法</tag>
-        <tag>水题</tag>
-        <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[leetcode7. 整数反转]]></title>
     <url>%2F2019%2F01%2F04%2F20190104_leetcode7%2F</url>
     <content type="text"><![CDATA[问题连接：7. 整数反转 123456789101112131415class Solution &#123; public static int reverse(int x) &#123; int result = 0; // 当 x = 0 时，证明最后一位被处理完成，处理结束 while (x != 0) &#123; int pop = x % 10; x = x / 10; // 要在可能会发生溢出的操作前，对溢出进行判断 if (result &gt; Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE &amp;&amp; pop &gt; 7)) return 0; if (result &lt; Integer.MIN_VALUE / 10 || (result == Integer.MIN_VALUE &amp;&amp; pop &lt; -8)) return 0; result = result * 10 + pop; &#125; return result; &#125;&#125;]]></content>
@@ -385,6 +373,18 @@
         <tag>算法</tag>
         <tag>水题</tag>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode26. 删除排序数组中的重复项]]></title>
+    <url>%2F2019%2F01%2F04%2F20190110_leetcode26%2F</url>
+    <content type="text"><![CDATA[问题连接：26. 删除排序数组中的重复项 12345678910111213class Solution &#123; public static int removeDuplicates(int[] nums) &#123; int i = 0; for (int j = 1; j &lt; nums.length; j++) &#123; if (nums[j] != nums[i]) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1; &#125;&#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>算法</tag>
+        <tag>水题</tag>
+        <tag>数组</tag>
+        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -454,8 +454,8 @@
     <url>%2F2017%2F10%2F08%2F20171008_%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%20QQ%20%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95%2F</url>
     <content type="text"><![CDATA[虽然互联网是开放的，但是总是有那么几家巨头互联网公司把控着绝大多数的流量入口，例如腾讯、阿里、微博等等。但是中小型网站也要生存，需要流量；互联网巨头也要提高自己的影响力，增加自己的战略布局；广大用户也懒得记过多的账号密码，试想一下如果每个用户没使用一个App就要注册一个账号密码，这个场景也的确是不太友好。这个需求场景快速的催化了三方用户体系的发展。 因此对于中小型网站或者App的开发者来说，添加第三方登录的好处就是降低获取用户的成本，借由互联网巨头公司数亿级别的用户群中相对快速的获取自己的潜在用户，因此应用中添加第三方登录就显得几乎是必须的了。那么今天以QQ登陆为例，来实现一个最简单的第三方登陆。 目前主流的第三方登录都是依赖的Oauth2.0协议实现的，最常见的就是在各种中小型网站或者App中的QQ登录，微信登录等等。所以我建议想要学习和实现第三方登录同学去了解下这个协议。 理解OAuth 2.0 - 阮一峰 准备工作如果要实现QQ第三方登录我们必须要有的东西是什么呢 登录QQ互联官网，注册成为QQ互联平台开发者，注册一个网站应用 准备一个可访问的域名 一个服务器来承载我们的网站应用。阿里云，腾讯云，或者是自己搭建的都可以 注意：如果你和我一样，只是为了测试或者体验一下第三方登录，增加一下自己的技能书的话，那么第二点和第三点都不是必须的。 在QQ互联注册我们的应用首先要登陆QQ互联官网 ，点击创建应用 &gt; 创建网站应用 &gt; 填写资料 &gt; 注册一个网站应用。 在申请网站应用过程中，需要一些以下资料。如下图所示： 注意： 域名：网站应用的域名。 网站回调域：用户访问QQ互联登录校验成功后的回调地址。这个地址非常重要。建议在回调页面可以做一些保存QQ用户信息的操作，比如用户openId、accessToken、昵称、QQ空间头像等信息。回调地址支持多个，应用审核后也可以再次编辑。 提供方：一般为公司名称或者开发者的名称 网站备案号：网站域名的备案信息，如果是在万网，或者阿里云购买的域名，可以使用阿里云备案，还是比较方便 网站图标：会在一些场景显示出来，供展示使用 用户使用QQ登录时的提示界面（以熊猫直播的第三方登录为例），展示的信息有网站名称，网站图标，网站域名： 但是有些同学会问：我只是学习以下第三方登录，我怎么测试？答案是：正常填写资料， 在网站回调域一栏填写一个可以在本机正常访问的地址在网站回调域一栏填写一个可以在本机正常访问的地址在网站回调域一栏填写一个可以在本机正常访问的地址 我个人在本地使用的网站回调域是 http://127.0.0.1:8080/qq-login.html。 只要是在本机可以正常访问就可以。其他的域名，备案号等没有就随便填，自己有的话就填上。如果填写完成后，等待审核，资料都OK的话，应该会审核成功，如果有错误数据，比如不合法的备案号。那么会审核失败。审核失败的应用我们可以拿来作为测试应用使用。 注意：审核失败的应用，只有对应的登录QQ互联的QQ号可以使用正常的第三方登录功能。换句话说，失败的应用我们依然可以用来测试，只不过对测试的账户有所限制。 网站应用审核成功后，在应用管理界面可以看到我们的应用。如下图： 此时我们就可以用这个网站应用来测测试一下QQ第三方登录的实现过程了 实现QQ登录本部分以JavaScript和QQ互联官网给出的jssdk为例，代码非常简单。 新建一个html文件如下： 123456789101112131415161718192021222324&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;title&gt;qq登录测试&lt;/title&gt;&lt;/head&gt;&lt;body style="margin: 0 auto;width: 400px;"&gt; &lt;h1&gt;这里是QQ登录测试界面&lt;/h1&gt; &lt;span id="qqLoginBtn"&gt;&lt;/span&gt; &lt;!-- 引入QQ第三方登陆的javascriot的SDK，appid，redirecturi修改为自己创建的应用的数据，要注意redirecturi一定要和我们申请的网站应用中的回调域完全匹配，否则会报错 --&gt; &lt;script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101415280" data-redirecturi="http://127.0.0.1:8080/qq-login.html" charset="utf-8"&gt;&lt;/script&gt; &lt;!-- 使用官方默认的方法放置QQ登录按钮 --&gt; &lt;script type="text/javascript"&gt; QC.Login(&#123; btnId: "qqLoginBtn" //插入按钮的节点id &#125;); &lt;/script&gt;&lt;/body&gt;&lt;/html&gt; 页面如下所示 点击QQ登录，此时用户点击QQ登录后，QQ会默认拉取QQ或者TIM的登录状态，如果用户电脑上存在这两款软件的登录状态，那么登录界面如下所示，如果没有，则只显示二维码登录。 用户登录成功之后会回调页面，为了方便测试，我的回调地址同样是 http://127.0.0.1:8080/qq-login.html。登录成功，返回到这个地址，你会发现原来的界面变成下图所示 这代表用户已经登录成功。打开控制台，发现cookie里面已经存储了一些和QQ相关的信息。此时我们可以通过SDK提供的方法来获取用户的数据。在上面的qq-login.html页面中增加以下代码： 1234567891011121314&lt;button onclick="getMe()"&gt;getMe&lt;/button&gt;&lt;!-- 添加获取用户数据的方法 --&gt;&lt;script&gt; function getMe() &#123; if (QC.Login.check()) &#123; QC.Login.getMe(function (openId, accessToken) &#123; console.log('openId', openId); console.log('accessToken', accessToken); &#125;) &#125; else &#123; console.log('不好意思用户没有登录'); &#125; &#125;&lt;/script&gt; 在用户成功登录之后，我们点击getMe按钮，发现我们成功的获取到了用户的openId，accessToken并且已经打印在了控制台当中。 openId：对于每一个网站应用的每一个QQ用户，都有一个唯一的openId与之对应。简单说就是对于我们的网站。openId就是每个QQ用户的唯一标示，可以当做主键来使用accessToken：当前的用户的口令，在口令的过期时间内，可以直接通过accessToken来和QQ的服务器进行交互，比如说获取用户的昵称，头像的等信息，所有建议口令存储在安全性更高的数据库中。 QQ登录的业务逻辑是怎么样的？到目前为止，我们已经成功的获取到了使用QQ用户的唯一标示，那么我们QQ登录的具体的业务逻辑应该怎么写呢？如何实现用户点击QQ头像就直接登录成功了呢？ 其实我们首先要明白。一个网站的用户系统是可大可小的问题，一个大型网站的用户系统本身就是一个非常庞大的模块。要实现这样的支持第三方登录的用户系统，还需要后台乃至数据存储方面的配合。现在我们获取到了QQ登录非常重要的openId，accessToken。那么如何去存储这些信息的？首先我们要设计一个合理的用户存储结构。此处推荐一篇廖雪峰大大的文档。这三篇将的非常清楚 设计一个可扩展的用户登录系统 (1) 设计一个可扩展的用户登录系统 (2) 设计一个可扩展的用户登录系统 (3) 简单来说就是在数据库中添加一个表oauth_qq，记录下我们获取的QQ的第三方登录的信息，然后通过外键的方式和我们的用户表Users关联起来。 id user_id openid access_token 01 user_01 qq_123456 xxxxxx 02 user_02 qq_456123 xxxxxx 然后我们把oauth_qq这张表的数据作为一种验证方式，在用户使用QQ登录的时候首先验证一下用户在数据库中心的信息，用户验证过第三方的QQ信息，就可以直接登录了。 如果要添加用户绑定或者解除第三方登录的信息，直接删除对应的oauth_qq表的记录就可以了，不过在删除之前，为了安全起见，建议做一下用户身份校验。 到这里一个简单的第三方登录就实现完成了，但是其实这篇文章讲的比较粗浅，只是给大家提供一个实现第三方登录的思路。如果大家想要实现更多的功能，或者集成更多平台的第三方登录。一定要先对Oauth 2.0协议有一个比较深的理解。其实Oauth 2.0协议除了可以让我们使用QQ这样的第三方授权协议之外，甚至我们自己也可以根据此协议搭建一个Server端来给其他的网站或者应用进行授权，不过这需要我们掌握更多的知识，对Oauth 2.0有更加深入的了解才可以。 后记学习一项新技术最好的办法就是去看官方文档。第一手的资料永远是最有参考价值的。官方文档的完整性和权威性是不可替代的，可以让我们有一个完整的知识结构，而不会让你在知识结构上出现大的漏洞。但是这并不是说博客类的文章就没有意义，博客往往是琐碎的一点一点的知识片段，是使用经验，让我们少走一些弯路。 本文中引用连接和一些参考资料汇总： QQ互联文档中心 QQ互联 JS_SDK使用说明 Oauth 2.0 官网 Oauth 2.0 维基百科 理解OAuth 2.0 - 阮一峰 设计一个可扩展的用户登录系统 (1) - 廖雪峰 设计一个可扩展的用户登录系统 (2) - 廖雪峰 设计一个可扩展的用户登录系统 (3) - 廖雪峰]]></content>
       <tags>
-        <tag>数据库</tag>
         <tag>Java</tag>
+        <tag>数据库</tag>
         <tag>第三方登录</tag>
         <tag>前端</tag>
       </tags>
