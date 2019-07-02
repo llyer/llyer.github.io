@@ -304,6 +304,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/11/20190411_Java 关键字 final, static, abstratc, this, super/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/11/20190411_Java 关键字 final, static, abstratc, this, super/" itemprop="url">Java 关键字 final, static, abstratc, this, super</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T14:08:08+08:00">
+                2019-04-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-11T16:01:19+08:00">
+                2019-04-11
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Java-有哪些关键字？"><a href="#Java-有哪些关键字？" class="headerlink" title="Java 有哪些关键字？"></a>Java 有哪些关键字？</h4><p><code>final</code>, <code>static</code>, <code>abstract</code>, <code>this</code>, <code>super</code> 等等</p>
+<h4 id="final-有什么作用和优缺点？"><a href="#final-有什么作用和优缺点？" class="headerlink" title="final 有什么作用和优缺点？"></a><em>final 有什么作用和优缺点？</em></h4><p><code>final</code> 是 <code>java</code> 语言中的保留关键字，可以修饰 <code>class</code>, <code>method</code>, <code>variable</code>。<code>final</code> 变量不可变，代表了可以安全的在多线程之间共享，<code>final</code> 关键字提高了性能</p>
+<ul>
+<li><p><code>final</code> 修饰的类无法被继承。<code>final</code> 类中的所有成员方法都会被隐式地指定为 <code>final</code> 方法。</p>
+</li>
+<li><p><code>final</code> 修饰方法。第一个原因是把方法锁定，以防任何继承类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将 <code>final</code> 方法转为内嵌调用。但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升（现在的Java版本已经不需要使用 final 方法进行这些优化了。类中所有的 <code>private</code> 方法都隐式地指定为 <code>final</code>。</p>
+</li>
+<li><p><code>final</code> 修饰的变量。如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</p>
+</li>
+</ul>
+<h5 id="final-with-class"><a href="#final-with-class" class="headerlink" title="final with class"></a>final with class</h5><p><code>javase</code> 中有哪些类使用了 <code>final</code> 关键字？</p>
+<p><code>String</code>类：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190411_Java关键字_01.png" alt=""></p>
+<p>使用 <code>final</code> 关键字防止类被篡改：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * FinalClass.java</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 下面这个类如果写成 extends Parent 会报错，因为 Parent 已经被final修饰，不能继承</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//public class FinalClass extends Parent &#123;</span></span><br><span class="line"><span class="comment">//    private Integer sum(Integer num1, Integer num2) &#123;</span></span><br><span class="line"><span class="comment">//        return num1 + num2;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> Integer <span class="title">sum</span> <span class="params">(Integer num1, Integer num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num1 + num2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name = <span class="string">"zhangsan"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="final-with-method"><a href="#final-with-method" class="headerlink" title="final with method"></a>final with method</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * final 修饰方法时，方法无法被继承</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalMethod</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">multiply</span> <span class="params">(Integer num1, Integer num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num1 * num2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">sum</span> <span class="params">(Integer num1, Integer num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num1 + num2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FinalMethodChild</span> <span class="keyword">extends</span> <span class="title">FinalMethod</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">multiply</span><span class="params">(Integer num1, Integer num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num1 * num2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 方法会报错，因为 final 方法无法被继承</span></span><br><span class="line"><span class="comment">//    public final int sum (Integer num1, Integer num2) &#123;</span></span><br><span class="line"><span class="comment">//        return num1 + num2;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="final-with-variable"><a href="#final-with-variable" class="headerlink" title="final with variable"></a>final with variable</h5><ul>
+<li><code>final</code> 变量一般是大写</li>
+<li><code>final</code> 变量如果引用的是基本类型，那么不可以修改重新赋值，</li>
+<li><code>final</code> 如果引用的是对象，那么不可以修改引用，但是对象本身是可以变化的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalVariable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">change</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> String NAME = <span class="string">"zhangsan"</span>;</span><br><span class="line">        <span class="comment">// name = "lisi"; // 错误</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> ArrayList list;</span><br><span class="line">        list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="string">"zhangsan"</span>);</span><br><span class="line">        <span class="comment">// list = new ArrayList(); // 错误</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h4><p><code>static</code> 修饰的属性和方法都属于类，而不属于某个具体 <code>new</code> 出来的对象，所有对象共享相同的 <code>static</code> 属性和方法</p>
+<p><code>static</code> 修饰的属性和方法可以直接通过 <code>类名.变量</code> 或者 <code>类名.方法()</code> 调用</p>
+<h4 id="abstract-关键字"><a href="#abstract-关键字" class="headerlink" title="abstract 关键字"></a>abstract 关键字</h4><p><code>abstract</code> 关键字可以修饰类或方法。</p>
+<p><code>abstract</code> 类可以扩展（增加子类），但不能直接实例化。</p>
+<p><code>abstract</code> 方法不在声明它的类中实现，但必须在某个子类中重写。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span>&#123;&#125;</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">myMethod</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>采用 <code>abstract</code> 方法的类本来就是抽象类，并且必须声明为 <code>abstract。</code></p>
+</li>
+<li><p><code>abstract</code> 类不能实例化。</p>
+</li>
+<li><p>仅当 <code>abstract</code> 类的子类实现其超类的所有 <code>abstract</code> 方法时，才能实例化 <code>abstract</code> 类的子类。这种类称为具体类，以区别于 <code>abstract</code> 类。</p>
+</li>
+<li><p>如果 <code>abstract</code> 类的子类没有实现其超类的所有 <code>abstract</code> 方法，该子类也是 <code>abstract</code> 类。</p>
+</li>
+<li><p><code>abstract</code> 关键字不能应用于 <code>static</code>、<code>private</code> 或 <code>final</code> 方法，因为这些方法不能被重写，因此，不能在子类中实现。</p>
+</li>
+<li><p><code>final</code> 类的方法都不能是 <code>abstract</code>，因为 <code>final</code> 类不能有子类。</p>
+</li>
+</ul>
+<h4 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h4><p><code>this</code> 关键字代之当前对象，可以通过 <code>this</code> 引用当前对象的变量或者方法</p>
+<h4 id="super-关键字"><a href="#super-关键字" class="headerlink" title="super 关键字"></a>super 关键字</h4><p>super 关键字代指父对象，用来访问父对象的变量和方法</p>
+<h4 id="关键字注意事项"><a href="#关键字注意事项" class="headerlink" title="关键字注意事项"></a>关键字注意事项</h4><ul>
+<li><p><code>abstract</code> 关键字和 <code>final</code> 关键字天生互斥，不能同时使用</p>
+</li>
+<li><p><code>super</code> 调用父类中的其他构造方法时，调用时要放在构造方法的首行！<code>this</code> 调用本类中的其他构造方法时，也要放在首行。</p>
+</li>
+<li><p><code>this</code>，<code>super</code>不能用在 <code>static</code> 方法中。<code>static</code> 中也不能调用非 <code>static</code> 修饰的变量或者方法，原理也是一样的。类范畴的无法调用对象范畴的东西，<strong><code>this</code> 和 <code>super</code> 是属于对象范畴的东西，而静态方法是属于类范畴的东西。</strong></p>
+</li>
+<li><p>静态代码快和非静态代码快的区别，静态代码块无论创建多少个实例都执行一次，非静态代码快每创建一个实例执行一次</p>
+</li>
+<li><p>静态代码块和构造方法的区别，不同的对象用不同的构造方法执行出来的对象可能不同，静态代码快就是所有对象相同的那部分</p>
+</li>
+</ul>
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><ul>
+<li><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/Basis/final%E3%80%81static%E3%80%81this%E3%80%81super.md" target="_blank" rel="noopener">final,static,this,super 关键字总结</a></li>
+</ul>
+<p>~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/09/20190409_一张图看懂 Mysql 的连接查询/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -754,7 +946,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/20190403_HTTPS 配置教程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/20190403_HTTPS_配置教程/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -773,7 +965,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/03/20190403_HTTPS 配置教程/" itemprop="url">HTTPS 配置教程</a></h1>
+                <a class="post-title-link" href="/2019/04/03/20190403_HTTPS_配置教程/" itemprop="url">HTTPS 配置教程</a></h1>
         
 
         <div class="post-meta">
@@ -801,8 +993,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-18T17:55:46+08:00">
-                2019-04-18
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-02T21:39:46+08:00">
+                2019-07-02
               </time>
             
           </span>
@@ -1697,149 +1889,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/20190325_Nginx 在 windows 下的常用命令/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/25/20190325_Nginx 在 windows 下的常用命令/" itemprop="url">Nginx 在 windows 下的常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T21:25:36+08:00">
-                2019-03-25
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T12:12:58+08:00">
-                2019-04-04
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>Windows</code> 下安装 <code>Nginx</code> 推荐使用绿色安装的方式，在 <code>Nginx</code> 官网下载安装包，直接解压压缩文件就可以了。<br>安装成功后，进入 <code>Nginx</code> 文件夹的安装目录，<code>Ctrl + 鼠标右键</code> 打开 <code>CMD</code> 或者 <code>Powershell</code> 窗口即可。打开的窗口一般如下图所示：</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/2019331_nginx01.png" alt=""></p>
-<h1 id="1-启动-Nginx"><a href="#1-启动-Nginx" class="headerlink" title="1. 启动 Nginx"></a>1. 启动 Nginx</h1><p>执行以下命令，启动成功后打开浏览器输入 <code>127.0.0.1</code> or <code>localhost</code> 访问</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种方法，nginx在前台运行，关闭当前命令行窗口时 nginx 自动关闭</span></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后台运行 nginx</span></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; start nginx</span><br></pre></td></tr></table></figure>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/2019331_nginx02.png" alt=""></p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/2019331_nginx03.png" alt=""></p>
-<h1 id="2-关闭-Nginx"><a href="#2-关闭-Nginx" class="headerlink" title="2. 关闭 Nginx"></a>2. 关闭 Nginx</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe -s stop</span><br><span class="line"></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe -s quit</span><br></pre></td></tr></table></figure>
-<p>注：stop是快速停止 Nginx，可能并不保存相关信息；quit是完整有序的停止 Nginx，并保存相关信息。</p>
-<h1 id="3、重新载入-Nginx"><a href="#3、重新载入-Nginx" class="headerlink" title="3、重新载入 Nginx"></a>3、重新载入 Nginx</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当配置信息修改，需要重新载入这些配置时使用此命令。</span></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe -s reload</span><br></pre></td></tr></table></figure>
-<h1 id="4、查看-Nginx-版本："><a href="#4、查看-Nginx-版本：" class="headerlink" title="4、查看 Nginx 版本："></a>4、查看 Nginx 版本：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe -v</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1890,7 +1939,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

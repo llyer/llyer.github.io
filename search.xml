@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[HTTPS 配置教程（二） 安全证书的续订]]></title>
+    <url>%2F2019%2F07%2F02%2F20190702_HTTPS_%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[本文将以本站 http://liluyang.me 升级到 https://liluyang.me 的过程来分享一下 https 的原理，http 和 https 的区别，以及如何将网站从 http 升级到 https。 在上一篇文章 HTTPS 配置教程 中，我们教会了大家如何使用 Let’s Encrypt 免费 https 证书来为网站 http://liluyang.me 加密。但是这种方式有一个缺点呢，就是证书的有效期只有 90 天，90 天之后我们就要重新生成证书才能让网站继续使用 https 服务，如果不重新生成证书，那么访问网站的时候我们的网站就会被浏览器标记为不安全的，例如 Chrome 浏览器就提示如下： 今天呢就给大家讲一下安全证书的续订，以及一些可能会遇到的问题！ 证书续订其实续订证书的方式很简单，如果顺利的话，只要执行一步就可以了。还是执行以下命令： 12# 如果看不懂这行命令，请点击文章顶部的连接去看本系列文章的第一篇文章： https 配置教程certbot certonly --webroot -w /root/docker_nginx/html -d liluyang.me -d www.liluyang.me 如果正常的话，看到 shell 中产生以下提示，就代表证书生成成功了：123456789101112131415161718192021222324252627root@localhost:~/docker_nginx/conf# certbot certonly --webroot -w /root/docker_nginx/html -d liluyang.me -d www.liluyang.meSaving debug log to /var/log/letsencrypt/letsencrypt.logPlugins selected: Authenticator webroot, Installer NoneCert is due for renewal, auto-renewing...Renewing an existing certificatePerforming the following challenges:http-01 challenge for liluyang.mehttp-01 challenge for www.liluyang.meUsing the webroot path /root/docker_nginx/html for all unmatched domains.Waiting for verification...Cleaning up challengesIMPORTANT NOTES: - Congratulations! Your certificate and chain have been saved at: /etc/letsencrypt/live/liluyang.me/fullchain.pem Your key file has been saved at: /etc/letsencrypt/live/liluyang.me/privkey.pem Your cert will expire on 2019-09-30. To obtain a new or tweaked version of this certificate in the future, simply run certbot again. To non-interactively renew *all* of your certificates, run &quot;certbot renew&quot; - If you like Certbot, please consider supporting our work by: Donating to ISRG / Let&apos;s Encrypt: https://letsencrypt.org/donate Donating to EFF: https://eff.org/donate-leroot@localhost:~/docker_nginx/conf# 生成成功后，还是将 pem 文件拷贝到 nginx 的配置目录中重启 nginx 即可重新享受 https 服务了。 以上操作步骤的详细说明请参考 HTTPS 配置教程 本片文章主要的问题就是解决我自己在重新生成证书时遇到的以下错误： 123456789101112131415161718192021222324252627282930313233root@localhost:~/docker_nginx/html# certbot certonly --webroot -w /root/docker_nginx/html -d liluyang.me -d www.liluyang.meSaving debug log to /var/log/letsencrypt/letsencrypt.logPlugins selected: Authenticator webroot, Installer NoneCert is due for renewal, auto-renewing...Renewing an existing certificatePerforming the following challenges:http-01 challenge for liluyang.mehttp-01 challenge for www.liluyang.meUsing the webroot path /root/docker_nginx/html for all unmatched domains.Waiting for verification...Cleaning up challengesFailed authorization procedure. www.liluyang.me (http-01): urn:ietf:params:acme:error:unauthorized :: The client lacks sufficient authorization :: Invalid response from https://liluyang.me [104.194.69.99]: &quot;&lt;!DOCTYPE html&gt;\n\n\n\n \n\n\n&lt;html class=\&quot;theme-next gemini use-motion\&quot; lang=\&quot;zh-Hans\&quot;&gt;\n&lt;head&gt;&lt;meta name=\&quot;generator\&quot; content=\&quot;Hexo 3.&quot;, liluyang.me (http-01): urn:ietf:params:acme:error:unauthorized :: The client lacks sufficient authorization :: Invalid response from https://liluyang.me [104.194.69.99]: &quot;&lt;!DOCTYPE html&gt;\n\n\n\n \n\n\n&lt;html class=\&quot;theme-next gemini use-motion\&quot; lang=\&quot;zh-Hans\&quot;&gt;\n&lt;head&gt;&lt;meta name=\&quot;generator\&quot; content=\&quot;Hexo 3.&quot;IMPORTANT NOTES: - The following errors were reported by the server: Domain: www.liluyang.me Type: unauthorized Detail: Invalid response from https://liluyang.me [104.194.69.99]: &quot;&lt;!DOCTYPE html&gt;\n\n\n\n \n\n\n&lt;html class=\&quot;theme-next gemini use-motion\&quot; lang=\&quot;zh-Hans\&quot;&gt;\n&lt;head&gt;&lt;meta name=\&quot;generator\&quot; content=\&quot;Hexo 3.&quot; Domain: liluyang.me Type: unauthorized Detail: Invalid response from https://liluyang.me [104.194.69.99]: &quot;&lt;!DOCTYPE html&gt;\n\n\n\n \n\n\n&lt;html class=\&quot;theme-next gemini use-motion\&quot; lang=\&quot;zh-Hans\&quot;&gt;\n&lt;head&gt;&lt;meta name=\&quot;generator\&quot; content=\&quot;Hexo 3.&quot; To fix these errors, please make sure that your domain name was entered correctly and the DNS A/AAAA record(s) for that domain contain(s) the right IP address. 产生这个问题的原因是在本次重新生成证书时我强制开启网站 http://liluyang.me 的 http 请求到 https 请求的跳转，导致 Let’s Encrypt 无法正确的校验域名和服务器的关联关系从而导致证书生成失败，解决的办法就是修改 nginx 配置文件 nginx.conf（如果存在 conf.d/default.conf 文件请优先修改此文件，具体原因请百度） 将 https 强制跳转关掉即可。 123456# 注释掉以下配置 关闭强制 https 跳转# server &#123;# listen 80;# server_name liluyang.me www.liluyang.me;# return 301 https://liluyang.me;# &#125; 在此执行生成证书的命令即可成功生成证书，配置成功后打开浏览器访问 https://liluyang.me 点击浏览器导航栏左侧 安全锁小图标，发现证书信息已经更新： 安全证书的有效时间已经更新，证明我们的设置已经生效了，你学会了吗？ 参考链接 《Nginx 容器教程》 BY 阮一峰 《https 教程参考链接》 BY 阮一峰 《HTTPS中的TLS》 《Let’s Encrypt 证书生成工具Certbot》 BY Let’s Encrypt官方 《Let’s Encrypt 入门教程》 《Let’s Encrypt 使用教程，免费的SSL证书，让你的网站拥抱 HTTPS》 《HTTPS 简介及使用官方工具 Certbot 配置 Let’s Encrypt SSL 安全证书详细教程》 《数字证书及 CA 的扫盲介绍和工作原理》 ~]]></content>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Hexo</tag>
+        <tag>Nginx</tag>
+        <tag>计算机网络</tag>
+        <tag>博客</tag>
+        <tag>HTTPS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Ubuntu 下 Redis 的常用命令]]></title>
     <url>%2F2019%2F05%2F15%2F20190420_Ubuntu%20%E4%B8%8B%20Redis%20%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[由于经常要在 服务器上修改 redis 的配置信息，每次都要搜索一下常用的命令，于是把命令整理了一下分享给大家 环境说明： 所有操作都在 腾讯云 Ubuntu 16.04 下进行。 Tips: 在腾讯云部署的 redis 服务，如果需要在外网访问，记得要在安全组配置中将 6379 端口打开！ 启动，关闭，重启 redis如果是用apt或者yum安装的redis，可以直接通过下面的命令停止/启动/重启redis 12345/etc/init.d/redis-server stop/etc/init.d/redis-server start/etc/init.d/redis-server restart 如果是通过源码安装的redis，则可以通过redis的客户端程序redis-cli的shutdown命令来重启redis 1.redis关闭redis-cli -h 127.0.0.1 -p 6379 shutdown 2.redis启动redis-server 如果上述方式都没有成功停止redis，则可以使用终极武器 kill -9 修改 redis 的配置大多数的应用场景下，往往是我们需要修改 redis 的一些功能，然后重启让其生效 使用 apt 安装的 redis 配置文件路径为：/etc/redis/redis.conf，可以使用以下命令编辑配置： 12# 编辑vi /etc/redis/redis.conf Tips: 编辑成功后按 esc + :wq 保存文件然后重启就可以生效啦 查看 redis 的运行状态1ps -ef | grep redis]]></content>
@@ -122,7 +135,7 @@
   </entry>
   <entry>
     <title><![CDATA[HTTPS 配置教程]]></title>
-    <url>%2F2019%2F04%2F03%2F20190403_HTTPS%20%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B%2F</url>
+    <url>%2F2019%2F04%2F03%2F20190403_HTTPS_%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[本文将以本站 http://liluyang.me 升级到 https://liluyang.me 的过程来分享一下 https 的原理，http 和 https 的区别，以及如何将网站从 http 升级到 https。 引言为什么要用 https？https 更安全。甚至为了安全，一个专业可靠的网站， https 是必须的。 Firefox 和 Chrome 都计划将没有配置 SSL 加密的 https 网站标记为不安全（貌似 Firefox50 已经这么干了），目前它们也正在联合其他相关的基金会与公司推动整个互联网 https 化，现在大家访问的一些主要的网站。如 Google 多年前就已经全部启用 https ，国内的淘宝、搜狗、知乎、百度等等也全面 https 了。甚至 Google 的搜索结果也正在给予 https 的网站更高的排名和优先收录权。 要需要掌握哪些知识？拥有基础的 Linux 系统知识，常用的 Shell 命令。 需要有什么资源？如果你只是要测试 https，请查看Nginx 容器教程 如果你要在生产环境使用 https，请接着往下看： 一个服务器，一个域名，并且已经正确的将域名指向了你的服务器，并且拥有服务器的 SSH 权限 Tips: 需要注意的是如果是在国内阿里云或者腾讯云购买的域名请备案，否则即使你正确的配置了你的域名，可能也依然无法访问你的服务器，因为在国内备案是必须的。 关键词http 和 https简单来说，http 是一个传输网页内容的协议，比如你看到的 http 开头的网站 http://www.163.com，其网页上的文字、图片、 CSS、JS 等文件都是通过 http 协议传输到我们的浏览器，然后被我们看到。 而 https 可以理解为 HTTP over SSL/TLS ，好端端的 http 为什么需要 over SSL/TLS 呢，因为 http 是明文传输的，通过 http 协议传输的内容很容易被偷看和篡改，为了安全（你肯定不想被人偷看或者篡改网页内容吧，比如网站银行密码什么的。）就为 http 协议再加上了一层 SSL/TLS 安全协议，所以就有了 https。 SSL/TLSHTTP over SSL/TLS 字面意思就是带 安全套接层 的 http 协议，内心纯洁的同学也可以理解为 带安全套的 http，因为带了安全套，所以当然会比较安全（/(ㄒoㄒ)/~~）。其中 SSL 是 Secure Sockets Layer 的缩写，是 “安全套接层” 的意思。TLS 是 Transport Layer Security 的缩写，是 传输层安全协议 的意思。SSL 和 TLS 是同一个东西的不同阶段，理解为同一个东西也行，都是安全协议就对了。 CA证书颁发机构（CA, Certificate Authority）即颁发数字证书的机构。是负责发放和管理数字证书的权威机构，并作为电子商务交易中受信任的第三方，承担公钥体系中公钥的合法性检验的责任。 Let’s EncryptLet&#39;s Encrypt 成立于 2015 年的数字证书认证机构，成立的目的就是为了推行 https 协议在全世界的普及。主要赞助商包括电子前哨基金会、Mozilla基金会、Akamai以及思科。Let&#39;s Encrypt 旨在以自动化流程消除手动创建和安装证书的复杂流程，并推广使万维网服务器的加密连接无所不在，为安全网站提供免费的 SSL/TLS 证书。 说人话就是 Let’s Encrypt 就是一个可以给我们颁发授信证书的 CA 组织。 CertbotLet’s Encrypt 官方推出的授信证书生成客户端。可以在 Debian，CentOS 等主流系统上运行 官方链接如下：https://certbot.eff.org/ 获取证书要升级到 https 首先要获得 CA 签发的安全证书文件，我们选择的证书签发机构是 Let’s Encrypt，目前 Let’s Encrypt 推荐的方法是安装 Certbot 工具通过校验服务器和域名的归属权方式来获取证书 安装Certbot如果你的英文能力比较好，那么请访问 Certbot官网 根据官方教程来下载，官方教程更加细致，出了问题也方便查看官方的第一手资料。当然你也可以根据以下命令来安装 Certbot 工具，这里我们以 debian9 系统为例来安装 12# 下载 certbot，如果是 centOS 等内核，可以使用 yum 命令apt install certbot 生成证书certbot 安装成功后，我们有两种模式来获取证书 第一种模式 Webroot1certbot certonly --webroot -w /root/docker_nginx/html -d liluyang.me -d www.liluyang.me 这个命令会为 liluyang.com 和 www.liluyang.com 这两个域名生成一个证书 --webroot 模式会在 /root/docker_nginx/html 中创建 .well-known文件夹，这个文件夹里面包含了一些验证文件，certbot 会通过访问 example.com/.well-known/acme-challenge 来验证你的域名是否绑定的这个服务器。这个文件夹就是你 Nginx 下 index.html 所在的目录，请自行根据自己服务器 Nginx 的配置情况修改这个参数。 如果执行成功，命令行会大致输出以下参数表示成功： 12345678910111213IMPORTANT NOTES: - Congratulations! Your certificate and chain have been saved at: /etc/letsencrypt/live/liluyang.me/fullchain.pem Your key file has been saved at: /etc/letsencrypt/live/liluyang.me/privkey.pem Your cert will expire on 2019-07-01. To obtain a new or tweaked version of this certificate in the future, simply run certbot again. To non-interactively renew *all* of your certificates, run "certbot renew" - If you like Certbot, please consider supporting our work by: Donating to ISRG / Let's Encrypt: https://letsencrypt.org/donate Donating to EFF: https://eff.org/donate-le 以上信息中包含了生成后的证书的位置，过期时间等信息，根据提示信息我们打开 /etc/letsencrypt/live/ 文件夹，检查这个文件夹中是否有你生成的对应网站的证书文件，如果成功，应该如下图所示： 这个命令在大多数情况下都可以满足需求，如果失败了，请看下一种模式。 第二种模式 Standalone如果你已经通过第一种模式生成证书成功，请跳过这里，直接看下一章 但是有些时候我们的一些服务并没有根目录，例如一些微服务，这时候使用 --webroot 就走不通了。certbot 还有另外一种模式 --standalone， 这种模式不需要指定网站根目录，他会自动启用服务器的 443 端口，来验证域名的归属。我们有其他服务（例如nginx）占用了 443 端口，就必须先停止这些服务，在证书生成完毕后，再启用。 1certbot certonly --standalone -d example.com -d www.example.com 证书生成完毕后，我们可以在 /etc/letsencrypt/live/ 目录下看到对应域名的文件夹，里面存放了指向证书的一些快捷方式。 这时候我们的第一生成证书已经完成了，接下来就是配置我们的 web 服务器，启用 HTTPS。 如果生成失败，并且你自己搜索之后又没有能力解决，请在评论留言 如果生成失败，并且你自己搜索之后又没有能力解决，请在评论留言 如果生成失败，并且你自己搜索之后又没有能力解决，请在评论留言 安装证书证书生成生成后，我们还要做最后的一步就是把证书的配置信息添加到 nginx 的 conf 目录的 certs 文件夹中。我个人的 Nginx 是通过 docker 镜像的方式运行的，并且我将本地的 /root/docker_nginx/conf 文件夹设置为了 Nginx 的配置文件夹，所以现在我们将证书 cert.pem 和 privkey.pem 拷贝到这个目录。配置目录如下 在 Nginx 的配置文件 nginx.conf 末尾添加以下配置，注意修改对应的配置参数，下面的配置模板仅供参考。 如果存在 conf.d/default.conf 文件请优先修改此文件，具体原因请百度 1234567891011121314151617181920# 443 https 配置server &#123; listen 443 ssl http2; server_name liluyang.me www.liluyang.me; ssl on; ssl_certificate /etc/nginx/certs/cert.pem; ssl_certificate_key /etc/nginx/certs/privkey.pem; ssl_session_timeout 5m; ssl_ciphers HIGH:!aNULL:!MD5; ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2; ssl_prefer_server_ciphers on; location / &#123; root /usr/share/nginx/html; index index.html index.htm; &#125;&#125; 重启 Nginx 到此为止，我们就已经成功的完成了 https 的配置。 现在打开我的博客 https://liluyang.com 就可以在浏览器端看到标有 安全 的网站标识字样了，如下图： 注意事项如果是 docker 部署的 nginx，最后重启启动 docker 时要将 443（https） 端口映射出来，否则无法访问服务器的 443（https） 端口的。1234567docker run \ --volume &quot;$PWD/html&quot;:/usr/share/nginx/html \ --volume &quot;$PWD/conf&quot;:/etc/nginx \ -p 80:80 \ -p 443:443 \ -d \ nginx 可选配置强制使用 https 访问网站将 http 请求转发到 https 请在配置文件夹中添加以下配置，然后重启 Nginx 即可 12345server &#123; listen 80; server_name liluyang.me www.liluyang.me; return 301 https://liluyang.me;&#125; 自动续订细心的同学可能会发现， https 证书的有效时间是非常短的，只有三个月，那么每隔三个月我们都要操作一次吗？其实不是的，我们可以用过自动续订的方式来刷新我们的证书有效时间。 测试自动续订1certbot renew --dry-run 如果测试成功，会生成如下提示：1234567891011121314151617181920212223242526272829303132333435Saving debug log to /var/log/letsencrypt/letsencrypt.log- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Processing /etc/letsencrypt/renewal/liluyang.me.conf- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -Cert not due for renewal, but simulating renewal for dry runPlugins selected: Authenticator webroot, Installer NoneRenewing an existing certificatePerforming the following challenges:http-01 challenge for liluyang.mehttp-01 challenge for www.liluyang.meWaiting for verification...Cleaning up challenges- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -new certificate deployed without reload, fullchain is/etc/letsencrypt/live/liluyang.me/fullchain.pem- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -** DRY RUN: simulating 'certbot renew' close to cert expiry** (The test certificates below have not been saved.)Congratulations, all renewals succeeded. The following certs have been renewed: /etc/letsencrypt/live/liluyang.me/fullchain.pem (success)** DRY RUN: simulating 'certbot renew' close to cert expiry** (The test certificates above have not been saved.)- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -IMPORTANT NOTES: - Your account credentials have been saved in your Certbot configuration directory at /etc/letsencrypt. You should make a secure backup of this folder now. This configuration directory will also contain certificates and private keys obtained by Certbot so making regular backups of this folder is ideal. 手动执行自动续订1certbot renew -v 开启自动续订自动续订也可以用 certbot 来实现，自动续订之后会更新 pem 文件到 /etc/letsencrypt/live/example.com/ 。如果你的 nginx 配置没有直接指向 /etc/letsencrypt/live/example.com/ 文件夹，请记得将 pem 文件夹拷贝到你的配置文件夹中 1certbot renew --quiet --no-self-upgrade 参考链接 《Nginx 容器教程》 BY 阮一峰 《https 教程参考链接》 BY 阮一峰 《HTTPS中的TLS》 《Let’s Encrypt 证书生成工具Certbot》 BY Let’s Encrypt官方 《Let’s Encrypt 入门教程》 《Let’s Encrypt 使用教程，免费的SSL证书，让你的网站拥抱 HTTPS》 《HTTPS 简介及使用官方工具 Certbot 配置 Let’s Encrypt SSL 安全证书详细教程》 《数字证书及 CA 的扫盲介绍和工作原理》 ~]]></content>
       <tags>
         <tag>Docker</tag>
@@ -306,6 +319,29 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[leetcode27. 移除元素]]></title>
+    <url>%2F2019%2F01%2F04%2F20190111_leetcode27%2F</url>
+    <content type="text"><![CDATA[问题连接：27. 移除元素 123456789101112public class Solution &#123; public int removeElement(int[] nums, int val) &#123; //思路，将原来数组a所有不等于val的元素放到b中，返回新数组的长度 int j=0; for(int i=0;i&lt;nums.length;++i)&#123; if(nums[i]!=val)&#123; nums[j++]=nums[i]; &#125; &#125; return j; &#125;&#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>算法</tag>
+        <tag>水题</tag>
+        <tag>数组</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode9. 回文数]]></title>
+    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
+    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>算法</tag>
+        <tag>水题</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode26. 删除排序数组中的重复项]]></title>
     <url>%2F2019%2F01%2F04%2F20190110_leetcode26%2F</url>
     <content type="text"><![CDATA[问题连接：26. 删除排序数组中的重复项 12345678910111213class Solution &#123; public static int removeDuplicates(int[] nums) &#123; int i = 0; for (int j = 1; j &lt; nums.length; j++) &#123; if (nums[j] != nums[i]) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1; &#125;&#125;]]></content>
@@ -330,64 +366,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode20. 有效的括号]]></title>
-    <url>%2F2019%2F01%2F04%2F20190108_leetcode20%2F</url>
-    <content type="text"><![CDATA[问题连接：20. 有效的括号 12345678910111213141516171819202122232425262728293031class Solution &#123; /** * * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决 * * @param s * @return */ public static boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack(); char[] chars = s.toCharArray(); for (char c: chars) &#123; if (stack.size() &gt; 0) &#123; if (c == '&#125;' &amp;&amp; stack.peek() == '&#123;') &#123; stack.pop(); continue; &#125; if (c == ']' &amp;&amp; stack.peek() == '[') &#123; stack.pop(); continue; &#125; if (c == ')' &amp;&amp; stack.peek() == '(') &#123; stack.pop(); continue; &#125; &#125; stack.push(c); &#125; return stack.size() == 0 ? true : false; &#125;&#125;]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>算法</tag>
-        <tag>水题</tag>
-        <tag>字符串</tag>
-        <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[leetcode27. 移除元素]]></title>
-    <url>%2F2019%2F01%2F04%2F20190111_leetcode27%2F</url>
-    <content type="text"><![CDATA[问题连接：27. 移除元素 123456789101112public class Solution &#123; public int removeElement(int[] nums, int val) &#123; //思路，将原来数组a所有不等于val的元素放到b中，返回新数组的长度 int j=0; for(int i=0;i&lt;nums.length;++i)&#123; if(nums[i]!=val)&#123; nums[j++]=nums[i]; &#125; &#125; return j; &#125;&#125;]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>算法</tag>
-        <tag>水题</tag>
-        <tag>数组</tag>
-        <tag>双指针</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[leetcode13. 罗马数字转整数]]></title>
-    <url>%2F2019%2F01%2F04%2F20190106_leetcode13%2F</url>
-    <content type="text"><![CDATA[问题连接：13. 罗马数字转整数 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253class Solution &#123; public static int romanToInt(String s) &#123; int result = 0; char[] chars = s.toCharArray(); for (int i = 0; i &lt; chars.length; i++) &#123; if (chars[i] == 'I') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'V') &#123; result += 4; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'X') &#123; result += 9; i++; continue; &#125; result += 1; &#125; if (chars[i] == 'X') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'L') &#123; result += 40; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'C') &#123; result += 90; i++; continue; &#125; result += 10; &#125; if (chars[i] == 'C') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'D') &#123; result += 400; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'M') &#123; result += 900; i++; continue; &#125; result += 100; &#125; if (chars[i] == 'V') result += 5; if (chars[i] == 'L') result += 50; if (chars[i] == 'D') result += 500; if (chars[i] == 'M') result += 1000; &#125; return result; &#125;&#125;]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>算法</tag>
-        <tag>水题</tag>
-        <tag>数学</tag>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[leetcode9. 回文数]]></title>
-    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
-    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>算法</tag>
-        <tag>水题</tag>
-        <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[leetcode7. 整数反转]]></title>
-    <url>%2F2019%2F01%2F04%2F20190104_leetcode7%2F</url>
-    <content type="text"><![CDATA[问题连接：7. 整数反转 123456789101112131415class Solution &#123; public static int reverse(int x) &#123; int result = 0; // 当 x = 0 时，证明最后一位被处理完成，处理结束 while (x != 0) &#123; int pop = x % 10; x = x / 10; // 要在可能会发生溢出的操作前，对溢出进行判断 if (result &gt; Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE &amp;&amp; pop &gt; 7)) return 0; if (result &lt; Integer.MIN_VALUE / 10 || (result == Integer.MIN_VALUE &amp;&amp; pop &lt; -8)) return 0; result = result * 10 + pop; &#125; return result; &#125;&#125;]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>算法</tag>
-        <tag>水题</tag>
-        <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[leetcode1. 两数之和]]></title>
     <url>%2F2019%2F01%2F04%2F20190103_leetcode1%2F</url>
     <content type="text"><![CDATA[问题连接：1. 两数之和 1234567891011121314151617181920212223class Solution &#123; /** * nums 是一个数组，target 是结果，数组里面必定存在两个数字加起来等于 target * * @param nums * @param target * @return */ public static int[] twoSum(int[] nums, int target) &#123; int[] result = new int[2]; // 遍历数字的所有加法组合 for (int i = 0; i &lt; nums.length; i++) &#123; for (int j = i + 1; j &lt; nums.length; j++) &#123; if (nums[i] + nums[j] == target) &#123; result[0] = i; result[1] = j; return result; &#125; &#125; &#125; return null; &#125;&#125;]]></content>
@@ -405,6 +383,41 @@
         <tag>Leetcode</tag>
         <tag>算法</tag>
         <tag>水题</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode20. 有效的括号]]></title>
+    <url>%2F2019%2F01%2F04%2F20190108_leetcode20%2F</url>
+    <content type="text"><![CDATA[问题连接：20. 有效的括号 12345678910111213141516171819202122232425262728293031class Solution &#123; /** * * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决 * * @param s * @return */ public static boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack(); char[] chars = s.toCharArray(); for (char c: chars) &#123; if (stack.size() &gt; 0) &#123; if (c == '&#125;' &amp;&amp; stack.peek() == '&#123;') &#123; stack.pop(); continue; &#125; if (c == ']' &amp;&amp; stack.peek() == '[') &#123; stack.pop(); continue; &#125; if (c == ')' &amp;&amp; stack.peek() == '(') &#123; stack.pop(); continue; &#125; &#125; stack.push(c); &#125; return stack.size() == 0 ? true : false; &#125;&#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>算法</tag>
+        <tag>水题</tag>
+        <tag>字符串</tag>
+        <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode7. 整数反转]]></title>
+    <url>%2F2019%2F01%2F04%2F20190104_leetcode7%2F</url>
+    <content type="text"><![CDATA[问题连接：7. 整数反转 123456789101112131415class Solution &#123; public static int reverse(int x) &#123; int result = 0; // 当 x = 0 时，证明最后一位被处理完成，处理结束 while (x != 0) &#123; int pop = x % 10; x = x / 10; // 要在可能会发生溢出的操作前，对溢出进行判断 if (result &gt; Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE &amp;&amp; pop &gt; 7)) return 0; if (result &lt; Integer.MIN_VALUE / 10 || (result == Integer.MIN_VALUE &amp;&amp; pop &lt; -8)) return 0; result = result * 10 + pop; &#125; return result; &#125;&#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>算法</tag>
+        <tag>水题</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode13. 罗马数字转整数]]></title>
+    <url>%2F2019%2F01%2F04%2F20190106_leetcode13%2F</url>
+    <content type="text"><![CDATA[问题连接：13. 罗马数字转整数 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253class Solution &#123; public static int romanToInt(String s) &#123; int result = 0; char[] chars = s.toCharArray(); for (int i = 0; i &lt; chars.length; i++) &#123; if (chars[i] == 'I') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'V') &#123; result += 4; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'X') &#123; result += 9; i++; continue; &#125; result += 1; &#125; if (chars[i] == 'X') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'L') &#123; result += 40; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'C') &#123; result += 90; i++; continue; &#125; result += 10; &#125; if (chars[i] == 'C') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'D') &#123; result += 400; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'M') &#123; result += 900; i++; continue; &#125; result += 100; &#125; if (chars[i] == 'V') result += 5; if (chars[i] == 'L') result += 50; if (chars[i] == 'D') result += 500; if (chars[i] == 'M') result += 1000; &#125; return result; &#125;&#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>算法</tag>
+        <tag>水题</tag>
+        <tag>数学</tag>
         <tag>字符串</tag>
       </tags>
   </entry>
