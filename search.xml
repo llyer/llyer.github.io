@@ -73,8 +73,8 @@
     <url>%2F2019%2F04%2F12%2F20190412_Spring%20Boot%20Redis%20%2B%20Spring%20Boot%20Cache%20%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[本文配套代码地址： Spring Boot Redis + Spring Boot Cache 使用教程，强烈建议下载代码配套阅读！ Redis 是开发者们使用最多的内存数据库，内存数据库的很大的一个特性就是用来做缓存，本片文章我们通过 Spring Boot Cache 来整合 Redis，将 Redis 作为我们关系型数据库的缓存。 项目配置在 pom.xml 文件中导入依赖： 12345678910111213141516171819202122&lt;!-- redis --&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;&lt;/dependency&gt;&lt;!-- cache --&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-cache&lt;/artifactId&gt;&lt;/dependency&gt;&lt;!-- jpa --&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;&lt;/dependency&gt; 其他的更多依赖以及可选项请查看源代码 配置文件如下图所示: 12345678910111213141516171819202122232425262728# portserver.port=8080# actuator 健康监控info.name=service-redisinfo.server.port=$&#123;server.port&#125;# redisspring.redis.database=0spring.redis.host=127.0.0.1spring.redis.port=6379spring.redis.password=your password# spring cache type 指明使用的缓存类型是Redis#spring.cache.type=redis# database settingsspring.jpa.database=mysqlspring.jpa.show-sql=falsespring.jpa.hibernate.ddl-auto=updatespring.jpa.hibernate.naming-strategy=org.hibernate.cfg.ImprovedNamingStrategyspring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect# data sourcespring.datasource.url=jdbc:mysql://127.0.0.1:3306/learn_redis?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2B8spring.datasource.username=rootspring.datasource.password=passwordspring.datasource.driverClassName=com.mysql.jdbc.Driver 当我们在 Spring boot 中配置好 Redis 并且在 Service 层代码中设置对应 Cache，Spring 会自动帮我们检测缓存数据源，如果发现当前项目中有可用的 Redis，那么就会设置缓存数据源为 Redis Service 层的示例代码如下： 1234567891011121314151617181920212223242526272829303132333435363738@Servicepublic class UserService &#123; @Autowired UserRepository userRepository; public List&lt;User&gt; list() &#123; System.out.println("进入 list users service 方法"); return userRepository.findAll(); &#125; // 查询用户，并且值缓存用户ID小于10的用户 @Cacheable(value = "user", key = "#id", condition = "#id &lt; 10") public User get(Integer id) &#123; System.out.println("进入 service get 方法"); return userRepository.findById(id).orElse(null); &#125; @CachePut(value = "user", key = "#user.id", condition = "#user.id &lt; 10") public User save(User user) &#123; System.out.println("进入 service save 方法"); return userRepository.save(user); &#125; @CachePut(value = "user", key = "#user.id", condition = "#user.id &lt; 10") public User update(User user) &#123; System.out.println("进入 service update 方法"); return userRepository.save(user); &#125; // Evict 清除缓存，一般用在删除方法之上，在删除时，也将缓存数据清空 @CacheEvict(value = "user", key = "#id") public void delete(Integer id) &#123; System.out.println("进入 service delete 方法"); userRepository.deleteById(id); &#125;&#125; 上图中有一些是属于 org.springframework.cache.annotation.* 包下面的注解。这些注解定义我们要缓存的数据，规则等信息。 Cacheable 对应 get 方法。查询数据中进行缓存，value 对应的是仓库，缓存的数据为方法 return 的数据 CachePut 对应 post，put 方法。用在插入或者更新时，将变动的信息更新到缓存。 CacheEvict 对应 delete 方法。用在需要将缓存中的数据移除的时候。 更多详细的文档请访问：https://docs.spring.io/spring/docs/4.3.15.RELEASE/spring-framework-reference/html/cache.html 如何验证缓存已经正常运行？在项目中执行以下测试用例12345678910@Testpublic void getTest3() throws Exception &#123; User u1 = new User(); u1.setId(1); u1.setName("曾阿牛"); u1.setAge(18); userService.save(u1); User u3 = userService.get(1); System.out.println("第一次查询：" + u3.getAge());&#125; 发现 Mysql 和 Redis 缓存中同时多了以下数据： redis:12345127.0.0.1:6379&gt; keys *1) "user::1"2) "runtime"3) "caches"127.0.0.1:6379&gt; mysql: 以上两张图片证明了，我们不仅将数据保存到了 Mysql 数据库中，还将数据同时添加到了缓存当中。此时，如果我们再单独的执行 userService.get(1) 方法，那么查询会直接将 Redis 缓存中的数据返回，这样相对于从数据库查询数据速度要快很多 如何保证 Mysql 和 Redis 数据的一致性？Question: 这个时候可能有人会问？那我数据的增删改查怎么办？我的数据要更新，更新后数据库里面的数据和缓存不一致怎么办？那岂不是缓存里面的数据就变成脏数据了？缓存的设置怎么设置条件，比如：我们只想缓存 id 小于 10 的用户的数据，应该怎么做？ Answer: 其实解决办法也不是很复杂，我们只需要在所有可能操作要这个对应数据的地方加上对应的缓存注解就可以，例如：更新数据库时也更新缓存就可以了。具体的代码在上面的代码上已经有了。大家可以下载代码自行检验。添加以下条件进行过滤就可以了： 1@CachePut(value = "user", key = "#user.id", condition = "#user.id &lt; 10") 接下来我们来验证一下过滤条件是否生效，分别运行一下两个测试用例： 123456789101112131415161718192021@Testpublic void getTest3() throws Exception &#123; User u1 = new User(); u1.setId(9); u1.setName("灭绝师太"); u1.setAge(50); userService.save(u1); User u3 = userService.get(9); System.out.println("第一次查询：" + u3.getAge());&#125;@Testpublic void getTest3() throws Exception &#123; User u1 = new User(); u1.setId(11); u1.setName("张三丰"); u1.setAge(108); userService.save(u1); User u3 = userService.get(11); System.out.println("第一次查询：" + u3.getAge());&#125; 此时在 Mysql 和 Redis 中的数据状态如下： redis:123456127.0.0.1:6379&gt; keys *1) "user::1"2) "runtime"3) "caches"4) "user::9"127.0.0.1:6379&gt; mysql: 可以发现系统并没有将 id 为 11 的数据保存在缓存当中。 参考链接 配套代码 Spring Cache 官方文档 Redis 常用命令整理 设置 Redis 服务可以被远程访问]]></content>
       <tags>
-        <tag>Redis</tag>
         <tag>Mysql</tag>
+        <tag>Redis</tag>
         <tag>缓存</tag>
         <tag>Spring Boot</tag>
       </tags>
@@ -230,9 +230,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode182. 查找重复的电子邮箱]]></title>
-    <url>%2F2019%2F03%2F22%2F20190322_leetcode182%2F</url>
-    <content type="text"><![CDATA[问题连接：182. 查找重复的电子邮箱 Question:编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ Answer:1234567-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息select email from(select email, count(email) num from person GROUP BY email) as temp_tablewhere num &gt; 1 ~~~]]></content>
+    <title><![CDATA[leetcode627. 交换工资]]></title>
+    <url>%2F2019%2F03%2F22%2F20190322_leetcode627%2F</url>
+    <content type="text"><![CDATA[问题连接：627. 交换工资 Question:给定一个 salary 表，如下所示，有 m=男性 和 f=女性 的值 。交换所有的 f 和 m 值（例如，将所有 f 值更改为 m，反之亦然）。要求使用一个更新（Update）语句，并且没有中间临时表。 请注意，你必须编写一个 Update 语句，不要编写任何 Select 语句。 例如: 123456| id | name | sex | salary ||----|------|-----|--------|| 1 | A | m | 2500 || 2 | B | f | 1500 || 3 | C | m | 5500 || 4 | D | f | 500 | 运行你所编写的更新语句之后，将会得到以下表: 123456| id | name | sex | salary ||----|------|-----|--------|| 1 | A | f | 2500 || 2 | B | m | 1500 || 3 | C | f | 5500 || 4 | D | m | 500 | Answer:12345678-- mysql case when 条件流程控制语句，case when 可以在查询修改等条件语句中用update salaryset sex = case sex when 'm' then 'f' else 'm'end; ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
@@ -248,9 +248,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode627. 交换工资]]></title>
-    <url>%2F2019%2F03%2F22%2F20190322_leetcode627%2F</url>
-    <content type="text"><![CDATA[问题连接：627. 交换工资 Question:给定一个 salary 表，如下所示，有 m=男性 和 f=女性 的值 。交换所有的 f 和 m 值（例如，将所有 f 值更改为 m，反之亦然）。要求使用一个更新（Update）语句，并且没有中间临时表。 请注意，你必须编写一个 Update 语句，不要编写任何 Select 语句。 例如: 123456| id | name | sex | salary ||----|------|-----|--------|| 1 | A | m | 2500 || 2 | B | f | 1500 || 3 | C | m | 5500 || 4 | D | f | 500 | 运行你所编写的更新语句之后，将会得到以下表: 123456| id | name | sex | salary ||----|------|-----|--------|| 1 | A | f | 2500 || 2 | B | m | 1500 || 3 | C | f | 5500 || 4 | D | m | 500 | Answer:12345678-- mysql case when 条件流程控制语句，case when 可以在查询修改等条件语句中用update salaryset sex = case sex when 'm' then 'f' else 'm'end; ~~~]]></content>
+    <title><![CDATA[leetcode182. 查找重复的电子邮箱]]></title>
+    <url>%2F2019%2F03%2F22%2F20190322_leetcode182%2F</url>
+    <content type="text"><![CDATA[问题连接：182. 查找重复的电子邮箱 Question:编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ Answer:1234567-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息select email from(select email, count(email) num from person GROUP BY email) as temp_tablewhere num &gt; 1 ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
@@ -331,6 +331,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[leetcode21. 合并两个有序链表]]></title>
+    <url>%2F2019%2F01%2F04%2F20190109_leetcode21%2F</url>
+    <content type="text"><![CDATA[问题连接：21. 合并两个有序链表 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public static ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123; if (l1 == null &amp;&amp; l2 == null) return null; ListNode result; if (l1 == null) &#123; result = l2; l2 = l2.next; &#125; else if (l2 == null) &#123; result = l1; l1 = l1.next; &#125; else if (l1.val &gt;= l2.val) &#123; result = l2; l2 = l2.next; &#125; else &#123; result = l1; l1 = l1.next; &#125; ListNode head = result; while (!(l1 == null &amp;&amp; l2 == null)) &#123; System.out.println("aaa"); if (l1 == null) &#123; head.next = l2; l2 = null; &#125; else if (l2 == null) &#123; head.next = l1; l1 = null; &#125; else if (l1.val &gt;= l2.val) &#123; head.next = l2; head = head.next; l2 = l2.next; &#125; else &#123; head.next = l1; head = head.next; l1 = l1.next; &#125; &#125; return result; &#125;&#125;]]></content>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>算法</tag>
+        <tag>水题</tag>
+        <tag>字符串</tag>
+        <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode20. 有效的括号]]></title>
     <url>%2F2019%2F01%2F04%2F20190108_leetcode20%2F</url>
     <content type="text"><![CDATA[问题连接：20. 有效的括号 12345678910111213141516171819202122232425262728293031class Solution &#123; /** * * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决 * * @param s * @return */ public static boolean isValid(String s) &#123; Stack&lt;Character&gt; stack = new Stack(); char[] chars = s.toCharArray(); for (char c: chars) &#123; if (stack.size() &gt; 0) &#123; if (c == '&#125;' &amp;&amp; stack.peek() == '&#123;') &#123; stack.pop(); continue; &#125; if (c == ']' &amp;&amp; stack.peek() == '[') &#123; stack.pop(); continue; &#125; if (c == ')' &amp;&amp; stack.peek() == '(') &#123; stack.pop(); continue; &#125; &#125; stack.push(c); &#125; return stack.size() == 0 ? true : false; &#125;&#125;]]></content>
@@ -355,18 +367,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode21. 合并两个有序链表]]></title>
-    <url>%2F2019%2F01%2F04%2F20190109_leetcode21%2F</url>
-    <content type="text"><![CDATA[问题连接：21. 合并两个有序链表 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051/** * Definition for singly-linked list. * public class ListNode &#123; * int val; * ListNode next; * ListNode(int x) &#123; val = x; &#125; * &#125; */class Solution &#123; public static ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123; if (l1 == null &amp;&amp; l2 == null) return null; ListNode result; if (l1 == null) &#123; result = l2; l2 = l2.next; &#125; else if (l2 == null) &#123; result = l1; l1 = l1.next; &#125; else if (l1.val &gt;= l2.val) &#123; result = l2; l2 = l2.next; &#125; else &#123; result = l1; l1 = l1.next; &#125; ListNode head = result; while (!(l1 == null &amp;&amp; l2 == null)) &#123; System.out.println("aaa"); if (l1 == null) &#123; head.next = l2; l2 = null; &#125; else if (l2 == null) &#123; head.next = l1; l1 = null; &#125; else if (l1.val &gt;= l2.val) &#123; head.next = l2; head = head.next; l2 = l2.next; &#125; else &#123; head.next = l1; head = head.next; l1 = l1.next; &#125; &#125; return result; &#125;&#125;]]></content>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>算法</tag>
-        <tag>水题</tag>
-        <tag>字符串</tag>
-        <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[leetcode13. 罗马数字转整数]]></title>
     <url>%2F2019%2F01%2F04%2F20190106_leetcode13%2F</url>
     <content type="text"><![CDATA[问题连接：13. 罗马数字转整数 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253class Solution &#123; public static int romanToInt(String s) &#123; int result = 0; char[] chars = s.toCharArray(); for (int i = 0; i &lt; chars.length; i++) &#123; if (chars[i] == 'I') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'V') &#123; result += 4; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'X') &#123; result += 9; i++; continue; &#125; result += 1; &#125; if (chars[i] == 'X') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'L') &#123; result += 40; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'C') &#123; result += 90; i++; continue; &#125; result += 10; &#125; if (chars[i] == 'C') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'D') &#123; result += 400; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'M') &#123; result += 900; i++; continue; &#125; result += 100; &#125; if (chars[i] == 'V') result += 5; if (chars[i] == 'L') result += 50; if (chars[i] == 'D') result += 500; if (chars[i] == 'M') result += 1000; &#125; return result; &#125;&#125;]]></content>
@@ -379,9 +379,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode7. 整数反转]]></title>
-    <url>%2F2019%2F01%2F04%2F20190104_leetcode7%2F</url>
-    <content type="text"><![CDATA[问题连接：7. 整数反转 123456789101112131415class Solution &#123; public static int reverse(int x) &#123; int result = 0; // 当 x = 0 时，证明最后一位被处理完成，处理结束 while (x != 0) &#123; int pop = x % 10; x = x / 10; // 要在可能会发生溢出的操作前，对溢出进行判断 if (result &gt; Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE &amp;&amp; pop &gt; 7)) return 0; if (result &lt; Integer.MIN_VALUE / 10 || (result == Integer.MIN_VALUE &amp;&amp; pop &lt; -8)) return 0; result = result * 10 + pop; &#125; return result; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode9. 回文数]]></title>
+    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
+    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
@@ -390,9 +390,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode9. 回文数]]></title>
-    <url>%2F2019%2F01%2F04%2F20190105_leetcode9%2F</url>
-    <content type="text"><![CDATA[问题连接：9. 回文数 123456789101112131415161718192021222324class Solution &#123; /** * 判断一个整数是否是回文数字 121，12321是，123 1234不是 * * @param x * @return */ public static boolean isPalindrome(int x) &#123; int origin = x; int result = 0; if (x &lt; 0) return false; // 123 while (x &gt; 0) &#123; int temp = x % 10; x = x / 10; result = result * 10 + temp; &#125; if (result == origin) return true; return false; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode7. 整数反转]]></title>
+    <url>%2F2019%2F01%2F04%2F20190104_leetcode7%2F</url>
+    <content type="text"><![CDATA[问题连接：7. 整数反转 123456789101112131415class Solution &#123; public static int reverse(int x) &#123; int result = 0; // 当 x = 0 时，证明最后一位被处理完成，处理结束 while (x != 0) &#123; int pop = x % 10; x = x / 10; // 要在可能会发生溢出的操作前，对溢出进行判断 if (result &gt; Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE &amp;&amp; pop &gt; 7)) return 0; if (result &lt; Integer.MIN_VALUE / 10 || (result == Integer.MIN_VALUE &amp;&amp; pop &lt; -8)) return 0; result = result * 10 + pop; &#125; return result; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
