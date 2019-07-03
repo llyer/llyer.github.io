@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:32:24+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:52:13+08:00">
                 2019-07-03
               </time>
             
@@ -386,46 +386,16 @@
 
       
         
-          
-            <p>在上一篇文章 <a href="/2019/04/03/20190403_HTTPS_配置教程">《HTTPS 配置教程（一）》</a> 中，我们教会了大家如何使用 <a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Encrypt</a> 免费 <code>https</code> 证书来为网站 <a href="http://liluyang.me" target="_blank" rel="noopener">http://liluyang.me</a> 加密。但是这种方式有一个缺点呢，就是证书的有效期只有 <code>90</code> 天，<code>90</code> 天之后我们就要重新生成证书才能让网站继续使用 <code>https</code> 服务，如果不重新生成证书，那么访问网站的时候我们的网站就会被浏览器标记为不安全的，例如 <code>Chrome</code> 浏览器就提示如下：</p>
+          <p>在上一篇文章 <a href="/2019/04/03/20190403_HTTPS_配置教程">《HTTPS 配置教程（一）》</a> 中，我们教会了大家如何使用 <a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Encrypt</a> 免费 <code>https</code> 证书来为网站 <a href="http://liluyang.me" target="_blank" rel="noopener">http://liluyang.me</a> 加密。但是这种方式有一个缺点呢，就是证书的有效期只有 <code>90</code> 天，<code>90</code> 天之后我们就要重新生成证书才能让网站继续使用 <code>https</code> 服务，如果不重新生成证书，那么访问网站的时候我们的网站就会被浏览器标记为不安全的，例如 <code>Chrome</code> 浏览器就提示如下：</p>
 <p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190702_https_01.png" alt=""></p>
 <p>今天呢就给大家讲一下安全证书的续订，以及一些可能会遇到的问题！</p>
-<h1 id="证书续订"><a href="#证书续订" class="headerlink" title="证书续订"></a>证书续订</h1><p>其实续订证书的方式很简单，如果顺利的话，只要执行一步就可以了。还是执行以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果看不懂这行命令，请点击文章顶部的连接去看本系列文章的第一篇文章： https 配置教程</span></span><br><span class="line">certbot certonly --webroot -w /root/docker_nginx/html -d liluyang.me -d www.liluyang.me</span><br></pre></td></tr></table></figure>
-<p>如果正常的话，看到 <code>shell</code> 中产生以下提示，就代表证书生成成功了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">root@localhost:~/docker_nginx/conf# certbot certonly --webroot -w /root/docker_nginx/html -d liluyang.me -d www.liluyang.me</span><br><span class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</span><br><span class="line">Plugins selected: Authenticator webroot, Installer None</span><br><span class="line">Cert is due for renewal, auto-renewing...</span><br><span class="line">Renewing an existing certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">http-01 challenge for liluyang.me</span><br><span class="line">http-01 challenge for www.liluyang.me</span><br><span class="line">Using the webroot path /root/docker_nginx/html for all unmatched domains.</span><br><span class="line">Waiting for verification...</span><br><span class="line">Cleaning up challenges</span><br><span class="line"></span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/liluyang.me/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/liluyang.me/privkey.pem</span><br><span class="line">   Your cert will expire on 2019-09-30. To obtain a new or tweaked</span><br><span class="line">   version of this certificate in the future, simply run certbot</span><br><span class="line">   again. To non-interactively renew *all* of your certificates, run</span><br><span class="line">   &quot;certbot renew&quot;</span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br><span class="line"></span><br><span class="line">root@localhost:~/docker_nginx/conf#</span><br></pre></td></tr></table></figure></p>
-<p>生成成功后，还是将 <code>pem</code> 文件拷贝到 <code>nginx</code> 的配置目录中重启 <code>nginx</code> 即可重新享受 <code>https</code> 服务了。</p>
-<p>以上操作步骤的详细说明请参考：<a href="/2019/04/03/20190403_HTTPS_配置教程">《HTTPS 配置教程（一）》</a></p>
-<p>本片文章主要的问题就是解决我自己在重新生成证书时遇到的以下错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">root@localhost:~/docker_nginx/html# certbot certonly --webroot -w /root/docker_nginx/html -d liluyang.me -d www.liluyang.me</span><br><span class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</span><br><span class="line">Plugins selected: Authenticator webroot, Installer None</span><br><span class="line">Cert is due for renewal, auto-renewing...</span><br><span class="line">Renewing an existing certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">http-01 challenge for liluyang.me</span><br><span class="line">http-01 challenge for www.liluyang.me</span><br><span class="line">Using the webroot path /root/docker_nginx/html for all unmatched domains.</span><br><span class="line">Waiting for verification...</span><br><span class="line">Cleaning up challenges</span><br><span class="line">Failed authorization procedure. www.liluyang.me (http-01): urn:ietf:params:acme:error:unauthorized :: The client lacks sufficient authorization :: Invalid response from https://liluyang.me [104.194.69.99]: &quot;&lt;!DOCTYPE html&gt;\n\n\n\n  \n\n\n&lt;html class=\&quot;theme-next gemini use-motion\&quot; lang=\&quot;zh-Hans\&quot;&gt;\n&lt;head&gt;&lt;meta name=\&quot;generator\&quot; content=\&quot;Hexo 3.&quot;, liluyang.me (http-01): urn:ietf:params:acme:error:unauthorized :: The client lacks sufficient authorization :: Invalid response from https://liluyang.me [104.194.69.99]: &quot;&lt;!DOCTYPE html&gt;\n\n\n\n  \n\n\n&lt;html class=\&quot;theme-next gemini use-motion\&quot; lang=\&quot;zh-Hans\&quot;&gt;\n&lt;head&gt;&lt;meta name=\&quot;generator\&quot; content=\&quot;Hexo 3.&quot;</span><br><span class="line"></span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - The following errors were reported by the server:</span><br><span class="line"></span><br><span class="line">   Domain: www.liluyang.me</span><br><span class="line">   Type:   unauthorized</span><br><span class="line">   Detail: Invalid response from https://liluyang.me [104.194.69.99]:</span><br><span class="line">   &quot;&lt;!DOCTYPE html&gt;\n\n\n\n  \n\n\n&lt;html class=\&quot;theme-next gemini</span><br><span class="line">   use-motion\&quot; lang=\&quot;zh-Hans\&quot;&gt;\n&lt;head&gt;&lt;meta name=\&quot;generator\&quot;</span><br><span class="line">   content=\&quot;Hexo 3.&quot;</span><br><span class="line"></span><br><span class="line">   Domain: liluyang.me</span><br><span class="line">   Type:   unauthorized</span><br><span class="line">   Detail: Invalid response from https://liluyang.me [104.194.69.99]:</span><br><span class="line">   &quot;&lt;!DOCTYPE html&gt;\n\n\n\n  \n\n\n&lt;html class=\&quot;theme-next gemini</span><br><span class="line">   use-motion\&quot; lang=\&quot;zh-Hans\&quot;&gt;\n&lt;head&gt;&lt;meta name=\&quot;generator\&quot;</span><br><span class="line">   content=\&quot;Hexo 3.&quot;</span><br><span class="line"></span><br><span class="line">   To fix these errors, please make sure that your domain name was</span><br><span class="line">   entered correctly and the DNS A/AAAA record(s) for that domain</span><br><span class="line">   contain(s) the right IP address.</span><br></pre></td></tr></table></figure>
-<p>产生这个问题的原因是在本次重新生成证书时我强制开启网站 <a href="http://liluyang.me" target="_blank" rel="noopener">http://liluyang.me</a> 的 <code>http</code> 请求到 <code>https</code> 请求的跳转，导致 <code>Let’s Encrypt</code> 无法正确的校验域名和服务器的关联关系从而导致证书生成失败，解决的办法就是修改 <code>nginx</code> 配置文件 <code>nginx.conf</code>（如果存在 <code>conf.d/default.conf</code> 文件请优先修改此文件，具体原因请百度） 将 <code>https</code> 强制跳转关掉即可。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注释掉以下配置 关闭强制 https 跳转</span></span><br><span class="line"><span class="comment"># server &#123;</span></span><br><span class="line"><span class="comment">#     listen 80;</span></span><br><span class="line"><span class="comment">#     server_name liluyang.me www.liluyang.me;</span></span><br><span class="line"><span class="comment">#     return 301 https://liluyang.me;</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br></pre></td></tr></table></figure>
-<p>在此执行生成证书的命令即可成功生成证书，配置成功后打开浏览器访问 <a href="https://liluyang.me" target="_blank" rel="noopener">https://liluyang.me</a> 点击浏览器导航栏左侧 <code>安全锁</code>小图标，发现证书信息已经更新：</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190702_https_02.png" alt=""></p>
-<p>安全证书的有效时间已经更新，证明我们的设置已经生效了，你学会了吗？</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><p><a href="/2019/04/03/20190403_HTTPS_配置教程">《HTTPS 配置教程（一）》 - 李鲁杨</a></p>
-</li>
-<li><p><a href="http://www.ruanyifeng.com/blog/2018/02/nginx-docker.html" target="_blank" rel="noopener">《Nginx 容器教程》 BY 阮一峰</a></p>
-</li>
-<li><p><a href="http://www.ruanyifeng.com/blog/2016/08/migrate-from-http-to-https.html" target="_blank" rel="noopener">《https 教程参考链接》 BY 阮一峰</a></p>
-</li>
-<li><p><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/network/HTTPS%E4%B8%AD%E7%9A%84TLS.md" target="_blank" rel="noopener">《HTTPS中的TLS》</a></p>
-</li>
-<li><p><a href="https://certbot.eff.org/lets-encrypt/debianstretch-nginx" target="_blank" rel="noopener">《Let’s Encrypt 证书生成工具Certbot》 BY Let’s Encrypt官方</a></p>
-</li>
-<li><p><a href="https://bitmingw.com/2017/02/02/letsencrypt-tutorial/" target="_blank" rel="noopener">《Let’s Encrypt 入门教程》</a></p>
-</li>
-<li><p><a href="http://diamondfsd.com/lets-encrytp-hand-https/" target="_blank" rel="noopener">《Let’s Encrypt 使用教程，免费的SSL证书，让你的网站拥抱 HTTPS》</a></p>
-</li>
-<li><p><a href="https://linuxstory.org/deploy-lets-encrypt-ssl-certificate-with-certbot/" target="_blank" rel="noopener">《HTTPS 简介及使用官方工具 Certbot 配置 Let’s Encrypt SSL 安全证书详细教程》</a></p>
-</li>
-<li><p><a href="https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html" target="_blank" rel="noopener">《数字证书及 CA 的扫盲介绍和工作原理》</a></p>
-</li>
-</ul>
-<p>~</p>
-<hr>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/https-config-guide-02.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -519,7 +489,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:44:44+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:45:36+08:00">
                 2019-07-03
               </time>
             
@@ -674,7 +644,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:35:02+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:45:44+08:00">
                 2019-07-03
               </time>
             
@@ -1112,7 +1082,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:42:59+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:45:49+08:00">
                 2019-07-03
               </time>
             
@@ -1728,7 +1698,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:42:39+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:44:02+08:00">
                 2019-07-03
               </time>
             
