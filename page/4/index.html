@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode595.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/假如地球突然失去氧气五秒钟会怎样？.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -323,7 +323,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode595.html" itemprop="url">leetcode595. 大的国家</a></h1>
+                <a class="post-title-link" href="/假如地球突然失去氧气五秒钟会怎样？.html" itemprop="url">假如地球突然失去氧气五秒钟会怎样？</a></h1>
         
 
         <div class="post-meta">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T11:11:43+08:00">
-                2019-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T15:36:09+08:00">
+                2019-04-02
               </time>
             
 
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:11+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:42:10+08:00">
                 2019-07-03
               </time>
             
@@ -387,14 +387,28 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/big-countries/" target="_blank" rel="noopener">595. 大的国家</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>这里有张 World 表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br><span class="line">| name            | continent  | area       | population   | gdp           |</span><br><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br><span class="line">| Afghanistan     | Asia       | 652230     | 25500100     | 20343000      |</span><br><span class="line">| Albania         | Europe     | 28748      | 2831741      | 12960000      |</span><br><span class="line">| Algeria         | Africa     | 2381741    | 37100000     | 188681000     |</span><br><span class="line">| Andorra         | Europe     | 468        | 78115        | 3712000       |</span><br><span class="line">| Angola          | Africa     | 1246700    | 20609294     | 100990000     |</span><br><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br></pre></td></tr></table></figure>
-<p>如果一个国家的面积超过300万平方公里，或者人口超过2500万，那么这个国家就是大国家。</p>
-<p>编写一个SQL查询，输出表中所有大国家的名称、人口和面积。</p>
-<p>例如，根据上表，我们应该输出:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+--------------+-------------+--------------+</span><br><span class="line">| name         | population  | area         |</span><br><span class="line">+--------------+-------------+--------------+</span><br><span class="line">| Afghanistan  | 25500100    | 652230       |</span><br><span class="line">| Algeria      | 37100000    | 2381741      |</span><br><span class="line">+--------------+-------------+--------------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 单纯的 where 条件查询</span></span><br><span class="line"><span class="keyword">select</span> w.name, w.population, w.area <span class="keyword">from</span> world w <span class="keyword">where</span> w.area &gt; <span class="number">3000000</span> <span class="keyword">or</span> w.population &gt; <span class="number">25000000</span></span><br></pre></td></tr></table></figure>
+            <p>想象一下，假如地球的所有氧气都突然消失了，仅仅消失五秒，会怎样？</p>
+<p>我们要屏住呼吸吗？</p>
+<p>大气会怎样？</p>
+<p>环境会怎样？</p>
+<iframe id="bilibili" src="//player.bilibili.com/player.html?aid=48035776&cid=84145725&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<!-- 
+    设置 bilibili 播放器的高度，设置高度之前，检测一下客户端是横屏还是竖屏
+    TODO 理论上还应该监听一下屏幕的旋转变化事件
+    理论上来说应该获取 iframe 的宽度，然后进行 16 ：9 的计算比较好
+ -->
+<script>
+    document.getElementById('bilibili').setAttribute("style","width:100%");
+    document.getElementById('bilibili').style.minHeight='200px';
+    if (window.screen.height >window.screen.width) {
+        document.getElementById('bilibili').style.height=window.screen.height / 4 + 'px';
+    } else {
+        document.getElementById('bilibili').style.height=window.screen.height / 2 + 'px';
+    }
+</script>
+
+<p><code>Tips</code>：点击视频右上角的<code>去Bilibili观看</code>，可以查看高清 <code>1080P</code> 源视频</p>
 <p>~~~</p>
 <hr>
 
@@ -445,7 +459,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode175.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Windows 和 Linux 下执行命令行命令时如何换行.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -464,7 +478,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode175.html" itemprop="url">leetcode175. 组合两个表</a></h1>
+                <a class="post-title-link" href="/Windows 和 Linux 下执行命令行命令时如何换行.html" itemprop="url">Windows 和 Linux 下执行命令行命令时如何换行</a></h1>
         
 
         <div class="post-meta">
@@ -476,8 +490,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T01:11:43+08:00">
-                2019-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
+                2019-04-02
               </time>
             
 
@@ -492,7 +506,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:08+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:42:06+08:00">
                 2019-07-03
               </time>
             
@@ -528,15 +542,11 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/combine-two-tables/" target="_blank" rel="noopener">175. 组合两个表</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>表1: Person</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| 列名         | 类型     |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| PersonId    | int     |</span><br><span class="line">| FirstName   | varchar |</span><br><span class="line">| LastName    | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">PersonId 是上表主键</span><br></pre></td></tr></table></figure>
-<p>表2: Address</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| 列名         | 类型    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| AddressId   | int     |</span><br><span class="line">| PersonId    | int     |</span><br><span class="line">| City        | varchar |</span><br><span class="line">| State       | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">AddressId 是上表主键</span><br></pre></td></tr></table></figure>
-<p>编写一个 SQL 查询，满足条件：无论 person 是否有地址信息，都需要基于上述两表提供 person 的以下信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FirstName, LastName, City, State</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># outer join 和  inner join 的区别</span><br><span class="line"></span><br><span class="line"># 为什么默认的是 inner join</span><br><span class="line"></span><br><span class="line"># 参考文章地址 https://www.cnblogs.com/toSeeMyDream/p/6843984.html</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> Person.FirstName, Person.LastName, Address.City, Address.State </span><br><span class="line"><span class="keyword">from</span> Person</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> Address</span><br><span class="line"><span class="keyword">on</span> Person.PersonId = Address.PersonId;</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
+            <p>注意，如果命令需要换行，请添加换行字符 <code>windows</code> 为  “<code>^</code>”和 “`”，<code>linux</code> 为 “<code>\</code>”</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不换行</span></span><br><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># linux 环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 \</span><br><span class="line">        -vcodec copy \</span><br><span class="line">        -acodec copy \</span><br><span class="line">        -ss 00:00:10 -to 00:00:15 \</span><br><span class="line">        ./cutout1.mp4 \</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># windows CMD环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy ^</span><br><span class="line">        -acodec copy ^</span><br><span class="line">        -ss 00:00:10 ^</span><br><span class="line">        -to 00:00:15 ^</span><br><span class="line">        ./cutout1.mp4 ^</span><br><span class="line">        -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows Powershell环境</span></span><br><span class="line">ffmpeg  -i ./output.mp4 -vcodec copy `</span><br><span class="line">        -acodec copy `</span><br><span class="line">        -ss 00:00:10 `</span><br><span class="line">        -to 00:00:15 `</span><br><span class="line">        ./cutout1.mp4 `</span><br><span class="line">        -y</span><br></pre></td></tr></table></figure>
+<p>~</p>
 <hr>
 
           
@@ -586,7 +596,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/单例模式.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/FFmpeg 常用命令.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -605,7 +615,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/单例模式.html" itemprop="url">单例模式</a></h1>
+                <a class="post-title-link" href="/FFmpeg 常用命令.html" itemprop="url">FFmpeg 常用命令</a></h1>
         
 
         <div class="post-meta">
@@ -617,8 +627,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T21:39:44+08:00">
-                2019-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T14:24:47+08:00">
+                2019-04-02
               </time>
             
 
@@ -633,8 +643,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:04+08:00">
-                2019-07-03
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-10T11:18:50+08:00">
+                2019-04-10
               </time>
             
           </span>
@@ -669,20 +679,192 @@
       
         
           
-            <p>单例模式的集中实现方式：</p>
-<ul>
-<li>懒汉式 lazyLoading，线程不安全</li>
-<li>懒汉线程安全 同时满足效率低</li>
-<li>饿汉式  最简单，最值得使用 threadSafe</li>
-<li>登记式/内部静态类的方法 threadSafe lazyLoading 同时满足</li>
-<li>没写的双重锁和枚举</li>
+            <p><a href="https://zh.wikipedia.org/wiki/FFmpeg" target="_blank" rel="noopener">FFmpeg</a> 是一个自由软件，可以运行音频和视频多种格式的录影、转换、流功能，包含了libavcodec——这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。</p>
+<p>“FFmpeg”这个单词中的“FF”指的是“Fast Forward（快速前进）”。有些新手写信给“FFmpeg”的项目负责人，询问FF是不是代表“Fast Free”或者“Fast Fourier”等意思，“FFmpeg”的项目负责人回信说：“Just for the record, the original meaning of “FF” in FFmpeg is “Fast Forward”…”</p>
+<h4 id="动图转视频"><a href="#动图转视频" class="headerlink" title="动图转视频"></a>动图转视频</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf <span class="string">"scale=trunc(iw/2)*2:trunc(ih/2)*2"</span> video.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="动图转图片序列"><a href="#动图转图片序列" class="headerlink" title="动图转图片序列"></a>动图转图片序列</h4><p>逐帧输出，将视频的所有帧输出到制定文件夹，例如一秒 <code>24</code> 帧，视频一共 <code>10</code> 秒，输出后就是 <code>24*10=240</code> 帧<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.gif /images/image_%04d.png</span><br></pre></td></tr></table></figure></p>
+<h4 id="动图转视频-1"><a href="#动图转视频-1" class="headerlink" title="动图转视频"></a>动图转视频</h4><p>参考教程地址：<a href="https://unix.stackexchange.com/questions/40638/how-to-do-i-convert-an-animated-gif-to-an-mp4-or-mv4-on-the-command-line" target="_blank" rel="noopener">点我</a><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf <span class="string">"scale=trunc(iw/2)*2:trunc(ih/2)*2"</span> video.mp4</span><br></pre></td></tr></table></figure></p>
+<h4 id="视频，GIF添加水印"><a href="#视频，GIF添加水印" class="headerlink" title="视频，GIF添加水印"></a>视频，GIF添加水印</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg  -i input.gif -vf <span class="string">"drawtext=fontfile=simhei.ttf: text='你的水印':x=600:y=330:fontsize=18:fontcolor=yellow:shadowy=2"</span> manu.gif</span><br></pre></td></tr></table></figure>
+<h4 id="视频转图片序列"><a href="#视频转图片序列" class="headerlink" title="视频转图片序列"></a>视频转图片序列</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i <span class="string">"cut01.mp4"</span> ./cut01/image_%04d.png</span><br></pre></td></tr></table></figure>
+<h4 id="合并音频和视频"><a href="#合并音频和视频" class="headerlink" title="合并音频和视频"></a>合并音频和视频</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -i audio.m4a -acodec copy -vcodec copy output.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="截取视频中的一段"><a href="#截取视频中的一段" class="headerlink" title="截取视频中的一段"></a>截取视频中的一段</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg  -i ./input.mp4 -vcodec copy -acodec copy -ss 00:00:10 -to 00:00:15 ./cut01.mp4 -y</span><br></pre></td></tr></table></figure>
+<p>参考链接：<a href="https://www.cnblogs.com/wainiwann/p/6972954.html" target="_blank" rel="noopener">https://www.cnblogs.com/wainiwann/p/6972954.html</a></p>
+<h4 id="裁剪视频"><a href="#裁剪视频" class="headerlink" title="裁剪视频"></a>裁剪视频</h4><p>裁剪视频的大小，一定要指定码率</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i cutout1.mp4 -strict -2 -vf crop=400:720:400:0 -b 10M out2.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="图片序列转视频"><a href="#图片序列转视频" class="headerlink" title="图片序列转视频"></a>图片序列转视频</h4><p>第一个 -r 指的是帧数，-b 指的是码率  -s 是分辨率</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FFMPEG -r 10 -i ./image_%04d.jpg -s 640x640 -b 10M -vcodec mpeg4 ./video.mp4</span><br><span class="line"></span><br><span class="line">FFMPEG -r 10 </span><br><span class="line">        -i ./image_%04d.jpg </span><br><span class="line">        -s 640x640 </span><br><span class="line">        -b 10M </span><br><span class="line">        -vcodec mpeg4 ./video.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="制作模糊背景"><a href="#制作模糊背景" class="headerlink" title="制作模糊背景"></a>制作模糊背景</h4><p>算法的机制应该是高斯模糊，但是作者还没有详细的检查对应的原理，能用就行。</p>
+<p>此代码适合在横屏视频和竖屏视频之间的转换，并且填充一部分模糊的背景，不至于让视频有黑边而显的突兀<br>参数说明，根据源视频生成两个视频，再将两个视频叠加，生成的高斯模糊的视频在原视频的下方同步播放，这样就实现了模糊式的视频视频</p>
+<!-- ffmpeg -i input.mp4 -vf "split[a][b];[a]scale=664:664,boxblur=10:5[1];[b]scale=(iw*374)/ih:374[2];[1][2]overlay=(W-w)/2:y=(H-h)/2" 2.mp4
+ -->
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -i 视频输出  -vf 参数转换  output.mp4 输出视频</span></span><br><span class="line"><span class="comment"># -vf 内部参数说明：生成 1,2 两个视频。第一个视频是模糊背景，一般要放大一点， 使用 scale 来调整尺寸大小，第二个原视频不要动，overlay 合成并且调整源视频在高斯模糊背景中的视频的坐标</span></span><br><span class="line"></span><br><span class="line">ffmpeg -i input.mp4 -vf <span class="string">"split[a][b];[a]scale=1920:1920,boxblur=10:5[1];[b]scale=iw/ih[2];[1][2]overlay=(W-w)/2:y=(H-h)/2"</span> output.mp4</span><br></pre></td></tr></table></figure>
+<p><strong>效果如下：</strong></p>
+<p>原视频截图：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190410_ffmpeg_00.png" alt=""></p>
+<p>生成模糊背景之后的视频截图：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190410_ffmpeg_01.png" alt=""></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><p><a href="https://ffmpeg.org/ffmpeg.html" target="_blank" rel="noopener">ffmpeg 官方教程</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/c5bfd55a312d" target="_blank" rel="noopener">偶遇FFmpeg(二)——常用命令</a></p>
+</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 饿汉式</span></span><br><span class="line"><span class="comment"> * 懒加载初始化：false</span></span><br><span class="line"><span class="comment"> * 多线程安全： true</span></span><br><span class="line"><span class="comment"> * 实现简单程度：易</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 优点：类加载时实例化对象，实现方式简单，并且没有多线程的安全性问题，</span></span><br><span class="line"><span class="comment"> * 缺点：就是在类加载的时候就实例化了对象，不管是否使用都会占用内存，但是如果没有特别明确的需求建议使用此种方法</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton single = <span class="keyword">new</span> Singleton();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> single;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"hello,world"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 懒汉式</span></span><br><span class="line"><span class="comment"> * 懒加载初始化：true</span></span><br><span class="line"><span class="comment"> * 多线程安全： false</span></span><br><span class="line"><span class="comment"> * 实现简单程度：易</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 优点：实现方式简单，实现了lazyloading</span></span><br><span class="line"><span class="comment"> * 缺点：线程不安全，不支持多线程。没有加锁synchronized。严格意义不算是单利模式</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 课后作业：测试一下多线程下的安全问题是如何出现的</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonLazyThreadUnsafe</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SingletonLazyThreadUnsafe single;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">SingletonLazyThreadUnsafe</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonLazyThreadUnsafe <span class="title">getSingleton</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (single == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> SingletonLazyThreadUnsafe();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> single;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"hello,world"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 懒汉式线程安全版</span></span><br><span class="line"><span class="comment"> * 懒加载初始化：true</span></span><br><span class="line"><span class="comment"> * 多线程安全： true</span></span><br><span class="line"><span class="comment"> * 实现简单程度：易</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 优点：实现方式简单，实现了lazyloading，可以在多线程中工作，但是效率很低，大概率情况下不需要同步</span></span><br><span class="line"><span class="comment"> * 缺点：加锁 synchronized 才能保证运行，并且项目对getInstance的效率要求并不是很高</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonLazyThredSafe</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SingletonLazyThredSafe single;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">SingletonLazyThredSafe</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> SingletonLazyThredSafe <span class="title">getSingleton</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (single == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> SingletonLazyThredSafe();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> single;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"hello,world"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 登记式/静态内部类</span></span><br><span class="line"><span class="comment"> * 懒加载初始化：true</span></span><br><span class="line"><span class="comment"> * 多线程安全： true</span></span><br><span class="line"><span class="comment"> * 实现简单程度：中</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 优点：lazyloading，threadSafe</span></span><br><span class="line"><span class="comment"> * 缺点：加锁 synchronized 才能保证运行，并且项目对getInstance的效率要求并不是很高</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 描述：同样使用类加载机制保证初始化instance时，只有一个线程。在实现线程安全的同时，实现了懒加载，更加节省了资源</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonLazyInnerClass</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">static</span> SingletonLazyInnerClass single = <span class="keyword">new</span> SingletonLazyInnerClass();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">SingletonLazyInnerClass</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonLazyInnerClass <span class="title">getSingleton</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> SingletonHolder.single;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"hello,world"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用示例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Singleton single = Singleton.getSingleton();</span><br><span class="line">		single.hello();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/假如流浪地球计划失败，地球被木星捕获后会怎样？.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/假如流浪地球计划失败，地球被木星捕获后会怎样？.html" itemprop="url">假如流浪地球计划失败，地球被木星捕获后会怎样？</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T23:26:36+08:00">
+                2019-03-31
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:57+08:00">
+                2019-07-03
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>假如流浪地球计划失败，地球被木星捕获后会怎样？</p>
+<p>木星已经有79个的卫星，会对地球产生什么影响？</p>
+<p>我们的天空会是什么样子？</p>
+<p>地球在木星轨道能坚持多久？木星的超强引力会如何影响我们的生活？</p>
+<iframe id="bilibili" src="//player.bilibili.com/player.html?aid=47872251&cid=83908311&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"><br></iframe>
+
+<!-- 
+    设置 bilibili 播放器的高度，设置高度之前，检测一下客户端是横屏还是竖屏
+    TODO 理论上还应该监听一下屏幕的旋转变化事件
+    理论上来说应该获取 iframe 的宽度，然后进行 16 ：9 的计算比较好
+ -->
+<script>
+    document.getElementById('bilibili').setAttribute("style","width:100%");
+    document.getElementById('bilibili').style.minHeight='200px';
+    if (window.screen.height >window.screen.width) {
+        document.getElementById('bilibili').style.height=window.screen.height / 4 + 'px';
+    } else {
+        document.getElementById('bilibili').style.height=window.screen.height / 2 + 'px';
+    }
+</script>
+
+
+<p><code>Tips</code>：点击视频右上角的<code>去Bilibili观看</code>，可以查看高清 <code>1080P</code> 源视频</p>
 <p>~~~</p>
 <hr>
 
@@ -733,7 +915,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/“知否精选”，小程序版本知乎日报诞生笔记.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/你最舍不得删的一段视频是什么？.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -752,7 +934,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/“知否精选”，小程序版本知乎日报诞生笔记.html" itemprop="url">“知否精选”，小程序版本知乎日报诞生笔记</a></h1>
+                <a class="post-title-link" href="/你最舍不得删的一段视频是什么？.html" itemprop="url">你最舍不得删的一段视频是什么？</a></h1>
         
 
         <div class="post-meta">
@@ -764,8 +946,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-14T21:45:40+08:00">
-                2019-03-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T23:25:36+08:00">
+                2019-03-31
               </time>
             
 
@@ -780,7 +962,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:01+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:53+08:00">
                 2019-07-03
               </time>
             
@@ -816,823 +998,14 @@
       
         
           
-            <h1 id="0-引子"><a href="#0-引子" class="headerlink" title="0. 引子"></a>0. 引子</h1><p><code>Question</code>: 为什么要小程序版本的“知乎日报”？</p>
-<p><code>Answer</code>: 国内大部分成熟的应用一般都会有对应的小程序版本的客户单，但是“知乎日报”没有。而我自己是非常喜欢小程序的，索性就自己做一个。</p>
-<p>至于知乎官方为什么不实现这个小程序客户端我也不得而知，我通过在微信公众号后台查询得知 “知乎日报”这个名字的小城是已经被注册了，如下图：</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190314_知否精选_01.png" alt=""></p>
-<p>根据现在的微信小程序名称命名的审核规则，像“知乎日报”这样名称的小程序主体一定是在知乎官方手中的。</p>
-<p>总之，不管怎么说，既然知乎官方没有做，那么我就来做一个吧。</p>
-<h1 id="1-关于知否精选"><a href="#1-关于知否精选" class="headerlink" title="1. 关于知否精选"></a>1. 关于知否精选</h1><p>本项目的初始版本已经正式发布在微信小程序，名称为 “知否精选”（官方名称知乎日报已经被注册，所以选择了这么一个名字）。除此之外，本项目的源代码也已经开源，源代码非常的简单，可以供想要学习小程序的同学们参考练手，地址如下：</p>
-<p><a href="https://github.com/llyer/wechat-app-zhihudaily" target="_blank" rel="noopener">llyer/wechat-app-zhihudaily</a><br>​<br>在开始实现之前，我在网站搜索了一下，找到了知乎日报的 <code>API</code>，仓库的地址在下面</p>
-<p><a href="https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90" target="_blank" rel="noopener">izzyleung/ZhihuDailyPurify</a></p>
-<p>API 的地址有了，接下来就是代码，同样在 github 上已经有了知乎日报的小程序版本代码，但是已经很久没有更新了，而且之前的作者也在仓库里面表示不再更新，仓库地址如下</p>
-<p><a href="https://github.com/myronliu347/wechat-app-zhihudaily" target="_blank" rel="noopener">myronliu347/wechat-app-zhihudaily</a></p>
-<p>知否精选的主要资料来源如上。</p>
-<h1 id="2-目前实现的功能"><a href="#2-目前实现的功能" class="headerlink" title="2. 目前实现的功能"></a>2. 目前实现的功能</h1><pre><code>1. 加载文章列表
+            <p>这个黑人小孩！</p>
+<video src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190331_video_00.mp4" controls="controls" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;margin-top: 10px;margin-bottom: 20px;"><br>    your browser does not support the video tag<br></video>
 
-![](https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190314_知否精选_02.png)
-
-
-2. 查看文章内容
-
-![](https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190314_知否精选_03.png)
-</code></pre><p>这两个功能是知乎日报最核心的功能，都已经实现。当然在发开过程中也遇到了一些问题，目前已经有了一些已知的 <code>BUG</code>，也正在紧急修复中。例如知乎的API中返回的文章内容是富文本格式的，部分文章的格式解析可能没有做到完全的适配。<br>如果对于本项目感兴趣的同学可以到 <a href="https://github.com/llyer/wechat-app-zhihudaily" target="_blank" rel="noopener">https://github.com/llyer/wechat-app-zhihudaily</a> 点个 <code>Star</code>，如果发现了有什么问题，欢迎提 <code>Issue</code>。</p>
-<p>如果你只是单纯的喜欢这个小程序版本的知乎日报。请在微信小程序搜索 “知否精选”即可打开本程序，或者使用扫描下方二维码打开 “知否精选”，如果遇到问题，请在下方留言告诉我，我会尽快解答。</p>
+<p>视频源自知乎： <a href="https://www.zhihu.com/question/279247693/answer/453160658" target="_blank" rel="noopener">你手机中最舍不得删的一段视频是什么？</a></p>
+<p><code>Tips</code>：推荐使用 <code>Chrome</code> 浏览器观看！</p>
 <p>~~~</p>
 <hr>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode26.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode26.html" itemprop="url">leetcode26. 删除排序数组中的重复项</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:54+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">26. 删除排序数组中的重复项</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode21.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode21.html" itemprop="url">leetcode21. 合并两个有序链表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:50+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">21. 合并两个有序链表</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="keyword">null</span> &amp;&amp; l2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        ListNode result;</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="keyword">null</span>) &#123;</span><br><span class="line">            result = l2;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="keyword">null</span>) &#123;</span><br><span class="line">            result = l1;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1.val &gt;= l2.val) &#123;</span><br><span class="line">            result = l2;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result = l1;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode head = result;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!(l1 == <span class="keyword">null</span> &amp;&amp; l2 == <span class="keyword">null</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"aaa"</span>);</span><br><span class="line">            <span class="keyword">if</span> (l1 == <span class="keyword">null</span>) &#123;</span><br><span class="line">                head.next = l2;</span><br><span class="line">                l2 = <span class="keyword">null</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="keyword">null</span>) &#123;</span><br><span class="line">                head.next = l1;</span><br><span class="line">                l1 = <span class="keyword">null</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1.val &gt;= l2.val) &#123;</span><br><span class="line">                head.next = l2;</span><br><span class="line">                head = head.next;</span><br><span class="line">                l2 = l2.next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                head.next = l1;</span><br><span class="line">                head = head.next;</span><br><span class="line">                l1 = l1.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode20.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode20.html" itemprop="url">leetcode20. 有效的括号</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:47+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. 有效的括号</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (stack.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">'&#125;'</span> &amp;&amp; stack.peek() == <span class="string">'&#123;'</span>) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">']'</span> &amp;&amp; stack.peek() == <span class="string">'['</span>) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">')'</span> &amp;&amp; stack.peek() == <span class="string">'('</span>) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.size() == <span class="number">0</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode27.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode27.html" itemprop="url">leetcode27. 移除元素</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:57+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/remove-element/" target="_blank" rel="noopener">27. 移除元素</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//思路，将原来数组a所有不等于val的元素放到b中，返回新数组的长度</span></span><br><span class="line">        <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]!=val)&#123;</span><br><span class="line">                nums[j++]=nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode14.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode14.html" itemprop="url">leetcode14. 最长公共前缀</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:44+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/longest-common-prefix/" target="_blank" rel="noopener">14. 最长公共前缀</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (strs.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历字符串，按顺序获取每个字符</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs[<span class="number">0</span>].length(); i++) &#123;</span><br><span class="line">            <span class="comment">// 根据当前字符遍历剩余的所有字符串</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; strs.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (strs[j].length() == i || strs[<span class="number">0</span>].charAt(i) != strs[j].charAt(i)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> strs[<span class="number">0</span>].substring(<span class="number">0</span>, i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode9.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode9.html" itemprop="url">leetcode9. 回文数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:37+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/palindrome-number/" target="_blank" rel="noopener">9. 回文数</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断一个整数是否是回文数字 121，12321是，123 1234不是</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> x</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> origin = x;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 123</span></span><br><span class="line">        <span class="keyword">while</span> (x &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = x % <span class="number">10</span>;</span><br><span class="line">            x = x / <span class="number">10</span>;</span><br><span class="line">            result = result * <span class="number">10</span> + temp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (result == origin) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1671,7 +1044,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

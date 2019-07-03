@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Nginx 在 windows 下的常用命令.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java 关键字 final, static, abstratc, this, super.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -323,7 +323,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Nginx 在 windows 下的常用命令.html" itemprop="url">Nginx 在 windows 下的常用命令</a></h1>
+                <a class="post-title-link" href="/Java 关键字 final, static, abstratc, this, super.html" itemprop="url">Java 关键字 final, static, abstratc, this, super</a></h1>
         
 
         <div class="post-meta">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T21:25:36+08:00">
-                2019-03-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T14:08:08+08:00">
+                2019-04-11
               </time>
             
 
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:49+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:42:34+08:00">
                 2019-07-03
               </time>
             
@@ -387,17 +387,66 @@
       
         
           
-            <p><code>Windows</code> 下安装 <code>Nginx</code> 推荐使用绿色安装的方式，在 <code>Nginx</code> 官网下载安装包，直接解压压缩文件就可以了。<br>安装成功后，进入 <code>Nginx</code> 文件夹的安装目录，<code>Ctrl + 鼠标右键</code> 打开 <code>CMD</code> 或者 <code>Powershell</code> 窗口即可。打开的窗口一般如下图所示：</p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/2019331_nginx01.png" alt=""></p>
-<h1 id="1-启动-Nginx"><a href="#1-启动-Nginx" class="headerlink" title="1. 启动 Nginx"></a>1. 启动 Nginx</h1><p>执行以下命令，启动成功后打开浏览器输入 <code>127.0.0.1</code> or <code>localhost</code> 访问</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种方法，nginx在前台运行，关闭当前命令行窗口时 nginx 自动关闭</span></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后台运行 nginx</span></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; start nginx</span><br></pre></td></tr></table></figure>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/2019331_nginx02.png" alt=""></p>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/2019331_nginx03.png" alt=""></p>
-<h1 id="2-关闭-Nginx"><a href="#2-关闭-Nginx" class="headerlink" title="2. 关闭 Nginx"></a>2. 关闭 Nginx</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe -s stop</span><br><span class="line"></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe -s quit</span><br></pre></td></tr></table></figure>
-<p>注：stop是快速停止 Nginx，可能并不保存相关信息；quit是完整有序的停止 Nginx，并保存相关信息。</p>
-<h1 id="3、重新载入-Nginx"><a href="#3、重新载入-Nginx" class="headerlink" title="3、重新载入 Nginx"></a>3、重新载入 Nginx</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当配置信息修改，需要重新载入这些配置时使用此命令。</span></span><br><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe -s reload</span><br></pre></td></tr></table></figure>
-<h1 id="4、查看-Nginx-版本："><a href="#4、查看-Nginx-版本：" class="headerlink" title="4、查看 Nginx 版本："></a>4、查看 Nginx 版本：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Program Files\nginx-1.13.7&gt; ./nginx.exe -v</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
+            <h4 id="Java-有哪些关键字？"><a href="#Java-有哪些关键字？" class="headerlink" title="Java 有哪些关键字？"></a>Java 有哪些关键字？</h4><p><code>final</code>, <code>static</code>, <code>abstract</code>, <code>this</code>, <code>super</code> 等等</p>
+<h4 id="final-有什么作用和优缺点？"><a href="#final-有什么作用和优缺点？" class="headerlink" title="final 有什么作用和优缺点？"></a><em>final 有什么作用和优缺点？</em></h4><p><code>final</code> 是 <code>java</code> 语言中的保留关键字，可以修饰 <code>class</code>, <code>method</code>, <code>variable</code>。<code>final</code> 变量不可变，代表了可以安全的在多线程之间共享，<code>final</code> 关键字提高了性能</p>
+<ul>
+<li><p><code>final</code> 修饰的类无法被继承。<code>final</code> 类中的所有成员方法都会被隐式地指定为 <code>final</code> 方法。</p>
+</li>
+<li><p><code>final</code> 修饰方法。第一个原因是把方法锁定，以防任何继承类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将 <code>final</code> 方法转为内嵌调用。但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升（现在的Java版本已经不需要使用 final 方法进行这些优化了。类中所有的 <code>private</code> 方法都隐式地指定为 <code>final</code>。</p>
+</li>
+<li><p><code>final</code> 修饰的变量。如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</p>
+</li>
+</ul>
+<h5 id="final-with-class"><a href="#final-with-class" class="headerlink" title="final with class"></a>final with class</h5><p><code>javase</code> 中有哪些类使用了 <code>final</code> 关键字？</p>
+<p><code>String</code>类：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190411_Java关键字_01.png" alt=""></p>
+<p>使用 <code>final</code> 关键字防止类被篡改：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * FinalClass.java</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 下面这个类如果写成 extends Parent 会报错，因为 Parent 已经被final修饰，不能继承</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//public class FinalClass extends Parent &#123;</span></span><br><span class="line"><span class="comment">//    private Integer sum(Integer num1, Integer num2) &#123;</span></span><br><span class="line"><span class="comment">//        return num1 + num2;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> Integer <span class="title">sum</span> <span class="params">(Integer num1, Integer num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num1 + num2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name = <span class="string">"zhangsan"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="final-with-method"><a href="#final-with-method" class="headerlink" title="final with method"></a>final with method</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * final 修饰方法时，方法无法被继承</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalMethod</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">multiply</span> <span class="params">(Integer num1, Integer num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num1 * num2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">sum</span> <span class="params">(Integer num1, Integer num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num1 + num2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FinalMethodChild</span> <span class="keyword">extends</span> <span class="title">FinalMethod</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">multiply</span><span class="params">(Integer num1, Integer num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num1 * num2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 方法会报错，因为 final 方法无法被继承</span></span><br><span class="line"><span class="comment">//    public final int sum (Integer num1, Integer num2) &#123;</span></span><br><span class="line"><span class="comment">//        return num1 + num2;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="final-with-variable"><a href="#final-with-variable" class="headerlink" title="final with variable"></a>final with variable</h5><ul>
+<li><code>final</code> 变量一般是大写</li>
+<li><code>final</code> 变量如果引用的是基本类型，那么不可以修改重新赋值，</li>
+<li><code>final</code> 如果引用的是对象，那么不可以修改引用，但是对象本身是可以变化的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalVariable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">change</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> String NAME = <span class="string">"zhangsan"</span>;</span><br><span class="line">        <span class="comment">// name = "lisi"; // 错误</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> ArrayList list;</span><br><span class="line">        list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="string">"zhangsan"</span>);</span><br><span class="line">        <span class="comment">// list = new ArrayList(); // 错误</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h4><p><code>static</code> 修饰的属性和方法都属于类，而不属于某个具体 <code>new</code> 出来的对象，所有对象共享相同的 <code>static</code> 属性和方法</p>
+<p><code>static</code> 修饰的属性和方法可以直接通过 <code>类名.变量</code> 或者 <code>类名.方法()</code> 调用</p>
+<h4 id="abstract-关键字"><a href="#abstract-关键字" class="headerlink" title="abstract 关键字"></a>abstract 关键字</h4><p><code>abstract</code> 关键字可以修饰类或方法。</p>
+<p><code>abstract</code> 类可以扩展（增加子类），但不能直接实例化。</p>
+<p><code>abstract</code> 方法不在声明它的类中实现，但必须在某个子类中重写。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span>&#123;&#125;</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">myMethod</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>采用 <code>abstract</code> 方法的类本来就是抽象类，并且必须声明为 <code>abstract。</code></p>
+</li>
+<li><p><code>abstract</code> 类不能实例化。</p>
+</li>
+<li><p>仅当 <code>abstract</code> 类的子类实现其超类的所有 <code>abstract</code> 方法时，才能实例化 <code>abstract</code> 类的子类。这种类称为具体类，以区别于 <code>abstract</code> 类。</p>
+</li>
+<li><p>如果 <code>abstract</code> 类的子类没有实现其超类的所有 <code>abstract</code> 方法，该子类也是 <code>abstract</code> 类。</p>
+</li>
+<li><p><code>abstract</code> 关键字不能应用于 <code>static</code>、<code>private</code> 或 <code>final</code> 方法，因为这些方法不能被重写，因此，不能在子类中实现。</p>
+</li>
+<li><p><code>final</code> 类的方法都不能是 <code>abstract</code>，因为 <code>final</code> 类不能有子类。</p>
+</li>
+</ul>
+<h4 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h4><p><code>this</code> 关键字代之当前对象，可以通过 <code>this</code> 引用当前对象的变量或者方法</p>
+<h4 id="super-关键字"><a href="#super-关键字" class="headerlink" title="super 关键字"></a>super 关键字</h4><p>super 关键字代指父对象，用来访问父对象的变量和方法</p>
+<h4 id="关键字注意事项"><a href="#关键字注意事项" class="headerlink" title="关键字注意事项"></a>关键字注意事项</h4><ul>
+<li><p><code>abstract</code> 关键字和 <code>final</code> 关键字天生互斥，不能同时使用</p>
+</li>
+<li><p><code>super</code> 调用父类中的其他构造方法时，调用时要放在构造方法的首行！<code>this</code> 调用本类中的其他构造方法时，也要放在首行。</p>
+</li>
+<li><p><code>this</code>，<code>super</code>不能用在 <code>static</code> 方法中。<code>static</code> 中也不能调用非 <code>static</code> 修饰的变量或者方法，原理也是一样的。类范畴的无法调用对象范畴的东西，<strong><code>this</code> 和 <code>super</code> 是属于对象范畴的东西，而静态方法是属于类范畴的东西。</strong></p>
+</li>
+<li><p>静态代码快和非静态代码快的区别，静态代码块无论创建多少个实例都执行一次，非静态代码快每创建一个实例执行一次</p>
+</li>
+<li><p>静态代码块和构造方法的区别，不同的对象用不同的构造方法执行出来的对象可能不同，静态代码快就是所有对象相同的那部分</p>
+</li>
+</ul>
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><ul>
+<li><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/Basis/final%E3%80%81static%E3%80%81this%E3%80%81super.md" target="_blank" rel="noopener">final,static,this,super 关键字总结</a></li>
+</ul>
+<p>~</p>
 <hr>
 
           
@@ -447,7 +496,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode176.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/一张图看懂 Mysql 的连接查询.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -466,7 +515,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode176.html" itemprop="url">leetcode176. 第二高的薪水</a></h1>
+                <a class="post-title-link" href="/一张图看懂 Mysql 的连接查询.html" itemprop="url">一张图看懂 Mysql 的连接查询</a></h1>
         
 
         <div class="post-meta">
@@ -478,8 +527,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T13:11:43+08:00">
-                2019-03-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T16:59:01+08:00">
+                2019-04-09
               </time>
             
 
@@ -494,7 +543,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:42+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:42:30+08:00">
                 2019-07-03
               </time>
             
@@ -530,14 +579,22 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/delete-duplicate-emails/" target="_blank" rel="noopener">196. 删除重复的电子邮箱</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，来删除 Person 表中所有重复的电子邮箱，重复的邮箱里只保留 Id 最小的那个。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+------------------+</span><br><span class="line">| Id | Email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">| 3  | john@example.com |</span><br><span class="line">+----+------------------+</span><br></pre></td></tr></table></figure>
-<p>Id 是这个表的主键。</p>
-<p>例如，在运行你的查询语句之后，上面的 Person 表应返回以下几行:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+------------------+</span><br><span class="line">| Id | Email            |</span><br><span class="line">+----+------------------+</span><br><span class="line">| 1  | john@example.com |</span><br><span class="line">| 2  | bob@example.com  |</span><br><span class="line">+----+------------------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1. 查询第二高的薪水，说明查询结果要按照薪水降序排列 order by salary desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. 因为只是查询第二高说明是要分页查询，查询排序中的一个，所以要用到  limit 1 offset 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3. 表中如果只有一条记录，则查询结果为空，但是题目要求的结果是返回 null，所有加上一个ifnull判断，如果返回为空，那么返回null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ifnull</span>((</span><br><span class="line">		<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> salary <span class="keyword">AS</span> SecondHighestSalary</span><br><span class="line">		<span class="keyword">FROM</span> employee</span><br><span class="line">		<span class="keyword">ORDER</span> <span class="keyword">BY</span> salary <span class="keyword">DESC</span></span><br><span class="line">		<span class="keyword">LIMIT</span> <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">	), <span class="literal">NULL</span>) <span class="keyword">AS</span> SecondHighestSalary</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
+            <p>分享自廖雪峰的官方网站：<a href="https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000/001509167103179399448cb200549bdab7651a5e9167597000" target="_blank" rel="noopener">连接查询</a></p>
+<h1 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h1><p>SQL 的连接 JOIN 查询有多种，到底应该用哪种呢？其实我们用图来表示结果集就一目了然了。</p>
+<p>假设查询语句是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ... <span class="keyword">FROM</span> tableA ??? <span class="keyword">JOIN</span> tableB <span class="keyword">ON</span> tableA.column1 = tableB.column2;</span><br></pre></td></tr></table></figure>
+<p>我们把tableA看作左表，把tableB看成右表，那么INNER JOIN是选出两张表都存在的记录：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_01.png" alt=""></p>
+<p>LEFT OUTER JOIN是选出左表存在的记录：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_02.png" alt=""></p>
+<p>RIGHT OUTER JOIN是选出右表存在的记录：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_03.png" alt=""></p>
+<p>FULL OUTER JOIN则是选出左右表都存在的记录：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190409_sql_04.png" alt=""></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>JOIN查询需要先确定主表，然后把另一个表的数据“附加”到结果集上；</p>
+<p>INNER JOIN是最常用的一种JOIN查询，它的语法是SELECT … FROM &lt;表1&gt; INNER JOIN &lt;表2&gt; ON &lt;条件…&gt;；</p>
+<p>JOIN查询仍然可以使用WHERE条件和ORDER BY排序。</p>
+<p>~</p>
 <hr>
 
           
@@ -587,7 +644,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode196.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Jenkins 学习笔记二：Docker + Jenkins + Nginx.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -606,7 +663,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode196.html" itemprop="url">leetcode196. 删除重复的电子邮箱</a></h1>
+                <a class="post-title-link" href="/Jenkins 学习笔记二：Docker + Jenkins + Nginx.html" itemprop="url">Jenkins 学习笔记二：Docker + Jenkins + Nginx</a></h1>
         
 
         <div class="post-meta">
@@ -618,8 +675,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T13:11:43+08:00">
-                2019-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T15:53:54+08:00">
+                2019-04-08
               </time>
             
 
@@ -634,8 +691,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:39+08:00">
-                2019-07-03
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-09T11:16:03+08:00">
+                2019-04-09
               </time>
             
           </span>
@@ -670,14 +727,43 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/second-highest-salary/" target="_blank" rel="noopener">176. 第二高的薪水</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，获取 Employee 表中第二高的薪水（Salary） 。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+--------+</span><br><span class="line">| Id | Salary |</span><br><span class="line">+----+--------+</span><br><span class="line">| 1  | 100    |</span><br><span class="line">| 2  | 200    |</span><br><span class="line">| 3  | 300    |</span><br><span class="line">+----+--------+</span><br></pre></td></tr></table></figure>
-<p>例如上述 Employee 表，SQL查询应该返回 200 作为第二高的薪水。如果不存在第二高的薪水，那么查询应返回 null。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------------------+</span><br><span class="line">| SecondHighestSalary |</span><br><span class="line">+---------------------+</span><br><span class="line">| 200                 |</span><br><span class="line">+---------------------+</span><br></pre></td></tr></table></figure>
-<h4 id="SQL-架构："><a href="#SQL-架构：" class="headerlink" title="SQL 架构："></a>SQL 架构：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Create table If Not Exists Employee (Id int, Salary int) Truncate table Employee</span><br><span class="line">insert into Employee (Id, Salary) values (&apos;1&apos;, &apos;100&apos;)</span><br><span class="line">insert into Employee (Id, Salary) values (&apos;2&apos;, &apos;200&apos;)</span><br><span class="line">insert into Employee (Id, Salary) values (&apos;3&apos;, &apos;300&apos;)</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 并集查询，查询时，生成 m * n 条记录，其中 m 和 n 分别为两个表的记录个数，效率非常低，不建议使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询要删除的记录</span></span><br><span class="line"><span class="comment">-- SELECT * FROM person p1, person p2 where p1.email = p2.email and p1.id &gt; p2.id </span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除一个表时不需要指定从那个表删除记录</span></span><br><span class="line"><span class="comment">-- DELETE FROM person WHERE id = 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 但是如果是两个表，要显式的指定要删除那个表</span></span><br><span class="line"><span class="keyword">DELETE</span> p1 <span class="keyword">FROM</span> person p1, person p2 <span class="keyword">where</span> p1.email = p2.email <span class="keyword">and</span> p1.id &gt; p2.id</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
+            <p>本篇文章继续以 <a href="https://liluyang.me" target="_blank" rel="noopener">https://liluyang.me</a> 为案例来讲解如何实现<code>持续集成</code>。主要涉及的技术有 <code>Docker</code>，<code>Jenkins</code>，<code>Nginx</code>，<code>Hexo</code></p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
+<li>正确的安装 <code>Docker</code></li>
+<li>正确的使用 <code>Docker</code> 安装了 <code>Jenkins</code>，<code>Nginx</code></li>
+</ul>
+<h1 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h1><h2 id="启动-Nginx，映射宿主机目录"><a href="#启动-Nginx，映射宿主机目录" class="headerlink" title="启动 Nginx，映射宿主机目录"></a>启动 Nginx，映射宿主机目录</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 html 目录和 conf 目录映射到宿主机</span></span><br><span class="line">docker run \</span><br><span class="line">--volume <span class="string">"/root/docker_nginx/html"</span>:/usr/share/nginx/html \</span><br><span class="line">--volume <span class="string">"/root/docker_nginx/conf"</span>:/etc/nginx \</span><br><span class="line">-p 80:80 \</span><br><span class="line">-p 443:443 \</span><br><span class="line">-d \</span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
+<h2 id="启动-Jenkins，映射宿主机目录"><a href="#启动-Jenkins，映射宿主机目录" class="headerlink" title="启动 Jenkins，映射宿主机目录"></a>启动 Jenkins，映射宿主机目录</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 jenkins 中定义一个 nginx 的  html 工作目录。将这个目录也映射到宿主机的 html 目录中，这样 jenkins 将 git 中的项目文件拉取到jenkins 的工作目录。然后再拷贝到 nginx 的工作目录就完成了持续集成的过程</span></span><br><span class="line">docker run \</span><br><span class="line">  -u root \</span><br><span class="line">  -d \</span><br><span class="line">  -p 8080:8080 \</span><br><span class="line">  -p 50000:50000 \</span><br><span class="line">  -v jenkins-data:/var/jenkins_home \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  --volume <span class="string">"/root/docker_nginx/html"</span>:/usr/share/jenkins/html \</span><br><span class="line">  jenkinsci/blueocean</span><br></pre></td></tr></table></figure>
+<h2 id="配置-Jenkins，持续集成拉取-Git-项目"><a href="#配置-Jenkins，持续集成拉取-Git-项目" class="headerlink" title="配置 Jenkins，持续集成拉取 Git 项目"></a>配置 Jenkins，持续集成拉取 Git 项目</h2><p>安装配置好 <code>jenkins</code> 之后，新建项目：<br><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_01.png" alt=""></p>
+<p>配置设置如下：<br><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_02.png" alt=""></p>
+<p>其中将 <code>git</code> 地址修改为你自己项目的地址，分支也设置为对应的分支。</p>
+<p>最后一步，在构建中选择 <code>执行Shell</code>，执行以下脚本命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当前 docker 容器映射的宿主机的地址</span></span><br><span class="line">www_path=/usr/share/jenkins/html</span><br><span class="line"></span><br><span class="line"><span class="comment"># jenkins将项目从Git拷贝过来的位置</span></span><br><span class="line">work_path=/var/jenkins_home/workspace/hexo</span><br><span class="line"></span><br><span class="line">rm -rf /usr/share/jenkins/html/*</span><br><span class="line"></span><br><span class="line"><span class="comment">#将生成的文件拷贝到当前的工作目录，由于当前目录和宿主机中的 nginx 目录对应，所以就自动更新了 nginx 的内容</span></span><br><span class="line">cp -rf /var/jenkins_home/workspace/hexo/* /usr/share/jenkins/html</span><br></pre></td></tr></table></figure>
+<p>以上全部执行完成后，返回 <code>jenkins</code> 的任务界面，选择立即构建。如下图：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_03.png" alt=""></p>
+<p>构建完成后可以点击构建历史中刚刚构建的项目中选择控制台输出查看日志是否构建成功。</p>
+<h2 id="配置-Github，将-Webhooks-的通知发送到-Jenkins"><a href="#配置-Github，将-Webhooks-的通知发送到-Jenkins" class="headerlink" title="配置 Github，将 Webhooks 的通知发送到 Jenkins"></a>配置 Github，将 Webhooks 的通知发送到 Jenkins</h2><p>打开你的 Github 项目，设置 hook 的通知地址</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_04.png" alt=""></p>
+<p>接下来可以修改下文件然后检查确认以下流程是否成功了。</p>
+<ol>
+<li><p>执行修改文件</p>
+</li>
+<li><p>提交到<code>Git</code> </p>
+</li>
+<li><p><code>Jenkins</code> 触发提交事件的锚点而执行自动构建。</p>
+</li>
+<li><p>访问 <code>Nginx</code> 查看项目的变化</p>
+</li>
+</ol>
+<p>我们可以通过检查 Webhook 日志的方式来判断我们是否正确的接收到了 Github 的通知，如下图所示：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_jenkins_05.png" alt=""></p>
+<p>如果发现日志正常，那么打开你的网站检查一下，更新应该已经成功了。</p>
+<p>到此为止，如果不出意外，你的 <code>Jenkins</code> 持续集成已经完成了。</p>
+<p>快去尝试一下吧~</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://github.com/muyinchen/woker/blob/master/%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAJenkins%2BGithub%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83.md" target="_blank" rel="noopener">《手把手教你搭建Jenkins+Github持续集成环境》 BY muyinchen</a></li>
+</ul>
+<p>~</p>
 <hr>
 
           
@@ -727,7 +813,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode596.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Jenkins 忘记密码怎么办？.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -746,7 +832,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode596.html" itemprop="url">leetcode596. 超过5名学生的课</a></h1>
+                <a class="post-title-link" href="/Jenkins 忘记密码怎么办？.html" itemprop="url">Jenkins 忘记密码怎么办？</a></h1>
         
 
         <div class="post-meta">
@@ -758,8 +844,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T11:11:43+08:00">
-                2019-03-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T13:32:56+08:00">
+                2019-04-08
               </time>
             
 
@@ -774,7 +860,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:35+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:42:23+08:00">
                 2019-07-03
               </time>
             
@@ -810,16 +896,8 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/classes-more-than-5-students/" target="_blank" rel="noopener">596. 超过5名学生的课</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>有一个courses 表 ，有: student (学生) 和 class (课程)。</p>
-<p>请列出所有超过或等于5名学生的课。</p>
-<p>例如,表:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+---------+------------+</span><br><span class="line">| student | class      |</span><br><span class="line">+---------+------------+</span><br><span class="line">| A       | Math       |</span><br><span class="line">| B       | English    |</span><br><span class="line">| C       | Math       |</span><br><span class="line">| D       | Biology    |</span><br><span class="line">| E       | Math       |</span><br><span class="line">| F       | Computer   |</span><br><span class="line">| G       | Math       |</span><br><span class="line">| H       | Math       |</span><br><span class="line">| I       | Math       |</span><br><span class="line">+---------+------------+</span><br></pre></td></tr></table></figure></p>
-<p>应该输出:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| class   |</span><br><span class="line">+---------+</span><br><span class="line">| Math    |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
-<p>Note:<br>学生在每个课中不应被重复计算。</p>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- select class from (select class, count(class) as counts from courses group by class) as temp where counts &gt;= 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- having 和 where 的区别要好好查一下</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">class</span> <span class="keyword">from</span> courses <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">class</span> <span class="keyword">having</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> student) &gt;=<span class="number">5</span></span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
+            <p>Jenkins 如果忘记了密码可以按照以下教程来重置密码：</p>
+<p><a href="https://www.jianshu.com/p/e8bc90a1aad8" target="_blank" rel="noopener">https://www.jianshu.com/p/e8bc90a1aad8</a></p>
 
           
         
@@ -868,7 +946,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode627.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/HTTPS 配置教程.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -887,7 +965,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode627.html" itemprop="url">leetcode627. 交换工资</a></h1>
+                <a class="post-title-link" href="/HTTPS 配置教程.html" itemprop="url">HTTPS 配置教程</a></h1>
         
 
         <div class="post-meta">
@@ -899,8 +977,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-03T13:33:01+08:00">
+                2019-04-03
               </time>
             
 
@@ -915,7 +993,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:30+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:44:05+08:00">
                 2019-07-03
               </time>
             
@@ -951,714 +1029,81 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/swap-salary/" target="_blank" rel="noopener">627. 交换工资</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>给定一个 salary 表，如下所示，有 m=男性 和 f=女性 的值 。交换所有的 f 和 m 值（例如，将所有 f 值更改为 m，反之亦然）。要求使用一个更新（Update）语句，并且没有中间临时表。</p>
-<p>请注意，你必须编写一个 Update 语句，不要编写任何 Select 语句。</p>
-<p>例如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | m   | 2500   |</span><br><span class="line">| 2  | B    | f   | 1500   |</span><br><span class="line">| 3  | C    | m   | 5500   |</span><br><span class="line">| 4  | D    | f   | 500    |</span><br></pre></td></tr></table></figure>
-<p>运行你所编写的更新语句之后，将会得到以下表:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | f   | 2500   |</span><br><span class="line">| 2  | B    | m   | 1500   |</span><br><span class="line">| 3  | C    | f   | 5500   |</span><br><span class="line">| 4  | D    | m   | 500    |</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- mysql case when 条件流程控制语句，case when 可以在查询修改等条件语句中用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> salary</span><br><span class="line"><span class="keyword">set</span> sex = </span><br><span class="line"><span class="keyword">case</span> sex</span><br><span class="line">    <span class="keyword">when</span> <span class="string">'m'</span> <span class="keyword">then</span> <span class="string">'f'</span></span><br><span class="line">    <span class="keyword">else</span> <span class="string">'m'</span></span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode183.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode183.html" itemprop="url">leetcode183. 从不订购的客户</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:25+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/customers-who-never-order/" target="_blank" rel="noopener">183. 从不订购的客户</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。</p>
-<p>Customers 表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+</span><br><span class="line">| Id | Name  |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | Joe   |</span><br><span class="line">| 2  | Henry |</span><br><span class="line">| 3  | Sam   |</span><br><span class="line">| 4  | Max   |</span><br><span class="line">+----+-------+</span><br></pre></td></tr></table></figure></p>
-<p>Orders 表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+------------+</span><br><span class="line">| Id | CustomerId |</span><br><span class="line">+----+------------+</span><br><span class="line">| 1  | 3          |</span><br><span class="line">| 2  | 1          |</span><br><span class="line">+----+------------+</span><br></pre></td></tr></table></figure>
-<p>例如给定上述表格，你的查询应返回：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+-----------+</span><br><span class="line">| Customers |</span><br><span class="line">+-----------+</span><br><span class="line">| Henry     |</span><br><span class="line">| Max       |</span><br><span class="line">+-----------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用not in查询</span></span><br><span class="line"><span class="comment">-- 查询客户表，并且用户 id 从没有在 order 中产生关联关系作为查询条件即可获得返回结果 </span></span><br><span class="line"><span class="comment">-- select name as customers from customers where customers.id not in (select customerId from orders)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 使用not exist查询</span></span><br><span class="line"><span class="comment">-- not exist的查询过程如下</span></span><br><span class="line"><span class="comment">-- setp00 select customers（先执行外查询）</span></span><br><span class="line"><span class="comment">-- step01 select orders（执行子查询，检测子查询是否可以返回行，则返回true or false的标记位）</span></span><br><span class="line"><span class="comment">-- step02 根据 id 比较 两张表，将子查询的每一行设置 true or false 的标记位</span></span><br><span class="line"><span class="comment">-- | 1  | Joe   | true</span></span><br><span class="line"><span class="comment">-- | 2  | Henry | false</span></span><br><span class="line"><span class="comment">-- | 3  | Sam   | true</span></span><br><span class="line"><span class="comment">-- | 4  | Max   | false</span></span><br><span class="line"><span class="comment">-- step03 true为exist，false为not exist，则根据not exist的规则返回外查询中的查询条件返回henry, max</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">as</span> customers <span class="keyword">from</span> customers</span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> customerId <span class="keyword">from</span> orders <span class="keyword">where</span> customers.id = orders.customerId)</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode197.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode197.html" itemprop="url">leetcode197. 上升的温度</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:32+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/rising-temperature/" target="_blank" rel="noopener">197. 上升的温度</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+---------+------------------+------------------+</span><br><span class="line">| Id(INT) | RecordDate(DATE) | Temperature(INT) |</span><br><span class="line">+---------+------------------+------------------+</span><br><span class="line">|       1 |       2015-01-01 |               10 |</span><br><span class="line">|       2 |       2015-01-02 |               25 |</span><br><span class="line">|       3 |       2015-01-03 |               20 |</span><br><span class="line">|       4 |       2015-01-04 |               30 |</span><br><span class="line">+---------+------------------+------------------+</span><br></pre></td></tr></table></figure></p>
-<p>例如，根据上述给定的 Weather 表格，返回如下 Id:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+</span><br><span class="line">| Id |</span><br><span class="line">+----+</span><br><span class="line">|  2 |</span><br><span class="line">|  4 |</span><br><span class="line">+----+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 此处使用 outer join 会报错，回头应该检查一下</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> w1.id </span><br><span class="line">    <span class="keyword">from</span> weather w1 </span><br><span class="line">    <span class="keyword">inner</span> <span class="keyword">join</span> weather w2 </span><br><span class="line">    <span class="keyword">where</span> <span class="keyword">DATEDIFF</span>(w1.RecordDate, w2.RecordDate) = <span class="number">1</span> <span class="keyword">and</span> w1.temperature &gt; w2.temperature</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode182.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode182.html" itemprop="url">leetcode182. 查找重复的电子邮箱</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:21+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/duplicate-emails/" target="_blank" rel="noopener">182. 查找重复的电子邮箱</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br></pre></td></tr></table></figure>
-<p>根据以上输入，你的查询应返回以下结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> email <span class="keyword">from</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> email, <span class="keyword">count</span>(email) <span class="keyword">num</span> <span class="keyword">from</span> person <span class="keyword">GROUP</span> <span class="keyword">BY</span> email) <span class="keyword">as</span> temp_table</span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">num</span> &gt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode181.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode181.html" itemprop="url">leetcode181. 超过经理收入的员工</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T01:12:43+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:18+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/employees-earning-more-than-their-managers/" target="_blank" rel="noopener">181. 超过经理收入的员工</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+-----------+</span><br><span class="line">| Id | Name  | Salary | ManagerId |</span><br><span class="line">+----+-------+--------+-----------+</span><br><span class="line">| 1  | Joe   | 70000  | 3         |</span><br><span class="line">| 2  | Henry | 80000  | 4         |</span><br><span class="line">| 3  | Sam   | 60000  | NULL      |</span><br><span class="line">| 4  | Max   | 90000  | NULL      |</span><br><span class="line">+----+-------+--------+-----------+</span><br></pre></td></tr></table></figure>
-<p>给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------+</span><br><span class="line">| Employee |</span><br><span class="line">+----------+</span><br><span class="line">| Joe      |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 员工表自我连接查询，并且找出满足对应薪水关系的员工</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">as</span> employee <span class="keyword">FROM</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> em.id, em.name, em.salary, em.ManagerId , manager.salary <span class="keyword">as</span> salary1 </span><br><span class="line"><span class="keyword">FROM</span> employee em </span><br><span class="line"><span class="keyword">JOIN</span> employee <span class="keyword">as</span> manager </span><br><span class="line"><span class="keyword">where</span> em.ManagerId  = manager.id <span class="keyword">and</span> em.salary &gt; manager.salary) <span class="keyword">as</span> temp</span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode620.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode620.html" itemprop="url">leetcode620. 有趣的电影</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T12:11:43+08:00">
-                2019-03-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:15+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/not-boring-movies/" target="_blank" rel="noopener">620. 有趣的电影</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>某城市开了一家新的电影院，吸引了很多人过来看电影。该电影院特别注意用户体验，专门有个 LED显示板做电影推荐，上面公布着影评和相关电影描述。</p>
-<p>作为该电影院的信息部主管，您需要编写一个 SQL查询，找出所有影片描述为非 boring (不无聊) 的并且 id 为奇数 的影片，结果请按等级 rating 排列。</p>
-<p>例如，下表 cinema:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+---------+-----------+--------------+-----------+</span><br><span class="line">|   id    | movie     |  description |  rating   |</span><br><span class="line">+---------+-----------+--------------+-----------+</span><br><span class="line">|   1     | War       |   great 3D   |   8.9     |</span><br><span class="line">|   2     | Science   |   fiction    |   8.5     |</span><br><span class="line">|   3     | irish     |   boring     |   6.2     |</span><br><span class="line">|   4     | Ice song  |   Fantacy    |   8.6     |</span><br><span class="line">|   5     | House card|   Interesting|   9.1     |</span><br><span class="line">+---------+-----------+--------------+-----------+</span><br></pre></td></tr></table></figure>
-<p>对于上面的例子，则正确的输出是为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+---------+-----------+--------------+-----------+</span><br><span class="line">|   id    | movie     |  description |  rating   |</span><br><span class="line">+---------+-----------+--------------+-----------+</span><br><span class="line">|   5     | House card|   Interesting|   9.1     |</span><br><span class="line">|   1     | War       |   great 3D   |   8.9     |</span><br><span class="line">+---------+-----------+--------------+-----------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 条件查询，排序</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> cinema </span><br><span class="line"><span class="keyword">where</span> cinema.description != <span class="string">'boring'</span> <span class="keyword">and</span> cinema.id % <span class="number">2</span> = <span class="number">1</span> </span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> cinema.rating <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
-<p>~~~</p>
+            <p>本文将以本站 <a href="http://liluyang.me" target="_blank" rel="noopener">http://liluyang.me</a> 升级到 <a href="https://liluyang.me" target="_blank" rel="noopener">https://liluyang.me</a> 的过程来分享一下 <code>https</code> 的原理，<code>http</code> 和 <code>https</code> 的区别，以及如何将网站从 <code>http</code> 升级到 <code>https</code>。</p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="为什么要用-https？"><a href="#为什么要用-https？" class="headerlink" title="为什么要用 https？"></a>为什么要用 <code>https</code>？</h2><p><code>https</code> 更安全。甚至为了安全，一个专业可靠的网站， <code>https</code> 是必须的。 <code>Firefox</code> 和 <code>Chrome</code> 都计划将没有配置 <code>SSL</code> 加密的 <code>https</code> 网站标记为不安全（貌似 <code>Firefox50</code> 已经这么干了），目前它们也正在联合其他相关的基金会与公司推动整个互联网 <code>https</code> 化，现在大家访问的一些主要的网站。如 <code>Google</code> 多年前就已经全部启用 <code>https</code> ，国内的淘宝、搜狗、知乎、百度等等也全面 <code>https</code> 了。甚至 <code>Google</code> 的搜索结果也正在给予 <code>https</code> 的网站更高的排名和优先收录权。</p>
+<h2 id="要需要掌握哪些知识？"><a href="#要需要掌握哪些知识？" class="headerlink" title="要需要掌握哪些知识？"></a>要需要掌握哪些知识？</h2><p>拥有基础的 <code>Linux</code> 系统知识，常用的 <code>Shell</code> 命令。</p>
+<h2 id="需要有什么资源？"><a href="#需要有什么资源？" class="headerlink" title="需要有什么资源？"></a>需要有什么资源？</h2><p>如果你只是要测试 <code>https</code>，请查看<a href="http://www.ruanyifeng.com/blog/2018/02/nginx-docker.html" target="_blank" rel="noopener">Nginx 容器教程</a></p>
+<p>如果你要在生产环境使用 <code>https</code>，请接着往下看：</p>
+<p>一个服务器，一个域名，并且已经正确的将域名指向了你的服务器，并且拥有服务器的 <code>SSH</code> 权限</p>
+<p><code>Tips:</code> 需要注意的是如果是在国内阿里云或者腾讯云购买的域名请备案，否则即使你正确的配置了你的域名，可能也依然无法访问你的服务器，因为在国内备案是必须的。</p>
+<h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><h3 id="http-和-https"><a href="#http-和-https" class="headerlink" title="http 和 https"></a>http 和 https</h3><p>简单来说，<code>http</code> 是一个传输网页内容的协议，比如你看到的 <code>http</code> 开头的网站 <a href="http://www.163.com，其网页上的文字、图片、" target="_blank" rel="noopener">http://www.163.com，其网页上的文字、图片、</a> <code>CSS</code>、<code>JS</code> 等文件都是通过 <code>http</code> 协议传输到我们的浏览器，然后被我们看到。</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_01.gif" alt=""></p>
+<p>而 <code>https</code> 可以理解为 <code>HTTP over SSL/TLS</code> ，好端端的 <code>http</code> 为什么需要 <code>over SSL/TLS</code> 呢，因为 <code>http</code> 是明文传输的，通过 <code>http</code> 协议传输的内容很容易被偷看和篡改，为了安全（你肯定不想被人偷看或者篡改网页内容吧，比如网站银行密码什么的。）就为 <code>http</code> 协议再加上了一层 <code>SSL/TLS</code> 安全协议，所以就有了 <code>https</code>。</p>
+<h3 id="SSL-TLS"><a href="#SSL-TLS" class="headerlink" title="SSL/TLS"></a>SSL/TLS</h3><p><code>HTTP over SSL/TLS</code> 字面意思就是带 <code>安全套接层</code> 的 <code>http</code> 协议，内心纯洁的同学也可以理解为 <code>带安全套的 http</code>，因为带了安全套，所以当然会比较安全（/(ㄒoㄒ)/~~）。其中 <code>SSL</code> 是 <code>Secure Sockets Layer</code> 的缩写，是 “安全套接层” 的意思。<code>TLS</code> 是 <code>Transport Layer Security</code> 的缩写，是 <code>传输层安全协议</code> 的意思。<code>SSL</code> 和 <code>TLS</code> 是同一个东西的不同阶段，理解为同一个东西也行，都是安全协议就对了。</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_02.png" alt=""></p>
+<h3 id="CA"><a href="#CA" class="headerlink" title="CA"></a>CA</h3><p>证书颁发机构（CA, Certificate Authority）即颁发数字证书的机构。是负责发放和管理数字证书的权威机构，并作为电子商务交易中受信任的第三方，承担公钥体系中公钥的合法性检验的责任。</p>
+<h3 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h3><p><code>Let&#39;s Encrypt</code> 成立于 <code>2015</code> 年的数字证书认证机构，成立的目的就是为了推行 <code>https</code> 协议在全世界的普及。主要赞助商包括电子前哨基金会、Mozilla基金会、Akamai以及思科。<code>Let&#39;s Encrypt</code> 旨在以自动化流程消除手动创建和安装证书的复杂流程，并推广使万维网服务器的加密连接无所不在，为安全网站提供免费的 <code>SSL/TLS</code> 证书。</p>
+<p>说人话就是 <code>Let’s Encrypt</code> 就是一个可以给我们颁发授信证书的 <code>CA</code> 组织。</p>
+<h3 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h3><p><code>Let’s Encrypt</code> 官方推出的授信证书生成客户端。可以在 <code>Debian</code>，<code>CentOS</code> 等主流系统上运行</p>
+<p>官方链接如下：<a href="https://certbot.eff.org/" target="_blank" rel="noopener">https://certbot.eff.org/</a></p>
+<h1 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h1><p>要升级到 <code>https</code> 首先要获得 <code>CA</code> 签发的安全证书文件，我们选择的证书签发机构是 <code>Let’s Encrypt</code>，目前 <code>Let’s Encrypt</code> 推荐的方法是安装 <code>Certbot</code> 工具通过校验服务器和域名的归属权方式来获取证书</p>
+<h2 id="安装Certbot"><a href="#安装Certbot" class="headerlink" title="安装Certbot"></a>安装Certbot</h2><p>如果你的英文能力比较好，那么请访问 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot官网</a> 根据官方教程来下载，官方教程更加细致，出了问题也方便查看官方的第一手资料。当然你也可以根据以下命令来安装 <code>Certbot</code> 工具，这里我们以 <code>debian9</code> 系统为例来安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载 certbot，如果是 centOS 等内核，可以使用 yum 命令</span></span><br><span class="line">apt install certbot</span><br></pre></td></tr></table></figure>
+<h2 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h2><p><code>certbot</code> 安装成功后，我们有两种模式来获取证书</p>
+<h3 id="第一种模式-Webroot"><a href="#第一种模式-Webroot" class="headerlink" title="第一种模式 Webroot"></a>第一种模式 Webroot</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot certonly --webroot -w /root/docker_nginx/html -d liluyang.me -d www.liluyang.me</span><br></pre></td></tr></table></figure>
+<p>这个命令会为 <code>liluyang.com</code> 和 <code>www.liluyang.com</code> 这两个域名生成一个证书</p>
+<p><code>--webroot</code> 模式会在 <code>/root/docker_nginx/html</code> 中创建 <code>.well-known</code>文件夹，这个文件夹里面包含了一些验证文件，<code>certbot</code> 会通过访问 <code>example.com/.well-known/acme-challenge</code> 来验证你的域名是否绑定的这个服务器。这个文件夹就是你 <code>Nginx</code> 下 <code>index.html</code> 所在的目录，请自行根据自己服务器 <code>Nginx</code> 的配置情况修改这个参数。</p>
+<p>如果执行成功，命令行会大致输出以下参数表示成功：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/liluyang.me/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/liluyang.me/privkey.pem</span><br><span class="line">   Your cert will expire on 2019-07-01. To obtain a new or tweaked</span><br><span class="line">   version of this certificate <span class="keyword">in</span> the future, simply run certbot</span><br><span class="line">   again. To non-interactively renew *all* of your certificates, run</span><br><span class="line">   <span class="string">"certbot renew"</span></span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let<span class="string">'s Encrypt:   https://letsencrypt.org/donate</span></span><br><span class="line"><span class="string">   Donating to EFF:                    https://eff.org/donate-le</span></span><br></pre></td></tr></table></figure>
+<p>以上信息中包含了生成后的证书的位置，过期时间等信息，根据提示信息我们打开 <code>/etc/letsencrypt/live/</code> 文件夹，检查这个文件夹中是否有你生成的对应网站的证书文件，如果成功，应该如下图所示：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_03.png" alt=""></p>
+<p>这个命令在大多数情况下都可以满足需求，如果失败了，请看下一种模式。</p>
+<h3 id="第二种模式-Standalone"><a href="#第二种模式-Standalone" class="headerlink" title="第二种模式 Standalone"></a>第二种模式 Standalone</h3><p>如果你已经通过第一种模式生成证书成功，请跳过这里，直接看下一章</p>
+<p>但是有些时候我们的一些服务并没有根目录，例如一些微服务，这时候使用 <code>--webroot</code> 就走不通了。<code>certbot</code> 还有另外一种模式 <code>--standalone</code>， 这种模式不需要指定网站根目录，他会自动启用服务器的 <code>443</code> 端口，来验证域名的归属。我们有其他服务（例如nginx）占用了 <code>443</code> 端口，就必须先停止这些服务，在证书生成完毕后，再启用。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot certonly --standalone -d example.com -d www.example.com</span><br></pre></td></tr></table></figure>
+<p>证书生成完毕后，我们可以在 <code>/etc/letsencrypt/live/</code> 目录下看到对应域名的文件夹，里面存放了指向证书的一些快捷方式。</p>
+<p>这时候我们的第一生成证书已经完成了，接下来就是配置我们的 <code>web</code> 服务器，启用 <code>HTTPS</code>。</p>
+<p><strong>如果生成失败，并且你自己搜索之后又没有能力解决，请在评论留言</strong></p>
+<p><strong>如果生成失败，并且你自己搜索之后又没有能力解决，请在评论留言</strong></p>
+<p><strong>如果生成失败，并且你自己搜索之后又没有能力解决，请在评论留言</strong></p>
+<h1 id="安装证书"><a href="#安装证书" class="headerlink" title="安装证书"></a>安装证书</h1><p>证书生成生成后，我们还要做最后的一步就是把证书的配置信息添加到 <code>nginx</code> 的 <code>conf</code> 目录的 <code>certs</code> 文件夹中。我个人的 <code>Nginx</code> 是通过 <code>docker</code> 镜像的方式运行的，并且我将本地的 <code>/root/docker_nginx/conf</code> 文件夹设置为了 <code>Nginx</code> 的配置文件夹，所以现在我们将证书 <code>cert.pem</code> 和 <code>privkey.pem</code> 拷贝到这个目录。配置目录如下</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_04.png" alt=""></p>
+<p>在 <code>Nginx</code> 的配置文件 <code>nginx.conf</code> 末尾添加以下配置，注意修改对应的配置参数，下面的配置模板仅供参考。</p>
+<p>如果存在 <code>conf.d/default.conf</code> 文件请优先修改此文件，具体原因请百度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 443 https 配置</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl http2;</span><br><span class="line">    server_name  liluyang.me www.liluyang.me;</span><br><span class="line"></span><br><span class="line">    ssl                      on;</span><br><span class="line">    ssl_certificate          /etc/nginx/certs/cert.pem;</span><br><span class="line">    ssl_certificate_key      /etc/nginx/certs/privkey.pem;</span><br><span class="line"></span><br><span class="line">    ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">    ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_prefer_server_ciphers   on;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>重启 Nginx</strong></p>
+<p>到此为止，我们就已经成功的完成了 <code>https</code> 的配置。 现在打开我的博客 <a href="https://liluyang.com" target="_blank" rel="noopener">https://liluyang.com</a> 就可以在浏览器端看到标有 <code>安全</code> 的网站标识字样了，如下图：</p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_05.png" alt=""></p>
+<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190403_https_06.png" alt=""></p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>如果是 <code>docker</code> 部署的 <code>nginx</code>，最后重启启动 <code>docker</code> 时要将 <code>443（https）</code> 端口映射出来，否则无法访问服务器的 <code>443（https）</code> 端口的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">  --volume &quot;$PWD/html&quot;:/usr/share/nginx/html \</span><br><span class="line">  --volume &quot;$PWD/conf&quot;:/etc/nginx \</span><br><span class="line">  -p 80:80 \</span><br><span class="line">  -p 443:443 \</span><br><span class="line">  -d \</span><br><span class="line">  nginx</span><br></pre></td></tr></table></figure></p>
+<h1 id="可选配置"><a href="#可选配置" class="headerlink" title="可选配置"></a>可选配置</h1><h2 id="强制使用-https-访问网站"><a href="#强制使用-https-访问网站" class="headerlink" title="强制使用 https 访问网站"></a>强制使用 https 访问网站</h2><p>将 <code>http</code> 请求转发到 <code>https</code></p>
+<p>请在配置文件夹中添加以下配置，然后重启 <code>Nginx</code> 即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name liluyang.me www.liluyang.me;</span><br><span class="line">    return 301 https://liluyang.me;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自动续订"><a href="#自动续订" class="headerlink" title="自动续订"></a>自动续订</h2><p>细心的同学可能会发现， <code>https</code> 证书的有效时间是非常短的，只有三个月，那么每隔三个月我们都要操作一次吗？其实不是的，我们可以用过自动续订的方式来刷新我们的证书有效时间。</p>
+<h3 id="测试自动续订"><a href="#测试自动续订" class="headerlink" title="测试自动续订"></a>测试自动续订</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+<p>如果测试成功，会生成如下提示：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Saving debug <span class="built_in">log</span> to /var/<span class="built_in">log</span>/letsencrypt/letsencrypt.log</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Processing /etc/letsencrypt/renewal/liluyang.me.conf</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Cert not due <span class="keyword">for</span> renewal, but simulating renewal <span class="keyword">for</span> dry run</span><br><span class="line">Plugins selected: Authenticator webroot, Installer None</span><br><span class="line">Renewing an existing certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">http-01 challenge <span class="keyword">for</span> liluyang.me</span><br><span class="line">http-01 challenge <span class="keyword">for</span> www.liluyang.me</span><br><span class="line">Waiting <span class="keyword">for</span> verification...</span><br><span class="line">Cleaning up challenges</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">new certificate deployed without reload, fullchain is</span><br><span class="line">/etc/letsencrypt/live/liluyang.me/fullchain.pem</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">** DRY RUN: simulating <span class="string">'certbot renew'</span> close to cert expiry</span><br><span class="line">**          (The <span class="built_in">test</span> certificates below have not been saved.)</span><br><span class="line"></span><br><span class="line">Congratulations, all renewals succeeded. The following certs have been renewed:</span><br><span class="line">  /etc/letsencrypt/live/liluyang.me/fullchain.pem (success)</span><br><span class="line">** DRY RUN: simulating <span class="string">'certbot renew'</span> close to cert expiry</span><br><span class="line">**          (The <span class="built_in">test</span> certificates above have not been saved.)</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line"></span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Your account credentials have been saved <span class="keyword">in</span> your Certbot</span><br><span class="line">   configuration directory at /etc/letsencrypt. You should make a</span><br><span class="line">   secure backup of this folder now. This configuration directory will</span><br><span class="line">   also contain certificates and private keys obtained by Certbot so</span><br><span class="line">   making regular backups of this folder is ideal.</span><br></pre></td></tr></table></figure></p>
+<h3 id="手动执行自动续订"><a href="#手动执行自动续订" class="headerlink" title="手动执行自动续订"></a>手动执行自动续订</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew -v</span><br></pre></td></tr></table></figure>
+<h3 id="开启自动续订"><a href="#开启自动续订" class="headerlink" title="开启自动续订"></a>开启自动续订</h3><p>自动续订也可以用 <code>certbot</code> 来实现，自动续订之后会更新 <code>pem</code> 文件到 <code>/etc/letsencrypt/live/example.com/</code> 。如果你的 <code>nginx</code> 配置没有直接指向 <code>/etc/letsencrypt/live/example.com/</code> 文件夹，请记得将 <code>pem</code> 文件夹拷贝到你的配置文件夹中</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew --quiet --no-self-upgrade</span><br></pre></td></tr></table></figure>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><p><a href="http://www.ruanyifeng.com/blog/2018/02/nginx-docker.html" target="_blank" rel="noopener">《Nginx 容器教程》 BY 阮一峰</a></p>
+</li>
+<li><p><a href="http://www.ruanyifeng.com/blog/2016/08/migrate-from-http-to-https.html" target="_blank" rel="noopener">《https 教程参考链接》 BY 阮一峰</a></p>
+</li>
+<li><p><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/network/HTTPS%E4%B8%AD%E7%9A%84TLS.md" target="_blank" rel="noopener">《HTTPS中的TLS》</a></p>
+</li>
+<li><p><a href="https://certbot.eff.org/lets-encrypt/debianstretch-nginx" target="_blank" rel="noopener">《Let’s Encrypt 证书生成工具Certbot》 BY Let’s Encrypt官方</a></p>
+</li>
+<li><p><a href="https://bitmingw.com/2017/02/02/letsencrypt-tutorial/" target="_blank" rel="noopener">《Let’s Encrypt 入门教程》</a></p>
+</li>
+<li><p><a href="http://diamondfsd.com/lets-encrytp-hand-https/" target="_blank" rel="noopener">《Let’s Encrypt 使用教程，免费的SSL证书，让你的网站拥抱 HTTPS》</a></p>
+</li>
+<li><p><a href="https://linuxstory.org/deploy-lets-encrypt-ssl-certificate-with-certbot/" target="_blank" rel="noopener">《HTTPS 简介及使用官方工具 Certbot 配置 Let’s Encrypt SSL 安全证书详细教程》</a></p>
+</li>
+<li><p><a href="https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html" target="_blank" rel="noopener">《数字证书及 CA 的扫盲介绍和工作原理》</a></p>
+</li>
+</ul>
+<p>~</p>
 <hr>
 
           
@@ -1699,7 +1144,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

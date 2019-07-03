@@ -248,18 +248,18 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode197. 上升的温度]]></title>
-    <url>%2Fleetcode197.html</url>
-    <content type="text"><![CDATA[问题连接：197. 上升的温度 Question:给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ Answer:12345678-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集-- 此处使用 outer join 会报错，回头应该检查一下select w1.id from weather w1 inner join weather w2 where DATEDIFF(w1.RecordDate, w2.RecordDate) = 1 and w1.temperature &gt; w2.temperature ~~~]]></content>
+    <title><![CDATA[leetcode182. 查找重复的电子邮箱]]></title>
+    <url>%2Fleetcode182.html</url>
+    <content type="text"><![CDATA[问题连接：182. 查找重复的电子邮箱 Question:编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ Answer:1234567-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息select email from(select email, count(email) num from person GROUP BY email) as temp_tablewhere num &gt; 1 ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode182. 查找重复的电子邮箱]]></title>
-    <url>%2Fleetcode182.html</url>
-    <content type="text"><![CDATA[问题连接：182. 查找重复的电子邮箱 Question:编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。 示例： 1234567+----+---------+| Id | Email |+----+---------+| 1 | a@b.com || 2 | c@d.com || 3 | a@b.com |+----+---------+ 根据以上输入，你的查询应返回以下结果： 12345+---------+| Email |+---------+| a@b.com |+---------+ Answer:1234567-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息select email from(select email, count(email) num from person GROUP BY email) as temp_tablewhere num &gt; 1 ~~~]]></content>
+    <title><![CDATA[leetcode197. 上升的温度]]></title>
+    <url>%2Fleetcode197.html</url>
+    <content type="text"><![CDATA[问题连接：197. 上升的温度 Question:给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。12345678+---------+------------------+------------------+| Id(INT) | RecordDate(DATE) | Temperature(INT) |+---------+------------------+------------------+| 1 | 2015-01-01 | 10 || 2 | 2015-01-02 | 25 || 3 | 2015-01-03 | 20 || 4 | 2015-01-04 | 30 |+---------+------------------+------------------+ 例如，根据上述给定的 Weather 表格，返回如下 Id: 123456+----+| Id |+----+| 2 || 4 |+----+ Answer:12345678-- 主要使用到数据库自带的 DATEDIFF函数，当前表的级联我们可以使用默认的 inner join 获得两个数据的并集-- 此处使用 outer join 会报错，回头应该检查一下select w1.id from weather w1 inner join weather w2 where DATEDIFF(w1.RecordDate, w2.RecordDate) = 1 and w1.temperature &gt; w2.temperature ~~~]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>数据库</tag>
@@ -367,13 +367,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode14. 最长公共前缀]]></title>
-    <url>%2Fleetcode14.html</url>
-    <content type="text"><![CDATA[问题连接：14. 最长公共前缀 12345678910111213141516class Solution &#123; public static String longestCommonPrefix(String[] strs) &#123; if (strs.length == 0) return ""; // 遍历字符串，按顺序获取每个字符 for (int i = 0; i &lt; strs[0].length(); i++) &#123; // 根据当前字符遍历剩余的所有字符串 for (int j = 1; j &lt; strs.length; j++) &#123; if (strs[j].length() == i || strs[0].charAt(i) != strs[j].charAt(i)) &#123; return strs[0].substring(0, i); &#125; &#125; &#125; return strs[0]; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode13. 罗马数字转整数]]></title>
+    <url>%2Fleetcode13.html</url>
+    <content type="text"><![CDATA[问题连接：13. 罗马数字转整数 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253class Solution &#123; public static int romanToInt(String s) &#123; int result = 0; char[] chars = s.toCharArray(); for (int i = 0; i &lt; chars.length; i++) &#123; if (chars[i] == 'I') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'V') &#123; result += 4; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'X') &#123; result += 9; i++; continue; &#125; result += 1; &#125; if (chars[i] == 'X') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'L') &#123; result += 40; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'C') &#123; result += 90; i++; continue; &#125; result += 10; &#125; if (chars[i] == 'C') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'D') &#123; result += 400; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'M') &#123; result += 900; i++; continue; &#125; result += 100; &#125; if (chars[i] == 'V') result += 5; if (chars[i] == 'L') result += 50; if (chars[i] == 'D') result += 500; if (chars[i] == 'M') result += 1000; &#125; return result; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
         <tag>水题</tag>
+        <tag>数学</tag>
         <tag>字符串</tag>
       </tags>
   </entry>
@@ -410,14 +411,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[leetcode13. 罗马数字转整数]]></title>
-    <url>%2Fleetcode13.html</url>
-    <content type="text"><![CDATA[问题连接：13. 罗马数字转整数 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253class Solution &#123; public static int romanToInt(String s) &#123; int result = 0; char[] chars = s.toCharArray(); for (int i = 0; i &lt; chars.length; i++) &#123; if (chars[i] == 'I') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'V') &#123; result += 4; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'X') &#123; result += 9; i++; continue; &#125; result += 1; &#125; if (chars[i] == 'X') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'L') &#123; result += 40; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'C') &#123; result += 90; i++; continue; &#125; result += 10; &#125; if (chars[i] == 'C') &#123; if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'D') &#123; result += 400; i++; continue; &#125; else if ((i + 1) &lt; chars.length &amp;&amp; chars[i + 1] == 'M') &#123; result += 900; i++; continue; &#125; result += 100; &#125; if (chars[i] == 'V') result += 5; if (chars[i] == 'L') result += 50; if (chars[i] == 'D') result += 500; if (chars[i] == 'M') result += 1000; &#125; return result; &#125;&#125;]]></content>
+    <title><![CDATA[leetcode14. 最长公共前缀]]></title>
+    <url>%2Fleetcode14.html</url>
+    <content type="text"><![CDATA[问题连接：14. 最长公共前缀 12345678910111213141516class Solution &#123; public static String longestCommonPrefix(String[] strs) &#123; if (strs.length == 0) return ""; // 遍历字符串，按顺序获取每个字符 for (int i = 0; i &lt; strs[0].length(); i++) &#123; // 根据当前字符遍历剩余的所有字符串 for (int j = 1; j &lt; strs.length; j++) &#123; if (strs[j].length() == i || strs[0].charAt(i) != strs[j].charAt(i)) &#123; return strs[0].substring(0, i); &#125; &#125; &#125; return strs[0]; &#125;&#125;]]></content>
       <tags>
         <tag>Leetcode</tag>
         <tag>算法</tag>
         <tag>水题</tag>
-        <tag>数学</tag>
         <tag>字符串</tag>
       </tags>
   </entry>
