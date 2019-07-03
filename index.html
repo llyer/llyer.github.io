@@ -489,7 +489,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:45:36+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T23:04:00+08:00">
                 2019-07-03
               </time>
             
@@ -524,33 +524,20 @@
 
       
         
-          
-            <p>由于经常要在 服务器上修改 redis 的配置信息，每次都要搜索一下常用的命令，于是把命令整理了一下分享给大家</p>
+          <p>由于经常要在 服务器上修改 redis 的配置信息，每次都要搜索一下常用的命令，于是把命令整理了一下分享给大家</p>
 <p><strong>环境说明：</strong> 所有操作都在 <code>腾讯云 Ubuntu 16.04</code> 下进行。</p>
 <p>Tips:</p>
 <p>在腾讯云部署的 redis 服务，如果需要在外网访问，记得要在安全组配置中将 6379 端口打开！</p>
 <h1 id="启动，关闭，重启-redis"><a href="#启动，关闭，重启-redis" class="headerlink" title="启动，关闭，重启 redis"></a>启动，关闭，重启 redis</h1><p>如果是用apt或者yum安装的redis，可以直接通过下面的命令停止/启动/重启redis</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/redis-server stop</span><br><span class="line"></span><br><span class="line">/etc/init.d/redis-server start</span><br><span class="line"></span><br><span class="line">/etc/init.d/redis-server restart</span><br></pre></td></tr></table></figure>
 <p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190515_redis_01.png" alt=""></p>
-<p>如果是通过源码安装的redis，则可以通过redis的客户端程序redis-cli的shutdown命令来重启redis</p>
-<p>1.redis关闭<br>redis-cli -h 127.0.0.1 -p 6379 shutdown</p>
-<p>2.redis启动<br>redis-server</p>
-<p>如果上述方式都没有成功停止redis，则可以使用终极武器 kill -9</p>
-<h1 id="修改-redis-的配置"><a href="#修改-redis-的配置" class="headerlink" title="修改 redis 的配置"></a>修改 redis 的配置</h1><p>大多数的应用场景下，往往是我们需要修改 redis 的一些功能，然后重启让其生效</p>
-<p>使用 apt 安装的 redis 配置文件路径为：/etc/redis/redis.conf，可以使用以下命令编辑配置：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编辑</span></span><br><span class="line">vi /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
-<p>Tips: 编辑成功后按 esc + :wq 保存文件然后重启就可以生效啦</p>
-<h1 id="查看-redis-的运行状态"><a href="#查看-redis-的运行状态" class="headerlink" title="查看 redis 的运行状态"></a>查看 redis 的运行状态</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep redis</span><br></pre></td></tr></table></figure>
-<p><img src="https://blog-1251468774.cos.ap-shanghai.myqcloud.com/20190515_redis_02.png" alt=""></p>
-<!-- # 参考链接
-
-1. https://blog.csdn.net/sinat_29330337/article/details/77740368
-
-2. https://blog.csdn.net/justinytsoft/article/details/69250497
-
-3. https://blog.csdn.net/Agly_Clarlie/article/details/56297415 -->
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/redis-command-in-ubuntu.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
