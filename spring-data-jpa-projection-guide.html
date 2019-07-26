@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？  前置知识要求了解 orm 框架的概念，了解 spring data 实体类定义两个实体类，User 和 Role，U">
+<meta name="description" content="所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？  前置知识要求了解 orm 框架的概念，了解 spring data">
 <meta name="keywords" content="Mysql,Spring Boot,Spring,Spring Data JPA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Data JPA 投影使用教程">
 <meta property="og:url" content="http://yoursite.com/spring-data-jpa-projection-guide.html">
 <meta property="og:site_name" content="李鲁杨的个人博客">
-<meta property="og:description" content="所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？  前置知识要求了解 orm 框架的概念，了解 spring data 实体类定义两个实体类，User 和 Role，U">
+<meta property="og:description" content="所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？  前置知识要求了解 orm 框架的概念，了解 spring data">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-24T10:47:11.056Z">
+<meta property="og:updated_time" content="2019-07-26T07:27:02.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Data JPA 投影使用教程">
-<meta name="twitter:description" content="所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？  前置知识要求了解 orm 框架的概念，了解 spring data 实体类定义两个实体类，User 和 Role，U">
+<meta name="twitter:description" content="所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？  前置知识要求了解 orm 框架的概念，了解 spring data">
 
 
 
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-24T18:47:11+08:00">
-                2019-07-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-26T15:27:02+08:00">
+                2019-07-26
               </time>
             
           </span>
@@ -387,6 +387,7 @@
         <p>所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？</p>
 <!-- TODO, 此处添加 图表和返回数据的 json -->
 <h1 id="前置知识要求"><a href="#前置知识要求" class="headerlink" title="前置知识要求"></a>前置知识要求</h1><p>了解 orm 框架的概念，了解 spring data</p>
+<a id="more"></a>
 <h1 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h1><p>定义两个实体类，User 和 Role，User 和 Role 的关系是多对多的关系。</p>
 <p>实体类中的 @Data, @NoArgsConstructor 等注解属于 lombok 框架。这个框架可以让我们在写 Java Bean 的时候省略 Getter 和 Setter 方法和构造器方法。详细用法，可以自行百度</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> me.liluyang.jpa.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.annotation.JsonIgnoreProperties;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.persistence.*;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实体类Demo</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Table</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String gender;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OneToOne</span></span><br><span class="line">    <span class="keyword">private</span> Address address;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JsonIgnoreProperties</span>(<span class="string">"users"</span>)</span><br><span class="line">    <span class="meta">@ManyToMany</span>(mappedBy = <span class="string">"users"</span>)</span><br><span class="line">    <span class="keyword">private</span> List&lt;Role&gt; roles;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String id, String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -413,24 +414,7 @@
 <p>学校 &gt; 院系 &gt; 学生 &gt; 课程 之类的关联</p>
 <p>那么如果在合适的地方进行切断呢，这个目前比较合适的方式还是自己使用上面结果集映射的方式。根据不同场景下的 api 返回不同的查询结果</p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><p><a href="/2019/04/03/20190403_HTTPS_配置教程">《HTTPS 配置教程（一）》 - 李鲁杨</a></p>
-</li>
-<li><p><a href="http://www.ruanyifeng.com/blog/2018/02/nginx-docker.html" target="_blank" rel="noopener">《Nginx 容器教程》 BY 阮一峰</a></p>
-</li>
-<li><p><a href="http://www.ruanyifeng.com/blog/2016/08/migrate-from-http-to-https.html" target="_blank" rel="noopener">《https 教程参考链接》 BY 阮一峰</a></p>
-</li>
-<li><p><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/network/HTTPS%E4%B8%AD%E7%9A%84TLS.md" target="_blank" rel="noopener">《HTTPS中的TLS》</a></p>
-</li>
-<li><p><a href="https://certbot.eff.org/lets-encrypt/debianstretch-nginx" target="_blank" rel="noopener">《Let’s Encrypt 证书生成工具Certbot》 BY Let’s Encrypt官方</a></p>
-</li>
-<li><p><a href="https://bitmingw.com/2017/02/02/letsencrypt-tutorial/" target="_blank" rel="noopener">《Let’s Encrypt 入门教程》</a></p>
-</li>
-<li><p><a href="http://diamondfsd.com/lets-encrytp-hand-https/" target="_blank" rel="noopener">《Let’s Encrypt 使用教程，免费的SSL证书，让你的网站拥抱 HTTPS》</a></p>
-</li>
-<li><p><a href="https://linuxstory.org/deploy-lets-encrypt-ssl-certificate-with-certbot/" target="_blank" rel="noopener">《HTTPS 简介及使用官方工具 Certbot 配置 Let’s Encrypt SSL 安全证书详细教程》</a></p>
-</li>
-<li><p><a href="https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html" target="_blank" rel="noopener">《数字证书及 CA 的扫盲介绍和工作原理》</a></p>
-</li>
+<li><a href="/2019/04/03/20190403_HTTPS_配置教程">《HTTPS 配置教程（一）》 - 李鲁杨</a></li>
 </ul>
 <p>~</p>
 <hr>
