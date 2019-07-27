@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？  前置知识要求了解 orm 框架的概念，了解 spring data">
+<meta name="description" content="相信不少后端码农在进阶为 “高级增删改查程序员” 的道路上一般都会遇到类似这样的问题，我的数据库里面有一个 user 表，表中有 id, username, password 三个字段，前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要使用怎样的方式进行优雅的处理呢？ 数据库表格：    id username passowrd     01 zhangsan">
 <meta name="keywords" content="Mysql,Spring Boot,Spring,Spring Data JPA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Data JPA 投影使用教程">
 <meta property="og:url" content="http://yoursite.com/spring-data-jpa-projection-guide.html">
 <meta property="og:site_name" content="李鲁杨的个人博客">
-<meta property="og:description" content="所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？  前置知识要求了解 orm 框架的概念，了解 spring data">
+<meta property="og:description" content="相信不少后端码农在进阶为 “高级增删改查程序员” 的道路上一般都会遇到类似这样的问题，我的数据库里面有一个 user 表，表中有 id, username, password 三个字段，前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要使用怎样的方式进行优雅的处理呢？ 数据库表格：    id username passowrd     01 zhangsan">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-26T07:27:02.206Z">
+<meta property="og:updated_time" content="2019-07-27T07:45:00.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Data JPA 投影使用教程">
-<meta name="twitter:description" content="所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？  前置知识要求了解 orm 框架的概念，了解 spring data">
+<meta name="twitter:description" content="相信不少后端码农在进阶为 “高级增删改查程序员” 的道路上一般都会遇到类似这样的问题，我的数据库里面有一个 user 表，表中有 id, username, password 三个字段，前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要使用怎样的方式进行优雅的处理呢？ 数据库表格：    id username passowrd     01 zhangsan">
 
 
 
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-26T15:27:02+08:00">
-                2019-07-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-27T15:45:00+08:00">
+                2019-07-27
               </time>
             
           </span>
@@ -384,11 +384,42 @@
       
 
       
-        <p>所有面向增删改查的程序员在进阶为 “高级增删改查程序员” 的道路上一般都会遇到一个这个的问题，数据库里面的 user 表中有 id, username,password 等字段，但是前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要怎么处理呢？</p>
-<!-- TODO, 此处添加 图表和返回数据的 json -->
-<h1 id="前置知识要求"><a href="#前置知识要求" class="headerlink" title="前置知识要求"></a>前置知识要求</h1><p>了解 orm 框架的概念，了解 spring data</p>
+        <p>相信不少后端码农在进阶为 “高级增删改查程序员” 的道路上一般都会遇到类似这样的问题，我的数据库里面有一个 <code>user</code> 表，表中有 id, username, password 三个字段，前端用户在查询个人信息时，并不需要把 password 字段返回给前端，这个时候应该要使用怎样的方式进行优雅的处理呢？</p>
+<p>数据库表格：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>username</th>
+<th>passowrd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>zhangsan</td>
+<td>password01</td>
+</tr>
+<tr>
+<td>02</td>
+<td>lisi</td>
+<td>password02</td>
+</tr>
+<tr>
+<td>03</td>
+<td>wangwu</td>
+<td>password02</td>
+</tr>
+</tbody>
+</table>
+<p>返回给前端的数据：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"id"</span>: <span class="string">"01"</span>,</span><br><span class="line">	<span class="attr">"username"</span>: <span class="string">"zhangsan"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>面对这样的问题，最优雅的方式一定是使用 Spring Data JPA，如果你还没有用过，那么赶紧点开本教程吧！</p>
+<blockquote>
+<p>Tips: 本教程对应的源代码地址：配合使用，学习更加迅速</p>
+</blockquote>
 <a id="more"></a>
-<h1 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h1><p>定义两个实体类，User 和 Role，User 和 Role 的关系是多对多的关系。</p>
+<h1 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h1><p>定义两个实体类，User 和 Role，User 和 Role 的关系是多对多的关系，当我们添加上 @Table 注解时，表示这两个实体类需要生成对应的具体的 Java 表格。</p>
 <p>实体类中的 @Data, @NoArgsConstructor 等注解属于 lombok 框架。这个框架可以让我们在写 Java Bean 的时候省略 Getter 和 Setter 方法和构造器方法。详细用法，可以自行百度</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> me.liluyang.jpa.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.annotation.JsonIgnoreProperties;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.persistence.*;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实体类Demo</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Table</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String gender;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OneToOne</span></span><br><span class="line">    <span class="keyword">private</span> Address address;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JsonIgnoreProperties</span>(<span class="string">"users"</span>)</span><br><span class="line">    <span class="meta">@ManyToMany</span>(mappedBy = <span class="string">"users"</span>)</span><br><span class="line">    <span class="keyword">private</span> List&lt;Role&gt; roles;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String id, String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> me.liluyang.jpa.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.annotation.JsonIgnoreProperties;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.persistence.Entity;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Id;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.ManyToMany;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Table;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实体类Demo</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Table</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Role</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JsonIgnoreProperties</span>(value = &#123;<span class="string">"address"</span>, <span class="string">"roles"</span>&#125;)</span><br><span class="line">    <span class="meta">@ManyToMany</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;User&gt; users;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Role</span><span class="params">(String id, String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -472,6 +503,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/datetime.html" rel="prev" title="一篇文章解决 Java 中的时间，时区问题">
+                一篇文章解决 Java 中的时间，时区问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -554,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -567,7 +602,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -622,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前置知识要求"><span class="nav-number">1.</span> <span class="nav-text">前置知识要求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实体类"><span class="nav-number">2.</span> <span class="nav-text">实体类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#投影的使用"><span class="nav-number">2.1.</span> <span class="nav-text">投影的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用实体类（Java-Bean）的方式接收-JPA-的返回值"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用实体类（Java Bean）的方式接收 JPA 的返回值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-返回包含基础数据属性的实体类"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">1. 返回包含基础数据属性的实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-返回包含基础数据属性的嵌套实体类"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">2. 返回包含基础数据属性的嵌套实体类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用接口（Interface）的方式接收-JPA-的返回值"><span class="nav-number">2.1.2.</span> <span class="nav-text">使用接口（Interface）的方式接收 JPA 的返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-spel-表达式计算返回值"><span class="nav-number">2.1.3.</span> <span class="nav-text">使用 spel 表达式计算返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态查询"><span class="nav-number">2.1.4.</span> <span class="nav-text">动态查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何在序列化时解决对象循环引用的问题"><span class="nav-number">2.1.5.</span> <span class="nav-text">如何在序列化时解决对象循环引用的问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实体类"><span class="nav-number">1.</span> <span class="nav-text">实体类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#投影的使用"><span class="nav-number">1.1.</span> <span class="nav-text">投影的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用实体类（Java-Bean）的方式接收-JPA-的返回值"><span class="nav-number">1.1.1.</span> <span class="nav-text">使用实体类（Java Bean）的方式接收 JPA 的返回值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-返回包含基础数据属性的实体类"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1. 返回包含基础数据属性的实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-返回包含基础数据属性的嵌套实体类"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2. 返回包含基础数据属性的嵌套实体类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用接口（Interface）的方式接收-JPA-的返回值"><span class="nav-number">1.1.2.</span> <span class="nav-text">使用接口（Interface）的方式接收 JPA 的返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-spel-表达式计算返回值"><span class="nav-number">1.1.3.</span> <span class="nav-text">使用 spel 表达式计算返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态查询"><span class="nav-number">1.1.4.</span> <span class="nav-text">动态查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何在序列化时解决对象循环引用的问题"><span class="nav-number">1.1.5.</span> <span class="nav-text">如何在序列化时解决对象循环引用的问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">2.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>

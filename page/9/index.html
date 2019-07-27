@@ -304,6 +304,270 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode20.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode20.html" itemprop="url">leetcode20. 有效的括号</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
+                2019-01-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:47+08:00">
+                2019-07-03
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>问题连接：<a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. 有效的括号</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (stack.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">'&#125;'</span> &amp;&amp; stack.peek() == <span class="string">'&#123;'</span>) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">']'</span> &amp;&amp; stack.peek() == <span class="string">'['</span>) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">')'</span> &amp;&amp; stack.peek() == <span class="string">'('</span>) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.size() == <span class="number">0</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode14.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode14.html" itemprop="url">leetcode14. 最长公共前缀</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
+                2019-01-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:44+08:00">
+                2019-07-03
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>问题连接：<a href="https://leetcode-cn.com/problems/longest-common-prefix/" target="_blank" rel="noopener">14. 最长公共前缀</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (strs.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历字符串，按顺序获取每个字符</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs[<span class="number">0</span>].length(); i++) &#123;</span><br><span class="line">            <span class="comment">// 根据当前字符遍历剩余的所有字符串</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; strs.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (strs[j].length() == i || strs[<span class="number">0</span>].charAt(i) != strs[j].charAt(i)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> strs[<span class="number">0</span>].substring(<span class="number">0</span>, i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode13.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -436,7 +700,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode26.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode9.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -455,7 +719,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode26.html" itemprop="url">leetcode26. 删除排序数组中的重复项</a></h1>
+                <a class="post-title-link" href="/leetcode9.html" itemprop="url">leetcode9. 回文数</a></h1>
         
 
         <div class="post-meta">
@@ -483,7 +747,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:54+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:37+08:00">
                 2019-07-03
               </time>
             
@@ -519,8 +783,8 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">26. 删除排序数组中的重复项</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>问题连接：<a href="https://leetcode-cn.com/problems/palindrome-number/" target="_blank" rel="noopener">9. 回文数</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断一个整数是否是回文数字 121，12321是，123 1234不是</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> x</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> origin = x;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 123</span></span><br><span class="line">        <span class="keyword">while</span> (x &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = x % <span class="number">10</span>;</span><br><span class="line">            x = x / <span class="number">10</span>;</span><br><span class="line">            result = result * <span class="number">10</span> + temp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (result == origin) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -687,415 +951,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode20.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode20.html" itemprop="url">leetcode20. 有效的括号</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:10:23+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:47+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. 有效的括号</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 这道题完美契合栈的所有特点，使用栈可以直接匹配解决</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (stack.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">'&#125;'</span> &amp;&amp; stack.peek() == <span class="string">'&#123;'</span>) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">']'</span> &amp;&amp; stack.peek() == <span class="string">'['</span>) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">')'</span> &amp;&amp; stack.peek() == <span class="string">'('</span>) &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.size() == <span class="number">0</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/李鲁杨的个人简历.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/李鲁杨的个人简历.html" itemprop="url">李鲁杨的个人简历</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-01T15:17:43+08:00">
-                2019-01-01
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:40:12+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="个人资料"><a href="#个人资料" class="headerlink" title="个人资料"></a>个人资料</h1><ul>
-<li><p>姓名：李鲁杨 </p>
-</li>
-<li><p>性别：男 </p>
-</li>
-<li><p>出生：1992-05 </p>
-</li>
-<li><p>坐标：广东省深圳市 </p>
-</li>
-<li><p>学位：本科</p>
-</li>
-<li><p>邮箱：<a href="mailto:392439022@qq.com" target="_blank" rel="noopener">392439022@qq.com</a> </p>
-</li>
-<li><p>求职意向：研发工程师（Java，前端）</p>
-</li>
-</ul>
-<h1 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h1><p><a href="http://www.hncj.edu.cn/" target="_blank" rel="noopener">河南城建学院</a> 计算机与数据科学学院  软件工程  </p>
-<h1 id="主修课程"><a href="#主修课程" class="headerlink" title="主修课程"></a>主修课程</h1><p>数据结构，操作系统，计算机网络，Linux 操作系统，数据库，<br>编译原理，C，C++， JavaSE ，JavaEE，HTML，CSS，JS，<br>计算机组成原理，软件工程，软件过程和质量控制 </p>
-<h1 id="在校经历"><a href="#在校经历" class="headerlink" title="在校经历"></a>在校经历</h1><ol>
-<li>学习：各学科基础知识掌握良好，专业课优秀，无挂科，英语：CET-4   </li>
-<li>工作：院学生会副主席，体育部部长 </li>
-<li>证书：国家励志奖学金、二等、三等奖学金、优秀干部、三好学生等</li>
-</ol>
-<h1 id="个人技能"><a href="#个人技能" class="headerlink" title="个人技能"></a>个人技能</h1><p><strong>Java:</strong></p>
-<ul>
-<li>熟悉面向对象，JavaSE，JavaEE </li>
-<li>熟悉常用数据结构List, Set, Map </li>
-<li>熟练Spring, Spring Boot, Spring Data JPA, Hibernate等技术 </li>
-<li>了解Spring Cloud，服务注册和发现，消费和治理等 </li>
-<li>了解JVM内核,常用设计模</li>
-</ul>
-<p><strong>数据库:</strong></p>
-<ul>
-<li>熟练：关系型数据库MySql </li>
-<li>熟悉：Redis缓存数据库</li>
-</ul>
-<p><strong>前端：</strong> </p>
-<ul>
-<li>熟练HTML，CSS，JS基础。包括语义化标签，盒模型理论等等 </li>
-<li>熟悉HTTP，TCP/IP，Web Socket  </li>
-<li>熟悉AngularJS，Vue，Node.js，NPM包管理工具 </li>
-<li>熟悉ES6新特性，模块化Module </li>
-<li>熟悉AJAX，以及各种跨域配置CORS，本地代理（Webpack），Nginx反向代理 </li>
-<li>熟悉基于Vue的各种开源组件，Element UI等等（有阅读过部分组件源码） </li>
-<li>熟悉GITHUB，在项目中有应用过相当多的开源组件 Echarts，quill等等 </li>
-<li>熟悉Markdown，Json </li>
-<li>熟悉项目文档编写工作，团队文档管理工具Vue-press，docsify，swagger等</li>
-</ul>
-<p><strong>其他：</strong> </p>
-<ul>
-<li>熟悉Linux，常用Ubuntu，CentOS </li>
-<li>熟练Eclipse，IDEA，VSCODE，GIT，禅道，Chrome Dev Tool等常用开发和协同工具  </li>
-<li>熟悉VPS，翻墙，抓包等技能，极其擅长面向搜索编程 </li>
-<li>了解云计算，IaaS，PaaS，虚拟机，容器，语言运行环境，Docker，Kubernetes 等技术</li>
-<li>都有涉猎 </li>
-<li>了解Apache JMeter 等压力测试工具</li>
-</ul>
-<h1 id="项目经历"><a href="#项目经历" class="headerlink" title="项目经历"></a>项目经历</h1><h4 id="1-PaaS-云端应用平台"><a href="#1-PaaS-云端应用平台" class="headerlink" title="1. PaaS 云端应用平台"></a>1. PaaS 云端应用平台</h4><p><strong>描述：</strong></p>
-<p>我个人的主要工作内容在于基于开源 PaaS 层云计算平台 CF 的 Cloud Controller API 的二次封装。并且在这一层中间层实现业务逻辑。并且提供 Restful API 接口给前端，然后由前端实现可视化界面，方便对集群的控制。基于 Java 语言，CF SDK 和 CF Restful API。实现包括应用部署，应用查询和监控，应用伸缩，服务管理，路由和域名管理等等。 </p>
-<p><strong>功能/收获：</strong> </p>
-<ol>
-<li>提供标准的 Restful API和详细的Swagger 使用文档，所有业务功能提供基础的增删改查业务和复杂的条件，分页，搜索查询接口 </li>
-<li>应用部署，应用查询和监控，应用伸缩，负载均衡，服务发现，服务绑定等核心功能 </li>
-<li>实现QQ第三方登陆（熟悉 Oauth2.0，Openid等第三方登陆对接模式） </li>
-<li>基于Socket.io的实施应用日志推送接口 </li>
-<li>用户校验，权限过滤，登陆日志，操作日志等系统常用功能的实现 </li>
-</ol>
-<p><strong>技术栈：</strong> </p>
-<ol>
-<li>Spring 全家桶，Cf-client 客户端工具，数据库为Mysql </li>
-<li>内置邮件服务，用户邮箱注册校验，登陆图形验证码 </li>
-<li>SHA1登陆加密，保证账户安全 </li>
-<li>压力测试工具 </li>
-<li>符合云原生应用标准，提高并发，直接拷贝多实例部署负载均衡即可满足要求 </li>
-</ol>
-<h4 id="2-PaaS-云端应用平台（前端）"><a href="#2-PaaS-云端应用平台（前端）" class="headerlink" title="2. PaaS 云端应用平台（前端）"></a>2. PaaS 云端应用平台（前端）</h4><p><strong>描述：</strong></p>
-<p>独立开发，此项目经历了 JQUERY &gt; Angular 1.x &gt; Vue 2.x 的迭代，项目的重构主要优化了代码的质量和可读性。前端工程化，码模块化的问题也通过引入 Webpack，ES6的模块化。其他方面和后台使用 Ajax 交互Json 数据。采用VSCODE开发，使用了GIT作为版本控制工具。 </p>
-<p><strong>功能/收获：</strong> </p>
-<ol>
-<li>为PaaS云应用管理平台提供可视化用户界面 </li>
-<li>作为项目主站，提供宣传Feature 等页面宣传公司的产品 </li>
-</ol>
-<p><strong>技术栈：</strong> </p>
-<ol>
-<li>核心框架有Webpack, Vue2.x, Vuex, Vue-router, Axios, echarts </li>
-<li>常用工具类库有 lodash, Jsencrypt 用户信息加密，moment.js, marked，highlight.js 文档高亮格式化, normalize.css初始化样式表， 等等 </li>
-<li>组件相关的有富文本处理组件 quill, swiper, vivus.js, cropper.js, distpicker日期选择器，particles.js，animate.css页面动画处理，element-ui组件库 </li>
-</ol>
-<h4 id="3-用户认证和权限管理系统"><a href="#3-用户认证和权限管理系统" class="headerlink" title="3.  用户认证和权限管理系统"></a>3.  用户认证和权限管理系统</h4><p>描述：公司内部综合运营管理系统主站点的用户管理系统。主要是一套基于角色的访问控制(RBAC)系统，提供校验和权限服务，细粒度到 API 层面的权限控制，以及提供接口给前台主站和其他的关联后台应用（合同管理系统）调用等等。 </p>
-<p><strong>技术栈：</strong> </p>
-<ol>
-<li>Java代码层面主要有Spring Boot, Spring Security, Web, JPA, JWT Token, Swagger </li>
-<li>数据库层面主要有Mysql，包含了用户，角色，权限等表来对项目进行权限控制 </li>
-</ol>
-<p><strong>功能/收获：</strong> </p>
-<ol>
-<li>登陆校验，用户管理，权限管理，角色管理 </li>
-<li>接口数据校验，登陆和权限校验，统一异常处理，统一格式化返回数据等功能 </li>
-</ol>
-<h4 id="4-邮件系统"><a href="#4-邮件系统" class="headerlink" title="4. 邮件系统"></a>4. 邮件系统</h4><p>描述：主要提供了各种各样的邮件 API 和定制的邮件模板来提供邮件服务，除此之外还包含定时任务处理邮件通知功能，例如用户余不足推送通知给用户。提供各种接口，支持附件，抄送，富文本，定制模板等等。 </p>
-<p><strong>技术栈：</strong> </p>
-<ol>
-<li>Spring Boot, Spring Security, Web, JPA, Mail </li>
-</ol>
-<p><strong>功能/收获：</strong> </p>
-<ol>
-<li>多种复杂邮件发送接口和各个项目定制邮件接口的实现 </li>
-<li>邮件相关的定时任务的处理 </li>
-</ol>
-<h4 id="5-综合运营系统"><a href="#5-综合运营系统" class="headerlink" title="5. 综合运营系统"></a>5. 综合运营系统</h4><p>描述：公司后台管理系统主站点。后台包括用户权限系统，计费系统，合同管理系统，邮件管理系统，用户资源管理系统，实现了公司各个主要服务的可视化界面展示，主要用户为公司内部员工，运维和销售等等。</p>
-<p><strong>技术栈：</strong> </p>
-<ol>
-<li>核心框架有Webpack, Vue2.x, Vuex, Vue-router, Axios, echarts </li>
-</ol>
-<p><strong>功能/收获：</strong></p>
-<ol>
-<li>用户管理，权限管理，用户机时管理，用户资源管理，账单统计等等 </li>
-<li>前端依据用户的角色和权限动态生成菜单和对应的界面 </li>
-<li>报表生成功能，页面统计用户数据，转换格式，发送到用户邮箱 </li>
-<li>用户信用额度审批，资源审批 </li>
-</ol>
-<h4 id="6-橘子文库"><a href="#6-橘子文库" class="headerlink" title="6. 橘子文库"></a>6. 橘子文库</h4><p>项目描述：主要实现类似百度文库的文档管理和预览功能。格式转换+Flash 插件预览模拟模仿实现百度文库。核心业务是用户上传 DOC、PDF 等办公文件到服务器，服务器调用文件转换功能将办公文件转换成 SWF 格式文件，前端用 Flash 渲染给用户，即可实时览文档的内容。（非商业项目） </p>
-<p><strong>技术栈：</strong> </p>
-<ol>
-<li>JSP、SERVLET、MYSQL、OpenOffice </li>
-</ol>
-<p><strong>功能/收获：</strong></p>
-<ol>
-<li>文档管理，增删改查，下载 </li>
-<li>文档预览，基于OpenOffice </li>
-</ol>
-<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><p><code>2016-11~ 今 北京并行科技股份有限公司</code> </p>
-<p>研发工程师（Java方向，前端） </p>
-<p>工作内容在于基于集群的 Cloud Controller API 的二次封装。并且在这一层中间层实现业务逻辑。并且提供 Restful API 接口前端，然后由前端实现可视化界面，方便对集群的控制。 </p>
-<p><code>2016-06 ~ 2016-11 深圳市友能网络科技有限公司</code></p>
-<p>研发工程师（Java 方向） </p>
-<p>个人在公司主要负责公司EPG业务的开发和维护，例如游戏大厅，短期活动等产品，主要使用的技术也在mysql+java+HTML+CSS+JS这一块，由于前端产品（基于IPTV机顶盒开发）的特殊性，前端技术主要都以原生技术为主。以及linux下的项目部署和维护。</p>
-<h1 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h1><p>计算机科学软件工程专业毕业，专业基础知识扎实。本科期间受到过良好的软件过程和软件工程思想教育。有良好的逻辑思维能力，语言表达能力，良好的计算机思维，问题定位的能力和解决问题的专业技术能力。除此之外还有优秀的自我驱动能力，学习，记录笔记的习惯。 </p>
-<p>热爱技术，创造有价值的东西。 </p>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1141,7 +1001,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1154,7 +1014,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

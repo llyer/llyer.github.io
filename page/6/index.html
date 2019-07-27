@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode627.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode196.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -323,7 +323,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode627.html" itemprop="url">leetcode627. 交换工资</a></h1>
+                <a class="post-title-link" href="/leetcode196.html" itemprop="url">leetcode196. 删除重复的电子邮箱</a></h1>
         
 
         <div class="post-meta">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T13:11:43+08:00">
+                2019-03-24
               </time>
             
 
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:30+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:39+08:00">
                 2019-07-03
               </time>
             
@@ -387,14 +387,154 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/swap-salary/" target="_blank" rel="noopener">627. 交换工资</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>给定一个 salary 表，如下所示，有 m=男性 和 f=女性 的值 。交换所有的 f 和 m 值（例如，将所有 f 值更改为 m，反之亦然）。要求使用一个更新（Update）语句，并且没有中间临时表。</p>
-<p>请注意，你必须编写一个 Update 语句，不要编写任何 Select 语句。</p>
-<p>例如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | m   | 2500   |</span><br><span class="line">| 2  | B    | f   | 1500   |</span><br><span class="line">| 3  | C    | m   | 5500   |</span><br><span class="line">| 4  | D    | f   | 500    |</span><br></pre></td></tr></table></figure>
-<p>运行你所编写的更新语句之后，将会得到以下表:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | f   | 2500   |</span><br><span class="line">| 2  | B    | m   | 1500   |</span><br><span class="line">| 3  | C    | f   | 5500   |</span><br><span class="line">| 4  | D    | m   | 500    |</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- mysql case when 条件流程控制语句，case when 可以在查询修改等条件语句中用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> salary</span><br><span class="line"><span class="keyword">set</span> sex = </span><br><span class="line"><span class="keyword">case</span> sex</span><br><span class="line">    <span class="keyword">when</span> <span class="string">'m'</span> <span class="keyword">then</span> <span class="string">'f'</span></span><br><span class="line">    <span class="keyword">else</span> <span class="string">'m'</span></span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+            <p>问题连接：<a href="https://leetcode-cn.com/problems/second-highest-salary/" target="_blank" rel="noopener">176. 第二高的薪水</a></p>
+<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，获取 Employee 表中第二高的薪水（Salary） 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+--------+</span><br><span class="line">| Id | Salary |</span><br><span class="line">+----+--------+</span><br><span class="line">| 1  | 100    |</span><br><span class="line">| 2  | 200    |</span><br><span class="line">| 3  | 300    |</span><br><span class="line">+----+--------+</span><br></pre></td></tr></table></figure>
+<p>例如上述 Employee 表，SQL查询应该返回 200 作为第二高的薪水。如果不存在第二高的薪水，那么查询应返回 null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------------------+</span><br><span class="line">| SecondHighestSalary |</span><br><span class="line">+---------------------+</span><br><span class="line">| 200                 |</span><br><span class="line">+---------------------+</span><br></pre></td></tr></table></figure>
+<h4 id="SQL-架构："><a href="#SQL-架构：" class="headerlink" title="SQL 架构："></a>SQL 架构：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Create table If Not Exists Employee (Id int, Salary int) Truncate table Employee</span><br><span class="line">insert into Employee (Id, Salary) values (&apos;1&apos;, &apos;100&apos;)</span><br><span class="line">insert into Employee (Id, Salary) values (&apos;2&apos;, &apos;200&apos;)</span><br><span class="line">insert into Employee (Id, Salary) values (&apos;3&apos;, &apos;300&apos;)</span><br></pre></td></tr></table></figure>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 并集查询，查询时，生成 m * n 条记录，其中 m 和 n 分别为两个表的记录个数，效率非常低，不建议使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询要删除的记录</span></span><br><span class="line"><span class="comment">-- SELECT * FROM person p1, person p2 where p1.email = p2.email and p1.id &gt; p2.id </span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除一个表时不需要指定从那个表删除记录</span></span><br><span class="line"><span class="comment">-- DELETE FROM person WHERE id = 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 但是如果是两个表，要显式的指定要删除那个表</span></span><br><span class="line"><span class="keyword">DELETE</span> p1 <span class="keyword">FROM</span> person p1, person p2 <span class="keyword">where</span> p1.email = p2.email <span class="keyword">and</span> p1.id &gt; p2.id</span><br></pre></td></tr></table></figure>
+<p>~~~</p>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode596.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="面条先生">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李鲁杨的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode596.html" itemprop="url">leetcode596. 超过5名学生的课</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T11:11:43+08:00">
+                2019-03-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:35+08:00">
+                2019-07-03
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>问题连接：<a href="https://leetcode-cn.com/problems/classes-more-than-5-students/" target="_blank" rel="noopener">596. 超过5名学生的课</a></p>
+<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>有一个courses 表 ，有: student (学生) 和 class (课程)。</p>
+<p>请列出所有超过或等于5名学生的课。</p>
+<p>例如,表:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+---------+------------+</span><br><span class="line">| student | class      |</span><br><span class="line">+---------+------------+</span><br><span class="line">| A       | Math       |</span><br><span class="line">| B       | English    |</span><br><span class="line">| C       | Math       |</span><br><span class="line">| D       | Biology    |</span><br><span class="line">| E       | Math       |</span><br><span class="line">| F       | Computer   |</span><br><span class="line">| G       | Math       |</span><br><span class="line">| H       | Math       |</span><br><span class="line">| I       | Math       |</span><br><span class="line">+---------+------------+</span><br></pre></td></tr></table></figure></p>
+<p>应该输出:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| class   |</span><br><span class="line">+---------+</span><br><span class="line">| Math    |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
+<p>Note:<br>学生在每个课中不应被重复计算。</p>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- select class from (select class, count(class) as counts from courses group by class) as temp where counts &gt;= 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- having 和 where 的区别要好好查一下</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">class</span> <span class="keyword">from</span> courses <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">class</span> <span class="keyword">having</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> student) &gt;=<span class="number">5</span></span><br></pre></td></tr></table></figure>
 <p>~~~</p>
 <hr>
 
@@ -586,146 +726,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode182.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="面条先生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李鲁杨的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode182.html" itemprop="url">leetcode182. 查找重复的电子邮箱</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
-                2019-03-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:21+08:00">
-                2019-07-03
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/duplicate-emails/" target="_blank" rel="noopener">182. 查找重复的电子邮箱</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br></pre></td></tr></table></figure>
-<p>根据以上输入，你的查询应返回以下结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> email <span class="keyword">from</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> email, <span class="keyword">count</span>(email) <span class="keyword">num</span> <span class="keyword">from</span> person <span class="keyword">GROUP</span> <span class="keyword">BY</span> email) <span class="keyword">as</span> temp_table</span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">num</span> &gt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>~~~</p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode197.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -864,7 +864,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode181.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/leetcode182.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="面条先生">
@@ -883,7 +883,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode181.html" itemprop="url">leetcode181. 超过经理收入的员工</a></h1>
+                <a class="post-title-link" href="/leetcode182.html" itemprop="url">leetcode182. 查找重复的电子邮箱</a></h1>
         
 
         <div class="post-meta">
@@ -895,7 +895,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T01:12:43+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T11:11:43+08:00">
                 2019-03-22
               </time>
             
@@ -911,7 +911,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-03T22:41:21+08:00">
                 2019-07-03
               </time>
             
@@ -947,12 +947,13 @@
       
         
           
-            <p>问题连接：<a href="https://leetcode-cn.com/problems/employees-earning-more-than-their-managers/" target="_blank" rel="noopener">181. 超过经理收入的员工</a></p>
-<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+-----------+</span><br><span class="line">| Id | Name  | Salary | ManagerId |</span><br><span class="line">+----+-------+--------+-----------+</span><br><span class="line">| 1  | Joe   | 70000  | 3         |</span><br><span class="line">| 2  | Henry | 80000  | 4         |</span><br><span class="line">| 3  | Sam   | 60000  | NULL      |</span><br><span class="line">| 4  | Max   | 90000  | NULL      |</span><br><span class="line">+----+-------+--------+-----------+</span><br></pre></td></tr></table></figure>
-<p>给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------+</span><br><span class="line">| Employee |</span><br><span class="line">+----------+</span><br><span class="line">| Joe      |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure>
-<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 员工表自我连接查询，并且找出满足对应薪水关系的员工</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">as</span> employee <span class="keyword">FROM</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> em.id, em.name, em.salary, em.ManagerId , manager.salary <span class="keyword">as</span> salary1 </span><br><span class="line"><span class="keyword">FROM</span> employee em </span><br><span class="line"><span class="keyword">JOIN</span> employee <span class="keyword">as</span> manager </span><br><span class="line"><span class="keyword">where</span> em.ManagerId  = manager.id <span class="keyword">and</span> em.salary &gt; manager.salary) <span class="keyword">as</span> temp</span><br></pre></td></tr></table></figure>
+            <p>问题连接：<a href="https://leetcode-cn.com/problems/duplicate-emails/" target="_blank" rel="noopener">182. 查找重复的电子邮箱</a></p>
+<h4 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h4><p>编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+----+---------+</span><br><span class="line">| Id | Email   |</span><br><span class="line">+----+---------+</span><br><span class="line">| 1  | a@b.com |</span><br><span class="line">| 2  | c@d.com |</span><br><span class="line">| 3  | a@b.com |</span><br><span class="line">+----+---------+</span><br></pre></td></tr></table></figure>
+<p>根据以上输入，你的查询应返回以下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+---------+</span><br><span class="line">| Email   |</span><br><span class="line">+---------+</span><br><span class="line">| a@b.com |</span><br><span class="line">+---------+</span><br></pre></td></tr></table></figure>
+<h4 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 聚合查询就是 count()，分组就是 group by，分组聚合查询就是根据条件来统计数据的数量信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> email <span class="keyword">from</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> email, <span class="keyword">count</span>(email) <span class="keyword">num</span> <span class="keyword">from</span> person <span class="keyword">GROUP</span> <span class="keyword">BY</span> email) <span class="keyword">as</span> temp_table</span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> <span class="keyword">num</span> &gt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>~~~</p>
 <hr>
 
@@ -994,7 +995,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1040,7 +1041,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1053,7 +1054,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
